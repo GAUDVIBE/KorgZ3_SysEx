@@ -37,6 +37,16 @@ An Arduino Mega 2560-based MIDI controller for the **Korg Z3 FM synthesizer**, a
 
 > **Tip:** Adding a 100nF ceramic capacitor between each pot's wiper and GND significantly reduces ADC noise and improves parameter stability.
 
+### PCB / KiCad design
+
+A full KiCad reconstruction of the board (schematic + PCB) lives in [`hardware/`](hardware/),
+rebuilt from the original Gerbers. It also includes an extension: a **CD74HC4067** analog
+multiplexer (extra analog input via a 6.35 mm remote-pot jack + spare channels) and **RC
+anti-noise filters** (1 kΩ + 100 nF) on every analog input. See
+[`hardware/RECONSTRUCTION_SCHEMA.md`](hardware/RECONSTRUCTION_SCHEMA.md) and
+[`hardware/ATTRIBUTION.md`](hardware/ATTRIBUTION.md) (hardware is CC BY-NC-SA, derived from
+baritonomarchetto's design).
+
 ---
 
 ## Button Behavior

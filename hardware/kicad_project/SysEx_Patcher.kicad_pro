@@ -1,0 +1,17 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": { "equivalence_files": [] },
+  "libraries": { "pinned_footprint_libs": [], "pinned_symbol_libs": [] },
+  "meta": { "filename": "SysEx_Patcher.kicad_pro", "version": 3 },
+  "net_settings": { "classes": [], "meta": { "version": 3 } },
+  "pcbnew": { "page_layout_descr_file": "" },
+  "schematic": {
+    "drawing": {},
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": { "version": 1 }
+  },
+  "sheets": [],
+  "text_variables": {}
+}
