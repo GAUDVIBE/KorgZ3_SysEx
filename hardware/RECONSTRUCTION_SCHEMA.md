@@ -12,14 +12,14 @@ Le projet KiCad inclut désormais une **extension** (au-delà de la reconstructi
 
 - **CD74HC4067 (U2)** — multiplexeur analogique 16:1. Sortie commune **COM → A15**.
   - **I0 = pot #16** (déplacé du direct A15 vers le mux), **I1 = jack déporté**, **I2–I15 = libres** (sortis sur header **J9**).
-  - Sélection **S0/S1/S2/S3 → D2 / D3 / D4 / D22** ; **~E (enable, actif bas) → GND** ; VCC → +5V, GND → GND.
+  - Sélection **S0/S1/S2/S3 → D2 / D3 / D4 / D13** ; **~E (enable, actif bas) → GND** ; VCC → +5V, GND → GND.
 - **Jack 6,35 mm (J10)** = **potentiomètre déporté** (T=curseur→filtre→I1, R=+5V, S=GND). *Empreinte = placeholder 3 broches à remplacer par le vrai jack (réf. RS).*
 - **Filtre RC anti-bruit sur chaque entrée analogique** (16 pots + jack) : `wiper →[1kΩ série]→ nœud ADC`, et `100nF du nœud vers GND` (passe-bas). Réfs R10–R27 (1k) + C2–C18 (100nF).
 
 ### ⚠️ Firmware à adapter pour le 4067
 Les 15 premiers pots restent en lecture directe (A0–A14). **Pot #16 et le jack se lisent via le mux sur A15** :
 ```c
-const byte muxSel[4] = {2, 3, 4, 22};      // S0,S1,S2,S3  (D2,D3,D4,D22)
+const byte muxSel[4] = {2, 3, 4, 13};      // S0,S1,S2,S3  (D2,D3,D4,D13)
 int readMux(byte ch){
   for (byte i=0;i<4;i++) digitalWrite(muxSel[i], (ch>>i)&1);
   delayMicroseconds(5);                      // settle
@@ -28,6 +28,16 @@ int readMux(byte ch){
 // ch0 = pot #16 (ex-A15) ; ch1 = jack déporté ; ch2..15 = extension
 ```
 Côté `setup()` : `for(b:muxSel) pinMode(b,OUTPUT);`. Remplacer la lecture de `potLayout[15]` (A15) par `readMux(0)`, et ajouter `readMux(1)` pour le jack.
+
+
+
+## 0bis. PCB v0.5 — VRAI SHIELD enfichable Arduino Mega
+La carte est maintenant un **shield empilable** : les connecteurs Mega sont placés aux **positions
+exactes de l'Arduino Mega 2560** (2 rangées à 48,26 mm, brochage déduit du cuivre d'origine, ordre
+analogique A0→A15 vérifié), donc **le Mega s'enfiche dessous**. Layout : entrées (MIDI IN/OUT, jack,
+DC) en haut, pots en grille 4×4 (filtres RC à côté de chaque pot), 4 boutons en colonne verticale,
+LEDs à droite, bloc header Mega en bas. **100 % THT**, 4 couches + plan GND, **routé à 100 %, DRC
+propre**, coins arrondis (~172×205 mm). 4ᵉ sélection du mux = **D13** (D22 absent de ces 2 rangées).
 
 ---
 
