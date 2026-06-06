@@ -85,7 +85,7 @@ propre**, coins arrondis (~172×228 mm). 4ᵉ sélection du mux = **D13** (D22 a
 | 1 | Diode **1N4004** | D_DO-41 | protection inversion alim |
 | 4 | **LED 3 mm** | LED_D3.0mm | retour visuel (pages / séquenceur) |
 | 4 | Bouton poussoir momentané | SW_PUSH 6 mm | PAGE/SHIFT, CALLBACK/START, RNDMZ!/PANIC, MODE |
-| 1 | Inverseur **SPDT** PCB (SW1) | SW_SPDT | sélection prog / MIDI |
+| ~~1~~ | ~~Inverseur SPDT PCB (SW1)~~ | ~~SW_SPDT~~ | **supprimé** — 6N138 câblé en direct sur RX0 (voir §3.5) |
 | 1 | Jack DC barrel | BarrelJack | alimentation +5 V |
 | 2 | Connecteur **MIDI DIN-5** | DIN-5 180° | MIDI IN / MIDI OUT |
 | — | Bornier 4 pts | GND / +5V / −BAT / +BAT | alim alternative (pile 9 V) |
@@ -142,8 +142,11 @@ Broche MEGA → **1 kΩ** → anode LED → cathode → **GND**.
 > Vérifier l'ordre des broches du header (silk : SDA … GND) par rapport à votre module.
 
 ### 3.5 MIDI → **Serial0 matériel** (USB partagé)
-Le firmware utilise `MIDI_CREATE_DEFAULT_INSTANCE()` → port **Serial** = **RX0 (D0)** / **TX0 (D1)**.
-C'est la raison d'être de **SW1** : il déconnecte la sortie du 6N138 de RX0 pendant l'upload USB.
+Le firmware utilise le port **Serial** = **RX0 (D0)** / **TX0 (D1)** (`Serial.begin(31250)`).
+À l'origine un inverseur **SW1 « prog/MIDI »** déconnectait la sortie du 6N138 de RX0 pendant l'upload
+USB. **Supprimé dans cette refonte** : la sortie du 6N138 (Vo, collecteur ouvert + pull-up 10 kΩ R5)
+est désormais **câblée directement à RX0 (D0)**. Conséquence pratique : ne pas téléverser le firmware
+pendant qu'un flux MIDI entre (au repos le pull-up n'empêche pas l'upload USB).
 
 ---
 
@@ -164,7 +167,7 @@ DIN-5 (IN) br.5 ───────────── 6N138 pin3 (Cathode)    
                  D1 1N4148 entre pin2 (Anode) et pin3 (Cathode), protection  ✓ tracé
 6N138 pin8 (Vcc) ── +5V        6N138 pin5 ── GND            ✓ tracé
 6N138 pin6 (Vo)  ──[R5 10kΩ]── +5V   (pull-up)              ✓ tracé
-6N138 pin6 (Vo)  ── via ── SW1 (prog/MIDI) ── RX0 (D0)      ✓ tracé
+6N138 pin6 (Vo)  ──────────────────────────── RX0 (D0)      (direct, SW1 supprimé)
 6N138 pin7 (Vb)  ──[R4 330Ω]── GND   (polarisation base)    ✓ tracé
 6N138 pin1, pin4 = NC                                       ✓ (pastilles isolées)
 C1 100nF : découplage +5V/GND
@@ -183,7 +186,7 @@ DIN-5 (OUT) br.2 ── GND (blindage)
 ```
 Barrel +5V (centre +) ──[1N4004 protection]── rail +5V
 Bornier : GND / +5V / −BAT / +BAT (alternatives d'alim)
-SW1 (SPDT) : position « prog » (upload USB) ↔ « MIDI » (fonctionnement)
+(SW1 « prog/MIDI » supprimé — 6N138 Vo câblé en direct sur RX0)
 ```
 
 > Les 3×220 Ω, 330 Ω, 10 kΩ, 100 nF, 1N4148, 1N4004 sont **tous** présents et localisés ;
@@ -248,6 +251,6 @@ SW1 (SPDT) : position « prog » (upload USB) ↔ « MIDI » (fonctionnement)
 - À l'ouverture, KiCad peut afficher des avertissements « librairie non trouvée » selon ta config :
   réassocie au besoin les symboles aux libs globales (clic droit → *Change Symbols*). Les empreintes
   sont des suggestions (§2) à confirmer avant routage.
-- Les valeurs/refs suivent §2 et §4 ; les 16 pots = RV1…RV16, le 6N138 = U1, SW1 = switch prog/MIDI.
+- Les valeurs/refs suivent §2 et §4 ; les 16 pots = RV1…RV16, le 6N138 = U1 (Vo direct sur RX0, SW1 retiré).
 
 *Rendus générés avec gerbonara depuis les Gerbers `SysEx_Programmer_BIG_display.*`.*

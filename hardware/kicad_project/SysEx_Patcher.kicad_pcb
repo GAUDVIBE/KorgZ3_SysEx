@@ -14,77 +14,76 @@
   (net 9 "D21_SCL")
   (net 10 "D20_SDA")
   (net 11 "OPTO_ANODE")
-  (net 12 "OPTO_VO")
+  (net 12 "D0_RX")
   (net 13 "OPTO_VB")
-  (net 14 "D0_RX")
-  (net 15 "D1_TX")
-  (net 16 "D7")
-  (net 17 "D8")
-  (net 18 "D6")
-  (net 19 "D5")
-  (net 20 "POT1_W")
-  (net 21 "A0")
-  (net 22 "POT2_W")
-  (net 23 "A5")
-  (net 24 "POT3_W")
-  (net 25 "A8")
-  (net 26 "POT4_W")
-  (net 27 "A12")
-  (net 28 "POT5_W")
-  (net 29 "A1")
-  (net 30 "POT6_W")
-  (net 31 "A4")
-  (net 32 "POT7_W")
-  (net 33 "A9")
-  (net 34 "POT8_W")
-  (net 35 "A13")
-  (net 36 "POT9_W")
-  (net 37 "A2")
-  (net 38 "POT10_W")
-  (net 39 "A6")
-  (net 40 "POT11_W")
-  (net 41 "A10")
-  (net 42 "POT12_W")
-  (net 43 "A14")
-  (net 44 "POT13_W")
-  (net 45 "A3")
-  (net 46 "POT14_W")
-  (net 47 "A7")
-  (net 48 "POT15_W")
-  (net 49 "A11")
-  (net 50 "POT16_W")
-  (net 51 "MUX_CH0")
-  (net 52 "D12")
-  (net 53 "LED1_A")
-  (net 54 "D11")
-  (net 55 "LED2_A")
-  (net 56 "D10")
-  (net 57 "LED3_A")
-  (net 58 "D9")
-  (net 59 "LED4_A")
-  (net 60 "A15")
-  (net 61 "D2")
-  (net 62 "D3")
-  (net 63 "D4")
-  (net 64 "D13")
-  (net 65 "MUX_CH1")
-  (net 66 "MUX_CH2")
-  (net 67 "MUX_CH3")
-  (net 68 "MUX_CH4")
-  (net 69 "MUX_CH5")
-  (net 70 "MUX_CH6")
-  (net 71 "MUX_CH7")
-  (net 72 "MUX_CH8")
-  (net 73 "MUX_CH9")
-  (net 74 "MUX_CH10")
-  (net 75 "MUX_CH11")
-  (net 76 "MUX_CH12")
-  (net 77 "MUX_CH13")
-  (net 78 "MUX_CH14")
-  (net 79 "MUX_CH15")
+  (net 14 "D1_TX")
+  (net 15 "D7")
+  (net 16 "D8")
+  (net 17 "D6")
+  (net 18 "D5")
+  (net 19 "POT1_W")
+  (net 20 "A0")
+  (net 21 "POT2_W")
+  (net 22 "A5")
+  (net 23 "POT3_W")
+  (net 24 "A8")
+  (net 25 "POT4_W")
+  (net 26 "A12")
+  (net 27 "POT5_W")
+  (net 28 "A1")
+  (net 29 "POT6_W")
+  (net 30 "A4")
+  (net 31 "POT7_W")
+  (net 32 "A9")
+  (net 33 "POT8_W")
+  (net 34 "A13")
+  (net 35 "POT9_W")
+  (net 36 "A2")
+  (net 37 "POT10_W")
+  (net 38 "A6")
+  (net 39 "POT11_W")
+  (net 40 "A10")
+  (net 41 "POT12_W")
+  (net 42 "A14")
+  (net 43 "POT13_W")
+  (net 44 "A3")
+  (net 45 "POT14_W")
+  (net 46 "A7")
+  (net 47 "POT15_W")
+  (net 48 "A11")
+  (net 49 "POT16_W")
+  (net 50 "MUX_CH0")
+  (net 51 "D12")
+  (net 52 "LED1_A")
+  (net 53 "D11")
+  (net 54 "LED2_A")
+  (net 55 "D10")
+  (net 56 "LED3_A")
+  (net 57 "D9")
+  (net 58 "LED4_A")
+  (net 59 "A15")
+  (net 60 "D2")
+  (net 61 "D3")
+  (net 62 "D4")
+  (net 63 "D13")
+  (net 64 "MUX_CH1")
+  (net 65 "MUX_CH2")
+  (net 66 "MUX_CH3")
+  (net 67 "MUX_CH4")
+  (net 68 "MUX_CH5")
+  (net 69 "MUX_CH6")
+  (net 70 "MUX_CH7")
+  (net 71 "MUX_CH8")
+  (net 72 "MUX_CH9")
+  (net 73 "MUX_CH10")
+  (net 74 "MUX_CH11")
+  (net 75 "MUX_CH12")
+  (net 76 "MUX_CH13")
+  (net 77 "MUX_CH14")
+  (net 78 "MUX_CH15")
 (footprint "SysEx_Patcher:MIDI_DIN5_180deg"
   (version 20240108)(generator "antoine")(layer "F.Cu")
-	(uuid "1d31db41-3a60-4c8a-aec6-f47ceb7a1b29")
+	(uuid "12992d6c-2fca-4d3e-b260-2dabfdf847c9")
 	(at 44.0 38.0 0)
   (descr "5-pin DIN 180deg MIDI socket - geometry from original SysEx Patcher board (T07 1.40mm holes). Orientation matches original PCB: mount holes at TOP, signal arc below, data pins (4,5) lowest.")
   (tags "MIDI DIN-5 180")(attr through_hole)
@@ -92,28 +91,28 @@
   (property "Value" "MIDI_IN" (at 0 -16 0)(layer "F.Fab")(effects (hide yes) (font (size 1 1)(thickness 0.15))))
   (property "Footprint" "" (at 0 0 0)(layer "F.Fab") hide (effects (font (size 1 1)(thickness 0.15))))
   (pad "1" thru_hole circle (at -7.3 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "d4071bf0-0c96-41f6-98e2-cacb45754739")
+		(uuid "16ba82e5-fb02-459f-8d87-bf0f35b0e8af")
 	)
   (pad "2" thru_hole circle (at 0 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 3 "GND")
-		(uuid "f44291d5-041d-44b1-8522-54f8d328857d")
+		(uuid "c34fd55d-61aa-426c-ba36-e57b4e5f4cdf")
 	)
   (pad "3" thru_hole circle (at 7.3 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "2a76bda4-b861-43e4-8a21-94f8540dc94e")
+		(uuid "6dd89500-0cf7-47fe-8cda-b3e32a91bbcf")
 	)
   (pad "4" thru_hole circle (at 5 2.5)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 1 "MIDI_IN_4")
-		(uuid "d0dfd010-adfe-42b2-bacf-da3830dc4496")
+		(uuid "5e3a819b-d865-4df4-97c1-61d06625e12a")
 	)
   (pad "5" thru_hole circle (at -5 2.5)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 2 "OPTO_CATHODE")
-		(uuid "29021885-a8d6-4876-9bee-901f0bc3e252")
+		(uuid "0338cefc-b0b1-4186-8b5e-688dde0f0696")
 	)
   (pad "" thru_hole circle (at -5 -9.7)(size 2.6 2.6)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "f7ac431e-6f9c-4c2e-a3d2-3807d60eb10d")
+		(uuid "26656c23-b4c9-4a2d-a651-9478001150dc")
 	)
   (pad "" thru_hole circle (at 5 -9.7)(size 2.6 2.6)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "2054ed4e-5837-423d-a511-631375becf32")
+		(uuid "c0a4ce59-03ef-4250-a3d0-c4284ba9d418")
 	)
   (fp_circle (center 0 -3.6)(end 11.4 -3.6)(stroke (width 0.12)(type solid))(layer "F.SilkS"))
   (fp_circle (center 0 -3.6)(end 11.9 -3.6)(stroke (width 0.05)(type solid))(layer "F.CrtYd"))
@@ -121,7 +120,7 @@
 
 (footprint "SysEx_Patcher:MIDI_DIN5_180deg"
   (version 20240108)(generator "antoine")(layer "F.Cu")
-	(uuid "10231b3d-d290-4aac-ad7c-1f649ad810fc")
+	(uuid "b39c1221-5f2d-4b36-90e2-bfda7c107fb2")
 	(at 72.0 38.0 0)
   (descr "5-pin DIN 180deg MIDI socket - geometry from original SysEx Patcher board (T07 1.40mm holes). Orientation matches original PCB: mount holes at TOP, signal arc below, data pins (4,5) lowest.")
   (tags "MIDI DIN-5 180")(attr through_hole)
@@ -129,28 +128,28 @@
   (property "Value" "MIDI_OUT" (at 0 -16 0)(layer "F.Fab")(effects (hide yes) (font (size 1 1)(thickness 0.15))))
   (property "Footprint" "" (at 0 0 0)(layer "F.Fab") hide (effects (font (size 1 1)(thickness 0.15))))
   (pad "1" thru_hole circle (at -7.3 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "fab18ca5-edc0-4a6b-a7c0-7b13fa5f3ebf")
+		(uuid "9db52823-41a6-45dc-a97f-7c7f96d0f0f6")
 	)
   (pad "2" thru_hole circle (at 0 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 3 "GND")
-		(uuid "8389de55-11df-4724-84e6-9644df441bf5")
+		(uuid "11bf6e48-b848-4ec3-8364-853dc5c38e28")
 	)
   (pad "3" thru_hole circle (at 7.3 0)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "2c5673d3-5fc8-4837-b900-37c4ee7b7601")
+		(uuid "36f1f545-8aa2-410d-bb70-ec376c8a878e")
 	)
   (pad "4" thru_hole circle (at 5 2.5)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 4 "MIDI_OUT_4")
-		(uuid "95e59be6-5f37-4275-989a-a153c880731b")
+		(uuid "58e33f09-ec94-482c-b4cb-1e8730e06fdd")
 	)
   (pad "5" thru_hole circle (at -5 2.5)(size 2.4 2.4)(drill 1.4)(layers "*.Cu" "*.Mask")
 		(net 5 "MIDI_OUT_5")
-		(uuid "f2718a54-825d-4e05-ad92-25bb17f9635a")
+		(uuid "a1bc275c-4d65-4391-9698-e38d5ceddc66")
 	)
   (pad "" thru_hole circle (at -5 -9.7)(size 2.6 2.6)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "bc8c2497-1212-4223-99c0-1e16575f31ce")
+		(uuid "1a40b3ce-bc1f-4257-99fa-fbbeeb225b40")
 	)
   (pad "" thru_hole circle (at 5 -9.7)(size 2.6 2.6)(drill 1.4)(layers "*.Cu" "*.Mask")
-		(uuid "6747c08c-8127-4bbf-ba6e-6763510fd77b")
+		(uuid "92e5d869-8395-4dcd-9b09-f814e1ce0f1a")
 	)
   (fp_circle (center 0 -3.6)(end 11.4 -3.6)(stroke (width 0.12)(type solid))(layer "F.SilkS"))
   (fp_circle (center 0 -3.6)(end 11.9 -3.6)(stroke (width 0.05)(type solid))(layer "F.CrtYd"))
@@ -161,7 +160,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "97f31212-5cfd-47d1-bf04-163ddfa2e6f4")
+	(uuid "0d566ed9-dc55-42a2-aada-264aee2b27ae")
 	(at 100.0 42.0 90)
 	(descr "Slim Jacks, 6.35mm (1/4in) stereo jack, switched, fully threaded nose, sleeve contact/front panel connection, https://www.neutrik.com/en/product/nrj6hf-1")
 	(tags "neutrik jack slim")
@@ -423,7 +422,7 @@
 		(layers "*.Cu" "*.Mask")
 		(uuid "e2be41c9-4195-4d6b-a65b-a1b49347d7f1")
 	
-		(uuid "32f5d25c-75b7-49d0-8149-23d090e6ca0b")
+		(uuid "92737970-bb68-4a6b-9b0b-586eb188779e")
 	)
 	(pad "" np_thru_hole circle
 		(at 9.5 0)
@@ -432,7 +431,7 @@
 		(layers "*.Cu" "*.Mask")
 		(uuid "f423a751-42ae-439d-872c-bf9fea62184b")
 	
-		(uuid "81008518-2174-4ca5-9d2c-d7c98036192e")
+		(uuid "14472f30-e780-4963-b677-05d836785ee9")
 	)
 	(pad "" np_thru_hole circle
 		(at 9.5 11.43)
@@ -441,7 +440,7 @@
 		(layers "*.Cu" "*.Mask")
 		(uuid "b7930867-2901-4641-9d1b-8c73f1ee33ca")
 	
-		(uuid "003165d2-5ef8-45f4-9cc8-144bf8540b17")
+		(uuid "20c52fbe-40eb-49bd-b272-83faf10b3ed7")
 	)
 	(pad "G" thru_hole circle
 		(at 12.7 11.43)
@@ -452,7 +451,7 @@
 		(uuid "4a9f4f56-2000-41bf-aa1e-530464306ab9")
 	
 		(net 3 "GND")
-		(uuid "93b2778c-106e-4642-94d8-72769f5f00de")
+		(uuid "cd9d042e-2576-4c1b-a4ab-41279b2b5d74")
 	)
 	(pad "R" thru_hole circle
 		(at 6.35 0)
@@ -463,7 +462,7 @@
 		(uuid "b4ea670a-3d90-4690-88c0-2c49ead6cb57")
 	
 		(net 7 "+5V")
-		(uuid "9ef4054e-58e2-41db-a7e8-f989ef2ff9a3")
+		(uuid "2b441a96-8eb3-44f3-ba83-2be6206d3d4a")
 	)
 	(pad "RN" thru_hole circle
 		(at 6.35 11.43)
@@ -473,7 +472,7 @@
 		(remove_unused_layers no)
 		(uuid "84fecaf4-532d-4c06-9051-a1ac228ad27a")
 	
-		(uuid "d28b809c-3f8e-4404-bd97-2fa5cc373da7")
+		(uuid "2777822c-8312-451a-9516-d5ecc5f734ed")
 	)
 	(pad "S" thru_hole circle
 		(at 12.7 0)
@@ -484,7 +483,7 @@
 		(uuid "df544e77-43a3-49c8-8b56-7ea477a5f8f2")
 	
 		(net 3 "GND")
-		(uuid "71d47a0c-1d05-4f1e-b86d-3873ca77bc6f")
+		(uuid "76366974-27dd-4ead-9dda-c8cd73137de2")
 	)
 	(pad "T" thru_hole circle
 		(at 0 0)
@@ -495,7 +494,7 @@
 		(uuid "83a697f1-9b16-4033-a2dd-35fd518d5165")
 	
 		(net 6 "JACK_W")
-		(uuid "ed7d5c4a-d007-41b7-b626-7a4f66afa10c")
+		(uuid "12292208-f15c-4b9d-8c34-4a32d671b414")
 	)
 	(pad "TN" thru_hole circle
 		(at 0 11.43)
@@ -505,7 +504,7 @@
 		(remove_unused_layers no)
 		(uuid "64f62f12-d775-4267-8d1b-512a51c2482a")
 	
-		(uuid "c5625435-23a0-495e-82a7-eb6f74cc8d52")
+		(uuid "2f835d01-2c10-4ab7-adab-adf16ce48c7b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_Audio.3dshapes/Jack_6.35mm_Neutrik_NRJ6HF-1_Horizontal.step"
@@ -526,7 +525,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "228fe5d8-5a43-4858-905c-bde24ab3748a")
+	(uuid "492035ad-7a56-4f88-8c5a-3d18db18071a")
 	(at 138.0 38.0 270)
 	(descr "DC Barrel Jack")
 	(tags "Power Jack")
@@ -870,7 +869,7 @@
 		(uuid "612a7b3c-694b-4b8c-9db9-df1de65505ed")
 	
 		(net 8 "VIN_RAW")
-		(uuid "fef9b67b-8206-4e5c-8968-55ee3a1c4b3b")
+		(uuid "d12563da-59d2-4278-8781-09fde47eb3a3")
 	)
 	(pad "2" thru_hole roundrect
 		(at -6 0)
@@ -882,7 +881,7 @@
 		(uuid "7d51c881-82dc-4cee-accc-b6ff7fba8db5")
 	
 		(net 3 "GND")
-		(uuid "ddb563e4-82ed-435f-9473-df55166a1ed0")
+		(uuid "7a3a2811-788d-4b39-ac11-a70e5b2c11b0")
 	)
 	(pad "3" thru_hole roundrect
 		(at -3 4.7)
@@ -893,7 +892,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "e6fa3427-1bd4-4771-845f-bf8f39594a3e")
 	
-		(uuid "8a398f3a-6331-478c-bf84-3dbf073f437a")
+		(uuid "ed17d0b4-2c50-48ab-9ed9-c712dbc3b6b4")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_BarrelJack.3dshapes/BarrelJack_Horizontal.step"
@@ -913,7 +912,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "73ed1614-b507-4ce6-82ec-38e5b3a5943e")
+	(uuid "1b530e78-404d-4e1d-b120-5c7c5fe23f64")
 	(at 166.0 32.0 90)
 	(descr "Through hole straight pin header, 1x04, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x04 2.54mm single row")
@@ -1077,7 +1076,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "f24a6a21-d29e-4bd5-b0e1-95cd3b6f8c2b")
+		(uuid "3699df4f-228e-4eba-8762-604f5a846c2a")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -1087,7 +1086,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "0201a232-1015-47d9-94b3-8fd5e888f733")
+		(uuid "663a961e-9550-4dfd-a5ba-0ab4f07d8c87")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -1097,7 +1096,7 @@
 		(remove_unused_layers no)
 	
 		(net 9 "D21_SCL")
-		(uuid "e3308f3a-28a9-41ba-b99f-f0d2dfdc2fe0")
+		(uuid "58dfd2a4-01ea-463c-b753-95cc73be363c")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -1107,7 +1106,7 @@
 		(remove_unused_layers no)
 	
 		(net 10 "D20_SDA")
-		(uuid "63fc39e2-85b0-433a-8445-d191a5bfcef2")
+		(uuid "ad2c9bf9-554e-4a73-aa37-c691556a4bb3")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
@@ -1127,7 +1126,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "ea1ac23f-e899-4825-a3c1-0200eef06f30")
+	(uuid "c7699379-c580-4b49-87bc-4129421b003a")
 	(at 136.0 60.0 90)
 	(descr "Through hole straight pin header, 1x04, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x04 2.54mm single row")
@@ -1291,7 +1290,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "6384e1c4-b709-46c7-9cc0-f5c8de1c3c51")
+		(uuid "efca495a-7745-4584-8b01-72d44bfa03dc")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -1301,7 +1300,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "55684a50-41eb-47c5-a7df-3df113ac13c3")
+		(uuid "12e96ada-7d50-458c-9f54-865e24f9cc8b")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -1311,7 +1310,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "3e4310aa-5dbc-4ac2-a892-90c4ffe6bc1f")
+		(uuid "9d65217f-6e6f-4903-a825-95c2efcfb4b9")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -1321,7 +1320,7 @@
 		(remove_unused_layers no)
 	
 		(net 8 "VIN_RAW")
-		(uuid "f6a4a2a4-efd8-49af-a272-2bde0208e13c")
+		(uuid "f9c27b3c-2ed5-49bb-a6c6-5a7821d5ad99")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
@@ -1341,7 +1340,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "724fbae4-1f11-46b7-bbd6-9f9a96061794")
+	(uuid "5fd1a67d-077b-4f79-8936-39c4f5b7b8ae")
 	(at 48.0 54.0 0)
 	(descr "8-lead though-hole mounted DIP package, row spacing 7.62mm (300 mils)")
 	(tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
@@ -1506,7 +1505,7 @@
 		(remove_unused_layers no)
 		(roundrect_rratio 0.15625)
 	
-		(uuid "625e5254-3ad9-4126-8956-8e18ea49cf7b")
+		(uuid "034e81ba-5874-48e6-8feb-f0298743a0e4")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -1516,7 +1515,7 @@
 		(remove_unused_layers no)
 	
 		(net 11 "OPTO_ANODE")
-		(uuid "599f70e1-4057-4a55-beeb-6c740fdb3d9b")
+		(uuid "0bc292f4-70fc-42fb-bac9-e9a3e0497850")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -1526,7 +1525,7 @@
 		(remove_unused_layers no)
 	
 		(net 2 "OPTO_CATHODE")
-		(uuid "03c47f7b-90bd-45ff-b472-22517cbc1515")
+		(uuid "8560ec23-3111-4864-8859-9d67d6807ead")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -1535,7 +1534,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(uuid "3f81d0cf-f5e6-403a-ae18-9758c14a2eba")
+		(uuid "3b119f5f-f5e8-4940-bd0b-c501ead7fe68")
 	)
 	(pad "5" thru_hole circle
 		(at 7.62 7.62)
@@ -1545,7 +1544,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "ec8da24b-3f8d-42d5-b37c-147f98e37903")
+		(uuid "a25fe7a4-c8d4-4ec3-a501-3b6683708696")
 	)
 	(pad "6" thru_hole circle
 		(at 7.62 5.08)
@@ -1554,8 +1553,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 12 "OPTO_VO")
-		(uuid "cbabf531-cbc5-49c6-95ec-795eb4b538dc")
+		(net 12 "D0_RX")
+		(uuid "d26ce1e9-e04d-44d0-99c6-6677dee3e046")
 	)
 	(pad "7" thru_hole circle
 		(at 7.62 2.54)
@@ -1565,7 +1564,7 @@
 		(remove_unused_layers no)
 	
 		(net 13 "OPTO_VB")
-		(uuid "ff9c6201-0378-40fd-b827-5dbded47b04d")
+		(uuid "c708ea75-2d22-4149-a1d4-cca8ab6a79ae")
 	)
 	(pad "8" thru_hole circle
 		(at 7.62 0)
@@ -1575,7 +1574,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "0ef8bf33-323b-4ab3-9763-d2b2a59f00d4")
+		(uuid "fcb4a456-298e-44b0-9bfc-0f5cafec5d6c")
 	)
 	(point
 		(at 3.81 3.81)
@@ -1600,7 +1599,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "9e23e521-8445-4a65-9249-1fcb4ea1d8f4")
+	(uuid "23981d91-3ca4-4ed2-a16a-207ddc7c71cd")
 	(at 34.0 65.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -1721,7 +1720,7 @@
 		(remove_unused_layers no)
 	
 		(net 1 "MIDI_IN_4")
-		(uuid "143561b2-7030-4ef8-acb6-c02b5d9d4cea")
+		(uuid "2373dbe1-5cc6-47cd-ae84-790217e3f991")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -1731,7 +1730,7 @@
 		(remove_unused_layers no)
 	
 		(net 11 "OPTO_ANODE")
-		(uuid "607983ca-7c11-4ab0-a3c6-406d80df8cb2")
+		(uuid "1bfb7fb1-7d94-4c7a-8323-a0dc4717d317")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -1751,7 +1750,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "81a57882-f98f-4d4b-b6fd-36837c7379c4")
+	(uuid "775e06ff-2fc7-4ef1-9b83-8ceab50aa1eb")
 	(at 34.0 59.0 0)
 	(descr "Diode, DO-35_SOD27 series, Axial, Horizontal, pin pitch=7.62mm, length*diameter=4*2mm^2, http://www.diodes.com/_files/packages/DO-35.pdf")
 	(tags "Diode DO-35_SOD27 series Axial Horizontal pin pitch 7.62mm  length 4mm diameter 2mm")
@@ -1947,7 +1946,7 @@
 		(roundrect_rratio 0.15625)
 	
 		(net 11 "OPTO_ANODE")
-		(uuid "04d53573-e024-4fa0-8415-3fb04726bce9")
+		(uuid "b889172e-792d-4df2-8d1a-91963441c049")
 	)
 	(pad "2" thru_hole circle
 		(at 7.62 0)
@@ -1957,7 +1956,7 @@
 		(remove_unused_layers no)
 	
 		(net 2 "OPTO_CATHODE")
-		(uuid "8e1291a2-d94b-40a8-835d-c869702ea671")
+		(uuid "58d6fe26-1974-4be3-9b61-e7904eb7b71e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-35_SOD27_P7.62mm_Horizontal.step"
@@ -1977,7 +1976,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "53728afc-f501-435b-99a5-2a9bf4bf64de")
+	(uuid "9382a91a-ee1e-4acb-9751-750e1db05238")
 	(at 68.0 65.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -2097,8 +2096,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 12 "OPTO_VO")
-		(uuid "9d379750-2bab-448f-b02e-10356c6c4656")
+		(net 12 "D0_RX")
+		(uuid "2f0a23e1-fabb-4b44-98ae-b46e6093571a")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -2108,7 +2107,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "55e4caf6-405b-489a-b590-50f9017a128f")
+		(uuid "0f9045e7-2a12-4423-a3ed-611c5dc364a0")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -2128,7 +2127,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "48f5ac7b-58b7-4def-b3e0-b0e738e432d5")
+	(uuid "1ec98e59-ff5c-4088-97d9-b3b729b2b167")
 	(at 68.0 59.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -2249,7 +2248,7 @@
 		(remove_unused_layers no)
 	
 		(net 13 "OPTO_VB")
-		(uuid "a21bb785-e0a0-44ad-82ef-9f75a8007364")
+		(uuid "240da514-e277-48fa-b24a-37f346709f53")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -2259,7 +2258,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "fcde9df7-78d4-4f6c-bd60-2a564bb5b837")
+		(uuid "3fb3ddb7-2bac-4158-9398-edf15489f29b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -2279,7 +2278,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "f1298e17-ade0-4805-9bb9-feaceda2b57c")
+	(uuid "d0345ada-c9e0-492e-997d-75e4eb1bd957")
 	(at 80.0 62.0 0)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -2408,7 +2407,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "5fd71e5e-166d-4e68-8b27-15e3c7fe3c09")
+		(uuid "b6626acc-5c05-4954-b910-9f3a8258a180")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -2418,416 +2417,10 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "458d476a-a54c-4fec-a884-b9a402d47f2f")
+		(uuid "a7c51862-7f8c-4c75-888f-6e00491356c3")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
-)
-
-(footprint "Button_Switch_THT:SW_Slide_SPDT_Straight_CK_OS102011MS2Q"
-	(version 20260206)
-	(generator "pcbnew")
-	(generator_version "10.0")
-	(layer "F.Cu")
-	(uuid "a15dcb9b-6eb0-4f66-98a4-bc8fe983aa09")
-	(at 90.0 62.0 0)
-	(descr "CuK miniature slide switch, OS series, SPDT, https://www.ckswitches.com/media/1428/os.pdf")
-	(tags "switch SPDT")
-	(property "Reference" "SW1"
-		(at 3.99 -2.99 0)
-		(layer "F.SilkS")
-		(uuid "606f3cd6-dbda-4f5a-b26c-ecef61e67de6")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Value" "prog/MIDI"
-		(at 2 3 0)
-		(layer "F.Fab")
-		(uuid "8dca21e1-83f5-4634-b631-06f7d4d9b56f")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Datasheet" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "d3ee1677-8ce7-4fd7-a3b7-79cff44dca19")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Description" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "7f9ddb74-a902-4e2f-b9f8-4081efdda891")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
-			)
-		)
-	)
-	(attr through_hole)
-	(duplicate_pad_numbers_are_jumpers no)
-	(fp_line
-		(start -2.41 -2.26)
-		(end 6.41 -2.26)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "d2313f1a-739d-4b25-9735-3bf73275d773")
-	)
-	(fp_line
-		(start -2.41 -1.95)
-		(end -2.41 -2.26)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "07e1b922-ffab-432b-8fda-43edb4ace141")
-	)
-	(fp_line
-		(start -2.41 2.26)
-		(end -2.41 1.95)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "853c1d8e-b6f3-477a-ad75-47cce9288a98")
-	)
-	(fp_line
-		(start -0.5 -2.96)
-		(end 0 -2.46)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "96f4df63-e1d7-4ec3-9859-5fe40632d89f")
-	)
-	(fp_line
-		(start 0 -2.46)
-		(end 0.5 -2.96)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "1a39a2b3-b335-4988-a902-8b5f71a95b54")
-	)
-	(fp_line
-		(start 0.5 -2.96)
-		(end -0.5 -2.96)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "74db9539-25d8-48b7-b5f9-43aa344b555a")
-	)
-	(fp_line
-		(start 6.41 -2.26)
-		(end 6.41 -1.95)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "a4d603c1-3ab1-4bd0-95b9-3e80dce68e22")
-	)
-	(fp_line
-		(start 6.41 2.26)
-		(end -2.41 2.26)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "a8c45fe4-470d-4244-963d-850eee772e48")
-	)
-	(fp_line
-		(start 6.41 2.26)
-		(end 6.41 1.95)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "9dc4e674-bda4-44ec-95af-d7c468373593")
-	)
-	(fp_line
-		(start -3.45 -2.4)
-		(end 7.45 -2.4)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(layer "B.CrtYd")
-		(uuid "33905eaf-d62d-4748-82d7-2377368159ca")
-	)
-	(fp_line
-		(start -3.45 2.4)
-		(end -3.45 -2.4)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(layer "B.CrtYd")
-		(uuid "63d6ff45-a707-4019-9829-f5f8bb89410f")
-	)
-	(fp_line
-		(start 7.45 -2.4)
-		(end 7.45 2.4)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(layer "B.CrtYd")
-		(uuid "ed6ecda8-7a48-49b1-a4a3-313ffd51ecd5")
-	)
-	(fp_line
-		(start 7.45 2.4)
-		(end -3.45 2.4)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(layer "B.CrtYd")
-		(uuid "768b09f2-f99b-456d-8ae9-1d573b4993bd")
-	)
-	(fp_line
-		(start -2.3 -2.15)
-		(end -0.5 -2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "482ada5e-cd2a-4927-9c06-0b7d5121b68a")
-	)
-	(fp_line
-		(start -2.3 2.15)
-		(end -2.3 -2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "1bb581c1-37c3-4690-a443-f0e91e4515fa")
-	)
-	(fp_line
-		(start -0.5 -2.15)
-		(end 0 -1.65)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "ec9c8a97-e071-49bb-9799-5d1da70cf124")
-	)
-	(fp_line
-		(start 0 -1.65)
-		(end 0.5 -2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "1ce1ec22-bfaa-4a8d-8d1b-89e0ffcb3a13")
-	)
-	(fp_line
-		(start 0 -1)
-		(end 0 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "d59c668c-3669-4b31-b2f0-6acb47f502c6")
-	)
-	(fp_line
-		(start 0 -1)
-		(end 4 -1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "8cfec944-edb5-4294-a30d-2068422b59d0")
-	)
-	(fp_line
-		(start 0 1)
-		(end 4 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "73b3aae4-9b41-4f2e-9852-7d7e936febf9")
-	)
-	(fp_line
-		(start 0.5 -2.15)
-		(end 6.3 -2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "e00aa794-0617-4e3a-a2ce-ebe7fda39459")
-	)
-	(fp_line
-		(start 0.66 -1)
-		(end 0.66 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "4af95867-1d9c-438f-8957-59a3909de902")
-	)
-	(fp_line
-		(start 1.34 -1)
-		(end 1.34 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "fb258371-284b-4af7-9b87-bb7c00dad88f")
-	)
-	(fp_line
-		(start 2 -1)
-		(end 2 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "827d6451-8c68-479d-864d-1b448f01f024")
-	)
-	(fp_line
-		(start 4 -1)
-		(end 4 1)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "7ce7983d-6271-4f57-8a0e-4bd150046c28")
-	)
-	(fp_line
-		(start 6.3 -2.15)
-		(end 6.3 2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "c111b3f1-792e-443f-a86a-1b5a894363ee")
-	)
-	(fp_line
-		(start 6.3 2.15)
-		(end -2.3 2.15)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "5fb6a260-b22b-43a0-926f-0026908a836c")
-	)
-	(fp_text user "${REFERENCE}"
-		(at 3.99 -2.99 0)
-		(layer "F.Fab")
-		(uuid "5eba2759-54d2-4834-9984-50a19a3434d7")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(pad "" thru_hole oval
-		(at -2.1 0)
-		(size 2.2 3.5)
-		(drill 1.5)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "5ef3a1ae-a001-44df-b40b-ca9cd79171b2")
-	
-		(uuid "769c0cd5-8420-4cdc-b536-d59a0f338c14")
-	)
-	(pad "" thru_hole oval
-		(at 6.1 0)
-		(size 2.2 3.5)
-		(drill 1.5)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "d83eedc9-d620-4511-8a8e-f2b95d1d52ad")
-	
-		(uuid "52520b8b-5808-4d6c-8412-1ca70a812e0c")
-	)
-	(pad "1" thru_hole rect
-		(at 0 0)
-		(size 1.5 2.5)
-		(drill 0.8)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "41a92880-1ef1-4c6a-9311-4faac38a2b34")
-	
-		(net 12 "OPTO_VO")
-		(uuid "ddc0bfb3-9386-446a-92b0-22806fbc8c8f")
-	)
-	(pad "2" thru_hole oval
-		(at 2 0)
-		(size 1.5 2.5)
-		(drill 0.8)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "28412994-374f-4c4b-af3b-5663d2ccfb0e")
-	
-		(net 14 "D0_RX")
-		(uuid "6aa70a6d-2b5c-4bdd-a1e4-e4961cf0a0f5")
-	)
-	(pad "3" thru_hole oval
-		(at 4 0)
-		(size 1.5 2.5)
-		(drill 0.8)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "60976e7f-7185-4aff-a7f7-93717d909370")
-	
-		(uuid "088bd511-0765-4855-a32e-c10adfdb3d61")
-	)
-	(embedded_fonts no)
-	(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_Slide_SPDT_Straight_CK_OS102011MS2Q.step"
 		(offset
 			(xyz 0 0 0)
 		)
@@ -2844,7 +2437,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "ca37a929-14b0-443e-ae61-9c3253863ee8")
+	(uuid "f6240a22-4fe3-4263-b011-beab1696a2c7")
 	(at 118.0 65.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -2965,7 +2558,7 @@
 		(remove_unused_layers no)
 	
 		(net 4 "MIDI_OUT_4")
-		(uuid "f7439b00-7f6e-485c-a878-30e4e56f6db2")
+		(uuid "2f144418-104f-4f0c-a7de-783ef704c549")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -2975,7 +2568,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "0311ead2-8db1-4ae6-821b-34815b4acf7e")
+		(uuid "5d826259-1edb-4553-ba5b-8d7009eccc09")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -2995,7 +2588,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "0740bbd0-fd91-4525-a357-4ef99bf80e47")
+	(uuid "9dbffb5a-c407-4581-8a97-15057a607a1e")
 	(at 118.0 59.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -3116,7 +2709,7 @@
 		(remove_unused_layers no)
 	
 		(net 5 "MIDI_OUT_5")
-		(uuid "25303b15-4d66-44c8-b76e-565ef268f4d1")
+		(uuid "27c0b8d2-6070-4412-a0d8-5d3b366ab62e")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -3125,8 +2718,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 15 "D1_TX")
-		(uuid "babb8d8d-fab9-45b5-966f-3e34167434f6")
+		(net 14 "D1_TX")
+		(uuid "7d1f7081-c68a-4222-82ec-d3eed0456614")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -3146,7 +2739,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "5da29afa-1d43-4d3c-9b07-76ad3571532c")
+	(uuid "21178a4e-e31a-47c9-b727-bc8ec052e130")
 	(at 150.0 52.0 0)
 	(descr "Diode, DO-41_SOD81 series, Axial, Horizontal, pin pitch=10.16mm, length*diameter=5.2*2.7mm^2, https://www.diodes.com/assets/Package-Files/DO-41-Plastic.pdf")
 	(tags "Diode DO-41_SOD81 series Axial Horizontal pin pitch 10.16mm  length 5.2mm diameter 2.7mm")
@@ -3342,7 +2935,7 @@
 		(roundrect_rratio 0.113636)
 	
 		(net 7 "+5V")
-		(uuid "54ec9270-4254-4ecf-9f42-6a1342b193b2")
+		(uuid "12d35c5b-5507-4cc2-9c77-d38ec3b78548")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -3352,7 +2945,7 @@
 		(remove_unused_layers no)
 	
 		(net 8 "VIN_RAW")
-		(uuid "ebb26a9a-110a-4bee-b73c-cf1340cd3aae")
+		(uuid "ea15b55e-6ff4-494a-9f94-aa6caa59dccc")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Diode_THT.3dshapes/D_DO-41_SOD81_P10.16mm_Horizontal.step"
@@ -3372,7 +2965,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "356a511e-461f-4001-bfb6-2b605fd6e290")
+	(uuid "4a24a0ab-dcce-43b8-84f5-db797c20ea2c")
 	(at 162.0 64.0 0)
 	(descr "CP, Radial series, Radial, pin pitch=2.50mm, diameter=6.3mm, height=7mm, Electrolytic Capacitor")
 	(tags "CP Radial series Radial pin pitch 2.50mm diameter 6.3mm height 7mm Electrolytic Capacitor")
@@ -4700,7 +4293,7 @@
 		(roundrect_rratio 0.15625)
 	
 		(net 7 "+5V")
-		(uuid "df361345-a167-4c21-b961-ef2acf822efb")
+		(uuid "28d2ce01-06e1-4a49-a71d-932f7ad1b83a")
 	)
 	(pad "2" thru_hole circle
 		(at 2.5 0)
@@ -4710,7 +4303,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "adb02bd2-1eb8-4d70-bf82-473e612c3d32")
+		(uuid "dc5042d2-8c45-4b16-b4d6-5282bdce2e24")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/CP_Radial_D6.3mm_P2.50mm.step"
@@ -4731,7 +4324,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "757aac3c-c54f-44ab-bbc8-6df0e1b290be")
+	(uuid "e89889aa-630c-41dd-a407-a6a589223d14")
 	(at 30.0 86.0 0)
 	(descr "Generic 6mm SW tactile push button")
 	(tags "tact sw push 6mm")
@@ -5025,8 +4618,8 @@
 		(remove_unused_layers no)
 		(uuid "dc834195-01dc-42ec-83f9-3044efe2074a")
 	
-		(net 16 "D7")
-		(uuid "b58fadbe-ee2e-450a-b28b-34a75b895ce2")
+		(net 15 "D7")
+		(uuid "dd5c8ea6-e6a3-4aa3-8f9a-bb40766a3b56")
 	)
 	(pad "1" thru_hole circle
 		(at 6.5 0 90)
@@ -5036,8 +4629,8 @@
 		(remove_unused_layers no)
 		(uuid "9bff696e-f4e2-4d30-9078-7d0e4fe03cce")
 	
-		(net 16 "D7")
-		(uuid "8b818f73-ca39-4258-84b9-9f0360396e6b")
+		(net 15 "D7")
+		(uuid "8883b7aa-f52a-4ca8-b182-b195903740af")
 	)
 	(pad "2" thru_hole circle
 		(at 0 4.5 90)
@@ -5048,7 +4641,7 @@
 		(uuid "fb69a4ef-5631-4eec-95ae-371086c3a151")
 	
 		(net 3 "GND")
-		(uuid "f6ff9af3-7755-450d-98b8-99444063a347")
+		(uuid "14ac164c-039d-4ce7-be66-18876de2e350")
 	)
 	(pad "2" thru_hole circle
 		(at 6.5 4.5 90)
@@ -5059,7 +4652,7 @@
 		(uuid "140ea311-4c70-4ff0-a6b6-cb6845a5ed3b")
 	
 		(net 3 "GND")
-		(uuid "2c87900d-58d2-4cd5-93d6-1e69a164fcdf")
+		(uuid "5a602c0d-51cb-4951-9575-3883e8591843")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_PUSH_6mm.step"
@@ -5080,7 +4673,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "6bd45405-4195-4b36-9958-cb460d17eec2")
+	(uuid "5ff8abc2-b01e-4961-9f39-005f8621f893")
 	(at 30.0 108.0 0)
 	(descr "Generic 6mm SW tactile push button")
 	(tags "tact sw push 6mm")
@@ -5374,8 +4967,8 @@
 		(remove_unused_layers no)
 		(uuid "dc834195-01dc-42ec-83f9-3044efe2074a")
 	
-		(net 17 "D8")
-		(uuid "8f862389-0f6a-40fa-82b9-d590e478abc6")
+		(net 16 "D8")
+		(uuid "b07978bf-d0b4-4340-a7a9-615f91438da3")
 	)
 	(pad "1" thru_hole circle
 		(at 6.5 0 90)
@@ -5385,8 +4978,8 @@
 		(remove_unused_layers no)
 		(uuid "9bff696e-f4e2-4d30-9078-7d0e4fe03cce")
 	
-		(net 17 "D8")
-		(uuid "bb1e1829-7075-4b82-a0b6-e9dc658ef4fc")
+		(net 16 "D8")
+		(uuid "5029fbf1-92af-4f4e-a020-33fb9b6192bb")
 	)
 	(pad "2" thru_hole circle
 		(at 0 4.5 90)
@@ -5397,7 +4990,7 @@
 		(uuid "fb69a4ef-5631-4eec-95ae-371086c3a151")
 	
 		(net 3 "GND")
-		(uuid "021a7ed7-fe3f-4a15-a8a6-8ce72d893e87")
+		(uuid "b2025af9-7505-405d-b163-267cf1e8326a")
 	)
 	(pad "2" thru_hole circle
 		(at 6.5 4.5 90)
@@ -5408,7 +5001,7 @@
 		(uuid "140ea311-4c70-4ff0-a6b6-cb6845a5ed3b")
 	
 		(net 3 "GND")
-		(uuid "0fc0f81a-6472-4519-8b7a-3a7f1a1703f5")
+		(uuid "db42e1ef-32a4-4ee0-8903-b79271838d2a")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_PUSH_6mm.step"
@@ -5429,7 +5022,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "53efa103-a857-492a-b663-c5242c99d02a")
+	(uuid "c74b96e8-653c-448c-adac-5c7b882a4052")
 	(at 30.0 130.0 0)
 	(descr "Generic 6mm SW tactile push button")
 	(tags "tact sw push 6mm")
@@ -5723,8 +5316,8 @@
 		(remove_unused_layers no)
 		(uuid "dc834195-01dc-42ec-83f9-3044efe2074a")
 	
-		(net 18 "D6")
-		(uuid "c6846310-83b3-443b-a5dd-a2398256157d")
+		(net 17 "D6")
+		(uuid "493e0fd9-1403-4ad2-9976-0f5490b2714c")
 	)
 	(pad "1" thru_hole circle
 		(at 6.5 0 90)
@@ -5734,8 +5327,8 @@
 		(remove_unused_layers no)
 		(uuid "9bff696e-f4e2-4d30-9078-7d0e4fe03cce")
 	
-		(net 18 "D6")
-		(uuid "b39f71be-4629-43f5-8323-5bb750a68fbc")
+		(net 17 "D6")
+		(uuid "b2471789-4b58-431a-b0b0-f89268db0df9")
 	)
 	(pad "2" thru_hole circle
 		(at 0 4.5 90)
@@ -5746,7 +5339,7 @@
 		(uuid "fb69a4ef-5631-4eec-95ae-371086c3a151")
 	
 		(net 3 "GND")
-		(uuid "4fa6989c-8bb8-4a6f-b294-4d3af03bdd07")
+		(uuid "c7e2a5f0-9f54-4fd9-9343-f47a9128ded9")
 	)
 	(pad "2" thru_hole circle
 		(at 6.5 4.5 90)
@@ -5757,7 +5350,7 @@
 		(uuid "140ea311-4c70-4ff0-a6b6-cb6845a5ed3b")
 	
 		(net 3 "GND")
-		(uuid "2748a8ac-8ce5-4af8-991a-b5f238955296")
+		(uuid "81a6c161-1fec-4b9d-8334-2487abbccc56")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_PUSH_6mm.step"
@@ -5778,7 +5371,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "6710a402-814d-4013-a8fd-bbe989e83fab")
+	(uuid "9e87553a-a2bb-4108-b2a9-e54387a1a507")
 	(at 30.0 152.0 0)
 	(descr "Generic 6mm SW tactile push button")
 	(tags "tact sw push 6mm")
@@ -6072,8 +5665,8 @@
 		(remove_unused_layers no)
 		(uuid "dc834195-01dc-42ec-83f9-3044efe2074a")
 	
-		(net 19 "D5")
-		(uuid "d247a399-ca04-42af-9a81-b881cd335741")
+		(net 18 "D5")
+		(uuid "dcc66def-f0d2-4b71-8ac9-ff3c61177884")
 	)
 	(pad "1" thru_hole circle
 		(at 6.5 0 90)
@@ -6083,8 +5676,8 @@
 		(remove_unused_layers no)
 		(uuid "9bff696e-f4e2-4d30-9078-7d0e4fe03cce")
 	
-		(net 19 "D5")
-		(uuid "5fe85d88-701e-4497-b153-ebc49e7f8272")
+		(net 18 "D5")
+		(uuid "aa43a184-6a32-4fac-9cf2-8f8f180354c9")
 	)
 	(pad "2" thru_hole circle
 		(at 0 4.5 90)
@@ -6095,7 +5688,7 @@
 		(uuid "fb69a4ef-5631-4eec-95ae-371086c3a151")
 	
 		(net 3 "GND")
-		(uuid "2ad49d58-8a81-440c-8c40-25225b6b8cfa")
+		(uuid "18d4b269-72b4-4cf1-bc55-ed1136e138f7")
 	)
 	(pad "2" thru_hole circle
 		(at 6.5 4.5 90)
@@ -6106,7 +5699,7 @@
 		(uuid "140ea311-4c70-4ff0-a6b6-cb6845a5ed3b")
 	
 		(net 3 "GND")
-		(uuid "eef76dab-ee31-4c77-9971-d26f01b9a4f7")
+		(uuid "430ec138-b978-4458-91c3-3e0b8d731dd6")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_PUSH_6mm.step"
@@ -6127,7 +5720,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "2b83dc9e-bf71-4b0d-a9b6-81fb93a3f61c")
+	(uuid "0de7ab41-088e-4004-9a54-18bf842554f7")
 	(at 50.0 86.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -6382,7 +5975,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "0ad2e91f-7872-477e-a968-143534c76bfb")
+		(uuid "d3c37380-ffa8-4474-a7ed-cfaddad2bb27")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -6392,8 +5985,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 20 "POT1_W")
-		(uuid "a0714b5b-1570-4828-84ac-4c7a523c6caf")
+		(net 19 "POT1_W")
+		(uuid "a2e0388f-f713-47f7-8928-a63669755f77")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -6404,7 +5997,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "8dbc9947-4427-4589-89b1-be7bd498fea2")
+		(uuid "cc874b4a-b385-423b-ae76-8863c4469e93")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -6415,7 +6008,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "adb2c52d-eddf-4d49-bca9-6b879f7d75da")
+		(uuid "19110843-e9b9-48b8-8b4f-2779e839d4e9")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -6426,7 +6019,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "9fc31a31-1d9c-441b-b8e6-59c5e9c82ab3")
+		(uuid "491ea98e-aebb-4e15-b1ef-e83d083fa3bf")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -6446,7 +6039,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "83d90926-4932-4bba-b3c8-d5406f8d1917")
+	(uuid "3392cc2f-a689-478a-8bb5-5ccf7121dc63")
 	(at 64.0 82.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -6566,8 +6159,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 20 "POT1_W")
-		(uuid "cbfe01c0-6302-490f-84e8-bef71e90f80d")
+		(net 19 "POT1_W")
+		(uuid "bff56320-c545-486f-87dc-af26eba15509")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -6576,8 +6169,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 21 "A0")
-		(uuid "f7adff4e-2fb5-4f68-ae8f-e1bd30128944")
+		(net 20 "A0")
+		(uuid "6ea2e5ff-1faa-4d99-9e9a-1b379c1ce19a")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -6597,7 +6190,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "67abf265-f2fd-48d3-a2af-172388b2c288")
+	(uuid "8941418c-d813-4db6-a620-757ea68acb8b")
 	(at 70.0 90.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -6725,8 +6318,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 21 "A0")
-		(uuid "402a1aa1-817d-4377-82d9-75c1d457205f")
+		(net 20 "A0")
+		(uuid "d32b7031-35d5-48d6-a504-fd2e8cbb9eae")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -6736,7 +6329,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "a4cdc323-0f7e-40c9-bd6e-1efedf324250")
+		(uuid "34fb2c78-8f82-4bfb-9cf9-64fcb5abea50")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -6757,7 +6350,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "d23d8af9-05f0-4b2f-a120-b8ffded0d0f9")
+	(uuid "91467f56-a88b-4517-8f00-363af060abd5")
 	(at 82.0 86.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -7012,7 +6605,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "041d0e05-19cb-428b-ad22-0aaebeedae27")
+		(uuid "39eca5fe-3962-4810-a5c7-686a5d56b098")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -7022,8 +6615,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 22 "POT2_W")
-		(uuid "ed735d05-0d22-481e-a80e-e91875b273d7")
+		(net 21 "POT2_W")
+		(uuid "98a03ba0-e509-4429-92b3-46c36e291c05")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -7034,7 +6627,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "b59a6f4e-5969-46a9-8102-86d84a2100bb")
+		(uuid "7ac2c598-34f3-4397-998f-ba51e80c96ca")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -7045,7 +6638,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "d5947364-6f26-42c2-aed3-91c91d8b8418")
+		(uuid "0b7d5517-643d-45d3-ba12-500b750a2fa0")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -7056,7 +6649,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "1c9b3dce-3269-416e-9a11-5fc1913add99")
+		(uuid "ad098034-79e2-463a-a935-3ad6e622e47d")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -7076,7 +6669,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "fd743670-af29-496b-93e5-99067c60c7e6")
+	(uuid "f057d38e-77be-4807-9698-f1225a82247c")
 	(at 96.0 82.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -7196,8 +6789,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 22 "POT2_W")
-		(uuid "a96783ba-26a1-4a68-9d1e-50f4e06bd1d5")
+		(net 21 "POT2_W")
+		(uuid "b9a59269-0ff5-4706-b733-84bc404a36d3")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -7206,8 +6799,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 23 "A5")
-		(uuid "d58eb75b-59b3-4150-8c30-9be878452926")
+		(net 22 "A5")
+		(uuid "0fb8b84b-ecc4-4a2d-aadd-e961fc600dee")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -7227,7 +6820,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "784f3d52-62e6-4e35-bf91-4f412a21537a")
+	(uuid "34514eed-f20e-416c-8902-5c17d3eb6a07")
 	(at 102.0 90.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -7355,8 +6948,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 23 "A5")
-		(uuid "320cc76e-e826-4b7d-aadd-78767135615c")
+		(net 22 "A5")
+		(uuid "c851544a-8b8a-4906-97da-788d64e7dca2")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -7366,7 +6959,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "93d9af68-990b-45ed-a528-017394aa7a49")
+		(uuid "ece2f892-f432-4b2d-add5-0beda6354f1b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -7387,7 +6980,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "6ba1500d-6d26-47f9-a407-e2d251952edb")
+	(uuid "8f934e08-2363-4a05-9cfd-195f33ebbc57")
 	(at 114.0 86.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -7642,7 +7235,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "852350a4-ef5b-458d-9cfd-915e5f4d7165")
+		(uuid "286f1819-573a-4cef-bb94-3623619b0e5f")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -7652,8 +7245,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 24 "POT3_W")
-		(uuid "d61c607b-de27-4a70-b3bd-03b971f1b05d")
+		(net 23 "POT3_W")
+		(uuid "a0d06eb3-e25d-4d4a-bf8f-83a9fbba433d")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -7664,7 +7257,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "3434f971-71d8-4b89-aabb-7474a9db9e11")
+		(uuid "00e3875f-504b-4ff2-8c38-28ffea783aaf")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -7675,7 +7268,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "f1bb4963-e5ad-4fa8-bafc-334248d31b4c")
+		(uuid "48b778bf-adc4-4d3d-9917-6d82f8139f78")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -7686,7 +7279,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "49a7c5c8-2488-45a8-b5bc-a61c47b57e03")
+		(uuid "c970419b-05cf-4eab-9e1b-02ac7b94c1d7")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -7706,7 +7299,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "776573e9-ffa8-43a6-b77e-a0dbbd6596bb")
+	(uuid "23c8d6d3-cdf6-4ef5-a865-2475414701f1")
 	(at 128.0 82.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -7826,8 +7419,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 24 "POT3_W")
-		(uuid "d4146bc0-4955-40f1-a268-807c6358c4dc")
+		(net 23 "POT3_W")
+		(uuid "cf661214-b7e1-4e08-aff0-cc1605bc7cda")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -7836,8 +7429,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 25 "A8")
-		(uuid "5c0adb58-309d-471a-84c4-6d773df1ef02")
+		(net 24 "A8")
+		(uuid "86f690cd-2153-4e60-ba08-b10942ea8cf8")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -7857,7 +7450,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "6198715a-774d-4bd5-ab9e-384ada9f1ccb")
+	(uuid "b81a7900-fd3e-4fc6-8f6d-15b465762330")
 	(at 134.0 90.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -7985,8 +7578,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 25 "A8")
-		(uuid "7f97b3e8-9dd9-4cfd-a033-d20e8fbb9758")
+		(net 24 "A8")
+		(uuid "8126593f-50d9-4f67-93a3-950b4cecc6dd")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -7996,7 +7589,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "ef27fcd4-7a3a-436e-b00f-4aa2c7c568c8")
+		(uuid "e911df32-4117-450d-8509-d804043b660e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -8017,7 +7610,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "917df046-e5b2-454c-92d8-728ada12ae21")
+	(uuid "9ca8b1e9-98f1-4f7f-b253-281c455452bc")
 	(at 146.0 86.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -8272,7 +7865,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "f91b77c8-2667-429f-bcba-e264b6c74075")
+		(uuid "5e2009a2-59d6-4ded-88b9-bf0c54480baf")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -8282,8 +7875,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 26 "POT4_W")
-		(uuid "6129245f-34d3-461f-8f20-d810fd81ff89")
+		(net 25 "POT4_W")
+		(uuid "6a86633d-7b6a-4e15-ae93-e92383540da3")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -8294,7 +7887,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "e989df8b-76c1-4755-87c0-e6b97ea0e4ed")
+		(uuid "d7bee5bf-a06f-4dfc-a7c4-f32ec2ba52f3")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -8305,7 +7898,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "a01759c6-3a6f-419e-ba7f-01aa1df01035")
+		(uuid "e09df7bb-7d68-453e-bdf3-d194dbc25458")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -8316,7 +7909,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "5422809c-f278-47da-a36e-49eb25e7d790")
+		(uuid "2585132f-9f60-4bcb-a3b7-37089504bb5e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -8336,7 +7929,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "5394a20a-7205-4cd4-a243-f9734107e382")
+	(uuid "b87b193b-4021-40f9-9d27-4c4a7ff34ec7")
 	(at 160.0 82.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -8456,8 +8049,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 26 "POT4_W")
-		(uuid "a07c2b87-ac4d-447b-b89f-d2225bb85e42")
+		(net 25 "POT4_W")
+		(uuid "a6321e22-8b08-4722-9f5b-3061c483c101")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -8466,8 +8059,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 27 "A12")
-		(uuid "8a41bb5e-74ac-4237-b6f4-14a974b17f79")
+		(net 26 "A12")
+		(uuid "074c8539-f6de-4309-919e-22d4da12f6dd")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -8487,7 +8080,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "7102903c-db99-4ca9-a267-f9844793b78d")
+	(uuid "dd61e23f-432e-483e-9634-2f423e6cb11e")
 	(at 166.0 90.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -8615,8 +8208,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 27 "A12")
-		(uuid "3b916a88-60b3-4e5c-af14-4f98cb7c48e1")
+		(net 26 "A12")
+		(uuid "8a03c561-71bd-4301-a526-361710708084")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -8626,7 +8219,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "0eb9ff1d-5a7b-4abf-a6ba-96d1b3fb2a87")
+		(uuid "bc082178-5098-4657-9880-417150f63256")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -8647,7 +8240,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "6029a6b7-908b-4096-9383-9cdb0e976314")
+	(uuid "463fc8eb-9c09-4e7a-b5f1-ee187d48da30")
 	(at 50.0 112.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -8902,7 +8495,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "66289ac3-ca1a-4812-b37f-c463b6b176a8")
+		(uuid "d181d8bb-6aa5-486d-9111-72052406c8c1")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -8912,8 +8505,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 28 "POT5_W")
-		(uuid "920b9c8c-ebed-495d-80c7-31ccc5a5fe43")
+		(net 27 "POT5_W")
+		(uuid "27d1fe46-0bc5-4e3f-bf05-c14ab95ffe63")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -8924,7 +8517,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "c812e373-6965-4297-814e-6ad8de3c0cd3")
+		(uuid "4e06396d-9ec3-4d00-9e59-b28f39d5f37d")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -8935,7 +8528,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "b8b3cb47-5183-476a-877c-cc2f9531109b")
+		(uuid "118d5730-3aa9-41a2-ad33-c83a0bbed4cc")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -8946,7 +8539,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "56cc3bab-120f-4cc1-804b-84c8f3f0b7de")
+		(uuid "9456c709-1273-4258-ace8-be78715e7489")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -8966,7 +8559,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "b29959fe-4b42-4a4b-b058-be6067eca9b7")
+	(uuid "fcd7cfcb-7077-440e-b34d-b7542dd68ac8")
 	(at 64.0 108.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -9086,8 +8679,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 28 "POT5_W")
-		(uuid "177346c6-e096-440e-8546-9c19b6ec617b")
+		(net 27 "POT5_W")
+		(uuid "bd13f52d-b178-4b8e-9e6c-e04f049cf00e")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -9096,8 +8689,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 29 "A1")
-		(uuid "372d10d4-fcff-4708-9d3f-46a9d22ccb21")
+		(net 28 "A1")
+		(uuid "987901f1-8969-4acc-a311-2151a984e8e3")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -9117,7 +8710,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "c1e474df-2be1-40d2-bf37-bc26f148ece3")
+	(uuid "d8d9fc7a-8a7e-4e7f-adc8-ad5485a83446")
 	(at 70.0 116.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -9245,8 +8838,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 29 "A1")
-		(uuid "ef4b277b-bb15-4b46-b180-78a715beb835")
+		(net 28 "A1")
+		(uuid "94e15c2f-73b6-4086-91ad-b06cf5168244")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -9256,7 +8849,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "9a72f6cf-067f-4e33-a35e-ae202d37676f")
+		(uuid "50da0d25-71e9-4046-98c8-30ef04e2dee2")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -9277,7 +8870,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "65117291-978c-45db-a043-2749ba2189c3")
+	(uuid "f9afd292-8caf-42fe-ab6b-1deed3731b26")
 	(at 82.0 112.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -9532,7 +9125,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "fed358b5-627f-45ba-8b8d-eb6fe2a931e4")
+		(uuid "0a441edb-7d69-4380-9a02-9ba75876d930")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -9542,8 +9135,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 30 "POT6_W")
-		(uuid "2040c274-dde3-4ac0-be12-14fe5786efa0")
+		(net 29 "POT6_W")
+		(uuid "5b59247d-2981-4d6b-babf-1bc253bd7d33")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -9554,7 +9147,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "cb2f7962-5c6f-4428-9e64-ac1aca2b131f")
+		(uuid "d5bdff11-3835-4eae-8557-b021232db71b")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -9565,7 +9158,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "56ed90ab-d0be-4a5c-9c05-708f8988b30d")
+		(uuid "8e887676-66f5-4b06-8841-266b487db7b6")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -9576,7 +9169,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "cc6c3a3c-df70-4d76-bec2-34bd0c3e690e")
+		(uuid "1d14f8d1-2a36-4d04-8cc7-eb1710d6a2f9")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -9596,7 +9189,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "5eb26ed1-a0d0-4b54-afe9-92f47c8c9922")
+	(uuid "a83af7c7-1305-467f-8a59-ea2bf9316ac4")
 	(at 96.0 108.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -9716,8 +9309,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 30 "POT6_W")
-		(uuid "88fcf8c3-9dfa-4e89-940f-da6fac473f84")
+		(net 29 "POT6_W")
+		(uuid "3ca9fd1e-fa1b-44b5-bef9-1d2242f6a4d2")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -9726,8 +9319,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 31 "A4")
-		(uuid "d85c0124-be84-4239-8c2e-798b7a8bc43d")
+		(net 30 "A4")
+		(uuid "71b8d050-ab5a-45da-8404-71a07b95fcd5")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -9747,7 +9340,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "245409f7-fa31-4026-aaf2-030571c03307")
+	(uuid "64d9fa15-f57f-4463-9fd8-755f272cad5c")
 	(at 102.0 116.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -9875,8 +9468,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 31 "A4")
-		(uuid "75a57318-1bf0-4914-b9be-ee540c34731b")
+		(net 30 "A4")
+		(uuid "0bcc9e3d-1b32-4532-951a-3ee613f45ff1")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -9886,7 +9479,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "cff6b470-a4b9-45c8-9fff-181d579637b1")
+		(uuid "0d861d09-644f-4a45-8fee-d1570a1bb491")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -9907,7 +9500,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "e17f05fd-ad84-4581-98a8-544a4df77601")
+	(uuid "d3bbc46d-c455-4eb5-950e-18b3d98836e6")
 	(at 114.0 112.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -10162,7 +9755,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "17e73ac5-c648-4fb5-8692-9dee2f73071e")
+		(uuid "fdcdf3c3-fbef-4484-a0bd-2d1115d5543d")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -10172,8 +9765,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 32 "POT7_W")
-		(uuid "c816611e-c568-4931-abb8-f16d201d2bc1")
+		(net 31 "POT7_W")
+		(uuid "e8503bc9-2cbc-41b2-9d19-18a5d78ada7d")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -10184,7 +9777,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "c691d615-14a6-4f01-85cf-a4b411c7e761")
+		(uuid "6534cb40-c2b4-4a14-be49-801c009b9141")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -10195,7 +9788,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "d267f4f1-1680-4432-a90f-f41838055114")
+		(uuid "11b243f7-4cb6-42b1-a15a-8ffa5bb46403")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -10206,7 +9799,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "3706eb2c-c022-4766-8c46-6ca1fa478037")
+		(uuid "3107f0e0-ba52-4887-a4ba-604289c81918")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -10226,7 +9819,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "71f8ad48-e9c9-4db9-bb4f-41e55a466c2c")
+	(uuid "4842a4d3-28f8-4c07-907a-8164f30f63d7")
 	(at 128.0 108.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -10346,8 +9939,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 32 "POT7_W")
-		(uuid "cbc0a2c3-e452-43e0-96be-9968f133294f")
+		(net 31 "POT7_W")
+		(uuid "b2ae66a6-bd53-46e4-bc8e-262c9044eb97")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -10356,8 +9949,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 33 "A9")
-		(uuid "0e13d386-e441-4a11-9f2e-ef6d02488b3d")
+		(net 32 "A9")
+		(uuid "e56b3fe4-4817-4b57-a4c1-a042a2c5e700")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -10377,7 +9970,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "6c6db6e3-141b-49ab-ae72-465f55da11ee")
+	(uuid "0036e798-25f3-4064-9845-9723f05016af")
 	(at 134.0 116.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -10505,8 +10098,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 33 "A9")
-		(uuid "ba696cb0-b8ca-4891-a3fd-efd1a5681117")
+		(net 32 "A9")
+		(uuid "c807c887-0b5b-4695-9d4e-e423296481c5")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -10516,7 +10109,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "a45e2b40-7c9b-43ec-9479-02e2853b2fb4")
+		(uuid "b6abb19d-99cb-45c3-86b6-e26fb69c791c")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -10537,7 +10130,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "2f4bb79b-c0dc-46a1-9c30-83a62cfedb2d")
+	(uuid "40049e45-96cc-406e-98ad-75cb2eff0a43")
 	(at 146.0 112.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -10792,7 +10385,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "54e0e6de-2476-4a89-bdee-b9d3df00d7bb")
+		(uuid "fbb14011-0a73-4109-abbb-f5e3e4428350")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -10802,8 +10395,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 34 "POT8_W")
-		(uuid "245409d1-5421-49d0-989a-1643f709150a")
+		(net 33 "POT8_W")
+		(uuid "37f67fc0-63f7-4833-ae80-261cf3b789ec")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -10814,7 +10407,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "828efcdf-df7d-4fb0-ac6a-3b7e9644f3be")
+		(uuid "3385c9e7-3d20-41a9-ae61-165af1dad6c2")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -10825,7 +10418,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "4b93961f-23a7-431a-8286-5f01b13f4bc4")
+		(uuid "1190e2bc-297e-4d90-9844-f7a518bd9162")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -10836,7 +10429,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "49e5e2cd-c1b4-4232-809d-8e720a4a762f")
+		(uuid "0c1cb335-4194-4e22-af9d-9bc8933fbe03")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -10856,7 +10449,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "5163fb7d-52e1-4a04-9368-4ec97a34baba")
+	(uuid "020bccb8-738f-4db5-b744-a240776eb7f8")
 	(at 160.0 108.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -10976,8 +10569,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 34 "POT8_W")
-		(uuid "0c699379-4204-46f5-aa05-5ca893ae571c")
+		(net 33 "POT8_W")
+		(uuid "545370db-fc6d-4cda-88cf-d7f9b1ccbd8a")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -10986,8 +10579,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 35 "A13")
-		(uuid "27e81236-2cd1-4a19-af6a-3175af10f80a")
+		(net 34 "A13")
+		(uuid "44e788d9-9e08-4300-a964-f6d6bc446038")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -11007,7 +10600,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "f2dea7ab-5aea-4939-8487-c8c5c0a93ba4")
+	(uuid "8fb7b64a-db37-4400-b584-351631f19224")
 	(at 166.0 116.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -11135,8 +10728,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 35 "A13")
-		(uuid "b30aa0b7-1163-4203-b739-6e539037837c")
+		(net 34 "A13")
+		(uuid "cd06d5fa-4d84-4eef-ad2b-062074bc5690")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -11146,7 +10739,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "3d7c35b2-2978-4c51-81af-ccb47914965f")
+		(uuid "345ac1fb-d230-4647-901b-6b84eafb374b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -11167,7 +10760,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "a2159b7f-2bed-4b86-b632-07f7f6cf61d8")
+	(uuid "b7964c58-5f4d-4fd7-88d5-dd1247e7e41a")
 	(at 50.0 138.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -11422,7 +11015,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "39f429ff-d1de-4343-a86f-baf83a3664c1")
+		(uuid "1de5a9f7-6001-4206-a88b-8d3465d26ee1")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -11432,8 +11025,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 36 "POT9_W")
-		(uuid "346da3e2-9be3-4189-94fb-5585cd939db1")
+		(net 35 "POT9_W")
+		(uuid "3763a427-076e-49b0-bef1-a6d550566653")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -11444,7 +11037,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "5fe1e0e0-b6b2-4599-ae3c-cfa3992d8ef7")
+		(uuid "fa0f7d85-a50b-4572-a131-99f7d5805d4e")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -11455,7 +11048,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "07b8bfc9-a58b-4558-be2c-4cd3626e8f66")
+		(uuid "912ffe4a-a513-4d7c-9424-eb4f6ee80bc5")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -11466,7 +11059,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "81c1b10c-0d46-4672-95e4-2266e0c43601")
+		(uuid "a28dfe99-bec4-4a5f-93dd-31dfcc839979")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -11486,7 +11079,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "1579bc13-654b-4acf-9820-5ad8b166ad16")
+	(uuid "abe28f2e-1a5a-4c41-9de3-34c710cbbf04")
 	(at 64.0 134.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -11606,8 +11199,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 36 "POT9_W")
-		(uuid "81e8afff-99d4-4516-af3b-3b117687410f")
+		(net 35 "POT9_W")
+		(uuid "860b727e-05ec-48de-bd89-3e1958505df3")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -11616,8 +11209,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 37 "A2")
-		(uuid "088ff435-c6bc-404a-b2b1-e286425621d0")
+		(net 36 "A2")
+		(uuid "ffe1042c-5cf1-4bc8-aa75-afe93f6fb608")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -11637,7 +11230,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "a47a202c-11b1-4db9-b056-63672e4c2a8f")
+	(uuid "0cb51083-5084-43cd-b5df-476fac7994a7")
 	(at 70.0 142.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -11765,8 +11358,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 37 "A2")
-		(uuid "371ba41b-a7eb-4003-b4f0-d2e46bb01a8c")
+		(net 36 "A2")
+		(uuid "efd1f30a-1273-4c07-ae23-171df281b857")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -11776,7 +11369,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "72bd54cd-517e-42f6-8504-a53938d4c59b")
+		(uuid "17671fc1-7b21-4462-aeae-0ab52a2e45af")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -11797,7 +11390,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "76767012-2570-421f-9e2a-4b25c367ff8e")
+	(uuid "56ea6f47-5444-4c75-a5d1-4314944fc2a6")
 	(at 82.0 138.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -12052,7 +11645,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "71c88217-dbf5-4f41-9126-b9e4546ea0c5")
+		(uuid "ae60367d-76aa-4207-9456-c6f9735013e8")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -12062,8 +11655,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 38 "POT10_W")
-		(uuid "84eb0a5c-2b38-43aa-8e72-5422b3788f2b")
+		(net 37 "POT10_W")
+		(uuid "5f113b71-5cb3-4e20-ac9d-9983f8e453d2")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -12074,7 +11667,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "3e280ece-20a9-49c2-8197-91724b216b62")
+		(uuid "59e1f469-87c0-40cf-b6fc-c878696fe6dd")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -12085,7 +11678,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "9553f869-4c83-4a08-b3c5-0ff091964bf3")
+		(uuid "b889d760-f78f-4acf-be9f-1f2bfb06f66e")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -12096,7 +11689,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "3d266404-498c-407a-b723-8c97eec773ca")
+		(uuid "3bc54428-0520-4cd8-873f-eaf052bfc412")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -12116,7 +11709,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "fa3957fe-beab-4bce-a9ef-adda6b15a331")
+	(uuid "2570a02d-2921-4317-a3f7-5a3c7d2c82d6")
 	(at 96.0 134.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -12236,8 +11829,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 38 "POT10_W")
-		(uuid "5dd8b060-028d-4249-ba22-4edee5625588")
+		(net 37 "POT10_W")
+		(uuid "e1787898-4a3f-44f4-8c45-2393f8a28f00")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -12246,8 +11839,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 39 "A6")
-		(uuid "9584394a-e205-42fb-b819-83d1f6e3d8e6")
+		(net 38 "A6")
+		(uuid "70109bad-7274-456c-a1e2-8ebbaa015729")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -12267,7 +11860,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "07ba164a-a12c-4035-8f1d-e4b59f997899")
+	(uuid "6b8c71d5-999c-4a4d-b2ca-d84aa10e2d27")
 	(at 102.0 142.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -12395,8 +11988,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 39 "A6")
-		(uuid "813d58c4-e0e1-4b44-b795-24674ab1deba")
+		(net 38 "A6")
+		(uuid "5af1dd19-dba9-49e8-88e1-cd8c55efb82e")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -12406,7 +11999,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "dbd4dabe-cc09-4bda-9aa1-c83e4c460eac")
+		(uuid "c86e1793-bd4a-4bfb-b539-154a66a82b8d")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -12427,7 +12020,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "af96dc69-7c03-4dbc-affa-98d91b357b20")
+	(uuid "b13085b8-5dd9-4bfb-97e5-a4de59a80823")
 	(at 114.0 138.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -12682,7 +12275,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "c1388350-f18b-4b38-a9d4-27a2158d2931")
+		(uuid "659fc9bb-4491-4fa5-9d5a-0837578db97a")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -12692,8 +12285,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 40 "POT11_W")
-		(uuid "4551e44e-44db-4ebd-b4f4-891022a90803")
+		(net 39 "POT11_W")
+		(uuid "c4eb2989-2a66-4e62-9b6b-795e9d9ecfc9")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -12704,7 +12297,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "b33fd9b9-9650-4fb7-b8fc-51288a53b82b")
+		(uuid "d0d7095f-b42c-49b1-bbb6-e397dca0ba6c")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -12715,7 +12308,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "84d048aa-b2f7-4e47-b7a3-62e17bf9990b")
+		(uuid "42e97030-799f-4355-8e20-57c50a724131")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -12726,7 +12319,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "a3f7d073-e102-431f-aafa-4c25ab420ca6")
+		(uuid "8a7163fe-3534-4608-8272-34be930691d4")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -12746,7 +12339,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "d41f73f4-e963-4d77-8015-f1ed89963135")
+	(uuid "6ca0cbfa-855d-466e-9bc8-87ff5c05aff4")
 	(at 128.0 134.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -12866,8 +12459,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 40 "POT11_W")
-		(uuid "82ea639f-1f6f-4174-876d-a8bada0ad4a4")
+		(net 39 "POT11_W")
+		(uuid "3a9b8674-45a8-48ee-9f56-03dbae87965f")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -12876,8 +12469,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 41 "A10")
-		(uuid "5118fd10-95a4-4bcc-8a2e-de6ce5a82d56")
+		(net 40 "A10")
+		(uuid "8d198ed8-7a5a-4328-9222-e1c54741d5da")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -12897,7 +12490,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "9e12d808-a673-4f69-88db-38734fce0fad")
+	(uuid "343a4006-b20a-4de2-a3bd-0d5d0c6cd4b5")
 	(at 134.0 142.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -13025,8 +12618,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 41 "A10")
-		(uuid "71bb622d-b019-4008-ae9a-f1857a200c3d")
+		(net 40 "A10")
+		(uuid "ba6b48fe-9f9b-4cc4-adbd-a2f5e22430e1")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -13036,7 +12629,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "2966d2c7-738e-48b7-9bf4-a2d1aba89350")
+		(uuid "de185435-91ee-4bed-af47-92fbb44e298c")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -13057,7 +12650,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "6fdc67c2-f99c-403f-bb65-3f527db9e63d")
+	(uuid "fa4c3b90-fe34-4038-a96c-778e81098e9e")
 	(at 146.0 138.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -13312,7 +12905,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "960f1aa5-9f04-4732-9713-7897e02d3cbf")
+		(uuid "ef3f78e5-ebe0-48cb-a282-b5657e5ab9db")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -13322,8 +12915,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 42 "POT12_W")
-		(uuid "023b2dbb-648c-4b79-a03d-8ec649f90d84")
+		(net 41 "POT12_W")
+		(uuid "68ad2128-746e-4248-9c72-784302300ddd")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -13334,7 +12927,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "a9540516-f4af-46a0-b708-87b546faa8f4")
+		(uuid "6d1888be-1d63-4e98-8bc1-faf2ce2e7a8c")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -13345,7 +12938,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "24f62184-0fdc-49ed-945a-f4fa540299bf")
+		(uuid "ba9afed8-e3f3-4c85-bdfb-f9cbf3b141e7")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -13356,7 +12949,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "8f85e804-adcf-484b-8dff-5e6c7c52b864")
+		(uuid "e8292fb5-bdc2-4d54-b27a-fac7f418b6c9")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -13376,7 +12969,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "19c4318b-022a-453e-906e-63994b8a6dbc")
+	(uuid "e40a107f-8924-40bc-84fa-31571fa29da1")
 	(at 160.0 134.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -13496,8 +13089,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 42 "POT12_W")
-		(uuid "99611abe-bb21-4a10-9c88-42b4aeeb9858")
+		(net 41 "POT12_W")
+		(uuid "daadcda9-4e44-433e-a3c9-0a4a58cfaeef")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -13506,8 +13099,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 43 "A14")
-		(uuid "92e665c1-dc82-423f-9148-b705c2ca0d1b")
+		(net 42 "A14")
+		(uuid "4d73da7a-67ac-45ac-b8f4-fe32bb9029e2")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -13527,7 +13120,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "172cecf8-f649-4d30-8671-913d85911aa0")
+	(uuid "55d82f66-dc92-4d68-b15b-25a66e6d359b")
 	(at 166.0 142.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -13655,8 +13248,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 43 "A14")
-		(uuid "cd08ba48-42f0-4d6e-806b-0ce59259b9e8")
+		(net 42 "A14")
+		(uuid "f38fb3ae-d31e-4db8-b6eb-1cff95df5870")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -13666,7 +13259,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "a0aaa5e4-9d44-4c27-9921-489278e84ead")
+		(uuid "24692db5-cad1-46a1-a4f7-f7f2fe46e86e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -13687,7 +13280,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "3cb7f76e-d96c-4888-b2c7-90f7a67977d2")
+	(uuid "1472b0fb-2b1e-4102-b0bc-fe74c8557343")
 	(at 50.0 164.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -13942,7 +13535,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "4597ff38-9674-48e8-b7b0-424fe8e52e0a")
+		(uuid "7475fdb0-14b3-4d99-bf60-7d5988ae273f")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -13952,8 +13545,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 44 "POT13_W")
-		(uuid "ae0674a3-4624-40f1-89f7-af18814f1463")
+		(net 43 "POT13_W")
+		(uuid "5c211f47-6ee7-431e-96e4-3fe500e440b6")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -13964,7 +13557,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "cac04f29-7ac7-4fe3-b0ba-b837c162c90e")
+		(uuid "d6fb3d5b-8719-4177-9229-af1fae2c3d5f")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -13975,7 +13568,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "d2eafcf2-6a1a-4042-8e80-8402a293447f")
+		(uuid "649cca44-72d7-4650-a80d-1e4be3094df6")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -13986,7 +13579,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "5eccc378-1635-47e4-a026-cfc8ae623953")
+		(uuid "18589ee5-25dc-40ce-9146-795221f59f19")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -14006,7 +13599,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "50dbcaaa-9583-454b-9560-7f7be976f600")
+	(uuid "876049ba-5d92-4311-865c-1d3afa5c6a6e")
 	(at 64.0 160.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -14126,8 +13719,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 44 "POT13_W")
-		(uuid "0b0c1cca-741b-4a4f-be65-2445047e52f2")
+		(net 43 "POT13_W")
+		(uuid "21f0f4a0-31d7-4b42-834c-9ebcfd11f1f0")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -14136,8 +13729,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 45 "A3")
-		(uuid "3ed03e45-7d2b-4eac-9d40-1c76ef79ddd5")
+		(net 44 "A3")
+		(uuid "c5d1b754-ada4-41d3-aacb-573a13a59b00")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -14157,7 +13750,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "c5c3bae9-1ce9-47f8-bd9c-b39055452c81")
+	(uuid "10abbe5c-327c-4726-a972-e1aac92083e3")
 	(at 70.0 168.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -14285,8 +13878,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 45 "A3")
-		(uuid "ed9eaefe-f00f-43c5-b25c-b348a5a6cd5a")
+		(net 44 "A3")
+		(uuid "f63fef8d-cfd3-4f05-b634-a79a4885cbc9")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -14296,7 +13889,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "fdfc6a13-cded-4a47-adec-6339bcc2411c")
+		(uuid "72d43b02-a2e2-42c2-858f-79d53731ea0f")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -14317,7 +13910,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "d9a2f9e2-3b02-452f-b1eb-e5a157791067")
+	(uuid "55cb1ef5-cf88-40ad-9c4a-1d788853aa21")
 	(at 82.0 164.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -14572,7 +14165,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "5dbf5981-32ad-4f3e-9992-f1f2b6c3a8fd")
+		(uuid "e3502f3d-2f52-41d4-a6de-488f9667414f")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -14582,8 +14175,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 46 "POT14_W")
-		(uuid "32afe7c5-94f2-42db-9d45-f7c407e8f8e8")
+		(net 45 "POT14_W")
+		(uuid "7125fda0-1d97-4db9-9b5b-8525de5c4709")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -14594,7 +14187,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "63f3d363-7bfb-466d-824f-26e288bf727e")
+		(uuid "a868de53-990f-4ab4-9746-013b4dc75e34")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -14605,7 +14198,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "4f71bcdb-ce3e-489d-9eec-eb4fa39e8103")
+		(uuid "738adba4-ed33-4989-a5ab-33ce201bb077")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -14616,7 +14209,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "21089773-a8da-46ec-aa48-faa6c549ad16")
+		(uuid "a7a6be87-ca0e-4479-815d-08bbe50b5f79")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -14636,7 +14229,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "b238cc71-63d3-4c91-a031-6980bebff27d")
+	(uuid "c3b597a2-c36f-4f00-82c1-4008205e0c1b")
 	(at 96.0 160.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -14756,8 +14349,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 46 "POT14_W")
-		(uuid "99fcbf93-7735-4298-8eea-d208a582f6d3")
+		(net 45 "POT14_W")
+		(uuid "31c1c610-b9fb-4a4d-89ad-1fcc9f59bc2f")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -14766,8 +14359,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 47 "A7")
-		(uuid "1b774190-2721-4b7b-813f-938460d4a714")
+		(net 46 "A7")
+		(uuid "6a82b21b-aa44-4613-88c9-1e80d63f775e")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -14787,7 +14380,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "79c84cc2-af5b-4fbb-96f6-f2f20704bdef")
+	(uuid "f9c33ff5-6ee4-4bb9-a8c2-64d1b8fcdbd4")
 	(at 102.0 168.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -14915,8 +14508,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 47 "A7")
-		(uuid "436f768d-f19e-4111-8d4d-36c2367c1ba6")
+		(net 46 "A7")
+		(uuid "20fb1c89-d633-48cc-b414-b554f7c9f3a4")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -14926,7 +14519,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "58f2e0a8-0e09-4f5d-8243-76ee1baa1ff7")
+		(uuid "878c90b9-ed74-4ad3-b13f-a80df5371ea2")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -14947,7 +14540,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "d0d9ceb5-021e-4c12-aa8c-75385301deec")
+	(uuid "b414b845-b570-42ce-96fa-e030587d1e7d")
 	(at 114.0 164.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -15202,7 +14795,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "91a803a5-5d9e-48bf-aa2b-5d2a787c16b1")
+		(uuid "ed7f4f28-3c88-43e0-a40d-444767031b00")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -15212,8 +14805,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 48 "POT15_W")
-		(uuid "216f76f6-44fc-4535-9c5a-42d635537630")
+		(net 47 "POT15_W")
+		(uuid "f2055938-64de-4b2c-9cce-a4d03bd2757c")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -15224,7 +14817,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "03b6d4e0-70c3-4be0-b20d-f205b6098efc")
+		(uuid "b10e618b-1b72-4a4a-9f8b-31ec07b16986")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -15235,7 +14828,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "a86d6ddf-ad60-4f86-8eac-d82d831c2cda")
+		(uuid "dbd1d177-7acd-4348-9d8f-d1a92083d36d")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -15246,7 +14839,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "a5b0c397-6111-4434-a082-489995d2d2af")
+		(uuid "8310b1a7-1a2c-4d07-ad5b-39fad763f853")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -15266,7 +14859,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "2219b51a-39a1-4cf6-8add-f9a1af4c4628")
+	(uuid "937eca4a-47c6-4028-93f6-be1d0c69bc1e")
 	(at 128.0 160.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -15386,8 +14979,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 48 "POT15_W")
-		(uuid "c7adc3f6-1618-4173-a864-5c2c9ef75d45")
+		(net 47 "POT15_W")
+		(uuid "3990b38a-d13e-4901-a412-761ac4d0bca5")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -15396,8 +14989,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 49 "A11")
-		(uuid "40808c9a-2fb7-4f95-afc1-411047df9bfa")
+		(net 48 "A11")
+		(uuid "d4d3c6a6-7240-40e8-bbb6-a7b4f2620f92")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -15417,7 +15010,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "a3f4e0ff-0141-4a91-8ae8-bbd70013548c")
+	(uuid "86147731-f7e7-4e82-b849-e09def6a2df2")
 	(at 134.0 168.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -15545,8 +15138,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 49 "A11")
-		(uuid "edf6ae1e-063a-497a-b84f-5be775056082")
+		(net 48 "A11")
+		(uuid "08cb8456-e4c0-4535-966f-44aafeeb0288")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -15556,7 +15149,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "03460392-5146-45dc-9930-a58346d885b5")
+		(uuid "7e95e260-fdd9-4b1b-a07f-6f318526b1e1")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -15577,7 +15170,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(uuid "d824139b-8e04-4788-afd9-40e8b761a480")
+	(uuid "95a8ad8b-8e2c-486c-ad57-c738c6b34676")
 	(at 146.0 164.0 90)
 	(descr "113004U 1130A6S 11300DR 1130A8G 1130081 1130A5R 1130AP5 1130AST  D1130C3W D1130C1B D1130C3C D1130C2P Potentiometer, vertical, Alps RK09K Single, https://tech.alpsalpine.com/prod/e/pdf/potentiometer/rotarypotentiometers/rk09k/rk09k.pdf")
 	(tags "Potentiometer vertical Alps RK09K RK09D Single Snapin")
@@ -15832,7 +15425,7 @@
 		(uuid "764f5c07-2b57-4016-8285-276d0b51391b")
 	
 		(net 7 "+5V")
-		(uuid "6c4dd2aa-65c5-46ac-8690-1a5e7c5f6395")
+		(uuid "7ce7ed67-0131-44bb-9a99-14924d4d2de3")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.5)
@@ -15842,8 +15435,8 @@
 		(remove_unused_layers no)
 		(uuid "26cd8001-e146-4689-9cf6-89c1dcbbe6fd")
 	
-		(net 50 "POT16_W")
-		(uuid "4ba9a692-ce10-4414-ae3c-d1aea9dbd709")
+		(net 49 "POT16_W")
+		(uuid "a7b132ca-3d9b-4459-89ad-cab857bad54d")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5)
@@ -15854,7 +15447,7 @@
 		(uuid "b84ea9a3-e3b3-4024-a5e6-3b415ead2935")
 	
 		(net 3 "GND")
-		(uuid "13d21f05-cf34-4492-b4f5-10547a532ce5")
+		(uuid "106684ef-96d3-4a5d-acf1-3f09fc4f9525")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 -1.9)
@@ -15865,7 +15458,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "27a07e70-ad3c-45b0-ae17-11fc91e0e1e5")
 	
-		(uuid "e6888969-2943-4bb4-8eb0-21067d5ddc0f")
+		(uuid "26e04960-fe4d-44b1-a453-cde689f4da57")
 	)
 	(pad "MP" thru_hole roundrect
 		(at 7 6.9)
@@ -15876,7 +15469,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "905e78df-9df9-44b7-ab8e-2ca633cc1164")
 	
-		(uuid "8841af70-40b1-40d2-b673-d23084d2f661")
+		(uuid "8f317225-1365-4c8d-b569-1e426f26c16c")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Alps_RK09K_Single_Vertical.step"
@@ -15896,7 +15489,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "d83f51ee-3d6c-4306-918c-9246b84041e5")
+	(uuid "02aeda4e-7e57-4fdf-8901-dca97fc8e9dc")
 	(at 160.0 160.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -16016,8 +15609,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 50 "POT16_W")
-		(uuid "aed866fe-b1ac-4c3a-bd78-46aad441da11")
+		(net 49 "POT16_W")
+		(uuid "5853dd50-68f2-49da-8279-11779ed83509")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -16026,8 +15619,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 51 "MUX_CH0")
-		(uuid "606b9aaa-4971-41ba-97d6-09557a255306")
+		(net 50 "MUX_CH0")
+		(uuid "544c3896-13b4-4c0d-ac35-adeade5cf4c2")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -16047,7 +15640,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "893c5599-7915-484c-83e6-721daa433438")
+	(uuid "9d2e201f-3dd4-4865-a1ff-b471c20e5dcf")
 	(at 166.0 168.0 90)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -16175,8 +15768,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 51 "MUX_CH0")
-		(uuid "938cf89a-7693-4dac-8640-eecb73c695fd")
+		(net 50 "MUX_CH0")
+		(uuid "14663fbe-ab0b-47f6-badb-6639cceb0f18")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -16186,7 +15779,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "64cbef09-77a7-4ad3-be41-33792b65846b")
+		(uuid "974dd039-620a-4321-8e81-a23c76cda741")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -16206,7 +15799,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "df0475cd-ce70-4748-b34d-9c93d6be6921")
+	(uuid "3692c981-b168-4eac-9b12-2ca7136e23f5")
 	(at 172.0 86.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -16326,8 +15919,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 52 "D12")
-		(uuid "5cb4747d-f567-40c3-b125-cad5aa656212")
+		(net 51 "D12")
+		(uuid "702dbe90-0922-4412-8653-45818c0c9dd0")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -16336,8 +15929,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 53 "LED1_A")
-		(uuid "4fa0c074-40ba-424b-b529-26b35a7f9212")
+		(net 52 "LED1_A")
+		(uuid "56c19ed2-e89e-4219-b1e0-d2193c36b6bd")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -16357,7 +15950,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "1577ef0b-2544-4b8d-bc66-be85a5cc44f9")
+	(uuid "dceabd62-c335-4965-8831-7ffba6fe406a")
 	(at 180.0 86.0 90)
 	(descr "LED, diameter 3.0mm, 2 pins, generated by kicad-footprint-generator")
 	(tags "LED")
@@ -16509,7 +16102,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "1173fd2b-86b8-4bb6-ba10-ef641dc32eab")
+		(uuid "853c0c47-f6d5-4cde-90a9-80ed00497cd7")
 	)
 	(pad "2" thru_hole circle
 		(at 2.54 0)
@@ -16518,8 +16111,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 53 "LED1_A")
-		(uuid "15015122-3e9d-4215-8736-0982941e8153")
+		(net 52 "LED1_A")
+		(uuid "67a56f90-48a8-41e7-b8cd-f3fee9b75e91")
 	)
 	(point
 		(at 1.27 0)
@@ -16544,7 +16137,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "51ba0947-6458-46e1-a023-f854c20dc1ca")
+	(uuid "68edfe13-a06d-4a31-a51a-1513c1fe241e")
 	(at 172.0 108.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -16664,8 +16257,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 54 "D11")
-		(uuid "dff51ced-a52e-4b54-84c8-a95d434ec21b")
+		(net 53 "D11")
+		(uuid "67accd0c-6861-4840-829b-5476aa27c10f")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -16674,8 +16267,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 55 "LED2_A")
-		(uuid "f56d37ab-05d0-43e1-9be7-2bea039fb42d")
+		(net 54 "LED2_A")
+		(uuid "2f2968c8-1b32-4f21-ac34-b8c69fd73786")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -16695,7 +16288,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "730e5072-3dcb-40b1-9519-9a3d1027612f")
+	(uuid "8f6e288d-360e-4bca-893d-234944844aec")
 	(at 180.0 108.0 90)
 	(descr "LED, diameter 3.0mm, 2 pins, generated by kicad-footprint-generator")
 	(tags "LED")
@@ -16847,7 +16440,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "1f88e0d9-8a7b-438a-ba2e-0dcd7c4be1fa")
+		(uuid "a98717bb-c02c-496c-bf71-1f2cfc9de9c4")
 	)
 	(pad "2" thru_hole circle
 		(at 2.54 0)
@@ -16856,8 +16449,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 55 "LED2_A")
-		(uuid "d22f193a-5d0f-4051-936f-85fe007cbf2f")
+		(net 54 "LED2_A")
+		(uuid "b9a48ea2-3276-42a3-ac04-f7d9ae6507d0")
 	)
 	(point
 		(at 1.27 0)
@@ -16882,7 +16475,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "1bfd5dcd-51d5-4ccd-87d7-ab7deb7c53d4")
+	(uuid "22e6df91-e490-4e95-8de5-665fd937c72f")
 	(at 172.0 130.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -17002,8 +16595,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 56 "D10")
-		(uuid "50f6e5cb-2907-4d78-9063-b522ade169ee")
+		(net 55 "D10")
+		(uuid "232ef504-1f98-4ffe-bfcb-b37cc8f5fbc5")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -17012,8 +16605,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 57 "LED3_A")
-		(uuid "ec31e479-9994-4126-aa1f-c891bafa9422")
+		(net 56 "LED3_A")
+		(uuid "1bb39df4-dafa-44c1-9d9b-c162ecf96e79")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -17033,7 +16626,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "444c712b-0c1d-4f7b-9114-23fcf84a57a7")
+	(uuid "497eb86c-9c15-400d-9e5b-b3ed64ad2f3d")
 	(at 180.0 130.0 90)
 	(descr "LED, diameter 3.0mm, 2 pins, generated by kicad-footprint-generator")
 	(tags "LED")
@@ -17185,7 +16778,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "46d2a242-1b6e-4971-a665-d837d4a9e987")
+		(uuid "7293890b-3318-42c3-902b-f7b989f11d5d")
 	)
 	(pad "2" thru_hole circle
 		(at 2.54 0)
@@ -17194,8 +16787,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 57 "LED3_A")
-		(uuid "b263e9b7-2b10-4948-b941-7642f0c51eaf")
+		(net 56 "LED3_A")
+		(uuid "81f8bbf2-8526-43cf-91d2-fc3990edfe9a")
 	)
 	(point
 		(at 1.27 0)
@@ -17220,7 +16813,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "ffe31160-abaf-41e2-a031-8ce853a7eb01")
+	(uuid "ec01c0e0-ee0f-4540-a482-fdb5d731ecce")
 	(at 172.0 152.0 90)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -17340,8 +16933,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 58 "D9")
-		(uuid "77285b7b-fb5f-4653-b04e-4ad90c9b21ea")
+		(net 57 "D9")
+		(uuid "730e8a30-5a1b-4b43-a25d-dc17b6f651b5")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -17350,8 +16943,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 59 "LED4_A")
-		(uuid "8b56948f-f8ff-4859-81db-3627a0e95d73")
+		(net 58 "LED4_A")
+		(uuid "38ce5367-c3dd-40e9-ba97-e17c368efcd3")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -17371,7 +16964,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "bb738264-d187-4208-9f05-73287c6226eb")
+	(uuid "058e369a-3a16-4c9b-832b-8c64756c7ddc")
 	(at 180.0 152.0 90)
 	(descr "LED, diameter 3.0mm, 2 pins, generated by kicad-footprint-generator")
 	(tags "LED")
@@ -17523,7 +17116,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "85d61e27-672c-4108-a667-f48b8fd3e532")
+		(uuid "de992e04-e68f-47ee-98c7-4002f09d74c3")
 	)
 	(pad "2" thru_hole circle
 		(at 2.54 0)
@@ -17532,8 +17125,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 59 "LED4_A")
-		(uuid "f4fab605-9a48-46a3-a30e-0dfd55ceec63")
+		(net 58 "LED4_A")
+		(uuid "1511d03b-00ab-417a-a356-fa2fd611e530")
 	)
 	(point
 		(at 1.27 0)
@@ -17558,7 +17151,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "49b62a0d-5235-48fe-adc8-0da1ddb7a417")
+	(uuid "a8eeb702-e5c3-488c-a684-89549c0fd1ec")
 	(at 138.0 196.0 0)
 	(descr "24-lead though-hole mounted DIP package, row spacing 15.24mm (600 mils)")
 	(tags "THT DIP DIL PDIP 2.54mm 15.24mm 600mil")
@@ -17723,8 +17316,8 @@
 		(remove_unused_layers no)
 		(roundrect_rratio 0.15625)
 	
-		(net 60 "A15")
-		(uuid "9752f29a-7380-4409-b064-cfce617ef287")
+		(net 59 "A15")
+		(uuid "0f74e049-db10-4e89-a8ba-63c84c7ca793")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -17733,8 +17326,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 71 "MUX_CH7")
-		(uuid "4307651b-48bb-4241-b5e4-044cc433060c")
+		(net 70 "MUX_CH7")
+		(uuid "bbf07ac9-023a-4fd1-b92d-8dde309bd522")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -17743,8 +17336,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 70 "MUX_CH6")
-		(uuid "ea11d7dc-6c45-4cb3-a43f-8bc5b89b2fab")
+		(net 69 "MUX_CH6")
+		(uuid "99b9e8a0-bdce-41f6-a6c3-4095eb49ba51")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -17753,8 +17346,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 69 "MUX_CH5")
-		(uuid "380f2ecf-c3d5-4f37-bb02-c1d3b345a82e")
+		(net 68 "MUX_CH5")
+		(uuid "0961cdfe-4f0a-499b-8efa-0625b24e4298")
 	)
 	(pad "5" thru_hole circle
 		(at 0 10.16)
@@ -17763,8 +17356,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 68 "MUX_CH4")
-		(uuid "739e0a9e-91a5-454a-ad55-beb0722010f1")
+		(net 67 "MUX_CH4")
+		(uuid "3fa0b2e8-ad92-476e-b9f2-b5800adb7173")
 	)
 	(pad "6" thru_hole circle
 		(at 0 12.7)
@@ -17773,8 +17366,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 67 "MUX_CH3")
-		(uuid "89fc71b7-5cf4-4652-ac30-a3730a13c57a")
+		(net 66 "MUX_CH3")
+		(uuid "cc456c44-de29-43bb-b051-6f234e87fa7a")
 	)
 	(pad "7" thru_hole circle
 		(at 0 15.24)
@@ -17783,8 +17376,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 66 "MUX_CH2")
-		(uuid "38f90c62-dbf7-4f09-b4d2-0e1366addfdc")
+		(net 65 "MUX_CH2")
+		(uuid "6abd3432-5703-4a12-8c7f-d6e28bdc3214")
 	)
 	(pad "8" thru_hole circle
 		(at 0 17.78)
@@ -17793,8 +17386,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 65 "MUX_CH1")
-		(uuid "5693dd3d-23a0-4452-8597-870ce49eb58c")
+		(net 64 "MUX_CH1")
+		(uuid "f464069e-5a97-4442-99cc-790e1b6f0233")
 	)
 	(pad "9" thru_hole circle
 		(at 0 20.32)
@@ -17803,8 +17396,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 51 "MUX_CH0")
-		(uuid "f946d14b-b08a-4af0-8187-3b50ad7a2baf")
+		(net 50 "MUX_CH0")
+		(uuid "371d5797-16ef-4aab-ad77-fa21a0b99e50")
 	)
 	(pad "10" thru_hole circle
 		(at 0 22.86)
@@ -17813,8 +17406,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 61 "D2")
-		(uuid "6ffd7fef-f667-4330-8b45-4642c30dc74a")
+		(net 60 "D2")
+		(uuid "52f9b3f3-6210-48e3-ad3b-55367081d6e9")
 	)
 	(pad "11" thru_hole circle
 		(at 0 25.4)
@@ -17823,8 +17416,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 62 "D3")
-		(uuid "c6a4c98b-9296-48e7-a3d9-6cf162d21ecd")
+		(net 61 "D3")
+		(uuid "0b44d3ab-9a16-4269-9965-c589727116b8")
 	)
 	(pad "12" thru_hole circle
 		(at 0 27.94)
@@ -17834,7 +17427,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "f199cbc8-ee27-44cc-89c5-fac1620ebffc")
+		(uuid "1ad921e2-6eed-43e9-b708-e61cb018336c")
 	)
 	(pad "13" thru_hole circle
 		(at 15.24 27.94)
@@ -17843,8 +17436,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 64 "D13")
-		(uuid "ac0f7957-d25b-4976-842c-b6866ece743f")
+		(net 63 "D13")
+		(uuid "42cebd87-d7ae-4bf0-a5e1-24395a7dd92b")
 	)
 	(pad "14" thru_hole circle
 		(at 15.24 25.4)
@@ -17853,8 +17446,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 63 "D4")
-		(uuid "ebfa9d97-7c91-47c2-95b8-2a15c0bf2831")
+		(net 62 "D4")
+		(uuid "a8720668-6fd0-4661-96cb-59c4ce22fee3")
 	)
 	(pad "15" thru_hole circle
 		(at 15.24 22.86)
@@ -17864,7 +17457,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "ae6ad5fe-7a53-48da-84fa-e58ff70fb6c3")
+		(uuid "6b09b156-0555-42a7-8428-15fc52374b9a")
 	)
 	(pad "16" thru_hole circle
 		(at 15.24 20.32)
@@ -17873,8 +17466,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 79 "MUX_CH15")
-		(uuid "c473cd2d-4445-4d67-b6ac-07062e15dfdd")
+		(net 78 "MUX_CH15")
+		(uuid "50bc515c-b232-43ea-b019-2bbaedd48422")
 	)
 	(pad "17" thru_hole circle
 		(at 15.24 17.78)
@@ -17883,8 +17476,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 78 "MUX_CH14")
-		(uuid "a0c1dc3c-f279-4caa-a5c6-14d29bf78bac")
+		(net 77 "MUX_CH14")
+		(uuid "20eea9c0-cd97-4a8f-9281-f143c6d7b05a")
 	)
 	(pad "18" thru_hole circle
 		(at 15.24 15.24)
@@ -17893,8 +17486,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 77 "MUX_CH13")
-		(uuid "f9d84fdd-daf1-4073-8f5b-0ba036481cf9")
+		(net 76 "MUX_CH13")
+		(uuid "eafe7dfe-e199-41ce-8637-15c2dc0a0dd9")
 	)
 	(pad "19" thru_hole circle
 		(at 15.24 12.7)
@@ -17903,8 +17496,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 76 "MUX_CH12")
-		(uuid "adec4cb8-0c6b-4df8-858d-cb81b0c37546")
+		(net 75 "MUX_CH12")
+		(uuid "325ba7d9-7fd5-4d5d-aa75-53671d81eadd")
 	)
 	(pad "20" thru_hole circle
 		(at 15.24 10.16)
@@ -17913,8 +17506,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 75 "MUX_CH11")
-		(uuid "a2e2ec89-a74b-4c0b-b403-ed7d0fd00edb")
+		(net 74 "MUX_CH11")
+		(uuid "b7b987f7-6a10-4aa5-8e08-e2d885103c58")
 	)
 	(pad "21" thru_hole circle
 		(at 15.24 7.62)
@@ -17923,8 +17516,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 74 "MUX_CH10")
-		(uuid "88744214-6b74-447b-a212-5c250975f718")
+		(net 73 "MUX_CH10")
+		(uuid "c6a2b0e3-c279-4ff2-868d-997420236056")
 	)
 	(pad "22" thru_hole circle
 		(at 15.24 5.08)
@@ -17933,8 +17526,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 73 "MUX_CH9")
-		(uuid "4483d52a-b0c0-4310-bd8d-20690e39dd68")
+		(net 72 "MUX_CH9")
+		(uuid "05380e6d-306d-4e1b-aa2c-a2e10bd8e958")
 	)
 	(pad "23" thru_hole circle
 		(at 15.24 2.54)
@@ -17943,8 +17536,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 72 "MUX_CH8")
-		(uuid "4c506db9-aca9-4879-a0f4-099ad9949af6")
+		(net 71 "MUX_CH8")
+		(uuid "9cc43c21-086b-4e48-abf5-7d028831142c")
 	)
 	(pad "24" thru_hole circle
 		(at 15.24 0)
@@ -17954,7 +17547,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "c24d79fe-aa2a-453f-97c5-4c843e6152b2")
+		(uuid "f2c768f7-7d4b-4afb-8b23-c7951776789c")
 	)
 	(point
 		(at 7.62 13.97)
@@ -17979,7 +17572,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "fc04e727-389c-4cc1-b687-19617f772857")
+	(uuid "67501dcf-fa6c-47a1-91ef-80b473bed1ae")
 	(at 168.0 202.0 0)
 	(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 	(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
@@ -18100,7 +17693,7 @@
 		(remove_unused_layers no)
 	
 		(net 6 "JACK_W")
-		(uuid "f530159e-8573-441f-a7da-7a0d8af0a6d0")
+		(uuid "ea5b7c3d-a04c-43e1-9941-27372e68068f")
 	)
 	(pad "2" thru_hole circle
 		(at 10.16 0)
@@ -18109,8 +17702,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 65 "MUX_CH1")
-		(uuid "6d19b3f5-4dbd-49ae-923b-c94ed6bde014")
+		(net 64 "MUX_CH1")
+		(uuid "bed9865b-295e-4f29-b4d4-59ff1164a120")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.step"
@@ -18130,7 +17723,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "01855cb1-4fb8-4b20-803b-ea962f8ff70d")
+	(uuid "d57f8000-4b55-4201-b7b8-5b71c4f2a560")
 	(at 168.0 216.0 0)
 	(descr "C, Disc series, Radial, pin pitch=5.00mm, diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 	(tags "C Disc series Radial pin pitch 5.00mm diameter 5mm width 2.5mm Capacitor")
@@ -18258,8 +17851,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 65 "MUX_CH1")
-		(uuid "80b146c4-22ab-44cf-8f36-3ac098456b07")
+		(net 64 "MUX_CH1")
+		(uuid "c6528111-a85a-45e8-8411-3c599a36e0c4")
 	)
 	(pad "2" thru_hole circle
 		(at 5 0)
@@ -18269,7 +17862,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "5b7b26fa-61f4-476f-bf56-08fbe5de444e")
+		(uuid "305c3994-948b-4785-848b-c38f3c1c6384")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
@@ -18289,7 +17882,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "c4e229c3-dfcc-45f0-aacd-1b14695655fb")
+	(uuid "f6f9a0a0-a1c9-4280-8bf4-427c2919a9b1")
 	(at 48.88999999999999 192.0 90)
 	(descr "Through hole straight pin header, 1x08, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x08 2.54mm single row")
@@ -18452,7 +18045,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(uuid "e59aad39-36a0-4503-8927-f146aed8ce5b")
+		(uuid "239ae713-584f-473b-90f2-00fd6e193588")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -18461,7 +18054,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(uuid "0e96f5ae-e97f-431c-8b96-c45e62a7a2ae")
+		(uuid "6aed7605-b5a4-48ed-b879-21db7f13ff7d")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -18470,7 +18063,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(uuid "67196d6e-a45b-447e-9c1d-4cd98902ef6b")
+		(uuid "e22bff45-5e0c-4a79-a5cf-a45d3512daca")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -18479,7 +18072,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(uuid "05f3db7e-c96a-447c-ad22-ccfa54786b3a")
+		(uuid "470ecafc-dcad-4f22-9a0b-07bbb4d11775")
 	)
 	(pad "5" thru_hole circle
 		(at 0 10.16)
@@ -18489,7 +18082,7 @@
 		(remove_unused_layers no)
 	
 		(net 7 "+5V")
-		(uuid "d55f3ec2-858a-4b61-bf50-e3b7bb595be2")
+		(uuid "cbd1429c-c9a6-4870-ad35-b38209555f11")
 	)
 	(pad "6" thru_hole circle
 		(at 0 12.7)
@@ -18499,7 +18092,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "6d66eb39-f136-4a31-bbc9-e4560e392977")
+		(uuid "19d281c4-c240-4c49-8cc3-366c62daf404")
 	)
 	(pad "7" thru_hole circle
 		(at 0 15.24)
@@ -18509,7 +18102,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "082f16ad-ab9c-4300-a890-a757d05015b8")
+		(uuid "8f0e333f-137f-415f-8457-a117979380e3")
 	)
 	(pad "8" thru_hole circle
 		(at 0 17.78)
@@ -18519,7 +18112,7 @@
 		(remove_unused_layers no)
 	
 		(net 8 "VIN_RAW")
-		(uuid "b4efa2ce-760f-48a9-80b1-0cf1ab44e86a")
+		(uuid "dec41b02-5abd-430f-83af-8c0c84a5b1b5")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.step"
@@ -18539,7 +18132,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "e697add6-24d3-4d18-843a-81fbad7c7044")
+	(uuid "a2056cc8-7d0d-48bf-9b64-9f76c0569ea0")
 	(at 71.75 192.0 90)
 	(descr "Through hole straight pin header, 1x08, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x08 2.54mm single row")
@@ -18702,8 +18295,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 21 "A0")
-		(uuid "085a5d6c-5fb4-44ab-8cf4-9bd77ba6bfac")
+		(net 20 "A0")
+		(uuid "e07e07a4-6f6c-4f93-b683-97c99fdbe31a")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -18712,8 +18305,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 29 "A1")
-		(uuid "2efdd6d0-192d-41e3-9881-ec8cacef26e1")
+		(net 28 "A1")
+		(uuid "1f3c1797-c19e-4a75-952d-1a97b7f52c35")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -18722,8 +18315,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 37 "A2")
-		(uuid "baefe6f9-1348-4746-b35f-a11f473b4a70")
+		(net 36 "A2")
+		(uuid "382b6056-8ae9-489c-96b8-8e60d109ea35")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -18732,8 +18325,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 45 "A3")
-		(uuid "3ae0822e-de57-4dd6-9c20-72dc72cfe89b")
+		(net 44 "A3")
+		(uuid "80e36496-88af-4f68-827b-7bca6bf19241")
 	)
 	(pad "5" thru_hole circle
 		(at 0 10.16)
@@ -18742,8 +18335,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 31 "A4")
-		(uuid "8a1f14a4-10f0-48fb-abb1-b8ea0caf4b36")
+		(net 30 "A4")
+		(uuid "a0918590-da48-4e95-bd55-3abbd49fe24e")
 	)
 	(pad "6" thru_hole circle
 		(at 0 12.7)
@@ -18752,8 +18345,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 23 "A5")
-		(uuid "7698aee7-7102-4802-88ca-e4ea9bb315d4")
+		(net 22 "A5")
+		(uuid "14cb56ae-91bd-4bc8-b6d6-901ef264c9bb")
 	)
 	(pad "7" thru_hole circle
 		(at 0 15.24)
@@ -18762,8 +18355,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 39 "A6")
-		(uuid "5e22e3e2-6f68-40e2-99ec-b4d3e252f0e2")
+		(net 38 "A6")
+		(uuid "5442e380-be0f-4f9e-be85-ea62edd75c06")
 	)
 	(pad "8" thru_hole circle
 		(at 0 17.78)
@@ -18772,8 +18365,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 47 "A7")
-		(uuid "90448e47-1fd3-4d1d-865d-b20012880438")
+		(net 46 "A7")
+		(uuid "e9c8f9f3-bf75-470c-b7e2-95ffaa7219fc")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.step"
@@ -18793,7 +18386,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "dcbfb895-dfa6-431f-8c38-8ebbd4afbc74")
+	(uuid "93b34d0c-8135-44ce-bfe8-468c982bdb5f")
 	(at 94.60999999999999 192.0 90)
 	(descr "Through hole straight pin header, 1x08, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x08 2.54mm single row")
@@ -18956,8 +18549,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 25 "A8")
-		(uuid "cebbccd6-00eb-4f6c-af5b-f20138332308")
+		(net 24 "A8")
+		(uuid "3e954d05-94f2-4a4f-9233-f9ed62786a2f")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -18966,8 +18559,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 33 "A9")
-		(uuid "74fccd6a-bdd7-4a63-a400-ea2397683c41")
+		(net 32 "A9")
+		(uuid "4f6abc21-41a5-4903-acac-aaa955550ed3")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -18976,8 +18569,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 41 "A10")
-		(uuid "fd986203-cd9f-4772-849e-1fcfc85b1ee9")
+		(net 40 "A10")
+		(uuid "0157ee55-b843-4853-90ab-13a84bffe630")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -18986,8 +18579,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 49 "A11")
-		(uuid "0328cec3-a327-4960-bef8-2c1f1c51e368")
+		(net 48 "A11")
+		(uuid "5b54349e-0674-4cc8-9161-0b1d39180a50")
 	)
 	(pad "5" thru_hole circle
 		(at 0 10.16)
@@ -18996,8 +18589,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 27 "A12")
-		(uuid "fbcc4be3-4e81-487d-96d7-77a11e3bdb7b")
+		(net 26 "A12")
+		(uuid "2e8ea42c-7fc7-49c6-b1ee-55b8135ad5e8")
 	)
 	(pad "6" thru_hole circle
 		(at 0 12.7)
@@ -19006,8 +18599,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 35 "A13")
-		(uuid "5d5568f4-c443-458c-b989-6bc7620cc880")
+		(net 34 "A13")
+		(uuid "f4ca80bd-09f8-494b-b522-4938f606c1ad")
 	)
 	(pad "7" thru_hole circle
 		(at 0 15.24)
@@ -19016,8 +18609,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 43 "A14")
-		(uuid "198749f3-3210-46a1-ae7a-37060212f3b7")
+		(net 42 "A14")
+		(uuid "da6c9651-23e6-4ba2-a464-809f23203cfa")
 	)
 	(pad "8" thru_hole circle
 		(at 0 17.78)
@@ -19026,8 +18619,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 60 "A15")
-		(uuid "4bfc32e0-1d3b-4fb1-83c5-6043773db55c")
+		(net 59 "A15")
+		(uuid "8c1a20e2-9d35-4edc-b3a1-8dd7fed88ac6")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.step"
@@ -19047,7 +18640,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "e4b1020e-9140-40f1-8671-477b6657193c")
+	(uuid "9cc726a6-6cd5-4309-8a28-8909e520b295")
 	(at 40.0 240.0 90)
 	(descr "Through hole straight pin header, 1x10, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x10 2.54mm single row")
@@ -19210,8 +18803,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 61 "D2")
-		(uuid "4afb837d-ed0a-4554-87fa-ccfc5347ba69")
+		(net 60 "D2")
+		(uuid "95572104-7db3-4b88-ade5-8e01c1df4205")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -19220,8 +18813,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 62 "D3")
-		(uuid "00feada3-be2f-4fb2-a829-a786ebee49bb")
+		(net 61 "D3")
+		(uuid "5b1ec2f3-230d-4090-846d-0405bd10931c")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -19230,8 +18823,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 63 "D4")
-		(uuid "d531d1b3-7ef7-4f1b-93d1-10873aabba27")
+		(net 62 "D4")
+		(uuid "d3307c4b-3b0d-44fa-adb4-1fed2ca990a8")
 	)
 	(pad "4" thru_hole circle
 		(at 0 7.62)
@@ -19241,7 +18834,7 @@
 		(remove_unused_layers no)
 	
 		(net 3 "GND")
-		(uuid "dc3c328b-c4c7-4b8c-8c6e-87b3ac745182")
+		(uuid "6bc394e2-cf22-4189-bb39-51ece80c7a95")
 	)
 	(pad "5" thru_hole circle
 		(at 0 10.16)
@@ -19250,8 +18843,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 64 "D13")
-		(uuid "2e710c5c-be46-4755-9778-1b006fdae0fb")
+		(net 63 "D13")
+		(uuid "823c722b-7bfd-4766-9590-e740c958c418")
 	)
 	(pad "6" thru_hole circle
 		(at 0 12.7)
@@ -19260,8 +18853,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 19 "D5")
-		(uuid "34a0da0b-feee-4058-8d4c-089cb9d8059b")
+		(net 18 "D5")
+		(uuid "e67f2137-a1f6-4847-8b5e-2ec21a8631ca")
 	)
 	(pad "7" thru_hole circle
 		(at 0 15.24)
@@ -19270,8 +18863,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 18 "D6")
-		(uuid "f2dde2e8-874a-4b70-936a-cddaff0aad23")
+		(net 17 "D6")
+		(uuid "6f74bebf-f517-454f-91e2-2ac73b346f01")
 	)
 	(pad "8" thru_hole circle
 		(at 0 17.78)
@@ -19280,8 +18873,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 16 "D7")
-		(uuid "769de129-f687-4f6c-be35-0c2c13ee7e1e")
+		(net 15 "D7")
+		(uuid "3398b620-d8c0-4d85-bd44-59ac21672398")
 	)
 	(pad "9" thru_hole circle
 		(at 0 20.32)
@@ -19290,8 +18883,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 17 "D8")
-		(uuid "455ae7e2-7f28-4442-93a4-0c0a9b311364")
+		(net 16 "D8")
+		(uuid "931e5ebf-370a-4344-a318-10c297a399e7")
 	)
 	(pad "10" thru_hole circle
 		(at 0 22.86)
@@ -19300,8 +18893,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 58 "D9")
-		(uuid "852eec70-f4b1-4582-8683-8b29c3765609")
+		(net 57 "D9")
+		(uuid "69333d77-25d9-4933-9b41-b3c1d774b53a")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x10_P2.54mm_Vertical.step"
@@ -19321,7 +18914,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "553249ce-58f5-49ab-ba1f-d374e5f036c0")
+	(uuid "88fb3273-9110-4778-80c6-7ce532138394")
 	(at 66.66999999999999 240.0 90)
 	(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x03 2.54mm single row")
@@ -19484,8 +19077,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 56 "D10")
-		(uuid "3c3965ca-dc3a-4de5-a1db-6288c16e5136")
+		(net 55 "D10")
+		(uuid "8be7c43b-c3dd-43da-b1ef-fbe38fdddecc")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -19494,8 +19087,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 54 "D11")
-		(uuid "5893d3ab-24e6-45ca-94dc-614d693228cb")
+		(net 53 "D11")
+		(uuid "c948e056-d8fb-4421-92e6-b653340d4ef3")
 	)
 	(pad "3" thru_hole circle
 		(at 0 5.08)
@@ -19504,8 +19097,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 52 "D12")
-		(uuid "88c0eb8d-4d26-4795-aa10-3e9581c85cef")
+		(net 51 "D12")
+		(uuid "87b3e6dd-0129-462b-a602-cd540ae8c694")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.step"
@@ -19525,7 +19118,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "56c7a4c4-d499-4167-838f-ac72e858cf98")
+	(uuid "350b694b-154f-440e-8348-bdcee451c7a8")
 	(at 81.91 240.0 90)
 	(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x02 2.54mm single row")
@@ -19688,8 +19281,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 15 "D1_TX")
-		(uuid "e2d0f7b1-39d9-4f71-a3d0-b17114850814")
+		(net 14 "D1_TX")
+		(uuid "38198a77-5ba3-48d2-ae24-0c0e07278443")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -19698,8 +19291,8 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 	
-		(net 14 "D0_RX")
-		(uuid "1b8287c0-b9ad-46ce-9e52-ad7f6a711667")
+		(net 12 "D0_RX")
+		(uuid "965951cd-0b47-4e65-b2b5-3db518bb8e7c")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
@@ -19719,7 +19312,7 @@
 	(version 20260206)
 	(generator "kicad-footprint-generator")
 	(layer "F.Cu")
-	(uuid "837ac002-5afe-421d-80b4-ae9d3678ab86")
+	(uuid "71969f46-d99b-4f5e-9660-a2a39172cfdd")
 	(at 104.77000000000001 240.0 90)
 	(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 	(tags "Through hole pin header THT 1x02 2.54mm single row")
@@ -19883,7 +19476,7 @@
 		(remove_unused_layers no)
 	
 		(net 10 "D20_SDA")
-		(uuid "e48beafa-e74b-47e5-bfd0-6be5825540e7")
+		(uuid "366fd8ec-16b6-4ecc-b82c-7ab79ac87a6e")
 	)
 	(pad "2" thru_hole circle
 		(at 0 2.54)
@@ -19893,7 +19486,7 @@
 		(remove_unused_layers no)
 	
 		(net 9 "D21_SCL")
-		(uuid "50789698-70d5-4b5d-a8e6-0c2faf2692a4")
+		(uuid "5d026445-ea32-4281-afac-49c64271f3fb")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.step"
@@ -19909,25 +19502,25 @@
 	)
 )
 
- (gr_text "GND"(at 166.000 27.800 90)(layer "F.SilkS")(uuid "b58f6a87-371d-4905-a510-7ee44572e0c5")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "VCC"(at 168.540 27.800 90)(layer "F.SilkS")(uuid "b152c6d1-2c4e-4f44-bfcf-2f73f8450876")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "SCL"(at 171.080 27.800 90)(layer "F.SilkS")(uuid "0c1001eb-eae7-4166-924b-69f3244a0fb4")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "SDA"(at 173.620 27.800 90)(layer "F.SilkS")(uuid "5ae6e4f0-de87-43d6-ac0c-947c0f20d9dd")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "GND"(at 136.000 55.800 90)(layer "F.SilkS")(uuid "db15c40f-c60c-4955-8e7e-0dfa43eb9a76")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "+5V"(at 138.540 55.800 90)(layer "F.SilkS")(uuid "6e01b8b2-73e9-405e-ae63-f208d83e454a")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "GND"(at 141.080 55.800 90)(layer "F.SilkS")(uuid "753d3430-5cdf-40b1-a192-3feffb232b5a")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "VIN"(at 143.620 55.800 90)(layer "F.SilkS")(uuid "d2f8cfda-f0e4-4787-9278-1a97b29cc9f5")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "+"(at 160.200 61.800 0)(layer "F.SilkS")(uuid "15adc752-d5b9-416e-83b4-8e3fc0af22af")(effects (font (size 1.4 1.4)(thickness 0.15))))
- (gr_text "100uF"(at 163.250 68.600 0)(layer "F.SilkS")(uuid "b5f72da7-2a43-450a-a515-2dc34d20e835")(effects (font (size 0.9 0.9)(thickness 0.15))))
- (gr_text "MIDI IN"(at 44.000 46.500 0)(layer "F.SilkS")(uuid "a6f33145-4b5b-45f4-9eea-4db898c80230")(effects (font (size 1.3 1.3)(thickness 0.15))))
- (gr_text "MIDI OUT"(at 72.000 46.500 0)(layer "F.SilkS")(uuid "6fa9c93f-7fa3-4f7d-bd72-c120853e90e4")(effects (font (size 1.3 1.3)(thickness 0.15))))
- (gr_line (start 25.000 20.000) (end 187.000 20.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "b0f14c6b-c4d7-492d-be0a-be5c5d11db6b"))
-  (gr_arc (start 187.000 20.000)(mid 190.536 21.464)(end 192.000 25.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "e032cd53-baf0-48b7-a15f-faad8d3f9a09"))
-  (gr_line (start 192.000 25.000) (end 192.000 243.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "4fef18d2-4fa5-4dd7-857c-a7ba87dd501c"))
-  (gr_arc (start 192.000 243.000)(mid 190.536 246.536)(end 187.000 248.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "bf599476-f97d-4f0e-b09a-3a84007324b3"))
-  (gr_line (start 187.000 248.000) (end 25.000 248.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "0636512c-9cef-4ec6-b520-5e2ab543cbd1"))
-  (gr_arc (start 25.000 248.000)(mid 21.464 246.536)(end 20.000 243.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "d2db47f0-4207-4202-92d5-9df05712efb7"))
-  (gr_line (start 20.000 243.000) (end 20.000 25.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "be5ed3da-a90f-4184-8150-0e989c218c2a"))
-  (gr_arc (start 20.000 25.000)(mid 21.464 21.464)(end 25.000 20.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "d4e72eb3-3b03-419c-a79c-c5edaf43b929"))
- (zone (net 3)(net_name "GND")(layer "B.Cu")(uuid "2d3aca59-8334-48ad-bbc5-72e35caa7cca")(hatch edge 0.5)(connect_pads (clearance 0.25))(min_thickness 0.25)(fill yes (thermal_gap 0.5)(thermal_bridge_width 0.5))(polygon (pts (xy 20.0 20.0)(xy 192.0 20.0)(xy 192.0 248.0)(xy 20.0 248.0))))
+ (gr_text "GND"(at 166.000 27.800 90)(layer "F.SilkS")(uuid "fa3858b3-faaa-4024-a168-9428cad09c95")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "VCC"(at 168.540 27.800 90)(layer "F.SilkS")(uuid "8837913a-5d0f-4c27-aca3-a5c73778eaac")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "SCL"(at 171.080 27.800 90)(layer "F.SilkS")(uuid "2a62b7f7-6448-4d41-9a8f-068146ff1824")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "SDA"(at 173.620 27.800 90)(layer "F.SilkS")(uuid "ae87bc0c-240a-478d-a5af-5588583f1342")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "GND"(at 136.000 55.800 90)(layer "F.SilkS")(uuid "2d452243-28cf-4a6a-bd64-7d3c133bd843")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "+5V"(at 138.540 55.800 90)(layer "F.SilkS")(uuid "fd9cd6b1-af92-4b71-862d-d12c4c2a24f1")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "GND"(at 141.080 55.800 90)(layer "F.SilkS")(uuid "0accf2fd-1299-4008-b669-2efbd5710b12")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "VIN"(at 143.620 55.800 90)(layer "F.SilkS")(uuid "372adad5-1f67-4120-a031-bf251388dcfc")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "+"(at 160.200 61.800 0)(layer "F.SilkS")(uuid "b545d687-b97a-443f-a57a-530692aa5b4a")(effects (font (size 1.4 1.4)(thickness 0.15))))
+ (gr_text "100uF"(at 163.250 68.600 0)(layer "F.SilkS")(uuid "6b01e5de-c2ba-48e3-b436-49a686898a5a")(effects (font (size 0.9 0.9)(thickness 0.15))))
+ (gr_text "MIDI IN"(at 44.000 46.500 0)(layer "F.SilkS")(uuid "15524128-3987-477c-8f45-3bfe3026cf1d")(effects (font (size 1.3 1.3)(thickness 0.15))))
+ (gr_text "MIDI OUT"(at 72.000 46.500 0)(layer "F.SilkS")(uuid "3e0c8af7-c6b5-4e3a-ab4f-19e6e60f4fff")(effects (font (size 1.3 1.3)(thickness 0.15))))
+ (gr_line (start 25.000 20.000) (end 187.000 20.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "09ccd54b-249a-4e95-9209-4f00f4b1d774"))
+  (gr_arc (start 187.000 20.000)(mid 190.536 21.464)(end 192.000 25.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "2bcddda6-b18b-4193-8620-8aafebf25dc2"))
+  (gr_line (start 192.000 25.000) (end 192.000 243.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "29cb9748-3a69-42af-bf17-90f8a2e8ff4f"))
+  (gr_arc (start 192.000 243.000)(mid 190.536 246.536)(end 187.000 248.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "831f6d3c-8559-40cf-a452-db012a5f4f65"))
+  (gr_line (start 187.000 248.000) (end 25.000 248.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "9e4e8498-7040-4962-9b17-4f185d2a596f"))
+  (gr_arc (start 25.000 248.000)(mid 21.464 246.536)(end 20.000 243.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "d7133488-b833-412e-8ade-a43e93852432"))
+  (gr_line (start 20.000 243.000) (end 20.000 25.000) (stroke (width 0.15)(type solid)) (layer "Edge.Cuts")(uuid "3d9e502d-7616-441e-955b-040345e7da39"))
+  (gr_arc (start 20.000 25.000)(mid 21.464 21.464)(end 25.000 20.000)(stroke (width 0.15)(type solid))(layer "Edge.Cuts")(uuid "f685408f-1bc8-4716-95a7-e863cbb25d6b"))
+ (zone (net 3)(net_name "GND")(layer "B.Cu")(uuid "3b35c9e5-1dff-4cbf-a011-93a874e3ae10")(hatch edge 0.5)(connect_pads (clearance 0.25))(min_thickness 0.25)(fill yes (thermal_gap 0.5)(thermal_bridge_width 0.5))(polygon (pts (xy 20.0 20.0)(xy 192.0 20.0)(xy 192.0 248.0)(xy 20.0 248.0))))
 )
