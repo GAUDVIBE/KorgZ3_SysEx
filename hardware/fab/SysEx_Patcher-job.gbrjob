@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "10.0.3"
     },
-    "CreationDate": "2026-06-06T00:44:33+02:00"
+    "CreationDate": "2026-06-06T11:03:08+02:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -34,54 +34,93 @@
       "Layers": "Inner",
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
-      "TrackToTrack": 0.2,
-      "MinLineWidth": 0.2
+      "TrackToTrack": 0.2
     }
   ],
   "FilesAttributes": [
     {
-      "Path": "SysEx_Patcher-F_Cu.gbr",
+      "Path": "SysEx_Patcher-F_Cu.gtl",
       "FileFunction": "Copper,L1,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-In1_Cu.gbr",
+      "Path": "SysEx_Patcher-In1_Cu.g1",
       "FileFunction": "Copper,L2,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-In2_Cu.gbr",
+      "Path": "SysEx_Patcher-In2_Cu.g2",
       "FileFunction": "Copper,L3,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-B_Cu.gbr",
+      "Path": "SysEx_Patcher-B_Cu.gbl",
       "FileFunction": "Copper,L4,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-F_Silkscreen.gbr",
+      "Path": "SysEx_Patcher-F_Adhesive.gta",
+      "FileFunction": "Glue,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-B_Adhesive.gba",
+      "FileFunction": "Glue,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-F_Paste.gtp",
+      "FileFunction": "SolderPaste,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-B_Paste.gbp",
+      "FileFunction": "SolderPaste,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-F_Silkscreen.gto",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-B_Silkscreen.gbr",
+      "Path": "SysEx_Patcher-B_Silkscreen.gbo",
       "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-F_Mask.gbr",
+      "Path": "SysEx_Patcher-F_Mask.gts",
       "FileFunction": "SolderMask,Top",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "SysEx_Patcher-B_Mask.gbr",
+      "Path": "SysEx_Patcher-B_Mask.gbs",
       "FileFunction": "SolderMask,Bot",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "SysEx_Patcher-Edge_Cuts.gbr",
+      "Path": "SysEx_Patcher-User_Drawings.gbr",
+      "FileFunction": "Other,User",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-User_Comments.gbr",
+      "FileFunction": "Other,User",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-Edge_Cuts.gm1",
       "FileFunction": "Profile",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-F_Fab.gbr",
+      "FileFunction": "AssemblyDrawing,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "SysEx_Patcher-B_Fab.gbr",
+      "FileFunction": "AssemblyDrawing,Bot",
       "FilePolarity": "Positive"
     }
   ],

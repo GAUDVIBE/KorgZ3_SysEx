@@ -13,7 +13,7 @@ Le projet KiCad inclut désormais une **extension** (au-delà de la reconstructi
 - **CD74HC4067 (U2)** — multiplexeur analogique 16:1. Sortie commune **COM → A15**.
   - **I0 = pot #16** (déplacé du direct A15 vers le mux), **I1 = jack déporté**, **I2–I15 = libres** (sortis sur header **J9**).
   - Sélection **S0/S1/S2/S3 → D2 / D3 / D4 / D13** ; **~E (enable, actif bas) → GND** ; VCC → +5V, GND → GND.
-- **Jack 6,35 mm (J10)** = **potentiomètre déporté** (T=curseur→filtre→I1, R=+5V, S=GND). *Empreinte = placeholder 3 broches à remplacer par le vrai jack (réf. RS).*
+- **Jack 6,35 mm (J10)** = **potentiomètre déporté** (T=curseur→filtre→I1, R=+5V, S=GND, G=GND châssis). Empreinte réelle = **Neutrik NRJ6HF-1** (jack 6,35 mm stéréo **horizontal**, nez fileté orienté vers le **bord haut** : on branche le câble par le haut de la carte).
 - **Filtre RC anti-bruit sur chaque entrée analogique** (16 pots + jack) : `wiper →[1kΩ série]→ nœud ADC`, et `100nF du nœud vers GND` (passe-bas). Réfs R10–R27 (1k) + C2–C18 (100nF).
 
 ### ⚠️ Firmware à adapter pour le 4067
@@ -37,7 +37,14 @@ exactes de l'Arduino Mega 2560** (2 rangées à 48,26 mm, brochage déduit du cu
 analogique A0→A15 vérifié), donc **le Mega s'enfiche dessous**. Layout : entrées (MIDI IN/OUT, jack,
 DC) en haut, pots en grille 4×4 (filtres RC à côté de chaque pot), 4 boutons en colonne verticale,
 LEDs à droite, bloc header Mega en bas. **100 % THT**, 4 couches + plan GND, **routé à 100 %, DRC
-propre**, coins arrondis (~172×205 mm). 4ᵉ sélection du mux = **D13** (D22 absent de ces 2 rangées).
+propre**, coins arrondis (~172×228 mm). 4ᵉ sélection du mux = **D13** (D22 absent de ces 2 rangées).
+
+**Connecteurs d'entrée (orientation finale, tous branchables par le bord HAUT) :**
+- **MIDI DIN-5** (J1/J2) : empreinte custom `MIDI_DIN5_180deg` (géométrie reprise du PCB d'origine) — **trous de fixation en haut, arc des broches en dessous, broches data (4/5) les plus basses**, conforme à l'orientation du PCB d'origine.
+- **Jack 6,35 mm** (J10) : Neutrik **NRJ6HF-1** horizontal, nez vers le bord haut (câble branché par le haut).
+- **Jack DC barrel** (J3) : `BarrelJack_Horizontal` tourné de 270° → **ouverture vers le bord haut** (comme les autres entrées).
+- **OLED** (J5) : header 1×4 simple, **sans sérigraphie de nom de broches**.
+- Le mux **4067** et le filtre du jack sont placés dans l'**espace libre entre les deux rangées de headers Mega** (sinon la rangée analogique trop dense provoquait des courts A15/D10 à l'autoroutage).
 
 ---
 
@@ -227,8 +234,7 @@ SW1 (SPDT) : position « prog » (upload USB) ↔ « MIDI » (fonctionnement)
 - Rien n'est routé — état « prêt à placer/router », DRC = ratsnest + chevauchements de staging (pas de court-circuit).
 - Le **DRC** ne remonte que : connexions manquantes (= ratsnest, normal avant routage), quelques
   chevauchements de placement à réorganiser, et des avertissements « lib non configurée » propres à la CLI.
-- ⚠️ Empreinte **MIDI DIN** = placeholder `PinHeader_1x05` (pas de DIN-5 MIDI dans la lib KiCad standard) :
-  à remplacer par une vraie empreinte DIN-5 180° (pads numérotés 1-5, le câblage reste valide).
+- ~~Empreinte MIDI DIN = placeholder~~ → **résolu** : empreinte custom `MIDI_DIN5_180deg` (géométrie d'origine, orientation conforme au PCB d'origine). Voir §0bis.
 - Les empreintes des connecteurs MEGA (J6/J7/J8) débordent à droite du contour : à repositionner
   comme headers d'empilage du shield.
 
