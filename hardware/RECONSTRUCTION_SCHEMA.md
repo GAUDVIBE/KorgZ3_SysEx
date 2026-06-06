@@ -80,6 +80,7 @@ propre**, coins arrondis (~172×228 mm). 4ᵉ sélection du mux = **D13** (D22 a
 | 4 | Résistance **1 kΩ** | R_Axial THT | limitation des 4 LEDs |
 | 1 | Résistance **10 kΩ** | R_Axial THT | pull-up sortie 6N138 |
 | 1 | Condensateur **100 nF** (non pol.) | C_Disc THT | découplage |
+| 1 | Condensateur **100 µF** électrolytique **polarisé** (C19) | CP_Radial D6,3 mm | réservoir/lissage sur le rail **+5 V** (pad 1 = **+** → +5V, pad 2 = − → GND ; polarité sérigraphiée) |
 | 1 | Diode **1N4148** | D_DO-35 | protection entrée optocoupleur |
 | 1 | Diode **1N4004** | D_DO-41 | protection inversion alim |
 | 4 | **LED 3 mm** | LED_D3.0mm | retour visuel (pages / séquenceur) |
