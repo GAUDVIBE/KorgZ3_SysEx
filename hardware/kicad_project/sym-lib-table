@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "SysEx_Patcher")(type "KiCad")(uri "${KIPRJMOD}/SysEx_Patcher.kicad_sym")(options "")(descr "Project symbols (custom Arduino Mega 2560)"))
+)
