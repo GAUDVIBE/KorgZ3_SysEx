@@ -36,8 +36,13 @@ La carte est maintenant un **shield empilable** : les connecteurs Mega sont plac
 exactes de l'Arduino Mega 2560** (2 rangées à 48,26 mm, brochage déduit du cuivre d'origine, ordre
 analogique A0→A15 vérifié), donc **le Mega s'enfiche dessous**. Layout : entrées (MIDI IN/OUT, jack,
 DC) en haut, pots en grille 4×4 (filtres RC à côté de chaque pot), 4 boutons en colonne verticale,
-LEDs à droite, bloc header Mega en bas. **100 % THT**, 4 couches + plan GND, **routé à 100 %, DRC
-propre**, coins arrondis (~172×228 mm). 4ᵉ sélection du mux = **D13** (D22 absent de ces 2 rangées).
+LEDs à droite. **Le Mega est désormais SOUS les pots** (comme la carte d'origine) : les deux rangées
+d'embases (pas 24 mm entre rangées de pots) s'intercalent dans les interstices entre rangées de pots,
+y72 (analogique) et y120 (numérique). **100 % THT**, 4 couches + plan GND, **routé à 100 %, DRC
+propre**, coins arrondis, **~172×172 mm** (carte resserrée, le Mega passe dessous). Empreintes des
+embases/pots **sans courtyard** (carte empilée : les composants sont au-dessus du Mega, c'est normal).
+4ᵉ sélection du mux = **D13** (D22 absent de ces 2 rangées). ⚠️ Dégager les pièces hautes du Mega
+(USB, jack alim, condensateurs) — ne pas poser de composant pile au-dessus de ce coin.
 
 **Connecteurs d'entrée (orientation finale, tous branchables par le bord HAUT) :**
 - **MIDI DIN-5** (J1/J2) : empreinte custom `MIDI_DIN5_180deg` (géométrie reprise du PCB d'origine) — **trous de fixation en haut, arc des broches en dessous, broches data (4/5) les plus basses**, conforme à l'orientation du PCB d'origine.
