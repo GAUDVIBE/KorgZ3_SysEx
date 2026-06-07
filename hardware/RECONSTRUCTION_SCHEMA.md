@@ -31,6 +31,46 @@ Côté `setup()` : `for(b:muxSel) pinMode(b,OUTPUT);`. Remplacer la lecture de `
 
 
 
+## 0ter. MODIFICATION v1.0 — VRAI shield Mega 2560 enfichable + 7 boutons/7 LEDs
+
+### Embases Mega — positions physiques réelles
+Les connecteurs shield ont été entièrement repositionnés aux **coordonnées monde exactes** du template
+officiel KiCad `Arduino_Mega` (outil `check_headers_world` : err_max = 0.00 mm, 86 pads vérifiés).
+Références finales : **JMP1** (power), **JMA1** (A0–A7), **JMA2** (A8–A15), **JMD1/JMD2/JMD3**
+(numérique) + **JMX1** (bloc 2×18, D22–D53). L'ordre des broches analogiques correspond à l'ordre
+réel du Mega (vérifié par `check_pinorder`). La carte s'enfiche maintenant réellement sur un Mega.
+
+### 3 nouveaux boutons + 3 nouvelles LEDs (D22–D27)
+- **SW6/SW7/SW8** → D22/D24/D26 (mode `INPUT_PULLUP`, via JMX1 du bloc 2×18)
+- **D7/D8/D9** (LEDs) → D23/D25/D27 via R28/R29/R30 (1 kΩ chacune)
+- **Total : 7 boutons + 7 LEDs** ; chaque LED est physiquement à côté de son bouton.
+  Layout : **5 paires à droite des pots, 2 paires à gauche**.
+
+### Firmware
+```c
+const byte butLayout2[3] = {22, 24, 26};   // SW6, SW7, SW8
+const byte LEDLayout2[3] = {23, 25, 27};   // D7, D8, D9 (via R28-R30)
+// HandleNewButtons() à compléter — mapping MIDI laissé en TODO
+```
+`setup()` : `pinMode` INPUT_PULLUP sur butLayout2, OUTPUT sur LEDLayout2.
+
+### État du routage (après freerouting best-effort)
+- **129/130 nets routés**, 0 court-circuit, zones de cuivre remplies.
+- **À finir en GUI** : net **A7** (JMA1 pad 8 ↔ R23, 1 piste manquante) + 1 clearance résiduelle
+  de 0,6 µm (0,1994 mm vs. 0,200 mm, négligeable).
+- **Gerbers à regénérer** après cette finition dans l'éditeur KiCad.
+
+### Outillage de reconstruction
+Scripts de vérification dans `kicad_project/shield_redesign/` :
+`check_template`, `check_placement`, `check_pinorder`, `check_headers_world`,
+`check_controls_pcb`, `check_controls_nets`, `check_sch_nets`, `check_fw`.
+Configuration de placement : `kicad_project/shield_redesign/placement.json`.
+
+> ⚠️ **Test-fit conseillé sur un Mega réel avant fabrication** — positions dérivées du template
+> officiel KiCad (non testées sur silicium à ce stade).
+
+---
+
 ## 0bis. PCB v0.5 — VRAI SHIELD enfichable Arduino Mega
 La carte est maintenant un **shield empilable** : les connecteurs Mega sont placés aux **positions
 exactes de l'Arduino Mega 2560** (2 rangées à 48,26 mm, brochage déduit du cuivre d'origine, ordre
