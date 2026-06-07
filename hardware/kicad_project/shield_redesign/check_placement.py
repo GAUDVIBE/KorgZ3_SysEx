@@ -1,5 +1,8 @@
 import json, pathlib
 
+# Guard: must be run from hardware/kicad_project/
+assert pathlib.Path("shield_redesign").is_dir(), "Run from hardware/kicad_project/"
+
 # Board outline (Edge.Cuts from SysEx_Patcher.kicad_pcb):
 #   gr_line segments and gr_arc corners forming a rounded rectangle:
 #     straight edges: x in [20,192], y in [20,192]
