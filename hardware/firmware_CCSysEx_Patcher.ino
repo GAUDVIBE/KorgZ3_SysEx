@@ -100,7 +100,17 @@ const byte butLayout[BUT_NUM] = {7, 8, 6, 5}; //shield
 const byte LEDLayout[LED_NUM] = {12, 11, 10, 9}; //shield
 //const byte LEDLayout[LED_NUM] = {43, 41, 39, 37}; //prototype version layout
 
+// === Boutons/LEDs supplémentaires — header 2×18 (D22/D24/D26 + D23/D25/D27) ===
+// Plomberie en place (lecture + pilotage). La FONCTION de chaque bouton/LED
+// (action MIDI déclenchée, signification de la LED) reste à définir par l'utilisateur.
+// Exemple: if (newBut2State[0] == LOW) { /* TODO: action bouton 0 */ digitalWrite(LEDLayout2[0], HIGH); }
+const byte butLayout2[3] = {22, 24, 26};   // 3 boutons supplémentaires (INPUT_PULLUP)
+const byte LEDLayout2[3] = {23, 25, 27};   // 3 LEDs supplémentaires (OUTPUT)
+
 boolean bState[BUT_NUM];
+boolean newBut2State[3];       // états courants des 3 nouveaux boutons
+bool    led2State[3] = {false, false, false}; // états pilotage des 3 nouvelles LEDs
+unsigned long bDeb2[3];        // anti-rebond des 3 nouveaux boutons
 
 unsigned long bDeb[BUT_NUM];
 
@@ -182,6 +192,15 @@ digitalWrite(LEDLayout[3], LOW);
 for (int b = 0; b < BUT_NUM; b++){
   bState[b] = digitalRead(butLayout[b]);
 }
+// === Init boutons/LEDs supplémentaires (D22/D24/D26 + D23/D25/D27) ===
+for (byte i = 0; i < 3; i++) pinMode(butLayout2[i], INPUT_PULLUP);
+for (byte i = 0; i < 3; i++) pinMode(LEDLayout2[i], OUTPUT);
+// initialiser les nouvelles LEDs éteintes et lire l'état initial des boutons
+for (byte i = 0; i < 3; i++) {
+  digitalWrite(LEDLayout2[i], LOW);
+  newBut2State[i] = digitalRead(butLayout2[i]);
+  bDeb2[i] = 0;
+}
 // initialize sequence
 for (int i = 0; i < POTS_NUM; i++){
   prevSequence[i] = 35 +(analogRead(potLayout[i])>>5);//from C2 to F#4
@@ -229,6 +248,10 @@ else {                          //sequencer mode
 if(bState[0] == LOW){           //always check
    SetSynth();                  //set synthesizer to control
 }
+// === Lecture + pilotage boutons/LEDs supplémentaires (D22/D24/D26 + D23/D25/D27) ===
+// Plomberie: lecture anti-rebond des 3 nouveaux boutons + application de led2State[].
+// La FONCTION de chaque bouton/LED (action MIDI, signification) reste à définir.
+HandleNewButtons();
 }
 
 /*void SendSysExJ106(int par, int value) {
@@ -1001,4 +1024,28 @@ Serial.write(0xFA);    // MIDI start
 //  Send a MIDI stop.
 void midiStop() {
 Serial.write(0xFC);    // MIDI stop
+}
+
+/////////////////////////////////////
+// === Boutons/LEDs supplémentaires (D22/D24/D26 + D23/D25/D27) ===
+// Lit les 3 nouveaux boutons avec anti-rebond identique aux boutons existants,
+// met à jour newBut2State[], puis applique led2State[] sur les LEDs.
+// La FONCTION de chaque bouton (action MIDI déclenchée) et la signification de chaque
+// LED sont à définir par l'utilisateur dans les blocs TODO ci-dessous.
+void HandleNewButtons() {
+  for (byte i = 0; i < 3; i++) {
+    if (millis() - bDeb2[i] > dbtime && digitalRead(butLayout2[i]) != newBut2State[i]) {
+      newBut2State[i] = !newBut2State[i];
+      bDeb2[i] = millis();
+      if (newBut2State[i] == LOW) {
+        // === Bouton supplémentaire i enfoncé ===
+        // TODO: définir l'action MIDI et l'état LED pour chaque bouton
+        // Exemple pour bouton 0: MIDI.sendControlChange(XX, YY, MIDI_CHANNEL);
+        //                        led2State[0] = true;
+        // (remplacer XX et YY par les valeurs souhaitées)
+      }
+    }
+    // Appliquer l'état désiré sur la LED correspondante
+    digitalWrite(LEDLayout2[i], led2State[i] ? HIGH : LOW);
+  }
 }
