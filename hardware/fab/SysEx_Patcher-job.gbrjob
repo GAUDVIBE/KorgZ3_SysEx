@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "10.0.3"
     },
-    "CreationDate": "2026-06-06T15:43:53+02:00"
+    "CreationDate": "2026-06-08T01:19:39+02:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -27,7 +27,6 @@
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
-      "MinLineWidth": 0.2,
       "TrackToRegion": 0.25,
       "RegionToRegion": 0.25
     },
@@ -61,26 +60,6 @@
       "FilePolarity": "Positive"
     },
     {
-      "Path": "SysEx_Patcher-F_Adhesive.gta",
-      "FileFunction": "Glue,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-B_Adhesive.gba",
-      "FileFunction": "Glue,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-F_Paste.gtp",
-      "FileFunction": "SolderPaste,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-B_Paste.gbp",
-      "FileFunction": "SolderPaste,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
       "Path": "SysEx_Patcher-F_Silkscreen.gto",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
@@ -101,28 +80,8 @@
       "FilePolarity": "Negative"
     },
     {
-      "Path": "SysEx_Patcher-User_Drawings.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-User_Comments.gbr",
-      "FileFunction": "Other,User",
-      "FilePolarity": "Positive"
-    },
-    {
       "Path": "SysEx_Patcher-Edge_Cuts.gm1",
       "FileFunction": "Profile",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-F_Fab.gbr",
-      "FileFunction": "AssemblyDrawing,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "SysEx_Patcher-B_Fab.gbr",
-      "FileFunction": "AssemblyDrawing,Bot",
       "FilePolarity": "Positive"
     }
   ],
