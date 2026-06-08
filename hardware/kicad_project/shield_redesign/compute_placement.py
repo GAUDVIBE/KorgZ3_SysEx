@@ -15,9 +15,17 @@ tpl_digit_y  = 49.20   # template digital row (J2/J4/J6 @ y=49.2)
 CARD_ANALOG_Y = 86.0   # target Y for analog header row on the shield PCB
 CARD_DIGIT_Y  = 134.0  # target Y for digital header row on the shield PCB
 
-# Vertical mirror: Yc = -Yt + TY
-# Calibration:  -tpl_analog_y + TY = CARD_ANALOG_Y  =>  TY = CARD_ANALOG_Y + tpl_analog_y
-TY = CARD_ANALOG_Y + tpl_analog_y   # 183.46
+# PROPER (non-mirror) transform — pure translation: Yc = +Yt + TY.
+# A vertical mirror (the previous Yc=-Yt+TY) flips chirality, making the board a MIRROR
+# image of a real Mega → it would NOT physically plug onto a Mega (verified via Procrustes:
+# proper-fit residual 58mm vs mirror-fit 0mm). Pure translation preserves chirality so the
+# shield mates. Consequence: the two header rows SWAP relative to the old mirrored board —
+# DIGITAL row lands at y≈86 (top), ANALOG row at y≈134 (bottom). Both stay under the pots;
+# routing adapts. (180° rotation would keep analog on top but reverse pin X-order and push
+# the 2×18 block into the crowded low-x area — rejected.)
+# Calibration: tpl_digit_y + TY = CARD_DIGIT_Y_TOP  =>  TY = CARD_DIGIT_Y_TOP - tpl_digit_y
+CARD_DIGIT_Y_TOP = 86.0              # digital row now at the upper pot band
+TY = CARD_DIGIT_Y_TOP - tpl_digit_y  # 36.8  -> analog (97.46) lands at 134.26
 
 # TX chosen so that:
 #   - J2 leftmost pad (template x = 118.796 - 22.86 = 95.936) lands > 23mm (board x=20 + 3mm margin)
@@ -30,8 +38,8 @@ TX = -65.0
 
 
 def xf(x, y):
-    """Apply the template->card rigid transformation: Xc = x + TX, Yc = -y + TY."""
-    return (x + TX, -y + TY)
+    """Apply the template->card PROPER (chirality-preserving) transform: Xc = x + TX, Yc = y + TY."""
+    return (x + TX, y + TY)
 
 
 def _rot_matrix(r_deg):

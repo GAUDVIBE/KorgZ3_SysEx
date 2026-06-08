@@ -16,7 +16,19 @@ from sexpr import find_blocks, prop, block_at
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PCB = ROOT / "SysEx_Patcher.kicad_pcb"
 
-OLD_REFS = ["JMA1", "JMA2", "JMA3", "JMD1", "JMD2", "JMD3", "JMD4"]
+# Les 7 embases Mega actuellement sur le PCB (anciennes positions miroir).
+OLD_REFS = ["JMP1", "JMA1", "JMA2", "JMD1", "JMD2", "JMD3", "JMX1"]
+
+# Cle template (placement.json) -> reference reelle sur le PCB.
+TKEY_TO_PCBREF = {
+    "J1": "JMP1",   # power 1x8
+    "J3": "JMA1",   # analog A0-A7
+    "J5": "JMA2",   # analog A8-A15
+    "J2": "JMD1",   # digital 1x10
+    "J4": "JMD2",   # digital
+    "J6": "JMD3",   # digital
+    "J7": "JMX1",   # 2x18
+}
 
 # signal (cleaned Mega name, from placement.json) -> existing net NAME spelling.
 # Built from reading the old strip pads (exact spellings the PCB uses).
@@ -95,9 +107,77 @@ def fmt(v):
     return s
 
 
+def silk_line(lx1, ly1, lx2, ly2):
+    return (
+        '\t\t(fp_line\n'
+        f'\t\t\t(start {fmt(lx1)} {fmt(ly1)})\n'
+        f'\t\t\t(end {fmt(lx2)} {fmt(ly2)})\n'
+        '\t\t\t(stroke\n'
+        '\t\t\t\t(width 0.12)\n'
+        '\t\t\t\t(type solid)\n'
+        '\t\t\t)\n'
+        '\t\t\t(layer "F.SilkS")\n'
+        f'\t\t\t(uuid "{u()}")\n'
+        '\t\t)'
+    )
+
+
+def silk_pin1(cx, cy):
+    # fp_circle filled, radius 0.3mm (center=cx,cy; end on circle => cx+0.3)
+    return (
+        '\t\t(fp_circle\n'
+        f'\t\t\t(center {fmt(cx)} {fmt(cy)})\n'
+        f'\t\t\t(end {fmt(cx + 0.3)} {fmt(cy)})\n'
+        '\t\t\t(stroke\n'
+        '\t\t\t\t(width 0.12)\n'
+        '\t\t\t\t(type solid)\n'
+        '\t\t\t)\n'
+        '\t\t\t(fill yes)\n'
+        '\t\t\t(layer "F.SilkS")\n'
+        f'\t\t\t(uuid "{u()}")\n'
+        '\t\t)'
+    )
+
+
+def make_silk(h, X, Y):
+    """Rectangle outline (bbox+0.7mm) + pin-1 filled circle, en coords LOCALES."""
+    pads = h["pads_abs"]
+    xs = [p["x"] for p in pads]
+    ys = [p["y"] for p in pads]
+    minx, maxx = min(xs), max(xs)
+    miny, maxy = min(ys), max(ys)
+    # pads_abs donne le CENTRE des pads. Pad 1.7mm => demi-largeur 0.85mm.
+    # Marge = demi-pad (0.85) + demi-trait silk (0.06) + jeu ~0.15 = ~1.06mm,
+    # pour que le contour passe juste a l'EXTERIEUR des pads (pas dessus).
+    m = 1.06
+    # corners en coords locales (footprint rot 0 => local = world - origine)
+    x0, y0 = minx - m - X, miny - m - Y
+    x1, y1 = maxx + m - X, maxy + m - Y
+    lines = [
+        silk_line(x0, y0, x1, y0),
+        silk_line(x1, y0, x1, y1),
+        silk_line(x1, y1, x0, y1),
+        silk_line(x0, y1, x0, y0),
+    ]
+    # pin-1 marker: 1.0mm en diagonale a l'EXTERIEUR du pad 1.
+    p1 = next(p for p in pads if p["num"] == "1")
+    p1lx, p1ly = p1["x"] - X, p1["y"] - Y
+    # centre de l'array (local) pour determiner la direction "exterieure"
+    cxa = (minx + maxx) / 2 - X
+    cya = (miny + maxy) / 2 - Y
+    # 1.0mm par axe => distance diagonale 1.414mm; bord du cercle (r=0.3) a
+    # 1.114mm du centre du pad, donc hors du pad (rayon 0.85mm).
+    d = 1.0
+    sx = -1 if p1lx <= cxa else 1
+    sy = -1 if p1ly <= cya else 1
+    mx, my = p1lx + sx * d, p1ly + sy * d
+    lines.append(silk_pin1(mx, my))
+    return "\n".join(lines)
+
+
 def make_footprint(h):
-    ref = h["pcb_ref"]        # reference reelle sur le PCB (JMP1/JMA*/JMD*/JMX1)
     tkey = h["ref"]           # cle template (J1..J7) pour la lib/identification
+    ref = TKEY_TO_PCBREF[tkey]  # reference reelle sur le PCB (JMP1/JMA*/JMD*/JMX1)
     X, Y = h["x"], h["y"]
     libid = LIBID[tkey]
     out = []
@@ -131,6 +211,8 @@ def make_footprint(h):
         dy = p["y"] - Y
         pin1 = (p["num"] == "1")
         out.append(make_pad(p["num"], dx, dy, p["signal"], pin1))
+    # Silkscreen: contour rectangulaire + marqueur pin 1.
+    out.append(make_silk(h, X, Y))
     out.append('\t)')
     return "\n".join(out)
 
