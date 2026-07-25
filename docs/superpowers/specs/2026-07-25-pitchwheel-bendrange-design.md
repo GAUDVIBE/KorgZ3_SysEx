@@ -57,7 +57,7 @@ sans fil volant ni contournement.
 
 | Réf | v1.0 | v1.1 |
 |---|---|---|
-| **J10** | Jack 6,35 stéréo Neutrik NRJ6HF-1 | **Mini-XLR 4 points Neutrik NC4MD-L-B-1** |
+| **J10** | Jack 6,35 stéréo Neutrik NRJ6HF-1 | **Mini-XLR 5 points Switchcraft TRAPC** — symbole `Conn_01x04` → `Conn_01x05`, empreinte `Connector_Audio:MiniXLR-5_Switchcraft_TRAPC_Horizontal` |
 | **R31** | — | 470 kΩ, pull-down de présence sur le canal switch |
 | **R32** | — | 1 kΩ, filtre RC série du canal switch |
 | **C20** | — | 100 nF, filtre RC du canal switch vers GND |
@@ -73,9 +73,20 @@ MIDI IN/OUT, OLED, alimentation, les 7 boutons et 7 LEDs.
 | 2 | +5 V | alimentation molette + échelle de résistances |
 | 3 | curseur molette | filtre RC existant du jack v0.3 → **I1** du 4067 — **canal 1** |
 | 4 | tension switch | filtre RC (R32 / C20) + pull-down R31 → **I2** du 4067 — **canal 2** |
+| 5 | *(réserve)* | non connecté |
 
 Le filtre RC du canal 1 existe déjà en v1.0 (il servait au jack « pot déporté ») ; seules ses
 références seront renumérotées si le re-routage l'impose.
+
+**Pourquoi un 5 points pour 4 signaux.** Le mini-XLR **4 points** (TA4), format le plus répandu
+sur guitare, n'a **aucune empreinte dans la bibliothèque KiCad standard** — il faudrait la
+dessiner d'après une fiche technique et la vérifier au pied à coulisse sur un exemplaire réel.
+Sur une carte qu'on ne peut pas tester avant fabrication, c'est un risque inutile. Le
+`MiniXLR-5_Switchcraft_TRAPC_Horizontal` est fourni par KiCad, traversant, au bon format
+physique ; la 5ᵉ broche reste libre pour un usage futur.
+
+L'empreinte comporte 5 pastilles traversantes plus 2 trous de fixation non métallisés, ce qui
+reste cohérent avec la carte **100 % THT**.
 
 ### 3.3 Câblage dans la guitare
 
@@ -122,8 +133,11 @@ déplacent les taps d'environ ±26 pas — largement dans la marge. Aucune fenê
 ### 3.6 Contrainte mécanique côté guitare
 
 L'embase est encastrée dans le **pickguard** de la Stratocaster : la fiche mini-XLR au bout du
-câble doit être **coudée**, sinon elle bute contre le corps de l'instrument. Référence exacte à
-choisir au moment de la BOM.
+câble doit être **coudée**, sinon elle bute contre le corps de l'instrument. Référence exacte de
+la fiche coudée 5 points à valider au moment de la BOM — c'est le point le plus incertain de
+l'approvisionnement, à traiter avant de commander le PCB.
+
+Côté guitare, seuls 4 des 5 conducteurs sont câblés ; la broche 5 n'est reliée nulle part.
 
 ---
 
@@ -363,7 +377,8 @@ chaîne électrique avant de toucher au pickguard.
 
 | Décision | Raison |
 |---|---|
-| Mini-XLR 4 points plutôt que DIN 5 | incompatible physiquement avec le MIDI ; évite d'injecter du +5 V dans un appareil tiers |
+| Mini-XLR plutôt que DIN 5 | incompatible physiquement avec le MIDI ; évite d'injecter du +5 V dans un appareil tiers |
+| Mini-XLR **5** points pour 4 signaux | le 4 points (TA4) n'a pas d'empreinte KiCad ; en dessiner une à la main sur une carte non testable est un risque inutile |
 | Switch lu en analogique plutôt qu'en numérique | 1 conducteur au lieu de 2 ; pas de ligne logique le long d'un câble de guitare |
 | Échelle de résistances dans la guitare | seule façon de tenir en 4 conducteurs |
 | Taps à ¼ / ½ / ¾ Vcc | libère 0 V comme signature « débranché » — détection de présence gratuite |
