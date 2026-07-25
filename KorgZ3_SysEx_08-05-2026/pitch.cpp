@@ -35,6 +35,12 @@ static unsigned long lastSwitchPoll = 0;
 static bool forceSend = false;
 static PitchEvent pendingEvent = PITCH_EVENT_NONE;
 
+// Vrai des qu'une lecture a 0 V apparait alors qu'on etait connecte : on
+// suspecte un debranchement sans l'avoir encore confirme. On gele la sortie
+// pendant ce doute plutot que de continuer a emettre une position qui n'est
+// peut-etre plus reelle.
+static bool suspectUnplugged = false;
+
 static void sendBend(int value14) {
   if (value14 < 0)     value14 = 0;
   if (value14 > 16383) value14 = 16383;
@@ -60,6 +66,8 @@ static void pollSwitch() {
   lastSwitchPoll = millis();
 
   unsigned char w = switchWindow(muxRead(CH_SWITCH));
+
+  if (connected) suspectUnplugged = (w == 0);
 
   // Entre deux fenetres : bascule en cours, on ne conclut rien.
   if (w == PITCH_WINDOW_INVALID) {
@@ -90,6 +98,7 @@ static void pollSwitch() {
     // Debranchement : on recentre le Z3 une fois, puis on se tait.
     connected = false;
     position  = 0;
+    suspectUnplugged = false;
     sendBend(8192);
     lastValue14   = 8192;
     pendingEvent  = PITCH_EVENT_DISCONNECTED;
@@ -99,6 +108,7 @@ static void pollSwitch() {
   bool wasConnected = connected;
   position  = w;
   connected = true;
+  suspectUnplugged = false;
   if (!wasConnected) {
     calibrate();
     pendingEvent = PITCH_EVENT_CONNECTED;
@@ -113,9 +123,13 @@ static void pollSwitch() {
 void pitchBegin() {
   connected   = false;
   position    = 0;
+  centerRaw   = 512;
+  filteredRaw = 512;
   lastValue14 = 8192;
   atCenter    = true;
+  inZoneSince = 0;
   forceSend   = false;
+  suspectUnplugged = false;
   pendingEvent   = PITCH_EVENT_NONE;
   pendingWindow  = PITCH_WINDOW_INVALID;
   pendingSince   = 0;
@@ -125,7 +139,7 @@ void pitchBegin() {
 
 void pitchUpdate() {
   pollSwitch();
-  if (!connected) return;
+  if (!connected || suspectUnplugged) return;
 
   if (millis() - lastSendTime < INTERVAL_MS) return;
   lastSendTime = millis();

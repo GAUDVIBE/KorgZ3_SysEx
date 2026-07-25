@@ -7,6 +7,10 @@
 // Sortie commune COM -> A15 ; selection S0..S3 -> D2, D3, D4, D13 ;
 // ~E force a la masse (toujours actif).
 //
+// ATTENTION : S3 occupe D13, qui est aussi la LED integree du Mega. Elle
+// clignotera au rythme des selections de canal (sans consequence), mais tout
+// code de debug qui ecrirait sur D13 casserait silencieusement le mux.
+//
 // Affectation des canaux :
 //   0 = potentiometre #16 (autrefois cable en direct sur A15)
 //   1 = curseur de la molette de pitch (broche 3 du mini-XLR)
