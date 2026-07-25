@@ -53,8 +53,48 @@ static void test_switch_windows() {
   }
 }
 
+static void test_pitch_value14() {
+  const int CENTER = 512;
+  const int DZ_OUT = 55;
+
+  // Au centre : valeur MIDI centrale exacte, quelle que soit la plage.
+  CHECK_EQ(pitchValue14(512, CENTER, DZ_OUT, 2,  true), 8192);
+  CHECK_EQ(pitchValue14(0,   CENTER, DZ_OUT, 12, true), 8192);
+
+  // +/-1 ton : offset = 8192 * 2 / 12 = 1365 -> butees 6827 et 9557.
+  CHECK_EQ(pitchValue14(0,    CENTER, DZ_OUT, 2, false), 6827);
+  CHECK_EQ(pitchValue14(1023, CENTER, DZ_OUT, 2, false), 9557);
+
+  // +/-1 ton et demi : offset = 8192 * 3 / 12 = 2048 -> 6144 et 10240.
+  CHECK_EQ(pitchValue14(0,    CENTER, DZ_OUT, 3, false), 6144);
+  CHECK_EQ(pitchValue14(1023, CENTER, DZ_OUT, 3, false), 10240);
+
+  // +/-1 octave : le calcul donne 16384, soit une unite au-dessus du maximum
+  // 14 bits. L'ecretage doit ramener a 16383 — c'est la raison d'etre du test.
+  CHECK_EQ(pitchValue14(0,    CENTER, DZ_OUT, 12, false), 0);
+  CHECK_EQ(pitchValue14(1023, CENTER, DZ_OUT, 12, false), 16383);
+
+  // Plage nulle (aucune position valide) : on reste au centre.
+  CHECK_EQ(pitchValue14(1023, CENTER, DZ_OUT, 0, false), 8192);
+
+  // Centre tres decentre : aucune sortie hors de [0..16383].
+  for (int center = 20; center <= 1000; center += 20) {
+    for (int raw = 0; raw <= 1023; raw += 7) {
+      for (int st = 2; st <= 12; st += 5) {
+        int v = pitchValue14(raw, center, DZ_OUT, st, false);
+        if (v < 0 || v > 16383) {
+          printf("ECHEC — pitchValue14(%d,%d,%d,%d) rend %d, hors bornes\n",
+                 raw, center, DZ_OUT, st, v);
+          failures++;
+        }
+      }
+    }
+  }
+}
+
 int main() {
   test_switch_windows();
+  test_pitch_value14();
   if (failures == 0) { printf("OK — tous les tests passent\n"); return 0; }
   printf("%d echec(s)\n", failures);
   return 1;
