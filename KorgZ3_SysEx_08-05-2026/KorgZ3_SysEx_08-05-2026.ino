@@ -26,6 +26,14 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <EEPROM.h>
+#include "mux.h"
+#include "pitch.h"
+
+// Boutons et LEDs supplementaires du shield v1.0, exposes par le bloc 2x18.
+// Aucune fonction pour l'instant : les broches sont declarees pour que le
+// materiel soit testable electriquement et reservees pour un usage futur.
+const byte butLayout2[3] = {22, 24, 26};
+const byte LEDLayout2[3] = {23, 25, 27};
 
 // =================== ÉCRAN OLED ===================
 #define SCREEN_WIDTH 128
@@ -346,7 +354,9 @@ const unsigned long DUMP_TIMEOUT = 3000;
 
 // =================== LECTURE POTS ===================
 void updateFiltered(PotConfig &pot) {
-  int raw = analogRead(pot.pin);
+  // A15 est desormais la sortie commune du 4067 : le pot #16 s'y lit par le
+  // canal 0. Un analogRead(A15) direct lirait un canal indetermine.
+  int raw = (pot.pin == A15) ? muxRead(0) : analogRead(pot.pin);
   if (pot.maxVal >= 31) {
     pot.filteredRaw = (pot.filteredRaw * 7 + raw) / 8;
   } else {
@@ -378,7 +388,10 @@ int getQuantized(PotConfig &pot) {
 
 void initFilter(PotConfig &pot) {
   int sum = 0;
-  for (int i = 0; i < 8; i++) { sum += analogRead(pot.pin); delay(1); }
+  for (int i = 0; i < 8; i++) {
+    sum += (pot.pin == A15) ? muxRead(0) : analogRead(pot.pin);
+    delay(1);
+  }
   pot.filteredRaw = sum / 8;
 }
 
@@ -692,6 +705,18 @@ void setup() {
   Serial.begin(31250);
   delay(500);
 
+  // Multiplexeur et molette : muxBegin() doit preceder tout initFilter(),
+  // car le pot #16 se lit desormais par le canal 0.
+  muxBegin();
+  pitchBegin();
+
+  // Boutons et LEDs en reserve du shield v1.0.
+  for (byte i = 0; i < 3; i++) {
+    pinMode(butLayout2[i], INPUT_PULLUP);
+    pinMode(LEDLayout2[i], OUTPUT);
+    digitalWrite(LEDLayout2[i], LOW);
+  }
+
   // Boutons page +/-
   pinMode(BTN_PAGE_PREV, INPUT_PULLUP);
   pinMode(BTN_PAGE_NEXT, INPUT_PULLUP);
@@ -789,6 +814,33 @@ void setup() {
 
 // =================== LOOP ===================
 void loop() {
+
+  // --- Molette de pitch : scannee a chaque tour, avant tout le reste ---
+  pitchUpdate();
+
+  switch (pitchTakeEvent()) {
+    case PITCH_EVENT_CONNECTED:
+      showMessage("Molette OK", "Centre calibre");
+      delay(1000);
+      updateDisplay();
+      break;
+    case PITCH_EVENT_DISCONNECTED:
+      showMessage("Molette", "Debranchee");
+      delay(1000);
+      updateDisplay();
+      break;
+    case PITCH_EVENT_RANGE: {
+      const char* label = "+/-1 octave";
+      if (pitchBendSemitones() == 2) label = "+/-1 ton";
+      else if (pitchBendSemitones() == 3) label = "+/-1 ton 1/2";
+      showMessage("Bend range", label);
+      delay(1000);
+      updateDisplay();
+      break;
+    }
+    default:
+      break;
+  }
 
   // --- Réception MIDI ---
   receiveMidi();
