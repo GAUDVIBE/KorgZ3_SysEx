@@ -271,6 +271,27 @@ erreur de la classe `A16`, et rapporte l'occupation flash et RAM. Le Mega 2560 n
 RAM et le sketch y garde déjà 8 slots de dump de 108 octets : la marge doit être mesurée avant
 d'ajouter un module, pas après.
 
+**Mesure de référence du 2026-07-25** (sketch actuel, avant modification) :
+
+| Ressource | Utilisé | Total | Marge |
+|---|---|---|---|
+| Flash | 25 660 o (10 %) | 253 952 o | très large |
+| RAM statique | 4 454 o (54 %) | 8 192 o | 3 738 o pour pile et locales |
+
+À retrancher de ces 3 738 o : le tampon d'affichage alloué au tas par `Adafruit_SSD1306` à
+l'appel de `display.begin()`, soit 128 × 32 / 8 = **512 o**. Reste ≈ 3 200 o réellement libres à
+l'exécution. Les deux modules ajoutent quelques dizaines d'octets d'état : la marge est
+confortable, mais le chiffre est à re-mesurer après intégration.
+
+**Prérequis de l'environnement de compilation** (macOS Apple Silicon) : Arduino ne publie pas de
+toolchain AVR native ARM ; `avr-g++` est un binaire x86_64 et exige **Rosetta 2**
+(`softwareupdate --install-rosetta`). Les bibliothèques `Adafruit SSD1306` et `Adafruit GFX`
+sont absentes du sketchbook local et ont dû être installées via `arduino-cli lib install` — le
+sketch n'a donc jamais été compilé sur ce Mac.
+
+**Vérification du 2026-07-25 :** `KorgZ3_PitchWheel(1).ino` compilé pour `arduino:avr:mega`
+échoue sur `error: 'A16' was not declared in this scope`, confirmant §4.
+
 ### 6.2 Tests unitaires de la logique, sur le Mac
 
 Les calculs ne dépendent pas de l'Arduino. Deux fonctions pures sont isolées et compilées avec
