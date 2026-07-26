@@ -31,10 +31,10 @@ Toutes les commandes s'exécutent depuis la racine du dépôt `/Users/gaudry/Doc
 
 | Fichier | Responsabilité |
 |---|---|
-| `KorgZ3_SysEx_08-05-2026/pitch_math.h` | **Créé.** Maths pures : fenêtres du switch, conversion position → valeur 14 bits. Aucune dépendance Arduino, donc compilable et testable avec `g++`. |
-| `KorgZ3_SysEx_08-05-2026/mux.h` / `mux.cpp` | **Créés.** Accès au CD74HC4067 : sélection de canal et lecture. |
-| `KorgZ3_SysEx_08-05-2026/pitch.h` / `pitch.cpp` | **Créés.** Machine à états : calibration, hystérésis, confirmation du switch, émission MIDI, événements pour l'affichage. |
-| `KorgZ3_SysEx_08-05-2026/KorgZ3_SysEx_08-05-2026.ino` | **Modifié.** Quatre points de contact (§5.4 de la spec) + déclaration en réserve des 3 boutons/3 LEDs. |
+| `KorgZ3_SysEx_26-07-2026/pitch_math.h` | **Créé.** Maths pures : fenêtres du switch, conversion position → valeur 14 bits. Aucune dépendance Arduino, donc compilable et testable avec `g++`. |
+| `KorgZ3_SysEx_26-07-2026/mux.h` / `mux.cpp` | **Créés.** Accès au CD74HC4067 : sélection de canal et lecture. |
+| `KorgZ3_SysEx_26-07-2026/pitch.h` / `pitch.cpp` | **Créés.** Machine à états : calibration, hystérésis, confirmation du switch, émission MIDI, événements pour l'affichage. |
+| `KorgZ3_SysEx_26-07-2026/KorgZ3_SysEx_26-07-2026.ino` | **Modifié.** Quatre points de contact (§5.4 de la spec) + déclaration en réserve des 3 boutons/3 LEDs. |
 | `tests/test_pitch_math.cpp` | **Créé.** Tests unitaires natifs de `pitch_math.h`. Placé **hors** du dossier de sketch : tout `.cpp` qui s'y trouverait serait compilé par l'IDE Arduino. |
 | `tests/run.sh` | **Créé.** Compile et exécute les tests. |
 | `hardware/kicad_project/SysEx_Patcher.kicad_sch` | **Modifié.** J10 en `Conn_01x05`, ajout R31/R32/C20, câblage du canal 2. |
@@ -55,7 +55,7 @@ Cette phase ne touche à rien d'existant et est entièrement vérifiable sur le 
 **Files:**
 - Create: `tests/test_pitch_math.cpp`
 - Create: `tests/run.sh`
-- Create: `KorgZ3_SysEx_08-05-2026/pitch_math.h`
+- Create: `KorgZ3_SysEx_26-07-2026/pitch_math.h`
 
 - [ ] **Step 1 : Écrire le test qui échoue**
 
@@ -65,7 +65,7 @@ Créer `tests/test_pitch_math.cpp` :
 // Tests natifs de pitch_math.h — aucune dépendance Arduino.
 #include <cstdio>
 #include <cstdlib>
-#include "../KorgZ3_SysEx_08-05-2026/pitch_math.h"
+#include "../KorgZ3_SysEx_26-07-2026/pitch_math.h"
 
 static int failures = 0;
 
@@ -142,11 +142,11 @@ Run :
 ```bash
 chmod +x tests/run.sh && ./tests/run.sh
 ```
-Expected : ÉCHEC de compilation, `fatal error: '../KorgZ3_SysEx_08-05-2026/pitch_math.h' file not found`.
+Expected : ÉCHEC de compilation, `fatal error: '../KorgZ3_SysEx_26-07-2026/pitch_math.h' file not found`.
 
 - [ ] **Step 3 : Écrire l'implémentation minimale**
 
-Créer `KorgZ3_SysEx_08-05-2026/pitch_math.h` :
+Créer `KorgZ3_SysEx_26-07-2026/pitch_math.h` :
 
 ```cpp
 #ifndef PITCH_MATH_H
@@ -187,7 +187,7 @@ Expected : `OK — tous les tests passent`, code de sortie 0.
 - [ ] **Step 5 : Commit**
 
 ```bash
-git add tests/test_pitch_math.cpp tests/run.sh KorgZ3_SysEx_08-05-2026/pitch_math.h
+git add tests/test_pitch_math.cpp tests/run.sh KorgZ3_SysEx_26-07-2026/pitch_math.h
 git commit -m "pitch: fenêtres de décision du switch de bend range + tests natifs"
 ```
 
@@ -197,7 +197,7 @@ git commit -m "pitch: fenêtres de décision du switch de bend range + tests nat
 
 **Files:**
 - Modify: `tests/test_pitch_math.cpp`
-- Modify: `KorgZ3_SysEx_08-05-2026/pitch_math.h`
+- Modify: `KorgZ3_SysEx_26-07-2026/pitch_math.h`
 
 - [ ] **Step 1 : Écrire le test qui échoue**
 
@@ -266,7 +266,7 @@ Expected : ÉCHEC de compilation, `error: use of undeclared identifier 'pitchVal
 
 - [ ] **Step 3 : Écrire l'implémentation**
 
-Dans `KorgZ3_SysEx_08-05-2026/pitch_math.h`, insérer **avant** le `#endif` :
+Dans `KorgZ3_SysEx_26-07-2026/pitch_math.h`, insérer **avant** le `#endif` :
 
 ```cpp
 // Equivalent exact de la fonction map() d'Arduino (division entiere tronquee).
@@ -325,7 +325,7 @@ Expected : `OK — tous les tests passent`, code de sortie 0.
 - [ ] **Step 5 : Commit**
 
 ```bash
-git add tests/test_pitch_math.cpp KorgZ3_SysEx_08-05-2026/pitch_math.h
+git add tests/test_pitch_math.cpp KorgZ3_SysEx_26-07-2026/pitch_math.h
 git commit -m "pitch: conversion position -> valeur MIDI 14 bits avec plage restreinte"
 ```
 
@@ -336,12 +336,12 @@ git commit -m "pitch: conversion position -> valeur MIDI 14 bits avec plage rest
 ## Task 3 : Module `mux`
 
 **Files:**
-- Create: `KorgZ3_SysEx_08-05-2026/mux.h`
-- Create: `KorgZ3_SysEx_08-05-2026/mux.cpp`
+- Create: `KorgZ3_SysEx_26-07-2026/mux.h`
+- Create: `KorgZ3_SysEx_26-07-2026/mux.cpp`
 
 - [ ] **Step 1 : Écrire l'en-tête**
 
-Créer `KorgZ3_SysEx_08-05-2026/mux.h` :
+Créer `KorgZ3_SysEx_26-07-2026/mux.h` :
 
 ```cpp
 #ifndef MUX_H
@@ -367,7 +367,7 @@ int  muxRead(byte channel);
 
 - [ ] **Step 2 : Écrire l'implémentation**
 
-Créer `KorgZ3_SysEx_08-05-2026/mux.cpp` :
+Créer `KorgZ3_SysEx_26-07-2026/mux.cpp` :
 
 ```cpp
 #include "mux.h"
@@ -399,14 +399,14 @@ int muxRead(byte channel) {
 
 Run :
 ```bash
-arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_08-05-2026 2>&1 | tail -3
+arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026 2>&1 | tail -3
 ```
 Expected : compilation réussie. Les chiffres bougent à peine — `mux.cpp` est compilé mais aucune fonction n'est encore appelée, l'éditeur de liens élimine le code mort.
 
 - [ ] **Step 4 : Commit**
 
 ```bash
-git add KorgZ3_SysEx_08-05-2026/mux.h KorgZ3_SysEx_08-05-2026/mux.cpp
+git add KorgZ3_SysEx_26-07-2026/mux.h KorgZ3_SysEx_26-07-2026/mux.cpp
 git commit -m "mux: module d'accès au CD74HC4067 (canaux 0=pot16, 1=molette, 2=switch)"
 ```
 
@@ -415,12 +415,12 @@ git commit -m "mux: module d'accès au CD74HC4067 (canaux 0=pot16, 1=molette, 2=
 ## Task 4 : Module `pitch`
 
 **Files:**
-- Create: `KorgZ3_SysEx_08-05-2026/pitch.h`
-- Create: `KorgZ3_SysEx_08-05-2026/pitch.cpp`
+- Create: `KorgZ3_SysEx_26-07-2026/pitch.h`
+- Create: `KorgZ3_SysEx_26-07-2026/pitch.cpp`
 
 - [ ] **Step 1 : Écrire l'en-tête**
 
-Créer `KorgZ3_SysEx_08-05-2026/pitch.h` :
+Créer `KorgZ3_SysEx_26-07-2026/pitch.h` :
 
 ```cpp
 #ifndef PITCH_H
@@ -451,7 +451,7 @@ PitchEvent pitchTakeEvent();
 
 - [ ] **Step 2 : Écrire l'implémentation**
 
-Créer `KorgZ3_SysEx_08-05-2026/pitch.cpp` :
+Créer `KorgZ3_SysEx_26-07-2026/pitch.cpp` :
 
 ```cpp
 #include "pitch.h"
@@ -640,7 +640,7 @@ PitchEvent pitchTakeEvent() {
 
 Run :
 ```bash
-arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_08-05-2026 2>&1 | tail -3
+arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026 2>&1 | tail -3
 ```
 Expected : compilation réussie, chiffres quasi inchangés (code non encore appelé).
 
@@ -655,7 +655,7 @@ Expected : `OK — tous les tests passent`.
 - [ ] **Step 5 : Commit**
 
 ```bash
-git add KorgZ3_SysEx_08-05-2026/pitch.h KorgZ3_SysEx_08-05-2026/pitch.cpp
+git add KorgZ3_SysEx_26-07-2026/pitch.h KorgZ3_SysEx_26-07-2026/pitch.cpp
 git commit -m "pitch: machine à états — calibration à chaud, hystérésis, confirmation du switch"
 ```
 
@@ -664,11 +664,11 @@ git commit -m "pitch: machine à états — calibration à chaud, hystérésis, 
 ## Task 5 : Intégration dans le sketch principal
 
 **Files:**
-- Modify: `KorgZ3_SysEx_08-05-2026/KorgZ3_SysEx_08-05-2026.ino`
+- Modify: `KorgZ3_SysEx_26-07-2026/KorgZ3_SysEx_26-07-2026.ino`
 
 - [ ] **Step 1 : Ajouter les inclusions et les broches en réserve**
 
-Dans `KorgZ3_SysEx_08-05-2026.ino`, juste après la ligne `#include <EEPROM.h>` (l. 27, dernière des inclusions), ajouter :
+Dans `KorgZ3_SysEx_26-07-2026.ino`, juste après la ligne `#include <EEPROM.h>` (l. 27, dernière des inclusions), ajouter :
 
 ```cpp
 #include "mux.h"
@@ -766,7 +766,7 @@ Dans `loop()`, juste après l'accolade ouvrante et **avant** `receiveMidi();`, a
 
 Run :
 ```bash
-arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_08-05-2026 2>&1 | tail -3
+arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026 2>&1 | tail -3
 ```
 Expected : compilation réussie. Comparer aux chiffres de référence (flash 25 660 o, RAM statique 4 454 o). La RAM statique ne doit pas dépasser **4 700 o** ; au-delà, s'arrêter et signaler, car il faut aussi loger les 512 o du tampon SSD1306 alloués au tas.
 
@@ -781,7 +781,7 @@ Expected : `OK — tous les tests passent`.
 - [ ] **Step 7 : Commit**
 
 ```bash
-git add KorgZ3_SysEx_08-05-2026/KorgZ3_SysEx_08-05-2026.ino
+git add KorgZ3_SysEx_26-07-2026/KorgZ3_SysEx_26-07-2026.ino
 git commit -m "sketch: intègre molette + bend range, pot #16 routé par le mux"
 ```
 
@@ -809,9 +809,9 @@ import pathlib, re
 # hardware -> racine du depot.
 _here = pathlib.Path(__file__).resolve()
 root = _here.parents[3]
-fw_path = root / "KorgZ3_SysEx_08-05-2026" / "KorgZ3_SysEx_08-05-2026.ino"
-mux_path = root / "KorgZ3_SysEx_08-05-2026" / "mux.cpp"
-pitch_path = root / "KorgZ3_SysEx_08-05-2026" / "pitch.cpp"
+fw_path = root / "KorgZ3_SysEx_26-07-2026" / "KorgZ3_SysEx_26-07-2026.ino"
+mux_path = root / "KorgZ3_SysEx_26-07-2026" / "mux.cpp"
+pitch_path = root / "KorgZ3_SysEx_26-07-2026" / "pitch.cpp"
 
 fw = fw_path.read_text()
 mux = mux_path.read_text()
@@ -1223,7 +1223,7 @@ Expected : `aucune référence périmée`
 Run :
 ```bash
 ./tests/run.sh
-arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_08-05-2026 2>&1 | tail -2
+arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026 2>&1 | tail -2
 python3 hardware/kicad_project/shield_redesign/check_fw.py
 cd hardware/kicad_project && python3 shield_redesign/check_sch_nets.py && \
   python3 shield_redesign/check_drc.py; cd -

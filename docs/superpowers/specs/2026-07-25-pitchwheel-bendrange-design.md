@@ -3,7 +3,7 @@
 **Date :** 2026-07-25
 **Branche :** `pitchwheel-integration` (ex-`shield-mega-redesign`)
 **Version matérielle visée :** shield Mega **v1.1**
-**Firmware visé :** `KorgZ3_SysEx_08-05-2026/`
+**Firmware visé :** `KorgZ3_SysEx_26-07-2026/`
 
 ---
 
@@ -172,8 +172,8 @@ Le sketch principal fait déjà 981 lignes (presets, EEPROM, OLED, SysEx, 4 bout
 part donc dans deux modules séparés, en onglets de l'IDE Arduino :
 
 ```
-KorgZ3_SysEx_08-05-2026/
-├── KorgZ3_SysEx_08-05-2026.ino   ← seul .ino ; le dossier reste UN programme
+KorgZ3_SysEx_26-07-2026/
+├── KorgZ3_SysEx_26-07-2026.ino   ← seul .ino ; le dossier reste UN programme
 ├── mux.h / mux.cpp
 └── pitch.h / pitch.cpp
 ```
@@ -334,7 +334,7 @@ canal 1, switch sur le canal 2. C'est la classe d'erreur la plus coûteuse à d�
 la carte soudée.
 
 Le script pointe aujourd'hui sur `hardware/firmware_CCSysEx_Patcher.ino` ; il est repointé sur
-`KorgZ3_SysEx_08-05-2026.ino` (voir §7).
+`KorgZ3_SysEx_26-07-2026.ino` (voir §7).
 
 ### 6.4 Contrôles KiCad du PCB v1.1
 
@@ -365,7 +365,7 @@ chaîne électrique avant de toucher au pickguard.
 - **`hardware/ATTRIBUTION.md` mis à jour** : la mention du firmware d'origine devient un lien
   vers le dépôt de baritonomarchetto. L'attribution du **matériel** (CC BY-NC-SA) reste
   intacte — c'est elle qui nous engage juridiquement, la carte étant une œuvre dérivée.
-- **`shield_redesign/check_fw.py` repointé** sur `KorgZ3_SysEx_08-05-2026.ino`, sinon le script
+- **`shield_redesign/check_fw.py` repointé** sur `KorgZ3_SysEx_26-07-2026.ino`, sinon le script
   casse à la suppression ci-dessus.
 - Les brouillons `KorgZ3_PitchWheel.ino` et `KorgZ3_PitchWheel(1).ino` **n'entrent pas** dans le
   dépôt (voir §4).

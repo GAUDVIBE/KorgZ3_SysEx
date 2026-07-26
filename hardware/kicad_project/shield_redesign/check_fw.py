@@ -5,9 +5,9 @@ import pathlib, re
 # hardware -> racine du depot.
 _here = pathlib.Path(__file__).resolve()
 root = _here.parents[3]
-fw_path = root / "KorgZ3_SysEx_08-05-2026" / "KorgZ3_SysEx_08-05-2026.ino"
-mux_path = root / "KorgZ3_SysEx_08-05-2026" / "mux.cpp"
-pitch_path = root / "KorgZ3_SysEx_08-05-2026" / "pitch.cpp"
+fw_path = root / "KorgZ3_SysEx_26-07-2026" / "KorgZ3_SysEx_26-07-2026.ino"
+mux_path = root / "KorgZ3_SysEx_26-07-2026" / "mux.cpp"
+pitch_path = root / "KorgZ3_SysEx_26-07-2026" / "pitch.cpp"
 
 fw = fw_path.read_text()
 mux = mux_path.read_text()

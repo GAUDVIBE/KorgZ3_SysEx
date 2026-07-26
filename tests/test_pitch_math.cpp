@@ -1,7 +1,7 @@
 // Tests natifs de pitch_math.h — aucune dépendance Arduino.
 #include <cstdio>
 #include <cstdlib>
-#include "../KorgZ3_SysEx_08-05-2026/pitch_math.h"
+#include "../KorgZ3_SysEx_26-07-2026/pitch_math.h"
 
 static int failures = 0;
 
