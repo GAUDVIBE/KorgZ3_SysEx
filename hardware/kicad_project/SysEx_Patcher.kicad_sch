@@ -1352,6 +1352,251 @@
 		)
 		(embedded_fonts no)
 	)
+(symbol "Connector_Generic:Conn_01x05"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "J"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Conn_01x05_1_1"
+			(rectangle
+				(start -1.27 6.35)
+				(end 1.27 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 (symbol "Connector:DIN-5"
 		(pin_names
 			(offset 1.016)
@@ -3645,30 +3890,24 @@
   (property "Value" "220" (at 308.61 144.08 0)(effects (font (size 1.27 1.27))))
   (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 308.61 132.08 0)(effects (font (size 1.27 1.27)) hide))
   (instances (project "SysEx_Patcher" (path "/" (reference "R3")(unit 1)))))
-(symbol (lib_id "Connector_Generic:Conn_01x04")(at 58.42 198.12 0)(unit 1)
+(symbol (lib_id "Connector_Generic:Conn_01x05")(at 58.42 198.12 0)(unit 1)
   (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "718b1efa-a1dc-4d79-ad63-5d56ef4af135")
   (property "Reference" "J10" (at 58.42 186.12 0)(effects (font (size 1.27 1.27))))
-  (property "Value" "JACK6.35" (at 58.42 210.12 0)(effects (font (size 1.27 1.27))))
-  (property "Footprint" "Connector_Audio:Jack_6.35mm_Neutrik_NRJ6HF-1_Horizontal" (at 58.42 198.12 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Value" "MINI-XLR-5" (at 58.42 210.12 0)(effects (font (size 1.27 1.27))))
+  (property "Footprint" "Connector_Audio:MiniXLR-5_Switchcraft_TRAPC_Horizontal" (at 58.42 198.12 0)(effects (font (size 1.27 1.27)) hide))
   (instances (project "SysEx_Patcher" (path "/" (reference "J10")(unit 1)))))
-(symbol (lib_id "power:+5V")(at 44.45 198.12 0)(unit 1)
+(symbol (lib_id "power:+5V")(at 44.45 195.58 0)(unit 1)
   (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "6db4e402-a6c5-4afd-b3dd-ca40bf6b2af3")
-  (property "Reference" "#PWR20" (at 44.45 186.12 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Value" "+5V" (at 44.45 210.12 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Footprint" "" (at 44.45 198.12 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Reference" "#PWR20" (at 44.45 183.58 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Value" "+5V" (at 44.45 207.58 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Footprint" "" (at 44.45 195.58 0)(effects (font (size 1.27 1.27)) hide))
   (instances (project "SysEx_Patcher" (path "/" (reference "#PWR20")(unit 1)))))
-(symbol (lib_id "power:GND")(at 46.99 200.66 0)(unit 1)
+(symbol (lib_id "power:GND")(at 46.99 193.04 0)(unit 1)
   (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "14514f26-c512-458c-a870-1b6468fd9163")
-  (property "Reference" "#PWR21" (at 46.99 188.66 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Value" "GND" (at 46.99 212.66 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Footprint" "" (at 46.99 200.66 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Reference" "#PWR21" (at 46.99 181.04 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Value" "GND" (at 46.99 205.04 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Footprint" "" (at 46.99 193.04 0)(effects (font (size 1.27 1.27)) hide))
   (instances (project "SysEx_Patcher" (path "/" (reference "#PWR21")(unit 1)))))
-(symbol (lib_id "power:GND")(at 39.37 203.20 0)(unit 1)
-  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "7ed9b585-fc7f-48dc-92de-7104ab9328ca")
-  (property "Reference" "#PWR22" (at 39.37 191.20 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Value" "GND" (at 39.37 215.20 0)(effects (font (size 1.27 1.27)) hide))
-  (property "Footprint" "" (at 39.37 203.20 0)(effects (font (size 1.27 1.27)) hide))
-  (instances (project "SysEx_Patcher" (path "/" (reference "#PWR22")(unit 1)))))
 (symbol (lib_id "Device:R")(at 100.33 198.12 90)(unit 1)
   (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "499f20dc-0cdb-4c38-b3c0-c0d1e7b66db8")
   (property "Reference" "R27" (at 100.33 186.12 0)(effects (font (size 1.27 1.27))))
@@ -3687,6 +3926,36 @@
   (property "Value" "GND" (at 129.54 230.44 0)(effects (font (size 1.27 1.27)) hide))
   (property "Footprint" "" (at 129.54 218.44 0)(effects (font (size 1.27 1.27)) hide))
   (instances (project "SysEx_Patcher" (path "/" (reference "#PWR23")(unit 1)))))
+(symbol (lib_id "Device:R")(at 110.00 226.06 90)(unit 1)
+  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "cb87db1d-9a79-4f27-84f2-94bc8ad6dafe")
+  (property "Reference" "R32" (at 110.00 214.06 0)(effects (font (size 1.27 1.27))))
+  (property "Value" "1k" (at 110.00 238.06 0)(effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 110.00 226.06 0)(effects (font (size 1.27 1.27)) hide))
+  (instances (project "SysEx_Patcher" (path "/" (reference "R32")(unit 1)))))
+(symbol (lib_id "Device:C")(at 139.21 237.49 0)(unit 1)
+  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "f8bcb699-c379-48d4-af9b-d8b0e2de17eb")
+  (property "Reference" "C20" (at 139.21 225.49 0)(effects (font (size 1.27 1.27))))
+  (property "Value" "100nF" (at 139.21 249.49 0)(effects (font (size 1.27 1.27))))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 139.21 237.49 0)(effects (font (size 1.27 1.27)) hide))
+  (instances (project "SysEx_Patcher" (path "/" (reference "C20")(unit 1)))))
+(symbol (lib_id "power:GND")(at 139.21 246.38 0)(unit 1)
+  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "b669cd8a-38bd-42d1-8497-866161cfa3ad")
+  (property "Reference" "#PWR93" (at 139.21 234.38 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Value" "GND" (at 139.21 258.38 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Footprint" "" (at 139.21 246.38 0)(effects (font (size 1.27 1.27)) hide))
+  (instances (project "SysEx_Patcher" (path "/" (reference "#PWR93")(unit 1)))))
+(symbol (lib_id "Device:R")(at 170.00 226.06 90)(unit 1)
+  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "1a6aa7bb-fdd8-48ff-9a2a-f4dc8584660c")
+  (property "Reference" "R31" (at 170.00 214.06 0)(effects (font (size 1.27 1.27))))
+  (property "Value" "470k" (at 170.00 238.06 0)(effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 170.00 226.06 0)(effects (font (size 1.27 1.27)) hide))
+  (instances (project "SysEx_Patcher" (path "/" (reference "R31")(unit 1)))))
+(symbol (lib_id "power:GND")(at 173.81 236.06 0)(unit 1)
+  (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "40e0b4e3-d09f-4db9-8ffa-39c99aac2ed3")
+  (property "Reference" "#PWR94" (at 173.81 224.06 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Value" "GND" (at 173.81 248.06 0)(effects (font (size 1.27 1.27)) hide))
+  (property "Footprint" "" (at 173.81 236.06 0)(effects (font (size 1.27 1.27)) hide))
+  (instances (project "SysEx_Patcher" (path "/" (reference "#PWR94")(unit 1)))))
 (symbol (lib_id "Switch:SW_Push")(at 271.78 199.39 0)(unit 1)
   (exclude_from_sim no)(in_bom yes)(on_board yes)(dnp no)(uuid "250b2c94-ac98-4236-9a66-63bc6c250c2c")
   (property "Reference" "SW2" (at 271.78 187.39 0)(effects (font (size 1.27 1.27))))
@@ -4571,11 +4840,17 @@
 (wire (pts (xy 275.59 121.92)(xy 304.80 121.92))(stroke (width 0)(type default))(uuid "47f7c515-66dc-4513-81ea-ab3140bd987e"))
 (wire (pts (xy 304.80 121.92)(xy 304.80 132.08))(stroke (width 0)(type default))(uuid "76631cc7-ab20-41f6-9bbc-b780e4eb1f70"))
 (wire (pts (xy 312.42 132.08)(xy 320.04 132.08))(stroke (width 0)(type default))(uuid "47483bf4-a185-4b8a-be64-95b2d5b1852c"))
-(wire (pts (xy 53.34 198.12)(xy 44.45 198.12))(stroke (width 0)(type default))(uuid "3e87f8d1-c49b-4515-a3c5-941709a15563"))
-(wire (pts (xy 53.34 200.66)(xy 46.99 200.66))(stroke (width 0)(type default))(uuid "88b6c26a-73ef-44b0-8497-bf860810a29e"))
-(wire (pts (xy 53.34 203.20)(xy 39.37 203.20))(stroke (width 0)(type default))(uuid "ef203327-0d4b-4afc-97ae-89a404d7c5d1"))
-(wire (pts (xy 53.34 195.58)(xy 96.52 195.58))(stroke (width 0)(type default))(uuid "ed85ec7d-1e1b-4692-8df8-5db9e8917095"))
-(wire (pts (xy 96.52 195.58)(xy 96.52 198.12))(stroke (width 0)(type default))(uuid "e59e02e5-d3e1-4979-a1bd-c8201ed7b539"))
+(wire (pts (xy 53.34 193.04)(xy 46.99 193.04))(stroke (width 0)(type default))(uuid "3e87f8d1-c49b-4515-a3c5-941709a15563"))
+(wire (pts (xy 53.34 195.58)(xy 44.45 195.58))(stroke (width 0)(type default))(uuid "88b6c26a-73ef-44b0-8497-bf860810a29e"))
+(wire (pts (xy 53.34 198.12)(xy 96.52 198.12))(stroke (width 0)(type default))(uuid "ef203327-0d4b-4afc-97ae-89a404d7c5d1"))
+(wire (pts (xy 53.34 200.66)(xy 60.00 200.66))(stroke (width 0)(type default))(uuid "ed85ec7d-1e1b-4692-8df8-5db9e8917095"))
+(wire (pts (xy 60.00 200.66)(xy 60.00 226.06))(stroke (width 0)(type default))(uuid "e59e02e5-d3e1-4979-a1bd-c8201ed7b539"))
+(wire (pts (xy 60.00 226.06)(xy 106.19 226.06))(stroke (width 0)(type default))(uuid "1cd1c4d3-9c2e-4c9f-8f7a-3b4e5f6a7b8c"))
+(wire (pts (xy 113.81 226.06)(xy 166.19 226.06))(stroke (width 0)(type default))(uuid "2de2d5e4-ad3f-4d0a-9f8b-4c5f6a7b8c9d"))
+(wire (pts (xy 113.81 226.06)(xy 113.81 233.68))(stroke (width 0)(type default))(uuid "3ef3e6f5-be4f-4e1b-8f9c-5d6a7b8c9d0e"))
+(wire (pts (xy 113.81 233.68)(xy 139.21 233.68))(stroke (width 0)(type default))(uuid "4f04f706-cf50-4f2c-8f0d-6e7b8c9d0e1f"))
+(wire (pts (xy 139.21 241.30)(xy 139.21 246.38))(stroke (width 0)(type default))(uuid "5a15a817-d061-4f3d-8f1e-7f8c9d0e1f20"))
+(wire (pts (xy 173.81 226.06)(xy 173.81 236.06))(stroke (width 0)(type default))(uuid "6b26b928-e172-4f4e-8f2f-8f9d0e1f2031"))
 (wire (pts (xy 104.14 198.12)(xy 104.14 205.74))(stroke (width 0)(type default))(uuid "e01f252c-5d0e-45ca-b2f5-9e8e72577ae2"))
 (wire (pts (xy 104.14 205.74)(xy 129.54 205.74))(stroke (width 0)(type default))(uuid "6c46b965-f3db-4868-a8dd-aff63d7cad6b"))
 (wire (pts (xy 129.54 213.36)(xy 129.54 218.44))(stroke (width 0)(type default))(uuid "066d9842-4e71-4023-9fe3-0d0ce6264697"))
@@ -4790,8 +5065,11 @@
 (label "MIDI_OUT_4" (at 290.83 116.84 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "ba0a563d-0a4e-4c99-b6ab-7240515ba75a"))
 (label "MIDI_OUT_5" (at 290.83 121.92 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "def1e20f-6b37-427e-8c81-ac6c418b7ec8"))
 (label "D1_TX" (at 320.04 132.08 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "3c1779e5-8ccf-4aca-8276-8dadd4cf89de"))
-(label "JACK_W" (at 74.93 195.58 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "60e679e0-8fa6-4a28-97e7-cd32a077505d"))
+(label "JACK_W" (at 74.93 198.12 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "60e679e0-8fa6-4a28-97e7-cd32a077505d"))
 (label "MUX_CH1" (at 111.76 198.12 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "433b9271-3e89-4351-915b-98be7f4e6914"))
+(label "SW_BEND" (at 75.00 226.06 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "7c37c039-e283-4f5f-8f3a-9f0e1f203142"))
+(label "MUX_CH2" (at 121.43 226.06 0)(effects (font (size 1.27 1.27))(justify left bottom))(uuid "8d48d14a-f394-4f60-8f4b-a01f20314253"))
+(no_connect (at 53.34 203.20)(uuid "9e59e25b-0405-4f71-8f5c-b12031425364"))
 (label "D7" (at 260.35 199.39 0)(effects (font (size 1.27 1.27))(justify right bottom))(uuid "f4537c45-ea62-43d3-83a4-41060696f060"))
 (label "D8" (at 300.99 199.39 0)(effects (font (size 1.27 1.27))(justify right bottom))(uuid "ca704b47-7f6e-410d-9a2e-be69b967ed1d"))
 (label "D6" (at 340.36 199.39 0)(effects (font (size 1.27 1.27))(justify right bottom))(uuid "6ea505ab-f1e1-4e9a-a1da-a1af177401b7"))
