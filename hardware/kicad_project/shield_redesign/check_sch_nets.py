@@ -18,4 +18,14 @@ for ref in ["R28", "R29", "R30"]:
 for ref in ["D7", "D8", "D9"]:
     assert re.search(r'"Reference" "%s"' % ref, sch), "LED %s absente" % ref
 
-print("check_sch_nets OK — D22..D27 | SW6/SW7/SW8 | R28/R29/R30 | D7/D8/D9")
+# --- v1.1 : mini-XLR 5 points et canal switch ---
+assert re.search(r'Conn_01x05', sch), "J10 n'est pas un connecteur 5 points"
+assert re.search(r'MiniXLR-5_Switchcraft_TRAPC_Horizontal', sch), \
+    "empreinte mini-XLR absente"
+for ref in ["R31", "R32", "C20"]:
+    assert re.search(r'"Reference" "%s"' % ref, sch), \
+        "%s absent (filtre / pull-down du canal switch)" % ref
+assert re.search(r'\(label "SW_BEND"', sch), "net-label SW_BEND absent"
+
+print("check_sch_nets OK — D22..D27 | SW6/SW7/SW8 | R28/R29/R30 | D7/D8/D9 | "
+      "J10 mini-XLR 5pts | R31/R32/C20 | SW_BEND")
