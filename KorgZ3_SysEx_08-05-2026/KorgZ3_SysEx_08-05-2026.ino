@@ -721,6 +721,33 @@ void receiveMidi() {
   }
 }
 
+// Un preset usine est-il deja present en memoire ?
+// On compare sur le NOM du dump (octets 5 a 12), qui identifie le patch de
+// facon stable : c'est ce meme champ que extractName() utilise pour nommer les
+// slots, a la sauvegarde comme au chargement usine.
+bool factoryDejaPresent(const byte* dump) {
+  byte entete[13];
+  for (byte i = 0; i < 13; i++) entete[i] = pgm_read_byte(dump + i);
+  char nom[10];
+  extractName(entete, 13, nom);
+  for (int i = 0; i < presetCount; i++) {
+    if (presetSlots[i].valid && strncmp(presetSlots[i].name, nom, 9) == 0) return true;
+  }
+  return false;
+}
+
+// Copie un preset usine dans le slot idx. Les tableaux vivent en PROGMEM :
+// memcpy_P, et non memcpy.
+void chargerFactory(int idx, int f) {
+  presetSlots[idx].size  = FACTORY[f].size;
+  presetSlots[idx].valid = true;
+  memcpy_P(presetSlots[idx].data, FACTORY[f].data, FACTORY[f].size);
+  // Le nom affiche vient du dump lui-meme, comme a la sauvegarde : un preset
+  // usine porte donc son vrai nom sans cas particulier.
+  extractName(presetSlots[idx].data, presetSlots[idx].size, presetSlots[idx].name);
+  eeWriteSlot(idx);
+}
+
 // =================== SETUP ===================
 void setup() {
   Serial.begin(31250);
@@ -765,21 +792,32 @@ void setup() {
   // Chargement EEPROM
   bool eepromOk = eeLoad();
   if (!eepromOk || presetCount == 0) {
+    // EEPROM vierge : on installe tous les presets usine.
     showMessage("1er demarrage", "Presets usine");
     delay(1000);
-    // Les tableaux vivent en PROGMEM : memcpy_P, et non memcpy.
-    for (int i = 0; i < FACTORY_COUNT; i++) {
-      presetSlots[i].size  = FACTORY[i].size;
-      presetSlots[i].valid = true;
-      memcpy_P(presetSlots[i].data, FACTORY[i].data, FACTORY[i].size);
-      // Le nom affiche vient des octets 5 a 12 du dump lui-meme, comme a la
-      // sauvegarde : un preset usine porte donc son vrai nom sans cas special.
-      extractName(presetSlots[i].data, presetSlots[i].size, presetSlots[i].name);
-      eeWriteSlot(i);
-    }
+    for (int i = 0; i < FACTORY_COUNT; i++) chargerFactory(i, i);
     presetCount = FACTORY_COUNT;
     currentSlot = 0;
     eeSaveMeta();
+  } else {
+    // EEPROM deja peuplee : on complete les presets usine MANQUANTS, sans
+    // toucher aux presets de l'utilisateur ni a l'ordre existant. Sans cela,
+    // un preset usine ajoute par une mise a jour du firmware n'apparaitrait
+    // jamais sur un appareil qui a deja servi.
+    int ajoutes = 0;
+    for (int i = 0; i < FACTORY_COUNT && presetCount < MAX_PRESETS; i++) {
+      if (factoryDejaPresent(FACTORY[i].data)) continue;
+      chargerFactory(presetCount, i);
+      presetCount++;
+      ajoutes++;
+    }
+    if (ajoutes > 0) {
+      eeSaveMeta();
+      char msg[20];
+      snprintf(msg, sizeof(msg), "%d preset(s) usine", ajoutes);
+      showMessage("Mise a jour", msg);
+      delay(1200);
+    }
   }
 
   // Charger le slot courant
