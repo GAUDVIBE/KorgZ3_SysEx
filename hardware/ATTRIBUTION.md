@@ -15,8 +15,10 @@ Gerber files since no schematic was ever published.
   (Attribution — NonCommercial — ShareAlike). The files in this `hardware/`
   folder are distributed under those same terms, **not** under the MIT license
   that covers the firmware in the rest of this repository.
-- `firmware_CCSysEx_Patcher.ino` is the original author's firmware, included for
-  reference under its **MIT** license (see `firmware_LICENSE.txt`).
+- The original author's firmware is **not redistributed here** — it targets a
+  different synthesizer and its presence next to this project's own sketch was a
+  source of confusion. It remains available under the MIT license in the
+  [upstream repository](https://github.com/baritonomarchetto/arduino-SysEx-Patcher).
 
 ## What was reconstructed / added here
 

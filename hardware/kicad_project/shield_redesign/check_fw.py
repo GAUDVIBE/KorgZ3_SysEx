@@ -1,15 +1,39 @@
 import pathlib, re
 
-# Résout le firmware quel que soit le cwd (lancé depuis kicad_project/ comme les autres checks,
-# ou depuis shield_redesign/) : il est dans hardware/, parent de kicad_project/.
+# Verifie que le firmware reel est d'accord avec le cuivre de la carte.
+# Chemin resolu quel que soit le cwd : shield_redesign -> kicad_project ->
+# hardware -> racine du depot.
 _here = pathlib.Path(__file__).resolve()
-fw_path = _here.parents[2] / "firmware_CCSysEx_Patcher.ino"  # shield_redesign -> kicad_project -> hardware
-fw = fw_path.read_text()
+root = _here.parents[3]
+fw_path = root / "KorgZ3_SysEx_08-05-2026" / "KorgZ3_SysEx_08-05-2026.ino"
+mux_path = root / "KorgZ3_SysEx_08-05-2026" / "mux.cpp"
+pitch_path = root / "KorgZ3_SysEx_08-05-2026" / "pitch.cpp"
 
+fw = fw_path.read_text()
+mux = mux_path.read_text()
+pitch = pitch_path.read_text()
+
+# --- Boutons et LEDs en reserve du bloc 2x18 ---
 assert "butLayout2" in fw, "butLayout2 absent"
 assert "LEDLayout2" in fw, "LEDLayout2 absent"
-assert re.search(r'butLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*22\s*,\s*24\s*,\s*26\s*\}', fw), "butLayout2 valeurs incorrectes"
-assert re.search(r'LEDLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*23\s*,\s*25\s*,\s*27\s*\}', fw), "LEDLayout2 valeurs incorrectes"
+assert re.search(r'butLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*22\s*,\s*24\s*,\s*26\s*\}', fw), \
+    "butLayout2 valeurs incorrectes"
+assert re.search(r'LEDLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*23\s*,\s*25\s*,\s*27\s*\}', fw), \
+    "LEDLayout2 valeurs incorrectes"
 assert "INPUT_PULLUP" in fw, "pinMode pullup absent"
 
-print("check_fw OK — butLayout2{22,24,26} + LEDLayout2{23,25,27} + pinMode")
+# --- Multiplexeur 4067 : selection D2/D3/D4/D13, commun sur A15 ---
+assert re.search(r'MUX_SEL\s*\[\s*4\s*\]\s*=\s*\{\s*2\s*,\s*3\s*,\s*4\s*,\s*13\s*\}', mux), \
+    "lignes de selection du mux incorrectes (attendu D2,D3,D4,D13)"
+assert re.search(r'MUX_COM\s*=\s*A15', mux), "sortie commune du mux non cablee sur A15"
+
+# --- Affectation des canaux ---
+assert re.search(r'CH_WHEEL\s*=\s*1', pitch), "molette attendue sur le canal 1"
+assert re.search(r'CH_SWITCH\s*=\s*2', pitch), "switch attendu sur le canal 2"
+
+# --- Le pot #16 doit passer par le canal 0, pas par un analogRead(A15) direct ---
+assert re.search(r'pot\.pin\s*==\s*A15\s*\)\s*\?\s*muxRead\(0\)', fw), \
+    "le pot #16 ne passe pas par muxRead(0)"
+
+print("check_fw OK — butLayout2{22,24,26} | LEDLayout2{23,25,27} | "
+      "mux S0..S3={2,3,4,13} COM=A15 | molette ch1 | switch ch2 | pot16 ch0")
