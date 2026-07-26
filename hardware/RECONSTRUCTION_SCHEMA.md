@@ -71,6 +71,108 @@ Configuration de placement : `kicad_project/shield_redesign/placement.json`.
 
 ---
 
+## 0quater. MODIFICATION v1.1 — molette de pitch et bend range déportés sur la guitare
+
+Une **molette de pitch** et un **switch 3 positions de bend range** sont montés sur la guitare
+(Stratocaster) et reliés au shield par **un seul câble**.
+
+Le Korg Z3 mappe en dur la plage MIDI `[0..16383]` sur ±12 demi-tons, et c'est figé dans son
+firmware. Pour obtenir une amplitude musicale plus fine, on restreint la course MIDI émise depuis
+l'Arduino ; le switch choisit cette restriction.
+
+### Le connecteur : J10 devient un mini-XLR 5 points
+
+| | v1.0 | v1.1 |
+|---|---|---|
+| Empreinte | `Jack_6.35mm_Neutrik_NRJ6HF-1_Horizontal` | `Connector_Audio:MiniXLR-5_Switchcraft_TRAPC_Horizontal` |
+| Symbole | `Conn_01x04` | `Conn_01x05` |
+
+Le jack 6,35 stéréo n'offre que 3 conducteurs, tous consommés par la molette. Le switch en exige un
+quatrième. Le mini-XLR **4 points** aurait suffi, mais il n'a **aucune empreinte dans la
+bibliothèque KiCad standard** : en dessiner une à la main pour une carte qu'on ne peut pas tester
+avant fabrication a été jugé un risque inutile. Le 5 points est fourni par KiCad, traversant, au bon
+format physique ; sa cinquième broche reste libre.
+
+Le connecteur devait aussi être **physiquement incompatible avec du MIDI** : il transporte du +5 V,
+et un câble MIDI branché par erreur sur un troisième DIN 5 injecterait cette tension dans la sortie
+MIDI d'un autre appareil.
+
+| Broche J10 | Signal | Destination |
+|---|---|---|
+| 1 | GND | masse commune |
+| 2 | +5 V | alimentation molette + échelle de résistances |
+| 3 | curseur molette | filtre RC existant → **I1** du 4067, net `MUX_CH1` |
+| 4 | tension switch | filtre RC R32/C20 + pull-down R31 → **I2** du 4067, net `MUX_CH2` |
+| 5 | — | réserve, non connectée |
+
+### Nouveaux composants
+
+- **R32** — 1 kΩ en série, de `SW_BEND` vers le nœud ADC
+- **C20** — 100 nF du nœud ADC vers GND
+- **R31** — **470 kΩ du nœud ADC vers GND**, détection de présence
+
+### Côté guitare
+
+Molette 10 kΩ à ressort de rappel, switch **ON-ON-ON** 3 positions, et **quatre résistances de
+2,2 kΩ** en série entre +5 V et GND. Le switch sélectionne l'un des trois points intermédiaires du
+diviseur. L'échelle vit dans la guitare, pas sur la carte : c'est ce qui permet de tenir en
+4 conducteurs, une échelle côté PCB imposant 3 fils rien que pour le switch.
+
+| Position | Tension | Valeur ADC | Bend range |
+|---|---|---|---|
+| 1 | ¼ Vcc | ~256 | ±1 ton |
+| 2 | ½ Vcc | ~512 | ±1 ton et demi |
+| 3 | ¾ Vcc | ~768 | ±1 octave |
+| *(rien branché)* | ~0 V | ~0 | molette ignorée, pitch figé à 8192 |
+
+> **Pourquoi des taps à ¼ / ½ / ¾ et non 0 / ½ / 1.** Aucune position valide ne produit 0 V. Câble
+> débranché, R31 tire la ligne à ~0 V, valeur qui n'appartient à aucune fenêtre : le firmware sait
+> qu'il n'y a rien de branché et gèle le pitch, au lieu de lire une entrée en l'air et d'émettre un
+> bend fantôme. Le canal du switch sert donc à la fois de sélecteur **et** de détection de présence,
+> pour le prix d'une résistance.
+
+Les fenêtres de décision font ±80 pas ADC autour des valeurs nominales ; des résistances à 5 %
+déplacent les taps d'environ 26 pas, donc très en deçà. Un ON-ON-ON ouvre brièvement le contact
+pendant la bascule, ce qui ressemble à un débranchement : le firmware confirme tout changement sur
+**300 ms** de lectures cohérentes.
+
+### Corps réel des embases MIDI — correction d'empreinte
+
+L'empreinte `MIDI_DIN5_180deg` dessinait le corps comme un **cercle de Ø 22,8 mm**. Mesure au pied à
+coulisse sur une embase réelle : c'est un **rectangle de 20,5 × 15,0 mm**. L'erreur n'était pas
+cosmétique — elle a servi de base à un diagnostic de placement erroné, en faisant croire que J1 était
+coincé contre l'optocoupleur U1 alors qu'il en est à plus de 12 mm.
+
+### Répartition du bord haut
+
+L'entraxe des deux embases MIDI, hérité du replacement v1.0, valait 28 mm et n'avait jamais été
+validé. Mesure faite dans le **fichier de perçage de la carte d'origine** : ses deux DIN sont à
+**99,1 mm**, aux extrémités opposées. Or la gaine moulée d'un câble MIDI fait 20 à 26 mm : à 28 mm
+d'entraxe, deux câbles se gênent.
+
+| Réf | v1.0 | v1.1 | Jeu obtenu |
+|---|---|---|---|
+| J1 (MIDI IN) | x=44 | **x=50** | 8,75 mm de la vis M3 de MH1 (contre 2,75) |
+| J2 (MIDI OUT) | x=81 | **x=87** | entraxe MIDI **37 mm** |
+| J10 (mini-XLR) | x=107 | **x=114** | 6,8 mm du MIDI OUT |
+| J3 (alimentation) | x=138 | inchangé | 15,5 mm du mini-XLR |
+
+### État du routage
+
+Rip-up complet et re-routage : **0 connexion manquante**. Subsiste **une violation d'isolation à
+0,1995 mm contre 0,2000 mm requis**, soit 0,25 % d'écart. C'est un artefact d'arrondi du routeur,
+reproductible à l'identique quel que soit le nombre de passes (freerouting est déterministe sur cette
+entrée), et très en deçà de ce que distingue un procédé de gravure — les fondeurs courants tiennent
+0,15 mm sans difficulté. **Assumée telle quelle** : une tentative de décaler le sommet fautif a créé
+trois violations pires, la piste ayant été poussée vers un autre conducteur.
+
+> ⚠️ **Contrainte mécanique côté guitare** : l'embase est encastrée dans le pickguard de la
+> Stratocaster, la fiche du câble doit donc être **coudée**. La référence exacte d'une fiche coudée
+> mini-XLR 5 points est le point d'approvisionnement le plus incertain du projet, **à régler avant de
+> commander le PCB**.
+
+---
+
 ## 0bis. PCB v0.5 — VRAI SHIELD enfichable Arduino Mega
 La carte est maintenant un **shield empilable** : les connecteurs Mega sont placés aux **positions
 exactes de l'Arduino Mega 2560** (2 rangées à 48,26 mm, brochage déduit du cuivre d'origine, ordre
@@ -263,8 +365,7 @@ Bornier : GND / +5V / −BAT / +BAT (alternatives d'alim)
 |---|---|
 | `board_top.svg` / `board_top.png` | Rendu **dessus** (cuivre + sérigraphie + pads + perçage), vectoriel zoomable |
 | `board_bottom.svg` / `board_bottom.png` | Rendu **dessous** (vue mirroir, section analogique/alim) |
-| `firmware_CCSysEx_Patcher.ino` | Firmware officiel (source du câblage numérique) — licence MIT |
-| `firmware_LICENSE.txt` | Licence MIT du firmware |
+| *(firmware d'origine)* | **non redistribué ici** — il vise un autre synthétiseur et sa présence à côté du sketch de ce projet entretenait la confusion. Toujours disponible sous licence MIT dans le [dépôt amont](https://github.com/baritonomarchetto/arduino-SysEx-Patcher) |
 | `RECONSTRUCTION_SCHEMA.md` | Ce document |
 | `kicad_project/SysEx_Patcher.kicad_pro` | **Projet KiCad 10** (à ouvrir dans KiCad) |
 | `kicad_project/SysEx_Patcher.kicad_sch` | **Schéma reconstruit** : 46 composants, 150 connexions, **ERC 0 erreur** |

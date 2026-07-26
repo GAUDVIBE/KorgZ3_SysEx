@@ -41,11 +41,40 @@ An Arduino Mega 2560-based MIDI controller for the **Korg Z3 FM synthesizer**, a
 
 A full KiCad reconstruction of the board (schematic + PCB) lives in [`hardware/`](hardware/),
 rebuilt from the original Gerbers. It also includes an extension: a **CD74HC4067** analog
-multiplexer (extra analog input via a 6.35 mm remote-pot jack + spare channels) and **RC
-anti-noise filters** (1 kΩ + 100 nF) on every analog input. See
+multiplexer (extra analog inputs + spare channels) and **RC anti-noise filters** (1 kΩ + 100 nF)
+on every analog input. See
 [`hardware/RECONSTRUCTION_SCHEMA.md`](hardware/RECONSTRUCTION_SCHEMA.md) and
 [`hardware/ATTRIBUTION.md`](hardware/ATTRIBUTION.md) (hardware is CC BY-NC-SA, derived from
 baritonomarchetto's design).
+
+### Pitch wheel & bend range (v1.1)
+
+A **pitch wheel** and a **3-position bend-range switch** are mounted **on the guitar** and connected
+to the shield by a single 4-conductor cable through a **mini-XLR** socket. The switch selects the
+musical amplitude of the wheel:
+
+| Switch position | Bend range |
+|---|---|
+| 1 | ±1 tone |
+| 2 | ±1.5 tones |
+| 3 | ±1 octave |
+
+The Korg Z3 hard-maps the full MIDI pitch-bend range `[0..16383]` onto ±12 semitones and offers no
+way to change it. To obtain a smaller, more playable amplitude, the firmware restricts the range it
+emits to `8192 ± N × 8192 / 12`.
+
+Both inputs are read through the multiplexer: the wheel on channel 1, the switch on channel 2. The
+switch is encoded as an analog voltage by a resistor ladder inside the guitar, which is what keeps
+the cable down to four conductors.
+
+**Unplugged-cable safety.** The three switch positions sit at ¼, ½ and ¾ of Vcc — never at 0 V. A
+470 kΩ pull-down on the board means an unplugged cable reads ~0 V, a value belonging to no valid
+position. The firmware therefore knows nothing is connected, freezes the pitch at centre and ignores
+the wheel, instead of reading a floating input and emitting phantom pitch bend. The same channel thus
+acts as both range selector and cable-presence detector.
+
+Plugging the cable in also triggers an automatic calibration of the wheel's rest position, so the
+controller no longer has to be powered on with the wheel centred.
 
 ---
 
