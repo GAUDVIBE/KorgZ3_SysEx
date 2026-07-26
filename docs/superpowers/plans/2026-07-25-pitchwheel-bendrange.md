@@ -1017,9 +1017,16 @@ git commit -m "check_sch_nets: vérifie le mini-XLR 5 points et le filtre du can
 **Files:**
 - Modify: `hardware/kicad_project/SysEx_Patcher.kicad_pcb`
 
-- [ ] **Step 1 : Importer les modifications du schéma dans le PCB**
+- [ ] **Step 1 : Injecter les empreintes directement dans le `.kicad_pcb`**
 
-Dans l'éditeur de PCB KiCad : **Outils → Mettre à jour le PCB depuis le schéma** (`F8`), en cochant le remplacement des empreintes modifiées. J10 prend l'empreinte mini-XLR ; R31, R32 et C20 apparaissent hors de la carte.
+> ⛔ **NE JAMAIS faire « Mettre à jour le PCB depuis le schéma » (`F8`) sur ce projet.** Vérifié le 2026-07-26 : le PCB porte **11 empreintes que le schéma n'a pas** — `JMP1`, `JMA1`, `JMA2`, `JMD1`, `JMD2`, `JMD3`, `JMX1` (l'interface de connecteurs Arduino Mega) et `MH1`–`MH4` (trous de fixation M3). C'est voulu : pour un shield, les headers du PCB *sont* l'interface Mega, ils n'ont pas d'équivalent au schéma. Un F8 les considérerait comme supprimés et **les effacerait**, détruisant la carte.
+
+Ajouter les composants en **injectant le s-expr directement**, comme le fait déjà `shield_redesign/apply_controls.py` :
+
+- remplacer la chaîne d'empreinte de **J10** par `Connector_Audio:MiniXLR-5_Switchcraft_TRAPC_Horizontal`, en reprenant le corps de l'empreinte depuis `/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints/Connector_Audio.pretty/` et en réaffectant les nets pad par pad (1=GND, 2=+5V, 3=JACK_W, 4=SW_BEND, 5 sans net)
+- ajouter **R32** (1 k), **C20** (100 nF) et **R31** (470 k) avec leurs nets : R32 entre `SW_BEND` et `MUX_CH2`, R31 et C20 entre `MUX_CH2` et `GND`
+
+Rappel de structure : ce `.kicad_pcb` **n'a pas de table de nets** en tête de fichier — chaque pastille porte directement `(net "NOM")`.
 
 - [ ] **Step 2 : Placer les composants**
 
@@ -1055,9 +1062,19 @@ git commit -m "pcb v1.1: empreinte mini-XLR + placement du filtre et du pull-dow
 **Files:**
 - Modify: `hardware/kicad_project/SysEx_Patcher.kicad_pcb`
 
-- [ ] **Step 1 : Router les nouvelles pistes**
+- [ ] **Step 1 : Router les nouvelles pistes — recette vérifiée en v1.0**
 
-Router les liaisons de J10, R31, R32 et C20. La v1.0 est routée à 100 % ; seules les pistes de l'ancien jack sont à reprendre, plus les trois nouveaux composants. Conserver les règles existantes : 4 couches, plan de masse, **100 % traversant**.
+Conserver les règles existantes : 4 couches, plan de masse, **100 % traversant**. La chaîne complète, éprouvée lors du routage v1.0 :
+
+1. **Rip-up** de toutes les pistes et vias en éditant le s-expr (suppression en masse des blocs `(segment` et `(via`, **en gardant les zones**). Ne pas passer par l'API `pcbnew` pour supprimer : elle plante.
+2. **Export DSN** via l'interpréteur Python embarqué de KiCad — `kicad-cli` ne sait pas produire de Specctra :
+   `/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/3.9/bin/python3` avec `pcbnew.ExportSpecctraDSN`
+3. **Routage** :
+   `/opt/homebrew/opt/openjdk/bin/java -Djava.awt.headless=true -jar ~/tools/freerouting/freerouting-2.2.4.jar -de x.dsn -do x.ses -mp 30`
+4. **Import SES** via `pcbnew.ImportSpecctraSES`, **puis explicitement `ZONE_FILLER.Fill`** — l'import ne remplit pas les zones, et sans ce remplissage le DRC remonte des centaines de fausses violations « clearance/mask/hole vs zone GND à 0,0 mm ».
+5. Terminer tout script `pcbnew` par `os._exit(0)`, sinon macOS affiche une fenêtre « Python quit unexpectedly » au démontage.
+
+Deux points à ne pas confondre avec des régressions : les segments importés du SES référencent les nets **par nom** (`(net "POT8_W")`) et non par identifiant, et les angles droits produits par freerouting sont tous sur les couches internes In1/In2 — invisibles sur la carte physique, purement cosmétiques.
 
 - [ ] **Step 2 : Vérifier qu'il ne reste aucune connexion manquante**
 
@@ -1092,15 +1109,18 @@ git commit -m "pcb v1.1: routage complet du canal switch (0 connexion manquante)
 - [ ] **Step 1 : Produire les Gerbers et le perçage**
 
 Run :
+> ⚠️ **`--layers` est obligatoire.** Sans lui, `kicad-cli pcb export gerbers` sort un jeu de couches erroné (non-cuivre). Et **ne pas** passer `--excellon-separate-th` : il scinde le perçage en deux fichiers PTH/NPTH alors que la v1.0 livre un `.drl` combiné.
+
 ```bash
 /opt/homebrew/bin/kicad-cli pcb export gerbers \
+  --layers "F.Cu,In1.Cu,In2.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts" \
   --output hardware/fab/ \
   hardware/kicad_project/SysEx_Patcher.kicad_pcb
 /opt/homebrew/bin/kicad-cli pcb export drill \
   --output hardware/fab/ \
   hardware/kicad_project/SysEx_Patcher.kicad_pcb
 ```
-Expected : les fichiers `hardware/fab/SysEx_Patcher-*.g*` et `SysEx_Patcher.drl` sont réécrits.
+Expected : le jeu de 11 fichiers (4 cuivre, 2 masque, 2 sérigraphie, Edge_Cuts, perçage, gbrjob) est réécrit dans `hardware/fab/`.
 
 - [ ] **Step 2 : Reconstituer l'archive de fabrication**
 
