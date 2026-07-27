@@ -383,6 +383,10 @@ unsigned long comboStart    = 0;
 bool          comboActive   = false;
 bool          comboHandled  = false;
 bool          comboPrompted = false;
+// Page affichee quand aucun des deux boutons n'est enfonce. Si l'utilisateur
+// presse l'un juste avant l'autre, le premier change de page avant que la
+// combinaison ne soit reconnue : on restaure cette page en sortant.
+int           pageAuRepos   = 0;
 
 const unsigned long LONG_PRESS_SAVE  = 3000;
 const unsigned long SHORT_PRESS_TIME = 500;
@@ -984,7 +988,11 @@ void loop() {
     if ((millis() - prevDebounceTime) > debounceDelay) {
       if (r != prevCurrentState) {
         prevCurrentState = r;
-        if (prevCurrentState == LOW) {
+        // Si l'autre bouton de page est deja enfonce, c'est la combinaison
+        // de suppression : on ne change pas de page. setPage() reinitialise
+        // les 16 potentiometres (~130 ms), le faire deux fois pour rien
+        // bloquait la boucle un quart de seconde.
+        if (prevCurrentState == LOW && digitalRead(BTN_PAGE_NEXT) == HIGH) {
           flashLedPrev();
           setPage((currentPage - 1 + NUM_PAGES) % NUM_PAGES);
         }
@@ -1000,7 +1008,7 @@ void loop() {
     if ((millis() - nextDebounceTime) > debounceDelay) {
       if (r != nextCurrentState) {
         nextCurrentState = r;
-        if (nextCurrentState == LOW) {
+        if (nextCurrentState == LOW && digitalRead(BTN_PAGE_PREV) == HIGH) {
           flashLedNext();
           setPage((currentPage + 1) % NUM_PAGES);
         }
@@ -1013,6 +1021,8 @@ void loop() {
   {
     bool sept = (digitalRead(BTN_PAGE_PREV) == LOW);
     bool huit = (digitalRead(BTN_PAGE_NEXT) == LOW);
+
+    if (!sept && !huit) pageAuRepos = currentPage;
 
     if (sept && huit) {
       if (!comboActive) {
@@ -1036,8 +1046,11 @@ void loop() {
         }
       }
     } else if (comboActive) {
-      // Relache avant la fin : on annule sans rien supprimer.
       comboActive = false;
+      // Restaure la page d'avant la combinaison si l'un des boutons a eu le
+      // temps d'en changer.
+      if (currentPage != pageAuRepos) setPage(pageAuRepos);
+      // Relache avant la fin : on annule sans rien supprimer.
       if (comboPrompted && !comboHandled) updateDisplay();
       comboPrompted = false;
     }
@@ -1055,15 +1068,18 @@ void loop() {
           cyclePressActive      = true;
           cycleLongPressHandled = false;
         } else {
+          // Tout relachement AVANT que l'appui long (3 s) ne se declenche fait
+          // passer au slot suivant. Auparavant la fenetre etait limitee a
+          // SHORT_PRESS_TIME (500 ms) : un appui un peu trop long ne faisait
+          // rien du tout, d'ou l'impression qu'il fallait cliquer plusieurs
+          // fois. La sauvegarde reste protegee par cycleLongPressHandled.
           if (cyclePressActive && !cycleLongPressHandled) {
-            if ((millis() - cyclePressStartTime) < SHORT_PRESS_TIME) {
-              if (presetCount > 0) {
-                loadSlot((currentSlot + 1) % presetCount);
-              } else {
-                showMessage("Aucun dump stocke", "Appui long 6=Dump");
-                delay(800);
-                updateDisplay();
-              }
+            if (presetCount > 0) {
+              loadSlot((currentSlot + 1) % presetCount);
+            } else {
+              showMessage("Aucun dump stocke", "Appui long 6=Dump");
+              delay(800);
+              updateDisplay();
             }
           }
           cyclePressActive = false;
@@ -1118,7 +1134,9 @@ void loop() {
   updateLeds();
 
   // --- Défilement automatique OLED ---
-  if (autoScrollEnabled) {
+  // Suspendu pendant la combinaison de suppression : il rafraichit l'ecran
+  // toutes les 3 s et effacait l'invite « Supprimer ? » en pleine lecture.
+  if (autoScrollEnabled && !comboActive) {
     if (millis() - lastScrollTime >= SCROLL_INTERVAL) {
       lastScrollTime = millis();
       currentDisplayGroup = (currentDisplayGroup + 1) % 4;
