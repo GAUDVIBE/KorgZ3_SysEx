@@ -1,0 +1,7 @@
+# Historique local de l'éditeur (extension VS Code « Local History »).
+# C'est un dépôt git à part entière : ajouté par mégarde, il devient une
+# référence de sous-module cassée pour quiconque clone le projet.
+.history/
+
+# Métadonnées du Finder macOS
+.DS_Store

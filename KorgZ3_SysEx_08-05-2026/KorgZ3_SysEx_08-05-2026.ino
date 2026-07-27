@@ -377,7 +377,7 @@ unsigned long dumpBtnDebounceTime   = 0;
 // L'invite n'apparait qu'apres DELETE_PROMPT_MS, pour qu'un appui bref
 // destine au Dump Request ne fasse pas clignoter « Supprimer ? ».
 // Le maintien fait office de confirmation : relacher avant la fin annule.
-const unsigned long DELETE_HOLD_MS   = 2000;
+const unsigned long DELETE_HOLD_MS   = 3000;
 const unsigned long DELETE_PROMPT_MS = 600;
 bool          delPrompted = false;
 
