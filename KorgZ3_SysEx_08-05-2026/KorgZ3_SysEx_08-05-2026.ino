@@ -370,23 +370,16 @@ bool          dumpBtnActive         = false;
 bool          dumpBtnLongHandled    = false;
 unsigned long dumpBtnDebounceTime   = 0;
 
-// --- Suppression d'un preset : appui long SIMULTANE sur les broches 7 et 8 ---
-// Ces deux boutons (page precedente / page suivante) n'ont aucune action en
-// appui long : rien a neutraliser, contrairement aux broches 5 et 6 qui
-// portent deja la sauvegarde et le Dump Request.
-// Appuyer sur les deux fait changer de page dans un sens puis dans l'autre :
-// l'effet net est nul, on revient sur la page de depart.
-// Le maintien fait office de confirmation : le nom du preset vise s'affiche
-// pendant l'appui, relacher avant la fin annule.
-const unsigned long COMBO_DELETE_MS = 2000;
-unsigned long comboStart    = 0;
-bool          comboActive   = false;
-bool          comboHandled  = false;
-bool          comboPrompted = false;
-// Page affichee quand aucun des deux boutons n'est enfonce. Si l'utilisateur
-// presse l'un juste avant l'autre, le premier change de page avant que la
-// combinaison ne soit reconnue : on restaure cette page en sortant.
-int           pageAuRepos   = 0;
+// --- Suppression d'un preset : appui LONG sur la broche 6 ---
+// La meme broche porte les deux actions, distinguees par la duree :
+//   appui court  -> Dump Request
+//   appui maintenu -> suppression du preset courant
+// L'invite n'apparait qu'apres DELETE_PROMPT_MS, pour qu'un appui bref
+// destine au Dump Request ne fasse pas clignoter « Supprimer ? ».
+// Le maintien fait office de confirmation : relacher avant la fin annule.
+const unsigned long DELETE_HOLD_MS   = 2000;
+const unsigned long DELETE_PROMPT_MS = 600;
+bool          delPrompted = false;
 
 const unsigned long LONG_PRESS_SAVE  = 3000;
 const unsigned long SHORT_PRESS_TIME = 500;
@@ -988,11 +981,7 @@ void loop() {
     if ((millis() - prevDebounceTime) > debounceDelay) {
       if (r != prevCurrentState) {
         prevCurrentState = r;
-        // Si l'autre bouton de page est deja enfonce, c'est la combinaison
-        // de suppression : on ne change pas de page. setPage() reinitialise
-        // les 16 potentiometres (~130 ms), le faire deux fois pour rien
-        // bloquait la boucle un quart de seconde.
-        if (prevCurrentState == LOW && digitalRead(BTN_PAGE_NEXT) == HIGH) {
+        if (prevCurrentState == LOW) {
           flashLedPrev();
           setPage((currentPage - 1 + NUM_PAGES) % NUM_PAGES);
         }
@@ -1008,52 +997,13 @@ void loop() {
     if ((millis() - nextDebounceTime) > debounceDelay) {
       if (r != nextCurrentState) {
         nextCurrentState = r;
-        if (nextCurrentState == LOW && digitalRead(BTN_PAGE_PREV) == HIGH) {
+        if (nextCurrentState == LOW) {
           flashLedNext();
           setPage((currentPage + 1) % NUM_PAGES);
         }
       }
     }
     nextLastState = r;
-  }
-
-  // --- Combinaison pins 7 + 8 maintenues : SUPPRIMER le preset courant ---
-  {
-    bool sept = (digitalRead(BTN_PAGE_PREV) == LOW);
-    bool huit = (digitalRead(BTN_PAGE_NEXT) == LOW);
-
-    if (!sept && !huit) pageAuRepos = currentPage;
-
-    if (sept && huit) {
-      if (!comboActive) {
-        comboActive   = true;
-        comboHandled  = false;
-        comboPrompted = false;
-        comboStart    = millis();
-      }
-      if (!comboHandled) {
-        if (!comboPrompted && presetCount > 0) {
-          comboPrompted = true;
-          if (slotEstUsine(currentSlot)) {
-            showMessage("Usine - protege", presetSlots[currentSlot].name);
-          } else {
-            showMessage("Supprimer ?", presetSlots[currentSlot].name);
-          }
-        }
-        if ((millis() - comboStart) >= COMBO_DELETE_MS) {
-          comboHandled = true;
-          if (presetCount > 0) deleteCurrentPreset();
-        }
-      }
-    } else if (comboActive) {
-      comboActive = false;
-      // Restaure la page d'avant la combinaison si l'un des boutons a eu le
-      // temps d'en changer.
-      if (currentPage != pageAuRepos) setPage(pageAuRepos);
-      // Relache avant la fin : on annule sans rien supprimer.
-      if (comboPrompted && !comboHandled) updateDisplay();
-      comboPrompted = false;
-    }
   }
 
   // --- Bouton cycle pin 5 : court=naviguer, long=sauvegarder ---
@@ -1097,7 +1047,7 @@ void loop() {
     }
   }
 
-  // --- Bouton Dump Request pin 6 : long=Dump Request ---
+  // --- Bouton pin 6 : court = Dump Request, maintenu = supprimer ---
   {
     int r = digitalRead(DUMP_BTN_PIN);
     if (r != dumpBtnLastState) dumpBtnDebounceTime = millis();
@@ -1108,24 +1058,41 @@ void loop() {
           dumpBtnPressStart  = millis();
           dumpBtnActive      = true;
           dumpBtnLongHandled = false;
+          delPrompted        = false;
         } else {
+          // Relachement : si l'appui long n'a pas deja agi, c'est un Dump Request.
+          if (dumpBtnActive && !dumpBtnLongHandled) {
+            if (delPrompted) { delPrompted = false; updateDisplay(); }
+            waitingForDump  = true;
+            dumpRequestTime = millis();
+            rxLen           = 0;
+            rxInSysEx       = false;
+            startLedDumpReq();
+            showMessage("Dump Request...", "En attente Z3");
+            sendDumpRequest();
+          }
           dumpBtnActive = false;
+          delPrompted   = false;
         }
       }
     }
     dumpBtnLastState = r;
 
-    // Détection appui long pin 6
+    // Maintien : invite puis suppression
     if (dumpBtnActive && !dumpBtnLongHandled) {
-      if ((millis() - dumpBtnPressStart) >= LONG_PRESS_SAVE) {
+      unsigned long tenu = millis() - dumpBtnPressStart;
+      if (!delPrompted && tenu >= DELETE_PROMPT_MS && presetCount > 0) {
+        delPrompted = true;
+        if (slotEstUsine(currentSlot)) {
+          showMessage("Usine - protege", presetSlots[currentSlot].name);
+        } else {
+          showMessage("Supprimer ?", presetSlots[currentSlot].name);
+        }
+      }
+      if (tenu >= DELETE_HOLD_MS) {
         dumpBtnLongHandled = true;
-        waitingForDump  = true;
-        dumpRequestTime = millis();
-        rxLen           = 0;
-        rxInSysEx       = false;
-        startLedDumpReq();
-        showMessage("Dump Request...", "En attente Z3");
-        sendDumpRequest();
+        delPrompted        = false;
+        if (presetCount > 0) deleteCurrentPreset();
       }
     }
   }
@@ -1134,9 +1101,9 @@ void loop() {
   updateLeds();
 
   // --- Défilement automatique OLED ---
-  // Suspendu pendant la combinaison de suppression : il rafraichit l'ecran
-  // toutes les 3 s et effacait l'invite « Supprimer ? » en pleine lecture.
-  if (autoScrollEnabled && !comboActive) {
+  // Suspendu pendant l'invite de suppression : il rafraichit l'ecran toutes
+  // les 3 s et l'effacerait en pleine lecture.
+  if (autoScrollEnabled && !delPrompted) {
     if (millis() - lastScrollTime >= SCROLL_INTERVAL) {
       lastScrollTime = millis();
       currentDisplayGroup = (currentDisplayGroup + 1) % 4;
