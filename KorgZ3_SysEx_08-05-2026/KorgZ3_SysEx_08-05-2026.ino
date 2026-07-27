@@ -110,6 +110,10 @@ const int  EE_ADDR_COUNT   = 1;
 const int  EE_ADDR_CURRENT = 2;
 const int  EE_ADDR_SLOTS   = 3;
 const int  SLOT_EE_SIZE    = 108;
+// Nombre de presets usine deja installes sur cet appareil. Place bien APRES la
+// zone des slots (3 + 8 x 108 = 867) pour ne pas invalider les enregistrements
+// existants lors de la mise a jour du firmware. 0xFF = jamais ecrit.
+const int  EE_ADDR_FACTORY = 900;
 
 int slotEEAddr(int n) { return EE_ADDR_SLOTS + n * SLOT_EE_SIZE; }
 
@@ -365,6 +369,20 @@ unsigned long dumpBtnPressStart     = 0;
 bool          dumpBtnActive         = false;
 bool          dumpBtnLongHandled    = false;
 unsigned long dumpBtnDebounceTime   = 0;
+
+// --- Suppression d'un preset : appui long SIMULTANE sur les broches 7 et 8 ---
+// Ces deux boutons (page precedente / page suivante) n'ont aucune action en
+// appui long : rien a neutraliser, contrairement aux broches 5 et 6 qui
+// portent deja la sauvegarde et le Dump Request.
+// Appuyer sur les deux fait changer de page dans un sens puis dans l'autre :
+// l'effet net est nul, on revient sur la page de depart.
+// Le maintien fait office de confirmation : le nom du preset vise s'affiche
+// pendant l'appui, relacher avant la fin annule.
+const unsigned long COMBO_DELETE_MS = 2000;
+unsigned long comboStart    = 0;
+bool          comboActive   = false;
+bool          comboHandled  = false;
+bool          comboPrompted = false;
 
 const unsigned long LONG_PRESS_SAVE  = 3000;
 const unsigned long SHORT_PRESS_TIME = 500;
@@ -642,9 +660,14 @@ void loadSlot(int idx) {
 void saveCurrentDump() {
   if (sendBufferSize == 0) return;
   if (presetCount >= MAX_PRESETS) {
-    for (int i = 0; i < MAX_PRESETS - 1; i++) presetSlots[i] = presetSlots[i + 1];
-    presetCount = MAX_PRESETS - 1;
-    if (currentSlot > 0) currentSlot--;
+    // Auparavant on decalait tout d'un cran, ce qui sacrifiait le slot 0 —
+    // donc un preset usine. Puisqu'ils sont proteges, on refuse plutot
+    // l'enregistrement : l'utilisateur libere lui-meme une place avec la
+    // combinaison 7+8.
+    showMessage("Memoire pleine", "Supprimer 7+8");
+    delay(1500);
+    updateDisplay();
+    return;
   }
   int newIdx = presetCount;
   presetSlots[newIdx].size  = sendBufferSize;
@@ -748,6 +771,68 @@ void chargerFactory(int idx, int f) {
   eeWriteSlot(idx);
 }
 
+// Un preset usine ne doit pas pouvoir etre supprime. On identifie les slots
+// proteges par leur NOM, et on ne protege que la PREMIERE occurrence : si
+// l'utilisateur a enregistre une variante sous le meme nom, ce doublon-la
+// reste supprimable, ce qui est precisement le cas d'usage.
+bool slotEstUsine(int idx) {
+  if (idx < 0 || idx >= presetCount || !presetSlots[idx].valid) return false;
+  for (int f = 0; f < FACTORY_COUNT; f++) {
+    byte entete[13];
+    for (byte i = 0; i < 13; i++) entete[i] = pgm_read_byte(FACTORY[f].data + i);
+    char nom[10];
+    extractName(entete, 13, nom);
+    if (strncmp(presetSlots[idx].name, nom, 9) != 0) continue;
+    for (int j = 0; j < idx; j++) {
+      if (presetSlots[j].valid && strncmp(presetSlots[j].name, nom, 9) == 0) return false;
+    }
+    return true;
+  }
+  return false;
+}
+
+// Supprime le slot courant : les suivants remontent d'un cran, le compteur
+// diminue, et l'EEPROM est reecrite pour les slots deplaces.
+void deleteCurrentPreset() {
+  if (presetCount <= 0) return;
+  if (slotEstUsine(currentSlot)) {
+    showMessage("Preset usine", "non supprimable");
+    delay(1200);
+    updateDisplay();
+    return;
+  }
+  char nom[10];
+  strncpy(nom, presetSlots[currentSlot].name, 9);
+  nom[9] = '\0';
+
+  for (int i = currentSlot; i < presetCount - 1; i++) {
+    presetSlots[i] = presetSlots[i + 1];
+    eeWriteSlot(i);
+  }
+  presetCount--;
+  presetSlots[presetCount].valid = false;
+  if (currentSlot >= presetCount) currentSlot = presetCount - 1;
+  if (currentSlot < 0) currentSlot = 0;
+  eeSaveMeta();
+
+  if (presetCount > 0) {
+    sendBufferSize = presetSlots[currentSlot].size;
+    memcpy(sendBuffer, presetSlots[currentSlot].data, sendBufferSize);
+    strncpy(currentName, presetSlots[currentSlot].name, 9);
+    currentName[9] = '\0';
+    reloadPotsFromBuffer();
+  } else {
+    sendBufferSize = 0;
+    strncpy(currentName, "--------", 9);
+  }
+
+  char msg[20];
+  snprintf(msg, sizeof(msg), "%d restant(s)", presetCount);
+  showMessage(nom, msg);
+  delay(1200);
+  updateDisplay();
+}
+
 // =================== SETUP ===================
 void setup() {
   Serial.begin(31250);
@@ -798,19 +883,33 @@ void setup() {
     for (int i = 0; i < FACTORY_COUNT; i++) chargerFactory(i, i);
     presetCount = FACTORY_COUNT;
     currentSlot = 0;
+    eeWriteByte(EE_ADDR_FACTORY, (byte)FACTORY_COUNT);
     eeSaveMeta();
   } else {
-    // EEPROM deja peuplee : on complete les presets usine MANQUANTS, sans
-    // toucher aux presets de l'utilisateur ni a l'ordre existant. Sans cela,
-    // un preset usine ajoute par une mise a jour du firmware n'apparaitrait
-    // jamais sur un appareil qui a deja servi.
+    // EEPROM deja peuplee : on installe les presets usine que cet appareil n'a
+    // JAMAIS recus, pour qu'une mise a jour du firmware les fasse apparaitre.
+    //
+    // On se fie a un compteur en EEPROM, et non a la presence des presets :
+    // sinon un preset usine supprime par l'utilisateur reviendrait a chaque
+    // demarrage, ce qui rendrait la suppression impossible.
+    byte dejaInstalles = EEPROM.read(EE_ADDR_FACTORY);
+    if (dejaInstalles == 0xFF || dejaInstalles > FACTORY_COUNT) {
+      // Compteur jamais ecrit : appareil migrant depuis un firmware anterieur.
+      // On retombe une seule fois sur la detection par nom, puis on amorce le
+      // compteur.
+      dejaInstalles = 0;
+      for (int i = 0; i < FACTORY_COUNT; i++) {
+        if (factoryDejaPresent(FACTORY[i].data)) dejaInstalles = i + 1;
+      }
+    }
+
     int ajoutes = 0;
-    for (int i = 0; i < FACTORY_COUNT && presetCount < MAX_PRESETS; i++) {
-      if (factoryDejaPresent(FACTORY[i].data)) continue;
+    for (int i = dejaInstalles; i < FACTORY_COUNT && presetCount < MAX_PRESETS; i++) {
       chargerFactory(presetCount, i);
       presetCount++;
       ajoutes++;
     }
+    eeWriteByte(EE_ADDR_FACTORY, (byte)FACTORY_COUNT);
     if (ajoutes > 0) {
       eeSaveMeta();
       char msg[20];
@@ -908,6 +1007,40 @@ void loop() {
       }
     }
     nextLastState = r;
+  }
+
+  // --- Combinaison pins 7 + 8 maintenues : SUPPRIMER le preset courant ---
+  {
+    bool sept = (digitalRead(BTN_PAGE_PREV) == LOW);
+    bool huit = (digitalRead(BTN_PAGE_NEXT) == LOW);
+
+    if (sept && huit) {
+      if (!comboActive) {
+        comboActive   = true;
+        comboHandled  = false;
+        comboPrompted = false;
+        comboStart    = millis();
+      }
+      if (!comboHandled) {
+        if (!comboPrompted && presetCount > 0) {
+          comboPrompted = true;
+          if (slotEstUsine(currentSlot)) {
+            showMessage("Usine - protege", presetSlots[currentSlot].name);
+          } else {
+            showMessage("Supprimer ?", presetSlots[currentSlot].name);
+          }
+        }
+        if ((millis() - comboStart) >= COMBO_DELETE_MS) {
+          comboHandled = true;
+          if (presetCount > 0) deleteCurrentPreset();
+        }
+      }
+    } else if (comboActive) {
+      // Relache avant la fin : on annule sans rien supprimer.
+      comboActive = false;
+      if (comboPrompted && !comboHandled) updateDisplay();
+      comboPrompted = false;
+    }
   }
 
   // --- Bouton cycle pin 5 : court=naviguer, long=sauvegarder ---
