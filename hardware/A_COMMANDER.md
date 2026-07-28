@@ -166,10 +166,41 @@ connecteurs femelles du Mega.
 | ☐ | Qté | Élément |
 |---|---|---|
 | ☐ | 1 | Molette de pitch **10 kΩ linéaire, à ressort de rappel** |
-| ☐ | 1 | Switch **3 positions ON-ON-ON** |
+| ☑ | 1 | **`46311LDRX`** — Switchcraft, glissière 3 positions **SPTT** |
 | ☐ | 4 | Résistance **2,2 kΩ** — l'échelle qui encode le switch |
 | ☐ | 1 | Embase mini-XLR 5 points **femelle**, à encastrer dans le pickguard |
 | ☐ | 1 | **Câble à fiche coudée** côté guitare |
+
+### Le sélecteur de plage : `46311LDRX`
+
+Switchcraft série 46300. **SPTT** — un pôle, trois directions — c'est exactement
+la configuration attendue : le commun va vers le canal 2 du multiplexeur, les
+trois directions vers les trois prises de l'échelle de 2,2 kΩ.
+
+| Caractéristique | Valeur |
+|---|---|
+| Circuit | SPTT (= SP3T) |
+| Positions | 3, **cran positif** à chacune |
+| Courant admissible | 3 A alternatif, 0,5 A continu |
+| Contacts | alliage de cuivre argenté |
+| Boîtier | acier zingué, volet anti-poussière |
+
+Le cran positif est ce qui compte le plus ici : il interdit les positions
+intermédiaires, donc les tensions flottantes que le firmware interpréterait
+comme un câble débranché.
+
+**Choisi pour sa fermeté**, précisément parce qu'une glissière ne se déplace
+pas par accident sous la main droite pendant le jeu — contrairement à un
+sélecteur à lame de guitare.
+
+> ⚠️ **Découpe rectangulaire dans le pickguard**, pas un perçage rond. Environ
+> 19,5 × 35,7 mm hors tout d'après la fiche — **à confirmer sur le plan coté
+> avant de tracer**. C'est irréversible : faire l'essai sur une chute de
+> plastique d'abord.
+
+Le sens de rotation n'est pas une contrainte : si la position haute ne tombe
+pas sur la plage voulue, il suffit d'échanger deux fils, ou de permuter les
+fenêtres dans `pitch_math.h`.
 
 ### La chaîne des genres, vérifiée sur la fiche Switchcraft
 
