@@ -1,6 +1,6 @@
-# Nomenclature — shield SysEx Patcher v1.1
+# Nomenclature — shield SysEx Patcher v1.2
 
-Extraite du schéma et du PCB le 2026-07-26 (`kicad-cli sch export bom` + relevé des
+Extraite du schéma et du PCB le 2026-07-28 (`kicad-cli sch export bom` + relevé des
 empreintes présentes uniquement sur le PCB). Carte **172 × 172 mm**, 4 couches,
 **100 % traversant** — aucun composant monté en surface.
 
