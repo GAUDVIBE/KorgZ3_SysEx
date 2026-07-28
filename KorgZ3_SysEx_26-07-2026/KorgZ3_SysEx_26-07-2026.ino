@@ -120,6 +120,10 @@ const int  EE_ADDR_COUNT   = 1;
 const int  EE_ADDR_CURRENT = 2;
 const int  EE_ADDR_SLOTS   = 3;
 const int  SLOT_EE_SIZE    = 108;
+// Nombre de presets usine deja installes sur cet appareil. Place bien APRES la
+// zone des slots (3 + 8 x 108 = 867) pour ne pas invalider les enregistrements
+// existants lors de la mise a jour du firmware. 0xFF = jamais ecrit.
+const int  EE_ADDR_FACTORY = 900;
 
 int slotEEAddr(int n) { return EE_ADDR_SLOTS + n * SLOT_EE_SIZE; }
 
@@ -375,6 +379,17 @@ unsigned long dumpBtnPressStart     = 0;
 bool          dumpBtnActive         = false;
 bool          dumpBtnLongHandled    = false;
 unsigned long dumpBtnDebounceTime   = 0;
+
+// --- Suppression d'un preset : appui LONG sur la broche 6 ---
+// La meme broche porte les deux actions, distinguees par la duree :
+//   appui court  -> Dump Request
+//   appui maintenu -> suppression du preset courant
+// L'invite n'apparait qu'apres DELETE_PROMPT_MS, pour qu'un appui bref
+// destine au Dump Request ne fasse pas clignoter « Supprimer ? ».
+// Le maintien fait office de confirmation : relacher avant la fin annule.
+const unsigned long DELETE_HOLD_MS   = 3000;
+const unsigned long DELETE_PROMPT_MS = 600;
+bool          delPrompted = false;
 
 const unsigned long LONG_PRESS_SAVE  = 3000;
 const unsigned long SHORT_PRESS_TIME = 500;
@@ -657,9 +672,14 @@ void loadSlot(int idx) {
 void saveCurrentDump() {
   if (sendBufferSize == 0) return;
   if (presetCount >= MAX_PRESETS) {
-    for (int i = 0; i < MAX_PRESETS - 1; i++) presetSlots[i] = presetSlots[i + 1];
-    presetCount = MAX_PRESETS - 1;
-    if (currentSlot > 0) currentSlot--;
+    // Auparavant on decalait tout d'un cran, ce qui sacrifiait le slot 0 —
+    // donc un preset usine. Puisqu'ils sont proteges, on refuse plutot
+    // l'enregistrement : l'utilisateur libere lui-meme une place avec la
+    // combinaison 7+8.
+    showMessage("Memoire pleine", "Supprimer 7+8");
+    delay(1500);
+    updateDisplay();
+    return;
   }
   int newIdx = presetCount;
   presetSlots[newIdx].size  = sendBufferSize;
@@ -736,6 +756,95 @@ void receiveMidi() {
   }
 }
 
+// Un preset usine est-il deja present en memoire ?
+// On compare sur le NOM du dump (octets 5 a 12), qui identifie le patch de
+// facon stable : c'est ce meme champ que extractName() utilise pour nommer les
+// slots, a la sauvegarde comme au chargement usine.
+bool factoryDejaPresent(const byte* dump) {
+  byte entete[13];
+  for (byte i = 0; i < 13; i++) entete[i] = pgm_read_byte(dump + i);
+  char nom[10];
+  extractName(entete, 13, nom);
+  for (int i = 0; i < presetCount; i++) {
+    if (presetSlots[i].valid && strncmp(presetSlots[i].name, nom, 9) == 0) return true;
+  }
+  return false;
+}
+
+// Copie un preset usine dans le slot idx. Les tableaux vivent en PROGMEM :
+// memcpy_P, et non memcpy.
+void chargerFactory(int idx, int f) {
+  presetSlots[idx].size  = FACTORY[f].size;
+  presetSlots[idx].valid = true;
+  memcpy_P(presetSlots[idx].data, FACTORY[f].data, FACTORY[f].size);
+  // Le nom affiche vient du dump lui-meme, comme a la sauvegarde : un preset
+  // usine porte donc son vrai nom sans cas particulier.
+  extractName(presetSlots[idx].data, presetSlots[idx].size, presetSlots[idx].name);
+  eeWriteSlot(idx);
+}
+
+// Un preset usine ne doit pas pouvoir etre supprime. On identifie les slots
+// proteges par leur NOM, et on ne protege que la PREMIERE occurrence : si
+// l'utilisateur a enregistre une variante sous le meme nom, ce doublon-la
+// reste supprimable, ce qui est precisement le cas d'usage.
+bool slotEstUsine(int idx) {
+  if (idx < 0 || idx >= presetCount || !presetSlots[idx].valid) return false;
+  for (int f = 0; f < FACTORY_COUNT; f++) {
+    byte entete[13];
+    for (byte i = 0; i < 13; i++) entete[i] = pgm_read_byte(FACTORY[f].data + i);
+    char nom[10];
+    extractName(entete, 13, nom);
+    if (strncmp(presetSlots[idx].name, nom, 9) != 0) continue;
+    for (int j = 0; j < idx; j++) {
+      if (presetSlots[j].valid && strncmp(presetSlots[j].name, nom, 9) == 0) return false;
+    }
+    return true;
+  }
+  return false;
+}
+
+// Supprime le slot courant : les suivants remontent d'un cran, le compteur
+// diminue, et l'EEPROM est reecrite pour les slots deplaces.
+void deleteCurrentPreset() {
+  if (presetCount <= 0) return;
+  if (slotEstUsine(currentSlot)) {
+    showMessage("Preset usine", "non supprimable");
+    delay(1200);
+    updateDisplay();
+    return;
+  }
+  char nom[10];
+  strncpy(nom, presetSlots[currentSlot].name, 9);
+  nom[9] = '\0';
+
+  for (int i = currentSlot; i < presetCount - 1; i++) {
+    presetSlots[i] = presetSlots[i + 1];
+    eeWriteSlot(i);
+  }
+  presetCount--;
+  presetSlots[presetCount].valid = false;
+  if (currentSlot >= presetCount) currentSlot = presetCount - 1;
+  if (currentSlot < 0) currentSlot = 0;
+  eeSaveMeta();
+
+  if (presetCount > 0) {
+    sendBufferSize = presetSlots[currentSlot].size;
+    memcpy(sendBuffer, presetSlots[currentSlot].data, sendBufferSize);
+    strncpy(currentName, presetSlots[currentSlot].name, 9);
+    currentName[9] = '\0';
+    reloadPotsFromBuffer();
+  } else {
+    sendBufferSize = 0;
+    strncpy(currentName, "--------", 9);
+  }
+
+  char msg[20];
+  snprintf(msg, sizeof(msg), "%d restant(s)", presetCount);
+  showMessage(nom, msg);
+  delay(1200);
+  updateDisplay();
+}
+
 // =================== SETUP ===================
 void setup() {
   Serial.begin(31250);
@@ -792,21 +901,46 @@ void setup() {
   // Chargement EEPROM
   bool eepromOk = eeLoad();
   if (!eepromOk || presetCount == 0) {
+    // EEPROM vierge : on installe tous les presets usine.
     showMessage("1er demarrage", "Presets usine");
     delay(1000);
-    // Les tableaux vivent en PROGMEM : memcpy_P, et non memcpy.
-    for (int i = 0; i < FACTORY_COUNT; i++) {
-      presetSlots[i].size  = FACTORY[i].size;
-      presetSlots[i].valid = true;
-      memcpy_P(presetSlots[i].data, FACTORY[i].data, FACTORY[i].size);
-      // Le nom affiche vient des octets 5 a 12 du dump lui-meme, comme a la
-      // sauvegarde : un preset usine porte donc son vrai nom sans cas special.
-      extractName(presetSlots[i].data, presetSlots[i].size, presetSlots[i].name);
-      eeWriteSlot(i);
-    }
+    for (int i = 0; i < FACTORY_COUNT; i++) chargerFactory(i, i);
     presetCount = FACTORY_COUNT;
     currentSlot = 0;
+    eeWriteByte(EE_ADDR_FACTORY, (byte)FACTORY_COUNT);
     eeSaveMeta();
+  } else {
+    // EEPROM deja peuplee : on installe les presets usine que cet appareil n'a
+    // JAMAIS recus, pour qu'une mise a jour du firmware les fasse apparaitre.
+    //
+    // On se fie a un compteur en EEPROM, et non a la presence des presets :
+    // sinon un preset usine supprime par l'utilisateur reviendrait a chaque
+    // demarrage, ce qui rendrait la suppression impossible.
+    byte dejaInstalles = EEPROM.read(EE_ADDR_FACTORY);
+    if (dejaInstalles == 0xFF || dejaInstalles > FACTORY_COUNT) {
+      // Compteur jamais ecrit : appareil migrant depuis un firmware anterieur.
+      // On retombe une seule fois sur la detection par nom, puis on amorce le
+      // compteur.
+      dejaInstalles = 0;
+      for (int i = 0; i < FACTORY_COUNT; i++) {
+        if (factoryDejaPresent(FACTORY[i].data)) dejaInstalles = i + 1;
+      }
+    }
+
+    int ajoutes = 0;
+    for (int i = dejaInstalles; i < FACTORY_COUNT && presetCount < MAX_PRESETS; i++) {
+      chargerFactory(presetCount, i);
+      presetCount++;
+      ajoutes++;
+    }
+    eeWriteByte(EE_ADDR_FACTORY, (byte)FACTORY_COUNT);
+    if (ajoutes > 0) {
+      eeSaveMeta();
+      char msg[20];
+      snprintf(msg, sizeof(msg), "%d preset(s) usine", ajoutes);
+      showMessage("Mise a jour", msg);
+      delay(1200);
+    }
   }
 
   // Charger le slot courant
@@ -938,15 +1072,18 @@ void loop() {
           cyclePressActive      = true;
           cycleLongPressHandled = false;
         } else {
+          // Tout relachement AVANT que l'appui long (3 s) ne se declenche fait
+          // passer au slot suivant. Auparavant la fenetre etait limitee a
+          // SHORT_PRESS_TIME (500 ms) : un appui un peu trop long ne faisait
+          // rien du tout, d'ou l'impression qu'il fallait cliquer plusieurs
+          // fois. La sauvegarde reste protegee par cycleLongPressHandled.
           if (cyclePressActive && !cycleLongPressHandled) {
-            if ((millis() - cyclePressStartTime) < SHORT_PRESS_TIME) {
-              if (presetCount > 0) {
-                loadSlot((currentSlot + 1) % presetCount);
-              } else {
-                showMessage("Aucun dump stocke", "Appui long 6=Dump");
-                delay(800);
-                updateDisplay();
-              }
+            if (presetCount > 0) {
+              loadSlot((currentSlot + 1) % presetCount);
+            } else {
+              showMessage("Aucun dump stocke", "Appui long 6=Dump");
+              delay(800);
+              updateDisplay();
             }
           }
           cyclePressActive = false;
@@ -964,7 +1101,7 @@ void loop() {
     }
   }
 
-  // --- Bouton Dump Request pin 6 : long=Dump Request ---
+  // --- Bouton pin 6 : court = Dump Request, maintenu = supprimer ---
   {
     int r = digitalRead(DUMP_BTN_PIN);
     if (r != dumpBtnLastState) dumpBtnDebounceTime = millis();
@@ -975,24 +1112,41 @@ void loop() {
           dumpBtnPressStart  = millis();
           dumpBtnActive      = true;
           dumpBtnLongHandled = false;
+          delPrompted        = false;
         } else {
+          // Relachement : si l'appui long n'a pas deja agi, c'est un Dump Request.
+          if (dumpBtnActive && !dumpBtnLongHandled) {
+            if (delPrompted) { delPrompted = false; updateDisplay(); }
+            waitingForDump  = true;
+            dumpRequestTime = millis();
+            rxLen           = 0;
+            rxInSysEx       = false;
+            startLedDumpReq();
+            showMessage("Dump Request...", "En attente Z3");
+            sendDumpRequest();
+          }
           dumpBtnActive = false;
+          delPrompted   = false;
         }
       }
     }
     dumpBtnLastState = r;
 
-    // Détection appui long pin 6
+    // Maintien : invite puis suppression
     if (dumpBtnActive && !dumpBtnLongHandled) {
-      if ((millis() - dumpBtnPressStart) >= LONG_PRESS_SAVE) {
+      unsigned long tenu = millis() - dumpBtnPressStart;
+      if (!delPrompted && tenu >= DELETE_PROMPT_MS && presetCount > 0) {
+        delPrompted = true;
+        if (slotEstUsine(currentSlot)) {
+          showMessage("Usine - protege", presetSlots[currentSlot].name);
+        } else {
+          showMessage("Supprimer ?", presetSlots[currentSlot].name);
+        }
+      }
+      if (tenu >= DELETE_HOLD_MS) {
         dumpBtnLongHandled = true;
-        waitingForDump  = true;
-        dumpRequestTime = millis();
-        rxLen           = 0;
-        rxInSysEx       = false;
-        startLedDumpReq();
-        showMessage("Dump Request...", "En attente Z3");
-        sendDumpRequest();
+        delPrompted        = false;
+        if (presetCount > 0) deleteCurrentPreset();
       }
     }
   }
@@ -1001,7 +1155,9 @@ void loop() {
   updateLeds();
 
   // --- Défilement automatique OLED ---
-  if (autoScrollEnabled) {
+  // Suspendu pendant l'invite de suppression : il rafraichit l'ecran toutes
+  // les 3 s et l'effacerait en pleine lecture.
+  if (autoScrollEnabled && !delPrompted) {
     if (millis() - lastScrollTime >= SCROLL_INTERVAL) {
       lastScrollTime = millis();
       currentDisplayGroup = (currentDisplayGroup + 1) % 4;
