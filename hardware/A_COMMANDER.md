@@ -126,16 +126,27 @@ broches sur le plan du fabricant.
 | ☐ | Qté | Élément |
 |---|---|---|
 | ☐ | 1 | **`TRAPC5M1X`** — mini-XLR mâle pour la carte |
-| ☐ | 2 | Barrette **mâle 1×4**, pas 2,54 mm — écran OLED et alimentation batterie |
 
 ### Barrettes d'interface Arduino Mega
 
-**Femelles**, pas 2,54 mm, à longues broches si tu veux pouvoir empiler.
+**MÂLES**, simple rangée, pas 2,54 mm, broches droites. Nos empreintes sont des
+`PinHeader` : sur un shield, la carte est au-dessus et le Mega s'enfiche
+dessous, donc les broches pointent **vers le bas** pour entrer dans les
+connecteurs femelles du Mega.
 
-| ☐ | Qté | Format |
-|---|---|---|
-| ☐ | 5 | 1×8 |
-| ☐ | 1 | 1×10 |
+| ☐ | Qté | Format | Pour |
+|---|---|---|---|
+| ☐ | 5 | 1×8 | JMA1, JMA2, JMD2, JMD3, JMP1 |
+| ☐ | 1 | 1×10 | JMD1 |
+| ☐ | 2 | 1×4 | écran OLED (J5) et alimentation batterie (J4) |
+
+> **Le plus simple : acheter des barrettes sécables de 40 positions** et les
+> couper à la longueur. Deux ou trois réglettes couvrent tout, pour quelques
+> euros, et il en reste toujours pour la suite.
+>
+> Une **barrette empilable** (femelle au-dessus, longues broches mâles en
+> dessous) conviendrait aussi, à la même empreinte, si tu veux garder la
+> possibilité de superposer une carte. Ce n'est pas nécessaire ici.
 
 > Pas de barrette 2×18 : supprimée en v1.2, sa position réelle sur le Mega
 > traversant une colonne de potentiomètres.
