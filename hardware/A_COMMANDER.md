@@ -215,6 +215,28 @@ Pour la fiche coudée, Cable Techniques (série LPS, sortie orientable sur 60°)
 Remote Audio (TA5F-RA) sont les deux fournisseurs sérieux. Mesurer le diamètre
 de perçage nécessaire **avant** de percer le pickguard.
 
+#### `TA5FSH` — vérifié sur la fiche `TA_FSH SERIES`, rév. A
+
+Décodage de la référence : `TA` = **TINI QG**, le nom Switchcraft du mini-XLR —
+c'est ce champ qui garantit la compatibilité avec le `TRAPC` de la carte.
+`5` = 5 contacts, `F` = femelle, `SH` = poignée blindée. Contacts argentés
+(standard ; le suffixe `AU` donnerait de l'or, inutile ici).
+
+| Cote | Valeur | Conséquence |
+|---|---|---|
+| Ouverture arrière | **Ø 7,4 mm** | **diamètre extérieur maximal du câble** |
+| Longueur hors tout | 43,7 mm | dégagement devant la face du boîtier |
+| Ø du corps | 10,5 mm | |
+
+> ⚠️ **Brochage donné vue de face côté accouplement.** Une femelle vue de face
+> est le miroir d'un mâle vu de face : recopier un plan sur l'autre inverse les
+> broches 1 et 3. Contrôler la **continuité au multimètre** fil par fil avant
+> le premier branchement — une inversion enverrait le +5 V sur la sortie de la
+> molette.
+
+La borne de masse du serre-câble est prévue pour recevoir le drain du blindage :
+s'en servir, le câble longe des micros de guitare électrique.
+
 ---
 
 ## 5. Le circuit imprimé
