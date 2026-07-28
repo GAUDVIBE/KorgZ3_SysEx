@@ -1,0 +1,81 @@
+{
+  "_source": "https://github.com/YoyodyneMonkeyWorks/KiCad/tree/master/Arduino_MEGA_2560-Rev3",
+  "_note": "Geometrie des embases d'un Arduino Mega 2560 Rev3 reel. REFERENCE FAISANT AUTORITE pour le placement des connecteurs du shield. Le gabarit Arduino_Mega livre avec KiCad place le bloc de 10 broches (JP6) et le bloc 2x18 (XIO31) a des positions FAUSSES : s'y fier a produit une v1.0 et une v1.1 qui ne s'enfichaient pas.",
+  "_origine": "toutes les coordonnees sont relatives a la 1re broche du connecteur POWER",
+  "entraxe_rangees_mm": 48.26,
+  "blocs": {
+    "PWML31": {
+      "broches": 8,
+      "x_min": 17.78,
+      "x_max": 35.56,
+      "y": [
+        -48.26
+      ]
+    },
+    "ADCL31": {
+      "broches": 8,
+      "x_min": 22.86,
+      "x_max": 40.64,
+      "y": [
+        0.0
+      ]
+    },
+    "COMMUNICATION31": {
+      "broches": 8,
+      "x_min": 40.64,
+      "x_max": 58.42,
+      "y": [
+        -48.26
+      ]
+    },
+    "ADCH31": {
+      "broches": 8,
+      "x_min": 45.72,
+      "x_max": 63.5,
+      "y": [
+        0.0
+      ]
+    },
+    "XIO31": {
+      "broches": 36,
+      "x_min": 66.04,
+      "x_max": 68.58,
+      "y": [
+        -48.26,
+        -45.72,
+        -43.18,
+        -40.64,
+        -38.1,
+        -35.56,
+        -33.02,
+        -30.48,
+        -27.94,
+        -25.4,
+        -22.86,
+        -20.32,
+        -17.78,
+        -15.24,
+        -12.7,
+        -10.16,
+        -7.62,
+        -5.08
+      ]
+    },
+    "JP6": {
+      "broches": 10,
+      "x_min": -9.144,
+      "x_max": 13.716,
+      "y": [
+        -48.26
+      ]
+    },
+    "POWER31": {
+      "broches": 8,
+      "x_min": 0.0,
+      "x_max": 17.78,
+      "y": [
+        0.0
+      ]
+    }
+  }
+}

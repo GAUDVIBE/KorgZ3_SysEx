@@ -29,11 +29,13 @@
 #include "mux.h"
 #include "pitch.h"
 
-// Boutons et LEDs supplementaires du shield v1.0, exposes par le bloc 2x18.
-// Aucune fonction pour l'instant : les broches sont declarees pour que le
-// materiel soit testable electriquement et reservees pour un usage futur.
-const byte butLayout2[3] = {22, 24, 26};
-const byte LEDLayout2[3] = {23, 25, 27};
+// Boutons et LEDs supplementaires : SW6 a droite (5e paire de la colonne de
+// pages) et SW7/SW8 a gauche. Portes par D14-D19, libres sur le bloc JMD3.
+// Le bloc 2x18 qui les portait auparavant a ete supprime : sa position reelle
+// sur le Mega traverse la colonne de potentiometres RV3/RV7/RV11/RV15.
+// Aucune fonction pour l'instant, les broches sont juste declarees.
+const byte butLayout2[3] = {14, 16, 18};
+const byte LEDLayout2[3] = {15, 17, 19};
 
 // =================== ÉCRAN OLED ===================
 #define SCREEN_WIDTH 128

@@ -16,10 +16,10 @@ pitch = pitch_path.read_text()
 # --- Boutons et LEDs en reserve du bloc 2x18 ---
 assert "butLayout2" in fw, "butLayout2 absent"
 assert "LEDLayout2" in fw, "LEDLayout2 absent"
-assert re.search(r'butLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*22\s*,\s*24\s*,\s*26\s*\}', fw), \
-    "butLayout2 valeurs incorrectes"
-assert re.search(r'LEDLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*23\s*,\s*25\s*,\s*27\s*\}', fw), \
-    "LEDLayout2 valeurs incorrectes"
+assert re.search(r'butLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*14\s*,\s*16\s*,\s*18\s*\}', fw), \
+    "butLayout2 valeurs incorrectes (attendu D14,D16,D18)"
+assert re.search(r'LEDLayout2\s*\[\s*3\s*\]\s*=\s*\{\s*15\s*,\s*17\s*,\s*19\s*\}', fw), \
+    "LEDLayout2 valeurs incorrectes (attendu D15,D17,D19)"
 assert "INPUT_PULLUP" in fw, "pinMode pullup absent"
 
 # --- Multiplexeur 4067 : selection D2/D3/D4/D13, commun sur A15 ---
@@ -35,5 +35,5 @@ assert re.search(r'CH_SWITCH\s*=\s*2', pitch), "switch attendu sur le canal 2"
 assert re.search(r'pot\.pin\s*==\s*A15\s*\)\s*\?\s*muxRead\(0\)', fw), \
     "le pot #16 ne passe pas par muxRead(0)"
 
-print("check_fw OK — butLayout2{22,24,26} | LEDLayout2{23,25,27} | "
+print("check_fw OK — butLayout2{14,16,18} | LEDLayout2{15,17,19} | "
       "mux S0..S3={2,3,4,13} COM=A15 | molette ch1 | switch ch2 | pot16 ch0")

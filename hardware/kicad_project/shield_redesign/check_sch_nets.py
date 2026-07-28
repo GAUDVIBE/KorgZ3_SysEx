@@ -2,8 +2,8 @@ import re, pathlib
 
 sch = pathlib.Path("SysEx_Patcher.kicad_sch").read_text()
 
-# Nets D22..D27 : présents comme net-labels (label "DXX" ...)
-for n in range(22, 28):
+# Nets D14..D19 : présents comme net-labels (label "DXX" ...)
+for n in range(14, 20):
     assert re.search(r'\(label "D%d"' % n, sch), "net-label D%d absent du schema" % n
 
 # 3 nouveaux boutons SW6 / SW7 / SW8
@@ -27,5 +27,5 @@ for ref in ["R31", "R32", "C20"]:
         "%s absent (filtre / pull-down du canal switch)" % ref
 assert re.search(r'\(label "SW_BEND"', sch), "net-label SW_BEND absent"
 
-print("check_sch_nets OK — D22..D27 | SW6/SW7/SW8 | R28/R29/R30 | D7/D8/D9 | "
+print("check_sch_nets OK — D14..D19 | SW6/SW7/SW8 | R28/R29/R30 | D7/D8/D9 | "
       "J10 mini-XLR 5pts | R31/R32/C20 | SW_BEND")

@@ -61,7 +61,11 @@ connecteurs du PCB qui **sont** l'interface Mega, ils n'ont pas de symbole assoc
 |---|---|---|
 | JMA1, JMA2, JMD2, JMD3, JMP1 | Barrette **1×8** femelle 2,54 mm | **5** |
 | JMD1 | Barrette **1×10** femelle 2,54 mm | 1 |
-| JMX1 | Barrette **2×18** femelle 2,54 mm | 1 |
+
+> **Pas de barrette 2×18.** Elle figurait en v1.1 pour exposer D22 à D53, mais sa
+> position réelle sur le Mega traverse la colonne de potentiomètres
+> RV3/RV7/RV11/RV15 — courts-circuits garantis. Elle n'apportait que 6 signaux
+> utiles sur 36 ; ceux-ci sont reportés sur **D14 à D19**, libres sur `JMD3`.
 
 > Prendre des barrettes **femelles à longues broches** (type « stackable header ») si tu
 > veux pouvoir empiler autre chose au-dessus du shield.
@@ -129,7 +133,7 @@ diviseur à deux résistances ne permettrait pas cette signature.
 | Condensateurs | **19 × 100 nF**, 1 × 100 µF |
 | Semi-conducteurs | 1 × 6N138, 1 × CD74HC4067, 1 × 1N4148, 1 × 1N4004, **7 × LED 3 mm** |
 | Connecteurs carte | 2 × DIN 5, 1 × barrel, 2 × barrette 1×4, 1 × mini-XLR 5 |
-| Barrettes Mega | 5 × 1×8, 1 × 1×10, 1 × 2×18 (femelles) |
+| Barrettes Mega | 5 × 1×8, 1 × 1×10 (femelles) |
 | Commandes | **7 × bouton 6 mm** |
 | Visserie | 4 × M3 + entretoises |
 | Guitare | 1 molette 10 kΩ, 1 switch ON-ON-ON, 1 embase mini-XLR, 1 câble à fiche coudée |
