@@ -15,6 +15,7 @@ Carte **100 % traversante** — aucun composant monté en surface.
 | ☑ | 3 | `437-1168730841012101` | Support DIP-8 Preci-dip — pour le 6N138 (1 suffit) |
 | ☑ | 19 | `594-MDSA104K15XH5TAA` | 100 nF — **voir §2** |
 | ☑ | 1 | `502-TA5FSH` | Mini-XLR 5 points **femelle, côté câble** |
+| ☑ | 7 | `SWT0325-073016TSK` (GCT) | Bouton tactile 6 × 6 mm traversant — **voir §2** |
 
 ---
 
@@ -45,6 +46,25 @@ C'est aussi une version **bipolaire**, qui fonctionne mais coûte plus cher qu'u
 polarisé ordinaire. Vérifier le **pas de 2,50 mm** et le **diamètre 6,3 mm**.
 
 **Une seule pièce suffit** (C19), le panier en compte 10.
+
+### ⚠️ Les boutons : écartement non documenté, et hauteur à arrêter
+
+`SWT0325` (GCT) — **traversant**, corps 6,0 × 6,0 mm, SPST normalement ouvert,
+100 000 cycles. Conforme sur tous les points vérifiables.
+
+Mais **la fiche ne donne aucun plan d'implantation coté** : l'écartement des
+broches n'y figure pas, et l'historique des révisions montre que le fabricant a
+retiré ces schémas le 17/07/2025. Impossible donc de confirmer formellement les
+**6,50 × 4,50 mm** de notre empreinte `SW_PUSH_6mm`.
+
+Le risque reste faible : un tactile 6 × 6 traversant à 4 broches est toujours sur
+cette trame. La pièce coûte quelques centimes, et en prendre une dizaine permet
+d'essayer sans conséquence.
+
+**Hauteur hors tout : 7,3 mm** — c'est le champ `0730` de la référence. Le
+poussoir dépassera de 7,3 mm au-dessus du circuit. Si la façade du boîtier est
+plus épaisse, le bouton sera inaccessible : c'est **le seul composant dont le
+choix dépend du boîtier**, et il peut attendre que son épaisseur soit arrêtée.
 
 ### ⚠️ Les potentiomètres
 
@@ -107,7 +127,6 @@ broches sur le plan du fabricant.
 |---|---|---|
 | ☐ | 1 | **`TRAPC5M1X`** — mini-XLR mâle pour la carte |
 | ☐ | 2 | Barrette **mâle 1×4**, pas 2,54 mm — écran OLED et alimentation batterie |
-| ☐ | **7** | Bouton poussoir **6 mm** |
 
 ### Barrettes d'interface Arduino Mega
 
