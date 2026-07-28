@@ -24,6 +24,35 @@ Pour raisonner depuis un coin de carte, retire 20 à chaque valeur.
 > avec le plan de masse. Prévoir une découpe prolongée vers l'intérieur, ou un
 > jack déporté par un court câble jusqu'à la paroi.
 
+### Percer la paroi pour le mini-XLR `J10`
+
+Relevé sur le plan Switchcraft `TRAPC_X - TRASM_X SERIES` rév. C, recoupé sur
+l'empreinte : le connecteur occupe **y 20,125 à 40,191**, soit ses 20,07 mm hors
+tout. Sa face avant est donc **0,125 mm en retrait** du bord de carte.
+
+| Élément | Cote |
+|---|---|
+| Ø du fût du connecteur | 11,1 mm |
+| **Ø de perçage conseillé** | **12,0 mm** |
+| Jeu face avant ↔ paroi | 0,125 mm |
+| Dépassement de la fiche branchée | **43,7 mm** vers l'extérieur |
+| Ø de la fiche branchée | 10,5 mm |
+
+Le fût **ne traverse pas la paroi** : c'est pourquoi on prend la version sans
+filetage, `TRAPC5M1X`, dont l'écrou serait inutilisable. La contrepartie est que
+rien ne retient le connecteur hors ses soudures.
+
+> **Percer au plus juste** — 12,0 mm, pas davantage. C'est le trou lui-même qui
+> reprendra l'effort latéral au branchement.
+>
+> La fiche femelle du câble doit traverser l'épaisseur de la paroi avant
+> d'atteindre le connecteur. **Garder la paroi mince à cet endroit** (1,5 mm
+> environ), ou la chanfreiner : trop épaisse, le verrou de la fiche
+> n'encliquettera pas.
+
+Prévoir enfin **43,7 mm de dégagement** devant la paroi, dans l'axe du
+connecteur : c'est la longueur de la fiche `TA5FSH` une fois branchée.
+
 ## Trous de fixation M3
 
 | Réf | Position |

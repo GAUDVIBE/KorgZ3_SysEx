@@ -28,6 +28,51 @@ Carte **100 % traversante** — aucun composant monté en surface.
 coudé pour circuit imprimé. C'est lui qui correspond à l'empreinte
 `MiniXLR-5_Switchcraft_TRAPC_Horizontal`. Sans lui, rien à brancher sur la carte.
 
+#### Décodage, sur le plan `TRAPC_X - TRASM_X SERIES`, rév. C
+
+| Champ | Valeur | Signification |
+|---|---|---|
+| `T` | T | TINI QG — la famille mini-XLR |
+| `RA` | RA | **Right angle**, coudé |
+| `PC` | PC | **Traversant** (`SM` = monté en surface) |
+| `5` | 5 | 5 contacts, en **double rangée** de terminaisons |
+| `M` | M | mâle |
+| `1` | 1 | **sans filetage** |
+| `X` | X | RoHS |
+
+#### Empreinte vérifiée — 7 cotes sur 7
+
+Confrontation de `MiniXLR-5_Switchcraft_TRAPC_Horizontal` au plan, feuille 2 :
+
+| Cote | Empreinte | Plan |
+|---|---|---|
+| Entraxe des trous de fixation | 11,938 mm = 0,4700" | 0,470" |
+| Ø des trous de fixation | 1,778 mm = 0,0700" | 0,070" |
+| Ø de perçage des signaux | 1,016 mm = 0,0400" | 0,040" |
+| Pas dans une rangée | 2,540 mm = 0,1000" | 0,100" |
+| Décalage entre rangées, en x | 1,270 mm = 0,0500" | 0,050" |
+| Écart entre rangées, en y | 2,540 mm = 0,1000" | 0,100" |
+| Fixation → rangée proche, en y | 2,794 mm = 0,1100" | 0,110" |
+
+Le circuit imprimé commandé accepte donc bien cette référence.
+
+#### Pourquoi *pas* la version filetée `TRAPC5MX`
+
+Le plan liste `TRAPC5M1X` et `TRAPC5MX` **sous la même implantation** : la carte
+accepte les deux. La version sans le `1` apporte un fût fileté 7/16-32 UN-2A
+avec écrou et rondelle, ce qui ferait encaisser l'effort de branchement par la
+paroi du boîtier plutôt que par les soudures. Séduisant — mais inapplicable ici.
+
+L'empreinte occupe **y 20,125 → 40,191**, soit les 20,07 mm du plan, filetage
+compris. Le bord de la carte est à **y = 20,0** : la face avant du connecteur
+affleure à 0,125 mm près, et les 7,11 mm de filetage s'étendent vers
+l'**intérieur**. Un écrou se vissant depuis l'extérieur de la paroi, il n'aurait
+jamais de quoi mordre.
+
+> Rien ne soutient donc ce connecteur hors ses 5 soudures et ses 2 ergots — et
+> le filetage n'y aurait rien changé. La parade est côté boîtier : percer au
+> plus juste autour du fût pour que la paroi reprenne l'effort latéral.
+
 ### ⚠️ Les 100 nF sont en rupture
 
 `594-MDSA104K15XH5TAA` : **stock 0, en attente de réapprovisionnement**. Ça
