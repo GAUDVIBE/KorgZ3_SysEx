@@ -29,13 +29,12 @@
 #include "mux.h"
 #include "pitch.h"
 
-// Boutons et LEDs supplementaires : SW6 a droite (5e paire de la colonne de
-// pages) et SW7/SW8 a gauche. Portes par D14-D19, libres sur le bloc JMD3.
-// Le bloc 2x18 qui les portait auparavant a ete supprime : sa position reelle
-// sur le Mega traverse la colonne de potentiometres RV3/RV7/RV11/RV15.
-// Aucune fonction pour l'instant, les broches sont juste declarees.
-const byte butLayout2[3] = {14, 16, 18};
-const byte LEDLayout2[3] = {15, 17, 19};
+// D14 a D19 portent la 5e paire bouton+LED de la colonne de pages (SW6/D7) et
+// les deux paires de fonction de gauche (SW7/D8 et SW8/D9). Ces broches sont
+// libres sur le bloc JMD3 ; le bloc 2x18 qui les portait auparavant a ete
+// supprime, sa position reelle sur le Mega traversant la colonne de
+// potentiometres RV3/RV7/RV11/RV15. Voir PAGE_BTN, PAGE_LED, BTN_DUMP,
+// BTN_PRESET plus bas pour leur affectation.
 
 // =================== ÉCRAN OLED ===================
 #define SCREEN_WIDTH 128
@@ -316,18 +315,20 @@ PotConfig page4[NUM_POTS] = {
 PotConfig*  pages[NUM_PAGES] = { page0, page1, page2, page3, page4 };
 const char* pageNames[NUM_PAGES] = { "I", "II", "III", "IV", "V" };
 // =================== LEDS ===================
-const int LED_PREV     = 12; // s'allume brièvement quand on clique page −
-const int LED_NEXT     = 11; // s'allume brièvement quand on clique page +
-const int LED_DUMP_REQ = 10; // clignote pendant un Dump Request
-const int LED_SLOT     = 9;  // fixe = chargement dump / clignote = sauvegarde
+// COLONNE DE DROITE — 5 paires bouton+LED, de haut en bas = pages I a V.
+// Chaque page a son bouton : le defilement par deux boutons etait impraticable
+// en jeu, il fallait parfois quatre appuis pour atteindre la bonne page.
+// La LED de la page courante reste allumee en permanence : c'est le repere.
+const byte PAGE_BTN[NUM_PAGES] = {14,  7,  8,  6,  5};
+const byte PAGE_LED[NUM_PAGES] = {15, 12, 11, 10,  9};
 
-// Timers et états LED
-unsigned long ledPrevTimer    = 0;
-bool          ledPrevOn       = false;
-const unsigned long LED_BRIEF = 300; // durée allumage bref (ms)
+// COLONNE DE GAUCHE — 2 paires de fonction.
+const int BTN_DUMP     = 16;  // court = Dump Request, maintenu = supprimer
+const int LED_DUMP_REQ = 17;
+const int BTN_PRESET   = 18;  // court = slot suivant, maintenu = sauvegarder
+const int LED_SLOT     = 19;
 
-unsigned long ledNextTimer    = 0;
-bool          ledNextOn       = false;
+const unsigned long LED_BRIEF = 300; // duree d'allumage bref (ms)
 
 int           ledDumpReqBlink = 0;   // demi-périodes restantes (0=arrêté)
 unsigned long ledDumpReqTimer = 0;
@@ -349,20 +350,13 @@ int           currentDisplayGroup   = 0;
 bool          autoScrollEnabled     = true;
 
 // =================== BOUTONS ===================
-// Pin 7 : page − / Pin 8 : page +
-const int BTN_PAGE_PREV = 7;
-const int BTN_PAGE_NEXT = 8;
+// 5 boutons de page, un par page : etat de rebond independant pour chacun.
+bool          pageBtnLast[NUM_PAGES]     = {HIGH, HIGH, HIGH, HIGH, HIGH};
+bool          pageBtnState[NUM_PAGES]    = {HIGH, HIGH, HIGH, HIGH, HIGH};
+unsigned long pageBtnDebounce[NUM_PAGES] = {0, 0, 0, 0, 0};
 
-bool          prevLastState         = HIGH;
-bool          prevCurrentState      = HIGH;
-unsigned long prevDebounceTime      = 0;
-
-bool          nextLastState         = HIGH;
-bool          nextCurrentState      = HIGH;
-unsigned long nextDebounceTime      = 0;
-
-// Pin 5 : cycle dumps (court) / sauvegarde (long)
-const int CYCLE_BUTTON_PIN = 5;
+// Bouton de gauche, bas : slot suivant (court) / sauvegarde (long)
+const int CYCLE_BUTTON_PIN = BTN_PRESET;
 
 bool          cycleButtonLastState  = HIGH;
 bool          cycleButtonState      = HIGH;
@@ -371,8 +365,8 @@ bool          cyclePressActive      = false;
 bool          cycleLongPressHandled = false;
 unsigned long cycleLastDebounceTime = 0;
 
-// Pin 6 : Dump Request (long)
-const int DUMP_BTN_PIN = 6;
+// Bouton de gauche, haut : Dump Request (court) / supprimer (maintenu)
+const int DUMP_BTN_PIN = BTN_DUMP;
 bool          dumpBtnLastState      = HIGH;
 bool          dumpBtnState          = HIGH;
 unsigned long dumpBtnPressStart     = 0;
@@ -542,18 +536,6 @@ void updateDisplay() {
 void updateLeds() {
   unsigned long now = millis();
 
-  // LED_PREV : bref allumage après clic page −
-  if (ledPrevOn && (now - ledPrevTimer >= LED_BRIEF)) {
-    ledPrevOn = false;
-    digitalWrite(LED_PREV, LOW);
-  }
-
-  // LED_NEXT : bref allumage après clic page +
-  if (ledNextOn && (now - ledNextTimer >= LED_BRIEF)) {
-    ledNextOn = false;
-    digitalWrite(LED_NEXT, LOW);
-  }
-
   // LED_DUMP_REQ : clignote tant que ledDumpReqBlink > 0
   if (ledDumpReqBlink > 0 && (now - ledDumpReqTimer >= 200)) {
     ledDumpReqTimer = now;
@@ -575,18 +557,11 @@ void updateLeds() {
   }
 }
 
-// Déclenche un bref allumage de LED_PREV
-void flashLedPrev() {
-  digitalWrite(LED_PREV, HIGH);
-  ledPrevOn    = true;
-  ledPrevTimer = millis();
-}
-
-// Déclenche un bref allumage de LED_NEXT
-void flashLedNext() {
-  digitalWrite(LED_NEXT, HIGH);
-  ledNextOn    = true;
-  ledNextTimer = millis();
+// Allume la LED de la page courante, eteint les quatre autres.
+void majLedsPages() {
+  for (int i = 0; i < NUM_PAGES; i++) {
+    digitalWrite(PAGE_LED[i], (i == currentPage) ? HIGH : LOW);
+  }
 }
 
 // Démarre le clignotement LED_DUMP_REQ (continue jusqu'à fin du dump request)
@@ -705,6 +680,7 @@ void saveCurrentDump() {
 void setPage(int newPage) {
   if (newPage == currentPage) return;
   currentPage = newPage;
+  majLedsPages();   // la LED de la page courante reste allumee
   pots = pages[currentPage];
   for (int i = 0; i < NUM_POTS; i++) {
     initFilter(pots[i]);
@@ -856,23 +832,19 @@ void setup() {
   pitchBegin();
 
   // Boutons et LEDs en reserve du shield v1.0.
-  for (byte i = 0; i < 3; i++) {
-    pinMode(butLayout2[i], INPUT_PULLUP);
-    pinMode(LEDLayout2[i], OUTPUT);
-    digitalWrite(LEDLayout2[i], LOW);
-  }
 
   // Boutons page +/-
-  pinMode(BTN_PAGE_PREV, INPUT_PULLUP);
-  pinMode(BTN_PAGE_NEXT, INPUT_PULLUP);
-  prevLastState    = (digitalRead(BTN_PAGE_PREV) == HIGH);
-  prevCurrentState = prevLastState;
-  nextLastState    = (digitalRead(BTN_PAGE_NEXT) == HIGH);
-  nextCurrentState = nextLastState;
+  for (int i = 0; i < NUM_PAGES; i++) {
+    pageBtnLast[i]  = (digitalRead(PAGE_BTN[i]) == HIGH);
+    pageBtnState[i] = pageBtnLast[i];
+  }
 
   // LEDs
-  pinMode(LED_PREV,     OUTPUT); digitalWrite(LED_PREV,     LOW);
-  pinMode(LED_NEXT,     OUTPUT); digitalWrite(LED_NEXT,     LOW);
+  for (int i = 0; i < NUM_PAGES; i++) {
+    pinMode(PAGE_BTN[i], INPUT_PULLUP);
+    pinMode(PAGE_LED[i], OUTPUT);
+    digitalWrite(PAGE_LED[i], LOW);
+  }
   pinMode(LED_DUMP_REQ, OUTPUT); digitalWrite(LED_DUMP_REQ, LOW);
   pinMode(LED_SLOT,     OUTPUT); digitalWrite(LED_SLOT,     LOW);
 
@@ -982,6 +954,8 @@ void setup() {
   delay(1500);
   updateDisplay();
 
+  majLedsPages();
+
   sendSysEx();
   lastSendTime = millis();
 }
@@ -1028,36 +1002,19 @@ void loop() {
     updateDisplay();
   }
 
-  // --- Bouton page − (pin 7) ---
-  {
-    int r = digitalRead(BTN_PAGE_PREV);
-    if (r != prevLastState) prevDebounceTime = millis();
-    if ((millis() - prevDebounceTime) > debounceDelay) {
-      if (r != prevCurrentState) {
-        prevCurrentState = r;
-        if (prevCurrentState == LOW) {
-          flashLedPrev();
-          setPage((currentPage - 1 + NUM_PAGES) % NUM_PAGES);
-        }
+  // --- 5 boutons de page : acces direct ---
+  // Un bouton par page, avec sa LED. Remplace le defilement par deux boutons,
+  // qui pouvait demander quatre appuis pour atteindre la bonne page.
+  for (int i = 0; i < NUM_PAGES; i++) {
+    int r = digitalRead(PAGE_BTN[i]);
+    if (r != pageBtnLast[i]) pageBtnDebounce[i] = millis();
+    if ((millis() - pageBtnDebounce[i]) > debounceDelay) {
+      if (r != pageBtnState[i]) {
+        pageBtnState[i] = r;
+        if (pageBtnState[i] == LOW && i != currentPage) setPage(i);
       }
     }
-    prevLastState = r;
-  }
-
-  // --- Bouton page + (pin 8) ---
-  {
-    int r = digitalRead(BTN_PAGE_NEXT);
-    if (r != nextLastState) nextDebounceTime = millis();
-    if ((millis() - nextDebounceTime) > debounceDelay) {
-      if (r != nextCurrentState) {
-        nextCurrentState = r;
-        if (nextCurrentState == LOW) {
-          flashLedNext();
-          setPage((currentPage + 1) % NUM_PAGES);
-        }
-      }
-    }
-    nextLastState = r;
+    pageBtnLast[i] = r;
   }
 
   // --- Bouton cycle pin 5 : court=naviguer, long=sauvegarder ---
