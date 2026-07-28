@@ -10,14 +10,19 @@ Pour raisonner depuis un coin de carte, retire 20 à chaque valeur.
 
 | Réf | Connecteur | Centre en x | Corps (x) | Atteint y | Retrait du bord |
 |---|---|---|---|---|---|
-| `J1` | MIDI IN, DIN 5 | **50.0** | 39.8 à 60.2 | **26.9** | **6.9** |
-| `J2` | MIDI OUT, DIN 5 | **87.0** | 76.8 à 97.2 | **26.9** | **6.9** |
-| `J10` | Mini-XLR 5 pts | **110.8** | 104.0 à 117.7 | **24.0** | **4.0** |
+| `J1` | MIDI IN, DIN 5 | **50.0** | 39.8 à 60.2 | **20.4** | **0.4** |
+| `J2` | MIDI OUT, DIN 5 | **87.0** | 76.8 à 97.2 | **20.4** | **0.4** |
+| `J10` | Mini-XLR 5 pts | **110.8** | 104.0 à 117.7 | **20.0** | **0.0** |
 | `J3` | Alimentation, barrel | **137.9** | 133.2 à 142.6 | **27.4** | **7.4** |
 
-> Le bord haut de la carte est à **y = 20**. Aucun connecteur ne l'atteint :
-> la paroi du boîtier doit donc venir au contact du connecteur, ou les
-> découpes être prolongées vers l'intérieur.
+> Le bord haut de la carte est à **y = 20**. Les deux DIN MIDI et le mini-XLR
+> l'atteignent désormais : la paroi du boîtier peut venir au ras de la carte.
+>
+> **Le jack d'alimentation J3 reste 7,4 mm en retrait.** C'est une limite de son
+> empreinte, pas un choix : ses pastilles de 3,5 mm s'étendent en avant de son
+> corps, et l'avancer davantage les fait sortir de la carte et entrer en conflit
+> avec le plan de masse. Prévoir une découpe prolongée vers l'intérieur, ou un
+> jack déporté par un court câble jusqu'à la paroi.
 
 ## Trous de fixation M3
 
