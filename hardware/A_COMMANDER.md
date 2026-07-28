@@ -73,6 +73,29 @@ jamais de quoi mordre.
 > le filetage n'y aurait rien changé. La parade est côté boîtier : percer au
 > plus juste autour du fût pour que la paroi reprenne l'effort latéral.
 
+#### Où l'acheter, et les pièges de référence
+
+**Mouser ne référence pas le 5 broches traversant de cette série.** Deux
+références conviennent, et deux seulement :
+
+| Référence | Filetage | Où |
+|---|---|---|
+| **`TRAPC5M1X`** | sans | **DigiKey**, stock courant — *à retenir* |
+| `TRAPC5MX` | avec, inutilisable ici | OnlineComponents, fin de série |
+
+> ⚠️ **`TRAPC4MSX` ne convient pas**, malgré la ressemblance :
+> - **4 contacts** au lieu de 5 — et le 4 broches traversant est en **rangée
+>   simple**, le 5 broches en **double rangée**. Deux implantations sans rapport.
+> - **`S` = profil réduit** : ses trous de fixation sont à 0,300" = 7,62 mm,
+>   contre 0,470" = 11,94 mm chez nous. **4,3 mm d'écart**, la pièce ne se pose
+>   pas.
+>
+> Le plan tranche d'ailleurs la question : *« S = SMALL PROFILE (AVAILABLE IN
+> CONFIGURATIONS 3 & 4 ONLY) »*. Un 5 broches ne peut jamais porter le `S`.
+>
+> De même, écarter tout `TRASM…` : `SM` = monté en surface, notre carte est
+> 100 % traversante.
+
 ### ⚠️ Les 100 nF sont en rupture
 
 `594-MDSA104K15XH5TAA` : **stock 0, en attente de réapprovisionnement**. Ça
