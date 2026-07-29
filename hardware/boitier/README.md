@@ -24,9 +24,10 @@ l'écart passer de quelques millimètres à l'avant à plus de 46 mm à l'arriè
 les axes du fond ne sortiraient jamais. Carte, façade et parois avant et
 arrière forment donc un seul bloc incliné ; seul le dessous est aplani.
 
-**Deux niveaux.** L'axe court impose une façade à 8,5 mm de la carte, alors que
-le mini-XLR mesure 13,7 mm de haut et les embases MIDI davantage. Les
-connecteurs sont donc logés sous un **dosseret** surélevé à l'arrière.
+**Deux niveaux.** La façade s'appuie sur l'épaulement des potentiomètres, à
+7 mm de la carte, alors que le mini-XLR mesure 13,7 mm de haut et les embases
+MIDI davantage. Les connecteurs sont donc logés sous un **dosseret** surélevé
+à l'arrière.
 
 **Les cotes incertaines sont sur une pièce sacrificielle.** Les hauteurs des
 embases au-dessus de la carte sont les seules valeurs que le fichier KiCad ne
