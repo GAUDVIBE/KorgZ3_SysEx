@@ -40,8 +40,23 @@ boîtier, et devient **libre en position** puisqu'il n'est plus lié à l'emprei
 | Carte, `TB5M` | mâle, sur panneau | ☐ à commander |
 | Câble, côté carte, `TA5FSH` | femelle | ☑ au panier |
 
-> ⚠️ Une cote reste à relever sur la fiche `TB5M` : le **diamètre de perçage du
-> panneau**. Le modèle 3D l'a en paramètre (`xlr_percage`, provisoirement 12,5 mm).
+**Vérifié sur la fiche `TB_M SERIES` rév. S.** Fixation par **écrou sur filetage
+7/16-32 UNS-2A**, écrou et rondelle livrés non montés. Corps en alliage de
+cuivre nickelé, contacts argentés.
+
+| Cote | Valeur |
+|---|---|
+| Perçage du panneau | **« D » de Ø 11,28 mm, méplat à 10,72 mm** |
+| Épaisseur de paroi maximale | 6,35 mm |
+| Écrou six pans | 14,2 mm sur plats × 2,3 |
+| Rondelle plate | Ø 16,0 × 0,5 |
+
+Le perçage n'est **pas rond** : un méplat de 0,56 mm empêche l'embase de tourner
+quand on dévisse une fiche. Il est reproduit dans le modèle 3D du boîtier.
+
+> La fiche note que les terminaisons *peuvent* se souder sur circuit imprimé et
+> donne des implantations — mais **aucune ne correspond à notre empreinte `J10`**,
+> qui est celle d'un `TRAPC`. Le `TB5M` reste donc à câbler par fils.
 
 <details>
 <summary>Analyse du <code>TRAPC5M1X</code> — conservée, désormais sans objet</summary>

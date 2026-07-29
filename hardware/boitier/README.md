@@ -79,7 +79,8 @@ non déduites du PCB.
 | `midi_z` | 11 | hauteur de l'axe de l'embase MIDI |
 | `midi_d` | 23 | Ø d'une fiche DIN 5 |
 | `xlr_z` | 12 | hauteur de l'axe du `TB5M` |
-| `xlr_percage` | **12,5** | ⚠️ à confirmer sur la fiche `TB5M` |
+| `xlr_percage` | 11,28 | ✅ relevé sur la fiche `TB_M SERIES` rév. S |
+| `xlr_meplat` | 10,72 | ✅ idem |
 | `alim_z` | 6 | hauteur de l'axe du jack |
 
 ## Le mini-XLR `TB5M`
@@ -93,6 +94,30 @@ que par ses cinq soudures ; ici la paroi encaisse tout l'effort de branchement.
 Et comme elle n'est plus liée à l'empreinte, elle est **libre en X comme en Z** :
 son axe est placé à 12 mm au-dessus de la carte pour que son corps, qui plonge
 vers l'intérieur, passe au-dessus du circuit sans le toucher.
+
+### Le perçage n'est pas rond
+
+Relevé sur la fiche `TB_M SERIES` rév. S, section *RECOMMENDED "D" MOUNTING HOLE* :
+
+| Cote | Pouces | mm |
+|---|---|---|
+| Diamètre | 0,444 <sup>+0,004</sup> | **11,28** |
+| Méplat, au bord opposé | 0,422 <sup>+0,004</sup> | **10,72** |
+| Filetage | 7/16-32 UNS-2A | — |
+| Écrou six pans | 0,56 sur plats × 0,09 | 14,2 × 2,3 |
+| Rondelle plate | Ø 0,63 × 0,02 | Ø 16,0 × 0,5 |
+| **Épaisseur de paroi maximale** | **0,250** | **6,35** |
+
+Le **méplat de 0,56 mm** est ce qui empêche l'embase de tourner quand on
+dévisse une fiche récalcitrante. Il est reproduit dans le modèle.
+
+La plaque fait 3 mm : largement sous les 6,35 mm admissibles. Le dégagement
+autour du trou a été vérifié — la rondelle de Ø 16 demande 8 mm libres, le
+voisin le plus proche est le MIDI OUT à 23,8 mm.
+
+> La fiche note que *« solder terminals may be soldered to a PC board »* et donne
+> des implantations. **Elles ne correspondent pas à notre empreinte `J10`** :
+> le `TB5M` reste à câbler par fils.
 
 ## Assemblage
 

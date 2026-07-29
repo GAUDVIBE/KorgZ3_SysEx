@@ -40,9 +40,13 @@ midi_d = 23;
 // pastilles de J10. Elle n'est plus tenue par la carte, donc libre en X
 // comme en Z. L'axe est volontairement haut : le corps de l'embase
 // s'enfonce vers l'intérieur et doit passer AU-DESSUS de la carte.
-// ⚠️ percage à confirmer sur la fiche TB5M, valeur provisoire.
+// Perçage « D » recommandé, relevé sur la fiche TB_M SERIES rév. S :
+// Ø 0.444" avec un méplat à 0.422". Le méplat empêche l'embase de tourner.
+// Fixation par écrou sur filetage 7/16-32 UNS-2A ; épaisseur de paroi
+// admissible 0.250" = 6,35 mm, la plaque en fait 3.
 xlr_z = 12;
-xlr_percage = 12.5;
+xlr_percage = 11.28;   // 0.444"
+xlr_meplat  = 10.72;   // 0.422", du méplat au bord opposé
 // Hauteur de l'axe du jack d'alimentation au-dessus de la carte
 alim_z = 6;
 
@@ -275,6 +279,16 @@ module facade_a_plat() { translate([0, 0, facade_ep]) rotate([180, 0, 0]) facade
 //  si une hauteur est fausse, on ne réimprime qu'elle.
 // ---------------------------------------------------------------------
 
+// Perçage « D » : cylindre tronqué par un méplat. `meplat` est la cote de la
+// fiche, mesurée du méplat au bord opposé de l'arc.
+module trou_d(diam, meplat, h) {
+    r = diam / 2;
+    intersection() {
+        cylinder(h = h, d = diam);
+        translate([-r - 1, -r - 1, -1]) cube([diam + 2, meplat + 1, h + 2]);
+    }
+}
+
 module plaque_arriere() {
     l = FEN_X1-FEN_X0 + 2*FEUIL_M - 0.4;
     h = dosseret_h - FEN_Z0 + FEUIL_M - 0.4;
@@ -284,7 +298,7 @@ module plaque_arriere() {
         translate([-(FEN_X0 - FEUIL_M), -(FEN_Z0 - FEUIL_M), 0]) {
             translate([MIDI_IN_X,  midi_z, -1]) cylinder(h = 5, d = midi_d);
             translate([MIDI_OUT_X, midi_z, -1]) cylinder(h = 5, d = midi_d);
-            translate([XLR_X,      xlr_z,  -1]) cylinder(h = 5, d = xlr_percage);
+            translate([XLR_X,      xlr_z,  -1]) trou_d(xlr_percage, xlr_meplat, 5);
             translate([ALIM_X - ALIM_L/2, alim_z - ALIM_H/2, -1]) cube([ALIM_L, ALIM_H, 5]);
         }
     }
