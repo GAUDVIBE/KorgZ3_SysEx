@@ -200,9 +200,25 @@ fichier de perçage de la carte d'origine** — 14 trous de Ø 1,400 mm, soit
 - 2 ergots de fixation Ø 1,4 en **(±5 ; −9,7)** → **entraxe 10,0 mm**,
   décalés de **9,7 mm** de la rangée de broches
 
-Les deux lectures possibles de « pas » — entraxe des ergots, ou décalage
-ergots/broches — donnent 10 mm chez nous. Le `-N2` à 5 mm ne conviendrait dans
-aucune des deux.
+**Démontré sur les deux plans Kycon** (`Pub_Eng_Draw/KCDX-5S-N.pdf` et
+`…-N2.pdf`), section *Recommended PCB Layout*. Ils sont identiques en tout
+point **sauf un** : l'écartement des deux ergots. Le « pas » du suffixe ne
+désigne que cela.
+
+| | Nos trous | `-N` | `-N2` |
+|---|---|---|---|
+| **Ergots** | **10,00** | **10,00** ✅ | **5,00** ❌ |
+| Rangée 3-2-1 | 14,60 | 15,00 | 15,00 |
+| Rangée 5-4 | 10,00 | 10,00 ✅ | 10,00 ✅ |
+| Ergots → rangée | 9,70 | 9,50 | 9,50 |
+| Perçages | 7 × Ø 1,40 | 7 × Ø 1,40 ✅ | 7 × Ø 1,40 ✅ |
+
+Sur le `-N2`, **2,5 mm de décalage par ergot** : aucun jeu ne le rattrape.
+
+Les 0,20 mm d'écart sur la rangée extérieure et sur le décalage vertical, eux,
+sont absorbés : broches de 1,1 × 0,7 dans des trous de Ø 1,40, soit 0,15 mm de
+jeu par côté au minimum. Et la carte d'origine porte **exactement** le même
+motif — ±7,3 et 9,7 — avec des embases qui fonctionnent.
 
 > Cotes utiles pour le boîtier, relevées sur la fiche : corps **20,5 × 19,5 ×
 > 15,0 mm**, **axe à 10,0 mm** de la carte, fût avant Ø 14,0, alésage Ø 11,7.
