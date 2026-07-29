@@ -131,12 +131,14 @@ de toute façon être relié par fils — `J5` est sous le dosseret, l'écran en
 façade — il suffit de croiser les deux premiers. C'est même une chance que la
 liaison soit câblée plutôt qu'enfichée.
 
-### ⚠️ Le firmware est déclaré en 128 × 32
+### Le firmware reste en 128 × 32
 
-`SCREEN_HEIGHT 32` dans le `.ino`, alors que la dalle fait 64. Le SSD1306
-serait initialisé en multiplex 1/32 sur un panneau 1/64 : image écrasée, une
-ligne sur deux. **Passer la constante à 64** — l'affichage y gagne le double
-de surface.
+Le `.ino` déclare `SCREEN_HEIGHT 32` alors que la dalle est une 128 × 64.
+**C'est volontaire** : l'affichage obtenu convient, décision prise le
+29/07/2026. Ne pas « corriger » cette constante.
+
+La fenêtre, elle, est percée à la cote **physique** de la zone active. Si un
+bandeau non éclairé apparaissait en bas, il suffirait de réduire `OLED_H`.
 
 ### Le berceau : deux rails ouverts
 
