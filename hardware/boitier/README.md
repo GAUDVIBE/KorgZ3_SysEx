@@ -106,14 +106,57 @@ La fiche que tu m'as transmise est celle du **`B100K`**. Il nous faut le
 **`B10K`** — c'est la valeur du montage, et 100 kΩ tripleraient l'impédance de
 source vue par le convertisseur. Même référence, même mécanique, autre suffixe.
 
-### L'écran n'est pas en face de son connecteur
+## L'écran : module Velleman VMA438
 
-`J5` se trouve à **Y = 160**, c'est-à-dire **sous le dosseret**, alors que la
-fenêtre est percée dans la façade à `OLED = [142, 128]`. L'écran demandera donc
-quelques centimètres de fil et un support collé sous la façade.
+Dalle **Univision UG-2864HSWEG01**, fiche `SAS1-9046-B`.
 
-C'est délibéré : je ne connais ni les dimensions du module ni son mode de
-fixation. Dis-moi le modèle exact et je dessine un berceau à sa cote.
+| | |
+|---|---|
+| Résolution | **128 × 64** |
+| Zone active | **21,744 × 10,864 mm** |
+| Dalle | 26,70 × 19,26 × 1,45 mm |
+| Fenêtre percée | 23,34 × 12,46 (zone active + 0,8 de débord) |
+
+### ⚠️ Le brochage est inversé sur les deux premières broches
+
+| Broche | `J5` sur la carte | VMA438 |
+|---|---|---|
+| 1 | **GND** | **VCC** |
+| 2 | **+5 V** | **GND** |
+| 3 | SCL | SCL |
+| 4 | SDA | SDA |
+
+**Enfiché en direct, le +5 V arriverait sur la masse du module.** Comme il doit
+de toute façon être relié par fils — `J5` est sous le dosseret, l'écran en
+façade — il suffit de croiser les deux premiers. C'est même une chance que la
+liaison soit câblée plutôt qu'enfichée.
+
+### ⚠️ Le firmware est déclaré en 128 × 32
+
+`SCREEN_HEIGHT 32` dans le `.ino`, alors que la dalle fait 64. Le SSD1306
+serait initialisé en multiplex 1/32 sur un panneau 1/64 : image écrasée, une
+ligne sur deux. **Passer la constante à 64** — l'affichage y gagne le double
+de surface.
+
+### Le berceau : deux rails ouverts
+
+Le décalage entre la dalle et le bord de la carte du module m'est inconnu. Plutôt
+que de le deviner, le berceau est fait de **deux rails parallèles** qui ne
+contraignent que la largeur : le module s'y glisse et **coulisse** jusqu'à ce que
+la dalle tombe en face de la fenêtre, puis se fixe à la colle ou au ruban
+double face. Débattement disponible : **± 3,8 mm**.
+
+Seule cote critique, donc : la **largeur** de la carte du module, `oled_pcb_l`,
+à confirmer au pied à coulisse (27,0 mm par défaut).
+
+### Position
+
+`(75,5 ; 128,5)`, centré au-dessus de la grille de potentiomètres.
+
+L'emplacement provisoire précédent — près de `J5`, à `(142 ; 128)` — **entrait
+en collision avec le bouton `SW6`**. La bande libre entre les corps de
+potentiomètres (Y ≤ 111,1) et la marche du dosseret (Y = 146) ne fait que
+34,9 mm ; le module y tient avec 3,7 mm de marge de chaque côté.
 
 ## Ce qu'il faut mesurer
 

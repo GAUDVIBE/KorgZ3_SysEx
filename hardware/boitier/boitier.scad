@@ -56,6 +56,18 @@ xlr_percage = 11.28;   // 0.444"
 xlr_meplat  = 10.72;   // 0.422", du méplat au bord opposé
 // Hauteur de l'axe du jack d'alimentation au-dessus de la carte
 alim_z = 6;
+// Écran — module Velleman VMA438, dalle Univision UG-2864HSWEG01.
+// Zone active et épaisseur de dalle relevées sur la fiche SAS1-9046-B.
+oled_actif_l  = 21.744;
+oled_actif_h  = 10.864;
+oled_verre_ep = 1.45;
+// Débord de la fenêtre autour de la zone active
+oled_marge = 0.8;
+// ⚠️ Carte du module : à confirmer au pied à coulisse. Le berceau étant
+// deux rails ouverts, seule la LARGEUR est critique — la position de la
+// dalle sur la carte se rattrape en faisant coulisser le module.
+oled_pcb_l  = 27.0;
+oled_pcb_ep = 1.6;
 
 /* [Réglages du boîtier] */
 
@@ -138,10 +150,13 @@ ALIM_H     = 13;
 // Le corps des connecteurs commence à Y = 149.7 : la marche est en deçà
 Y_MARCHE = 146;
 
-// Fenêtre de l'écran OLED — connecteur J5 ; à ajuster au module réel
-OLED   = [142, 128];
-OLED_L = 30;
-OLED_H = 16;
+// Fenêtre de l'écran, centrée au-dessus de la grille de potentiomètres.
+// Dégagée des corps de pots (Y ≤ 111,1), des boutons de droite (X ≥ 147)
+// et de la marche du dosseret (Y = 146).
+OLED   = [75.5, 128.5];
+RAIL_L = 26;   // longueur des rails, bornée par les pots (Y ≤ 111,1) et la marche
+OLED_L = oled_actif_l + 2 * oled_marge;
+OLED_H = oled_actif_h + 2 * oled_marge;
 
 // ---------------------------------------------------------------------
 //  Géométrie dérivée
@@ -279,9 +294,21 @@ module percages_facade() {
         translate([p[0], p[1], -ecart_facade - 1]) cylinder(h = hv, d = 3.4);
 }
 
+// Deux rails sous la façade. Le module s'y glisse et coulisse jusqu'à ce que
+// la dalle soit en face de la fenêtre : le décalage dalle/carte, inconnu,
+// n'a donc pas à être connu.
+module berceau_oled() {
+    e = oled_verre_ep + oled_pcb_ep + 0.3;
+    l = oled_pcb_l + 0.5;
+    for (c = [-1, 1])
+        translate([OLED[0] + c * (l/2 + 1), OLED[1], -e/2])
+            cube([2, RAIL_L, e], center = true);
+}
+
 module facade_locale() {
     difference() {
         union() {
+            berceau_oled();
             translate([OX0, OY0, 0]) cube([OX1-OX0, Y_MARCHE-OY0, facade_ep]);
             // lèvre de centrage sur trois côtés
             difference() {
