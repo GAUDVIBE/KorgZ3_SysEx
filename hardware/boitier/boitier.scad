@@ -24,16 +24,19 @@ piece = "assemblage"; // [assemblage, fond, facade, plaque_arriere, capot_arrier
 
 /* [À MESURER sur tes composants — les seules cotes non déduites du PCB] */
 
-// ⚠️ SEULE COTE ENCORE MANQUANTE : hauteur du corps du potentiomètre
-// au-dessus de la carte, jusqu'à l'épaulement du canon fileté. C'est elle
-// qui fixe la hauteur de la façade — la mesurer au pied à coulisse.
-pot_corps_h = 7.0;
-// Longueur de l'axe, depuis l'épaulement du canon (convention des fiches)
+// Hauteur du corps au-dessus de la carte, jusqu'à la face d'appui du canon.
+// Relevé sur le plan Alpha SLH-211-414 (RD901F-40) : segment « 10 ±0.5 ».
+// C'est elle qui fixe la hauteur de la façade.
+pot_corps_h = 10.0;
+// Longueur de l'axe depuis la face d'appui. Le canon en occupe les 5
+// premiers millimètres. Plan Alpha : « L = 15 », axe Ø 6,35.
 pot_axe_h = 15.0;
 // Longueur du canon fileté
 pot_filetage_h = 5.0;
-// Diamètre extérieur du canon fileté (M7 sur un potentiomètre 9 mm)
+// Canon M7 x 0.75 : Ø extérieur 7 mm, écrou 10 mm sur plats et 2 mm
+// d'épaisseur, rondelle Ø 12. Plan Alpha SLH-211-414.
 pot_canon_d = 7.0;
+pot_ecrou_h = 2.0;
 // Hauteur du bouton poussoir au-dessus de la carte
 bouton_h = 7.3;
 // Hauteur de l'axe des embases MIDI au-dessus de la carte
@@ -60,9 +63,10 @@ alim_z = 6;
 pente = 15;
 // Épaisseur des parois et du fond
 paroi = 3.0;
-// Épaisseur de la façade. NE PAS DÉPASSER pot_filetage_h − 1,6 : au-delà, le
-// canon ne ressort plus assez pour recevoir son écrou.
-facade_ep = 3.0;
+// Épaisseur de la façade. NE PAS DÉPASSER pot_filetage_h − pot_ecrou_h :
+// au-delà, le canon ne ressort plus assez pour recevoir son écrou.
+// 2,5 mm laisse juste de quoi loger l'écrou de 2 mm sur les 5 mm de canon.
+facade_ep = 2.5;
 // Hauteur du dessus du dosseret au-dessus de la carte
 dosseret_h = 24.0;
 // Hauteur du dessus de la carte au bord avant
@@ -93,7 +97,7 @@ filet_restant = pot_filetage_h - facade_ep;
 echo(str("Axe emergent au-dessus de la facade : ", axe_emergent, " mm"));
 echo(str("Filetage restant pour l'ecrou       : ", filet_restant, " mm"));
 echo(str("Lamage sous la facade pour boutons  : ", LAMAGE_H, " mm"));
-assert(filet_restant >= 1.6,
+assert(filet_restant >= pot_ecrou_h,
        "Facade trop epaisse : le canon ne ressort pas assez pour son ecrou.");
 
 // ---------------------------------------------------------------------

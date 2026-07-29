@@ -9,7 +9,7 @@ openscad -o fond.stl -D 'piece="fond"' boitier.scad
 | Pièce | Nombre | Encombrement | Impression |
 |---|---|---|---|
 | `fond` | 1 | 182,5 × 189,6 × 78,6 mm | posé sur son dessous, sans support |
-| `facade` | 1 | 182,5 × 149,5 × 10,0 mm | face visible **contre le plateau** |
+| `facade` | 1 | 182,5 × 149,5 × 12,5 mm | face visible **contre le plateau** |
 | `capot_arriere` | 1 | 176,1 × 25,0 × 29,5 mm | couché sur son tablier |
 | `plaque_arriere` | 1 | 135,6 × 30,6 × 3,0 mm | à plat |
 | `capuchon` | **7** | 8,4 × 8,4 × 4,7 mm | à plat |
@@ -24,8 +24,8 @@ l'écart passer de quelques millimètres à l'avant à plus de 46 mm à l'arriè
 les axes du fond ne sortiraient jamais. Carte, façade et parois avant et
 arrière forment donc un seul bloc incliné ; seul le dessous est aplani.
 
-**Deux niveaux.** La façade s'appuie sur l'épaulement des potentiomètres, à
-7 mm de la carte, alors que le mini-XLR mesure 13,7 mm de haut et les embases
+**Deux niveaux.** La façade s'appuie sur la face d'appui des potentiomètres, à
+10 mm de la carte, alors que le mini-XLR mesure 13,7 mm de haut et les embases
 MIDI davantage. Les connecteurs sont donc logés sous un **dosseret** surélevé
 à l'arrière.
 
@@ -41,48 +41,67 @@ Leur canon fileté de 5 mm traverse la façade de 3 mm et reçoit son écrou. Se
 d'angle — c'est le montage de n'importe quel synthétiseur.
 
 ```
-axe                       15 mm  au-dessus de l'épaulement du canon
-façade                   − 3 mm
-                         ───────
-axe émergent               12 mm      ← de quoi tenir n'importe quel bouton
+axe                      15,0 mm  au-dessus de la face d'appui
+façade                  − 2,5 mm
+                        ─────────
+axe émergent              12,5 mm    ← de quoi tenir n'importe quel bouton
 
-canon fileté               5 mm
-façade                   − 3 mm
-                         ───────
-filetage pour l'écrou      2 mm      ← un écrou de pot en fait ~1,6
+canon fileté              5,0 mm
+façade                  − 2,5 mm
+                        ─────────
+filetage pour l'écrou      2,5 mm    ← l'écrou Alpha en fait exactement 2,0
 ```
+
+> **C'est pour cela que la façade fait 2,5 mm et non 3.** À 3 mm il restait
+> 2,0 mm de filetage pour un écrou de 2,0 mm : l'écrou arrivait pile en bout de
+> filet, sans rien pour la rondelle. Une assertion arrête désormais le rendu si
+> `facade_ep` dépasse `pot_filetage_h − pot_ecrou_h`.
 
 Ces deux valeurs sont **calculées et affichées à chaque compilation**, et une
 assertion arrête le rendu si la façade devient trop épaisse pour l'écrou :
 
 ```
-ECHO: "Axe emergent au-dessus de la facade : 12 mm"
-ECHO: "Filetage restant pour l'ecrou       : 2 mm"
-ECHO: "Lamage sous la facade pour boutons  : 1 mm"
+ECHO: "Axe emergent au-dessus de la facade : 12.5 mm"
+ECHO: "Filetage restant pour l'ecrou       : 2.5 mm"
+ECHO: "Lamage sous la facade pour boutons  : 0 mm"
 ```
 
 **D'où la règle : `facade_ep` ne doit jamais dépasser `pot_filetage_h − 1,6`.**
 
-### Les boutons dépassent l'épaulement
+### Les boutons
 
-Le poussoir monte à 7,3 mm quand l'épaulement des potentiomètres est à 7,0. La
-façade est donc **lamée par-dessous** de 1 mm, sur Ø 9, en regard de chaque
-bouton. Le lamage sert aussi de logement à la collerette du capuchon, qui s'y
-trouve captif : il ne peut ni tomber ni ressortir.
+Le poussoir monte à 7,3 mm, la façade est à 10,0 : **2,7 mm de garde**, aucun
+lamage nécessaire. La collerette du capuchon, plus large que le perçage, le rend
+captif entre le poussoir et la façade — il ne peut ni tomber ni ressortir.
 
-## ⚠️ Deux points à vérifier avant d'imprimer
+Le connecteur de batterie `J4`, à `(116, 132)`, monte à environ 8,4 mm s'il est
+peuplé : il passe désormais, avec 1,6 mm de reste.
 
-### La seule cote encore manquante
+## ⚠️ À vérifier avant de commander 16 potentiomètres
 
-`pot_corps_h` — **la hauteur du corps du potentiomètre au-dessus de la carte**,
-jusqu'à l'épaulement du canon. C'est elle qui fixe toute la hauteur de la
-façade, et le lamage des boutons en découle. Valeur provisoire : 7,0 mm.
+### L'implantation des pattes de fixation
 
-### Le connecteur de batterie `J4`
+Le plan Alpha et notre empreinte KiCad (Alps RK09K) **ne concordent pas sur les
+pattes anti-rotation** :
 
-`J4` est à `(116, 132)`, **sous la façade**. Une barrette mâle ordinaire monte à
-environ 8,4 mm, contre 7,0 mm de garde : si tu la peuples, elle touchera.
-Laisse-la nue, ou demande-moi d'ajouter un lamage à son emplacement.
+| | Broches signal | Pattes de fixation |
+|---|---|---|
+| Empreinte de la carte | 3 en ligne, pas 2,5 mm | Ø rondes, **8,8 mm** d'entraxe, **7,0 mm** de décalage |
+| Plan Alpha `RD901F-40` | 3 en ligne, span 5,0 mm ✅ | lumières, **11,4 mm**, **7,5 mm** de décalage |
+
+**Les trois broches de signal tombent juste.** Ce sont les pattes qui posent
+question. Lecture faite sur un plan scanné, donc à confirmer sur une pièce
+réelle avant d'en commander seize.
+
+> **Parade s'il y a bien décalage : couper les pattes.** Elles ne servent
+> qu'à l'anti-rotation, or ici c'est **l'écrou de façade** qui tient chaque
+> potentiomètre. Rien d'essentiel n'est perdu.
+
+### La valeur : 10 kΩ, pas 100
+
+La fiche que tu m'as transmise est celle du **`B100K`**. Il nous faut le
+**`B10K`** — c'est la valeur du montage, et 100 kΩ tripleraient l'impédance de
+source vue par le convertisseur. Même référence, même mécanique, autre suffixe.
 
 ### L'écran n'est pas en face de son connecteur
 
@@ -100,10 +119,11 @@ non déduites du PCB.
 
 | Paramètre | Défaut | Comment le relever |
 |---|---|---|
-| `pot_corps_h` | 7,0 | ⚠️ **manquante** — carte → épaulement du canon |
-| `pot_axe_h` | 15,0 | ✅ donnée : bout de l'axe depuis l'épaulement |
-| `pot_filetage_h` | 5,0 | ✅ donnée : longueur du canon fileté |
-| `pot_canon_d` | 7,0 | Ø extérieur du canon (M7 sur un pot 9 mm) |
+| `pot_corps_h` | 10,0 | ✅ plan Alpha `SLH-211-414` |
+| `pot_axe_h` | 15,0 | ✅ idem — axe Ø 6,35, pas 9 |
+| `pot_filetage_h` | 5,0 | ✅ idem — canon M7 × 0,75 |
+| `pot_canon_d` | 7,0 | ✅ idem |
+| `pot_ecrou_h` | 2,0 | ✅ idem — écrou 10 mm sur plats |
 | `bouton_h` | 7,3 | donnée par la référence GCT `SWT0325-**0730**16TSK` |
 | `midi_z` | 11 | hauteur de l'axe de l'embase MIDI |
 | `midi_d` | 23 | Ø d'une fiche DIN 5 |
@@ -155,8 +175,8 @@ voisin le plus proche est le MIDI OUT à 23,8 mm.
 3. Câbler le `TB5M` aux pastilles de `J10`.
 4. Poser `capot_arriere`, deux M3 × 12 dans les parois latérales.
 5. Poser les 7 `capuchon` sur les boutons.
-6. Poser la `facade`, puis **serrer les 16 écrous de potentiomètre**. Ce sont
-   eux qui la tiennent et la raidissent.
+6. Poser la `facade`, puis **serrer les 16 écrous de potentiomètre** (M7 × 0,75,
+   clé de 10). Ce sont eux qui la tiennent et la raidissent.
 7. Quatre M3 × 20 aux angles, à travers les bossages, dans les entretoises du
    fond : les mêmes vis tiennent la façade **et** la carte.
 
