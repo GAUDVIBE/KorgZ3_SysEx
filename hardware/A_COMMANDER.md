@@ -231,6 +231,10 @@ connecteurs femelles du Mega.
 
 ## 4. Côté guitare
 
+> 📄 Le montage, le brochage et **la règle des masses** sont détaillés dans
+> [`CABLAGE_GUITARE.md`](CABLAGE_GUITARE.md). À lire avant de percer le
+> pickguard.
+
 | ☐ | Qté | Élément |
 |---|---|---|
 | ☐ | 1 | Molette de pitch **10 kΩ linéaire, à ressort de rappel** |
