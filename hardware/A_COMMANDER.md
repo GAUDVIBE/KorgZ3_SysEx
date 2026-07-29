@@ -21,12 +21,35 @@ Carte **100 % traversante** — aucun composant monté en surface.
 
 ## 2. À vérifier avant de valider
 
-### ⚠️ Le mini-XLR de la carte manque
+### ✅ Mini-XLR côté carte : **`TB5M`**, embase de panneau
 
-`TA5FSH` est le connecteur **de câble**. La carte, elle, porte un connecteur
+**Décision arrêtée le 29/07/2026 — remplace le `TRAPC5M1X`.**
+
+**`TB5M`** — Switchcraft Tini-QG, 5 contacts, **mâle**, **montage sur panneau**,
+corps métallique nickelé. Il ne se soude **pas** dans l'empreinte `J10` : il se
+visse sur la plaque arrière du boîtier et se câble jusqu'aux cinq pastilles de
+`J10` par de courts fils.
+
+C'est un gain, pas un pis-aller. Le `TRAPC5M1X` n'était retenu que par ses cinq
+soudures — on avait établi que son filetage était inutilisable sur cette carte
+(voir plus bas). Le `TB5M` reporte tout l'effort de branchement sur la paroi du
+boîtier, et devient **libre en position** puisqu'il n'est plus lié à l'empreinte.
+
+| Élément | Genre | Statut |
+|---|---|---|
+| Carte, `TB5M` | mâle, sur panneau | ☐ à commander |
+| Câble, côté carte, `TA5FSH` | femelle | ☑ au panier |
+
+> ⚠️ Une cote reste à relever sur la fiche `TB5M` : le **diamètre de perçage du
+> panneau**. Le modèle 3D l'a en paramètre (`xlr_percage`, provisoirement 12,5 mm).
+
+<details>
+<summary>Analyse du <code>TRAPC5M1X</code> — conservée, désormais sans objet</summary>
+
+`TA5FSH` est le connecteur **de câble**. La carte devait porter un connecteur
 **mâle à souder** : **`TRAPC5M1X`** — Switchcraft, 5 contacts, traversant,
-coudé pour circuit imprimé. C'est lui qui correspond à l'empreinte
-`MiniXLR-5_Switchcraft_TRAPC_Horizontal`. Sans lui, rien à brancher sur la carte.
+coudé pour circuit imprimé, correspondant à l'empreinte
+`MiniXLR-5_Switchcraft_TRAPC_Horizontal`.
 
 #### Décodage, sur le plan `TRAPC_X - TRASM_X SERIES`, rév. C
 
@@ -95,6 +118,8 @@ références conviennent, et deux seulement :
 >
 > De même, écarter tout `TRASM…` : `SM` = monté en surface, notre carte est
 > 100 % traversante.
+
+</details>
 
 ### ⚠️ Les 100 nF sont en rupture
 
