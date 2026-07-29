@@ -183,27 +183,28 @@ en ligne au pas de **2,5 mm** avec deux pattes de fixation. Vérifier que la
 Bourns PTV09A a bien la même implantation avant de valider — les deux sont des
 9 mm, mais l'écartement des pattes diffère selon les modèles.
 
-### ⚠️ Les embases MIDI : prendre `KCDX-5S-N`, pas `-N2`
+### ✅ Les embases MIDI : récupérées sur l'ancienne carte
 
-Le panier contient 2 × `806-KCDX-5S-N2`. Or l'option Kycon distingue :
+**Rien à commander.** Les deux embases de la carte à 4 boutons se soudent
+directement — vérifié le 29/07/2026 par deux contrôles indépendants :
 
-| Suffixe | Pas |
-|---|---|
-| **`-N`** | non blindé, **10 mm** |
-| `-N2` | non blindé, **5 mm** |
+1. **L'empreinte n'a jamais changé** depuis son introduction (`7cf76b8`) :
+   60 empreintes MIDI examinées sur 30 révisions du circuit, aucune différence
+   de motif. Elle a été *tournée* en cours de route, jamais modifiée.
+2. **Elle est celle de la carte d'origine** : les 21 distances deux à deux
+   entre les 7 trous coïncident à **0,003 mm** près — le seul arrondi
+   pouces/millimètres.
 
-**Notre carte veut 10 mm.** Motif relevé sur le circuit et **recoupé sur le
-fichier de perçage de la carte d'origine** — 14 trous de Ø 1,400 mm, soit
-2 DIN × 7, au motif identique au centième :
+> ⚠️ Au dessoudage : 7 broches traversantes dans une carte à plan de masse, qui
+> pompe la chaleur. Tresse à dessouder, fer bien chaud, et **ne jamais forcer
+> sur le corps** — c'est ainsi qu'on arrache les pastilles.
 
-- 5 broches signal Ø 1,4 en (−7,3 ; 0), (0 ; 0), (7,3 ; 0), (5 ; 2,5), (−5 ; 2,5)
-- 2 ergots de fixation Ø 1,4 en **(±5 ; −9,7)** → **entraxe 10,0 mm**,
-  décalés de **9,7 mm** de la rangée de broches
+<details>
+<summary>S'il fallait en racheter : <code>KCDX-5S-N</code>, jamais <code>-N2</code></summary>
 
-**Démontré sur les deux plans Kycon** (`Pub_Eng_Draw/KCDX-5S-N.pdf` et
-`…-N2.pdf`), section *Recommended PCB Layout*. Ils sont identiques en tout
-point **sauf un** : l'écartement des deux ergots. Le « pas » du suffixe ne
-désigne que cela.
+Démontré sur les deux plans Kycon (`Pub_Eng_Draw/KCDX-5S-N.pdf` et `…-N2.pdf`),
+section *Recommended PCB Layout*. Ils sont identiques en tout point **sauf un** :
+l'écartement des deux ergots. Le « pas » du suffixe ne désigne que cela.
 
 | | Nos trous | `-N` | `-N2` |
 |---|---|---|---|
@@ -213,16 +214,14 @@ désigne que cela.
 | Ergots → rangée | 9,70 | 9,50 | 9,50 |
 | Perçages | 7 × Ø 1,40 | 7 × Ø 1,40 ✅ | 7 × Ø 1,40 ✅ |
 
-Sur le `-N2`, **2,5 mm de décalage par ergot** : aucun jeu ne le rattrape.
+Sur le `-N2`, **2,5 mm de décalage par ergot** : aucun jeu ne le rattrape. Les
+0,20 mm d'écart sur la rangée extérieure sont en revanche absorbés — broches de
+1,1 × 0,7 dans des trous de Ø 1,40.
 
-Les 0,20 mm d'écart sur la rangée extérieure et sur le décalage vertical, eux,
-sont absorbés : broches de 1,1 × 0,7 dans des trous de Ø 1,40, soit 0,15 mm de
-jeu par côté au minimum. Et la carte d'origine porte **exactement** le même
-motif — ±7,3 et 9,7 — avec des embases qui fonctionnent.
+</details>
 
-> Cotes utiles pour le boîtier, relevées sur la fiche : corps **20,5 × 19,5 ×
-> 15,0 mm**, **axe à 10,0 mm** de la carte, fût avant Ø 14,0, alésage Ø 11,7.
-> Broches signal 1,1 × 0,7 et ergots 0,3 × 1,0 — ils passent dans nos Ø 1,4.
+> Cotes utiles pour le boîtier : corps **20,5 × 19,5 × 15,0 mm**, **axe à
+> 10,0 mm** de la carte, fût avant Ø 14,0, alésage Ø 11,7.
 
 ### ✅ Le jack d'alimentation : conforme
 
