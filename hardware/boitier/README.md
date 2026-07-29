@@ -36,7 +36,7 @@ minutes d'impression au lieu de dix heures.
 
 ## Ce sont les potentiomètres qui tiennent la façade
 
-Leur canon fileté de 5 mm traverse la façade de 3 mm et reçoit son écrou. Seize
+Leur canon fileté de 5 mm traverse la façade de 2,5 mm et reçoit son écrou. Seize
 écrous répartis sur la surface donnent bien plus de rigidité que quatre vis
 d'angle — c'est le montage de n'importe quel synthétiseur.
 
@@ -57,8 +57,7 @@ filetage pour l'écrou      2,5 mm    ← l'écrou Alpha en fait exactement 2,0
 > filet, sans rien pour la rondelle. Une assertion arrête désormais le rendu si
 > `facade_ep` dépasse `pot_filetage_h − pot_ecrou_h`.
 
-Ces deux valeurs sont **calculées et affichées à chaque compilation**, et une
-assertion arrête le rendu si la façade devient trop épaisse pour l'écrou :
+Ces valeurs sont **calculées et affichées à chaque compilation** :
 
 ```
 ECHO: "Axe emergent au-dessus de la facade : 12.5 mm"
@@ -66,7 +65,7 @@ ECHO: "Filetage restant pour l'ecrou       : 2.5 mm"
 ECHO: "Lamage sous la facade pour boutons  : 0 mm"
 ```
 
-**D'où la règle : `facade_ep` ne doit jamais dépasser `pot_filetage_h − 1,6`.**
+**La règle : `facade_ep` ne doit jamais dépasser `pot_filetage_h − pot_ecrou_h`.**
 
 ### Les boutons
 
