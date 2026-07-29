@@ -24,12 +24,16 @@ piece = "assemblage"; // [assemblage, fond, facade, plaque_arriere, capot_arrier
 
 /* [À MESURER sur tes composants — les seules cotes non déduites du PCB] */
 
-// Hauteur du corps du potentiomètre au-dessus de la carte
+// ⚠️ SEULE COTE ENCORE MANQUANTE : hauteur du corps du potentiomètre
+// au-dessus de la carte, jusqu'à l'épaulement du canon fileté. C'est elle
+// qui fixe la hauteur de la façade — la mesurer au pied à coulisse.
 pot_corps_h = 7.0;
-// Longueur de l'axe du potentiomètre depuis la surface de la carte
+// Longueur de l'axe, depuis l'épaulement du canon (convention des fiches)
 pot_axe_h = 15.0;
-// Diamètre de perçage de l'axe (7.5 laisse passer un canon fileté M7)
-pot_percage = 7.5;
+// Longueur du canon fileté
+pot_filetage_h = 5.0;
+// Diamètre extérieur du canon fileté (M7 sur un potentiomètre 9 mm)
+pot_canon_d = 7.0;
 // Hauteur du bouton poussoir au-dessus de la carte
 bouton_h = 7.3;
 // Hauteur de l'axe des embases MIDI au-dessus de la carte
@@ -56,10 +60,9 @@ alim_z = 6;
 pente = 15;
 // Épaisseur des parois et du fond
 paroi = 3.0;
-// Épaisseur de la façade
+// Épaisseur de la façade. NE PAS DÉPASSER pot_filetage_h − 1,6 : au-delà, le
+// canon ne ressort plus assez pour recevoir son écrou.
 facade_ep = 3.0;
-// Écart entre le dessus de la carte et le dessous de la façade
-ecart_facade = 8.5;
 // Hauteur du dessus du dosseret au-dessus de la carte
 dosseret_h = 24.0;
 // Hauteur du dessus de la carte au bord avant
@@ -72,6 +75,26 @@ jeu = 0.5;
 /* [Hidden] */
 $fn = 48;
 PROF = 400;   // profondeur de travail des solides tronqués
+
+// --- Hauteur de la façade : elle vient s'appuyer sur l'épaulement des
+// potentiomètres, dont les écrous la tiennent. Ce sont eux, et non les quatre
+// vis, qui font la rigidité de l'ensemble.
+ecart_facade = pot_corps_h;
+pot_percage  = pot_canon_d + 0.5;
+
+// Les boutons poussoirs sont plus hauts que l'épaulement des potentiomètres :
+// on lamé la façade par-dessous en regard de chacun pour leur faire place.
+LAMAGE_H = max(0, bouton_h + 0.7 - ecart_facade);
+LAMAGE_D = 9.0;
+
+// Contrôles, affichés à chaque compilation
+axe_emergent  = pot_axe_h - facade_ep;
+filet_restant = pot_filetage_h - facade_ep;
+echo(str("Axe emergent au-dessus de la facade : ", axe_emergent, " mm"));
+echo(str("Filetage restant pour l'ecrou       : ", filet_restant, " mm"));
+echo(str("Lamage sous la facade pour boutons  : ", LAMAGE_H, " mm"));
+assert(filet_restant >= 1.6,
+       "Facade trop epaisse : le canon ne ressort pas assez pour son ecrou.");
 
 // ---------------------------------------------------------------------
 //  Relevé sur le PCB — NE PAS ÉDITER À LA MAIN
@@ -239,8 +262,12 @@ module percages_facade() {
     hv = facade_ep + ecart_facade + 2;
     for (x = POT_X) for (y = POT_Y)
         translate([x, y, -1]) cylinder(h = h, d = pot_percage);
-    for (b = BOUTONS)
+    for (b = BOUTONS) {
         translate([b[0], b[1], -1]) cylinder(h = h, d = 6.4);
+        // lamage par-dessous : le bouton dépasse l'épaulement des pots
+        if (LAMAGE_H > 0)
+            translate([b[0], b[1], -0.01]) cylinder(h = LAMAGE_H, d = LAMAGE_D);
+    }
     for (l = LEDS)
         translate([l[0], l[1], -1]) cylinder(h = h, d = 3.2);
     translate([OLED[0] - OLED_L/2, OLED[1] - OLED_H/2, -1]) cube([OLED_L, OLED_H, h]);
@@ -335,11 +362,14 @@ module capot_a_plat() { translate([0, 0, -Y_MARCHE]) rotate([90, 0, 0]) capot_ar
 //  Capuchon de bouton
 // ---------------------------------------------------------------------
 
+// Repose sur le poussoir. La collerette est captive dans le lamage de la
+// façade : le capuchon ne peut ni tomber ni ressortir.
 module capuchon() {
-    collerette = max(ecart_facade - bouton_h, 0.8);
+    collerette = ecart_facade + LAMAGE_H - bouton_h;
+    total      = ecart_facade + facade_ep - bouton_h + 2;   // 2 mm de dépassement
     union() {
-        cylinder(h = collerette, d = 8.5);
-        cylinder(h = collerette + facade_ep + 2, d = 6.0);
+        cylinder(h = collerette, d = LAMAGE_D - 0.6);
+        cylinder(h = total, d = 6.0);
     }
 }
 

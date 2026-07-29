@@ -8,11 +8,11 @@ openscad -o fond.stl -D 'piece="fond"' boitier.scad
 
 | Pièce | Nombre | Encombrement | Impression |
 |---|---|---|---|
-| `fond` | 1 | 182,5 × 190,0 × 78,6 mm | posé sur son dessous, sans support |
-| `facade` | 1 | 182,5 × 149,5 × 11,5 mm | face visible **contre le plateau** |
+| `fond` | 1 | 182,5 × 189,6 × 78,6 mm | posé sur son dessous, sans support |
+| `facade` | 1 | 182,5 × 149,5 × 10,0 mm | face visible **contre le plateau** |
 | `capot_arriere` | 1 | 176,1 × 25,0 × 29,5 mm | couché sur son tablier |
 | `plaque_arriere` | 1 | 135,6 × 30,6 × 3,0 mm | à plat |
-| `capuchon` | **7** | 8,5 × 8,5 × 6,2 mm | à plat |
+| `capuchon` | **7** | 8,4 × 8,4 × 4,7 mm | à plat |
 
 Aucune pièce ne demande de support. Toutes reposent sur `z = 0`.
 
@@ -33,28 +33,55 @@ embases au-dessus de la carte sont les seules valeurs que le fichier KiCad ne
 donne pas. Elles sont toutes portées par `plaque_arriere`, qui coûte vingt
 minutes d'impression au lieu de dix heures.
 
-## ⚠️ Deux points à trancher avant d'imprimer
+## Ce sont les potentiomètres qui tiennent la façade
 
-### L'axe des potentiomètres ne dépasse que de 3,5 mm
+Leur canon fileté de 5 mm traverse la façade de 3 mm et reçoit son écrou. Seize
+écrous répartis sur la surface donnent bien plus de rigidité que quatre vis
+d'angle — c'est le montage de n'importe quel synthétiseur.
 
 ```
-axe                 15,0 mm au-dessus de la carte
-façade, dessous    − 8,5 mm
-façade, épaisseur  − 3,0 mm
-                   ─────────
-émergent             3,5 mm
+axe                       15 mm  au-dessus de l'épaulement du canon
+façade                   − 3 mm
+                         ───────
+axe émergent               12 mm      ← de quoi tenir n'importe quel bouton
+
+canon fileté               5 mm
+façade                   − 3 mm
+                         ───────
+filetage pour l'écrou      2 mm      ← un écrou de pot en fait ~1,6
 ```
 
-C'est trop peu pour la plupart des boutons. Trois façons de gagner :
+Ces deux valeurs sont **calculées et affichées à chaque compilation**, et une
+assertion arrête le rendu si la façade devient trop épaisse pour l'écrou :
 
-| Levier | Gain | Ce que ça coûte |
-|---|---|---|
-| `facade_ep` à 2,0 mm | +1,0 mm | façade plus souple |
-| `ecart_facade` à 7,5 mm | +1,0 mm | ne marche que si le corps du pot fait ≤ 6,5 mm |
-| Boutons à faible alésage | — | rien, mais choix restreint |
+```
+ECHO: "Axe emergent au-dessus de la facade : 12 mm"
+ECHO: "Filetage restant pour l'ecrou       : 2 mm"
+ECHO: "Lamage sous la facade pour boutons  : 1 mm"
+```
 
-**Mesure d'abord ton axe réel.** Le « 15 mm » est une hypothèse : si tes
-potentiomètres en donnent 18 ou 20, tout ce paragraphe tombe.
+**D'où la règle : `facade_ep` ne doit jamais dépasser `pot_filetage_h − 1,6`.**
+
+### Les boutons dépassent l'épaulement
+
+Le poussoir monte à 7,3 mm quand l'épaulement des potentiomètres est à 7,0. La
+façade est donc **lamée par-dessous** de 1 mm, sur Ø 9, en regard de chaque
+bouton. Le lamage sert aussi de logement à la collerette du capuchon, qui s'y
+trouve captif : il ne peut ni tomber ni ressortir.
+
+## ⚠️ Deux points à vérifier avant d'imprimer
+
+### La seule cote encore manquante
+
+`pot_corps_h` — **la hauteur du corps du potentiomètre au-dessus de la carte**,
+jusqu'à l'épaulement du canon. C'est elle qui fixe toute la hauteur de la
+façade, et le lamage des boutons en découle. Valeur provisoire : 7,0 mm.
+
+### Le connecteur de batterie `J4`
+
+`J4` est à `(116, 132)`, **sous la façade**. Une barrette mâle ordinaire monte à
+environ 8,4 mm, contre 7,0 mm de garde : si tu la peuples, elle touchera.
+Laisse-la nue, ou demande-moi d'ajouter un lamage à son emplacement.
 
 ### L'écran n'est pas en face de son connecteur
 
@@ -72,9 +99,10 @@ non déduites du PCB.
 
 | Paramètre | Défaut | Comment le relever |
 |---|---|---|
-| `pot_corps_h` | 7,0 | hauteur du corps du pot au-dessus de la carte |
-| `pot_axe_h` | 15,0 | bout de l'axe, depuis la surface de la carte |
-| `pot_percage` | 7,5 | Ø du canon fileté, ou de l'axe s'il n'y en a pas |
+| `pot_corps_h` | 7,0 | ⚠️ **manquante** — carte → épaulement du canon |
+| `pot_axe_h` | 15,0 | ✅ donnée : bout de l'axe depuis l'épaulement |
+| `pot_filetage_h` | 5,0 | ✅ donnée : longueur du canon fileté |
+| `pot_canon_d` | 7,0 | Ø extérieur du canon (M7 sur un pot 9 mm) |
 | `bouton_h` | 7,3 | donnée par la référence GCT `SWT0325-**0730**16TSK` |
 | `midi_z` | 11 | hauteur de l'axe de l'embase MIDI |
 | `midi_d` | 23 | Ø d'une fiche DIN 5 |
@@ -126,10 +154,10 @@ voisin le plus proche est le MIDI OUT à 23,8 mm.
 3. Câbler le `TB5M` aux pastilles de `J10`.
 4. Poser `capot_arriere`, deux M3 × 12 dans les parois latérales.
 5. Poser les 7 `capuchon` sur les boutons.
-6. Poser la `facade` : ses quatre bossages font entretoise jusqu'à la carte.
-   Quatre M3 × 20 la traversent et se vissent dans les entretoises du fond.
-
-Les quatre mêmes vis tiennent donc la façade **et** la carte.
+6. Poser la `facade`, puis **serrer les 16 écrous de potentiomètre**. Ce sont
+   eux qui la tiennent et la raidissent.
+7. Quatre M3 × 20 aux angles, à travers les bossages, dans les entretoises du
+   fond : les mêmes vis tiennent la façade **et** la carte.
 
 Le flanc gauche est volontairement ouvert sur 60 mm : le Mega y déborde de
 2,8 mm, et c'est par là que sortent son USB et son jack d'alimentation.
