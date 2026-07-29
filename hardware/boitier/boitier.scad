@@ -39,10 +39,12 @@ pot_canon_d = 7.0;
 pot_ecrou_h = 2.0;
 // Hauteur du bouton poussoir au-dessus de la carte
 bouton_h = 7.3;
-// Hauteur de l'axe des embases MIDI au-dessus de la carte
-midi_z = 11;
-// Diamètre de dégagement d'une fiche MIDI DIN 5
-midi_d = 23;
+// Embases MIDI : Kycon KCDX-5S, fiche « KCDX Series ».
+// Corps 20,5 large x 19,5 haut x 15,0 profond, axe a 10,0 mm de la carte,
+// fut avant O 14,0 et alesage O 11,7. Percage a 16 : le fut passe avec 1 mm
+// de jeu au rayon, et la broche de la fiche DIN atteint l'alesage.
+midi_z = 10.0;
+midi_d = 16.0;
 // Mini-XLR : embase de PANNEAU Switchcraft TB5M, câblée jusqu'aux
 // pastilles de J10. Elle n'est plus tenue par la carte, donc libre en X
 // comme en Z. L'axe est volontairement haut : le corps de l'embase
@@ -54,8 +56,12 @@ midi_d = 23;
 xlr_z = 12;
 xlr_percage = 11.28;   // 0.444"
 xlr_meplat  = 10.72;   // 0.422", du méplat au bord opposé
-// Hauteur de l'axe du jack d'alimentation au-dessus de la carte
-alim_z = 6;
+// Jack d'alimentation : CUI PJ-202A, broche centrale 2,0 mm.
+// Corps 11 large x 9 haut x 14,5 profond ; axe a mi-hauteur.
+// Percage rond de 12 : J3 etant 7,4 mm en retrait du bord, la fiche doit
+// pouvoir s'enfoncer d'autant.
+alim_z = 4.5;
+alim_percage = 12.0;
 // Écran — module Velleman VMA438, dalle Univision UG-2864HSWEG01.
 // Zone active et épaisseur de dalle relevées sur la fiche SAS1-9046-B.
 oled_actif_l  = 21.744;
@@ -144,8 +150,6 @@ MIDI_IN_X  = 30;
 MIDI_OUT_X = 67;
 XLR_X      = 90.8;
 ALIM_X     = 117.9;
-ALIM_L     = 13;
-ALIM_H     = 13;
 
 // Le corps des connecteurs commence à Y = 149.7 : la marche est en deçà
 Y_MARCHE = 146;
@@ -357,7 +361,7 @@ module plaque_arriere() {
             translate([MIDI_IN_X,  midi_z, -1]) cylinder(h = 5, d = midi_d);
             translate([MIDI_OUT_X, midi_z, -1]) cylinder(h = 5, d = midi_d);
             translate([XLR_X,      xlr_z,  -1]) trou_d(xlr_percage, xlr_meplat, 5);
-            translate([ALIM_X - ALIM_L/2, alim_z - ALIM_H/2, -1]) cube([ALIM_L, ALIM_H, 5]);
+            translate([ALIM_X, alim_z, -1]) cylinder(h = 5, d = alim_percage);
         }
     }
 }

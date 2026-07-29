@@ -183,22 +183,44 @@ en ligne au pas de **2,5 mm** avec deux pattes de fixation. Vérifier que la
 Bourns PTV09A a bien la même implantation avant de valider — les deux sont des
 9 mm, mais l'écartement des pattes diffère selon les modèles.
 
-### ⚠️ Les embases MIDI
+### ⚠️ Les embases MIDI : prendre `KCDX-5S-N`, pas `-N2`
 
-2 × `806-KCDX-5S-N2` (Kycon). Notre empreinte `MIDI_DIN5_180deg` est
-**sur mesure**, relevée sur le perçage de la carte d'origine :
+Le panier contient 2 × `806-KCDX-5S-N2`. Or l'option Kycon distingue :
 
-- 5 broches signal Ø 1,4 mm en (−7,3 ; 0), (0 ; 0), (7,3 ; 0), (5 ; 2,5), (−5 ; 2,5)
-- **2 trous de fixation Ø 1,4 mm en (±5 ; −9,7)**
+| Suffixe | Pas |
+|---|---|
+| **`-N`** | non blindé, **10 mm** |
+| `-N2` | non blindé, **5 mm** |
 
-Comparer avec le plan Kycon, en particulier la **position des ergots de
-fixation** : c'est là que les modèles diffèrent le plus.
+**Notre carte veut 10 mm.** Motif relevé sur le circuit et **recoupé sur le
+fichier de perçage de la carte d'origine** — 14 trous de Ø 1,400 mm, soit
+2 DIN × 7, au motif identique au centième :
 
-### ⚠️ Le jack d'alimentation
+- 5 broches signal Ø 1,4 en (−7,3 ; 0), (0 ; 0), (7,3 ; 0), (5 ; 2,5), (−5 ; 2,5)
+- 2 ergots de fixation Ø 1,4 en **(±5 ; −9,7)** → **entraxe 10,0 mm**,
+  décalés de **9,7 mm** de la rangée de broches
 
-2 × `474-PRT-00119` (SparkFun). Notre empreinte `BarrelJack_Horizontal` a
-**3 pastilles** en (0 ; 0), (−6 ; 0) et (−3 ; 4,7). Vérifier l'écartement des
-broches sur le plan du fabricant.
+Les deux lectures possibles de « pas » — entraxe des ergots, ou décalage
+ergots/broches — donnent 10 mm chez nous. Le `-N2` à 5 mm ne conviendrait dans
+aucune des deux.
+
+> Cotes utiles pour le boîtier, relevées sur la fiche : corps **20,5 × 19,5 ×
+> 15,0 mm**, **axe à 10,0 mm** de la carte, fût avant Ø 14,0, alésage Ø 11,7.
+> Broches signal 1,1 × 0,7 et ergots 0,3 × 1,0 — ils passent dans nos Ø 1,4.
+
+### ✅ Le jack d'alimentation : conforme
+
+Vérifié sur la fiche **CUI `PJ-202A`** (broche centrale 2,0 mm), dont le
+`474-PRT-00119` de SparkFun reprend l'implantation.
+
+| | Empreinte `BarrelJack_Horizontal` | Plan `PJ-202A` |
+|---|---|---|
+| Bornes 1 et 2 | 6,00 mm d'entraxe | 13,7 − 7,7 = **6,0** ✅ |
+| Borne 3 | décalée de 4,70, à mi-distance | **4,7**, à 10,7 ✅ |
+| Lumières | 1 × 3 mm | **1,0 × 3,0** ✅ |
+
+> Cotes utiles pour le boîtier : corps **11 × 9 × 14,5 mm**, alésage Ø 6,5,
+> broche centrale Ø 2,0, **axe à mi-hauteur soit ~4,5 mm** de la carte.
 
 ---
 
