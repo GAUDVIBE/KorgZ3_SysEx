@@ -76,25 +76,29 @@ captif entre le poussoir et la façade — il ne peut ni tomber ni ressortir.
 Le connecteur de batterie `J4`, à `(116, 132)`, monte à environ 8,4 mm s'il est
 peuplé : il passe désormais, avec 1,6 mm de reste.
 
-## ⚠️ À vérifier avant de commander 16 potentiomètres
+## Les potentiomètres : compatibilité établie
 
-### L'implantation des pattes de fixation
+Vérifié **contre la carte d'origine**, où ces mêmes potentiomètres sont déjà
+soudés. Mesure faite dans son fichier de perçage
+`SysEx_Programmer_BIG_display.TXT` : 48 trous de Ø 1,100 mm (16 pots × 3
+broches) et 32 trous de Ø 1,600 mm (16 × 2 pattes), les 16 pots reconstitués.
 
-Le plan Alpha et notre empreinte KiCad (Alps RK09K) **ne concordent pas sur les
-pattes anti-rotation** :
+| | Décalage / broches | Entraxe des pattes | Perçage des pattes |
+|---|---|---|---|
+| Carte d'origine | **7,00 mm** | **9,00 mm** | Ø 1,60 rond |
+| Notre empreinte | **7,00 mm** | **8,80 mm** | oblong **2,10 × 1,80** |
 
-| | Broches signal | Pattes de fixation |
-|---|---|---|
-| Empreinte de la carte | 3 en ligne, pas 2,5 mm | Ø rondes, **8,8 mm** d'entraxe, **7,0 mm** de décalage |
-| Plan Alpha `RD901F-40` | 3 en ligne, span 5,0 mm ✅ | lumières, **11,4 mm**, **7,5 mm** de décalage |
+Le décalage est identique. L'entraxe diffère de 0,20 mm, soit 0,10 mm par
+patte, mais nos trous sont **oblongs et plus larges que ceux d'origine dans les
+deux directions** : le jeu l'absorbe.
 
-**Les trois broches de signal tombent juste.** Ce sont les pattes qui posent
-question. Lecture faite sur un plan scanné, donc à confirmer sur une pièce
-réelle avant d'en commander seize.
+L'empreinte `Potentiometer_Alps_RK09K_Single_Vertical` n'a **pas changé d'un
+micron** entre la reconstruction initiale (`ae7454e`) et aujourd'hui — vérifié
+sur les trois révisions majeures du circuit.
 
-> **Parade s'il y a bien décalage : couper les pattes.** Elles ne servent
-> qu'à l'anti-rotation, or ici c'est **l'écrou de façade** qui tient chaque
-> potentiomètre. Rien d'essentiel n'est perdu.
+> Nos trous de broches font Ø 1,00 mm, exactement la préconisation du plan
+> Alpha (*3-Ø1.0 +0.1/-0*). La carte d'origine était simplement plus généreuse
+> à Ø 1,10.
 
 ### La valeur : 10 kΩ, pas 100
 
