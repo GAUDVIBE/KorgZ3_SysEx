@@ -22,10 +22,10 @@
  * Bibliothèques : Wire.h, Adafruit_GFX.h, Adafruit_SSD1306.h, EEPROM.h
  */
 
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include <EEPROM.h>
+#include "oled.h"
+#include "board_map.h"
+#include "midi_port.h"
 #include "mux.h"
 #include "pitch.h"
 
@@ -40,7 +40,7 @@
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 32
 #define OLED_RESET    -1
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Ecran display;   // I2C logiciel sur les broches 8/9 — voir oled.h
 
 // =================== PRESETS ===================
 const int DUMP_MAX_SIZE = 96;
@@ -200,7 +200,7 @@ struct PotConfig {
   const char* name;
   int  filteredRaw;
   bool caught;
-  int  catchOffset; // position physique au moment de l'activation de la page
+  int  catchOffset; // lecture ADC BRUTE au moment de l'activation de la page
 };
 
 const int NUM_POTS  = 16;
@@ -319,16 +319,47 @@ const char* pageNames[NUM_PAGES] = { "I", "II", "III", "IV", "V" };
 // Chaque page a son bouton : le defilement par deux boutons etait impraticable
 // en jeu, il fallait parfois quatre appuis pour atteindre la bonne page.
 // La LED de la page courante reste allumee en permanence : c'est le repere.
-const byte PAGE_BTN[NUM_PAGES] = {14,  7,  8,  6,  5};
-const byte PAGE_LED[NUM_PAGES] = {15, 12, 11, 10,  9};
+// ATTENTION — carte v1.2 : l'ordre des broches est inverse dans chaque bloc
+// d'embases (voir board_map.h). Les numeros du schema du shield seraient
+// {14,7,8,6,5} et {15,12,11,10,9} ; traduits, plusieurs tombent sur des broches
+// inexploitables et sont renvoyes vers des broches libres du bloc 2x18 :
+//   page II  : bouton sur RX0 et page IV sur TX0 -> casseraient l'USB
+//   page III : bouton sur la meme broche que la page I (D21)
+//   page III/IV : LED sur une masse et sur AREF
+//   page V   : LED sur la meme broche que la page I (D20)
+// Consequence a l'usage : seules les pages I et V sont atteignables au bouton,
+// et la LED de la page I s'allume sur deux LED a la fois. Le materiel des
+// autres pages attend soit des fils volants vers le bloc 2x18, soit une v1.5.
+const byte PAGE_BTN[NUM_PAGES] = {megaDigital(14), PIN_LIBRE_1,
+                                  PIN_LIBRE_2,     PIN_LIBRE_3,
+                                  megaDigital(5)};
+const byte PAGE_LED[NUM_PAGES] = {PIN_LIBRE_4, PIN_LIBRE_5, PIN_LIBRE_6,
+                                  PIN_LIBRE_7, PIN_LIBRE_8};
 
-// COLONNE DE GAUCHE — 2 paires de fonction.
-const int BTN_DUMP     = 16;  // court = Dump Request, maintenu = supprimer
-const int LED_DUMP_REQ = 17;
-const int BTN_PRESET   = 18;  // court = slot suivant, maintenu = sauvegarder
-const int LED_SLOT     = 19;
+// COLONNE DE GAUCHE — 2 paires de fonction, toutes sur de vraies broches.
+// Sur la carte v1.2 le Dump Request est inoperant (pas de MIDI IN, voir
+// midi_port.h). Son bouton et sa LED sont donc reaffectes a la navigation :
+//   - le bouton devient PAGE SUIVANTE, ce qui rend les cinq pages atteignables
+//   - la LED devient le 3e bit du code de page
+const int BTN_DUMP     = PIN_LIBRE_9;      // inerte : Dump Request sans MIDI IN
+const int LED_DUMP_REQ = PIN_LIBRE_10;      // inerte
+const int BTN_PRESET   = megaDigital(18);  // court = slot suivant, maintenu = sauvegarder
+const int LED_SLOT     = megaDigital(19);
+
+// Bouton de defilement : l'ancien bouton Dump, physiquement intact.
+const int PAGE_NEXT_BTN = megaDigital(16);
+
+// Affichage de la page sur les trois seules LED pilotables de la carte.
+// La premiere commande deux LED a la fois (nets D9 et D15 du shield tombent sur
+// la meme broche du Mega), elles s'allument ensemble : c'est sans consequence.
+const byte PAGE_CODE_LED[3]     = {megaDigital(15), megaDigital(12), megaDigital(17)};
+const byte PAGE_CODE[NUM_PAGES] = {0b001, 0b010, 0b100, 0b011, 0b110};
 
 const unsigned long LED_BRIEF = 300; // duree d'allumage bref (ms)
+
+// Le bouton de page porte deux fonctions : appui court = page suivante,
+// appui maintenu = Dump Request (l'ancienne fonction de ce bouton).
+const unsigned long DUMP_REQUEST_HOLD_MS = 800;
 
 int           ledDumpReqBlink = 0;   // demi-périodes restantes (0=arrêté)
 unsigned long ledDumpReqTimer = 0;
@@ -398,10 +429,22 @@ unsigned long dumpRequestTime = 0;
 const unsigned long DUMP_TIMEOUT = 3000;
 
 // =================== LECTURE POTS ===================
+// Lecture d'un potentiometre du shield, dans le bon sens.
+//
+// Deux corrections de carte sont concentrees ici :
+//  - A15 est la sortie commune du 4067 : le pot #16 s'y lit par le canal 0,
+//    un analogRead(A15) direct lirait un canal indetermine ;
+//  - les 16 potentiometres ont leurs deux extremites cablees a l'envers du sens
+//    de rotation (butee gauche = maximum), d'ou l'inversion 1023 - raw. La
+//    molette et le switch de plage, cables dans la guitare, ne sont PAS
+//    concernes : ils ne passent pas par ici.
+static int lirePot(int shieldPin) {
+  int raw = (shieldPin == A15) ? muxRead(0) : analogRead(megaAnalog(shieldPin));
+  return 1023 - raw;
+}
+
 void updateFiltered(PotConfig &pot) {
-  // A15 est desormais la sortie commune du 4067 : le pot #16 s'y lit par le
-  // canal 0. Un analogRead(A15) direct lirait un canal indetermine.
-  int raw = (pot.pin == A15) ? muxRead(0) : analogRead(pot.pin);
+  int raw = lirePot(pot.pin);
   if (pot.maxVal >= 31) {
     pot.filteredRaw = (pot.filteredRaw * 7 + raw) / 8;
   } else {
@@ -434,7 +477,7 @@ int getQuantized(PotConfig &pot) {
 void initFilter(PotConfig &pot) {
   int sum = 0;
   for (int i = 0; i < 8; i++) {
-    sum += (pot.pin == A15) ? muxRead(0) : analogRead(pot.pin);
+    sum += lirePot(pot.pin);
     delay(1);
   }
   pot.filteredRaw = sum / 8;
@@ -454,11 +497,11 @@ void writeToBuffer(PotConfig &pot, int val) {
 
 void sendSysEx() {
   if (sendBufferSize <= 0) return;
-  for (int i = 0; i < sendBufferSize; i++) { Serial.write(sendBuffer[i]); delay(2); }
+  for (int i = 0; i < sendBufferSize; i++) { MIDI_PORT.write(sendBuffer[i]); delay(2); }
 }
 
 void sendDumpRequest() {
-  for (int i = 0; i < (int)sizeof(DUMP_REQUEST); i++) { Serial.write(DUMP_REQUEST[i]); delay(2); }
+  for (int i = 0; i < (int)sizeof(DUMP_REQUEST); i++) { MIDI_PORT.write(DUMP_REQUEST[i]); delay(2); }
 }
 
 // =================== NOM DU PRESET ===================
@@ -476,6 +519,7 @@ void extractName(const byte* buf, int size, char* out) {
 
 // =================== AFFICHAGE OLED ===================
 void showMessage(const char* line1, const char* line2 = nullptr) {
+  if (!OLED_UTILISABLE) return;
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
@@ -485,7 +529,20 @@ void showMessage(const char* line1, const char* line2 = nullptr) {
   display.display();
 }
 
+// Appelee par Ecran::display() entre deux tranches du transfert I2C (voir
+// oled.h). pitchUpdate() ne touche jamais a l'affichage — elle depose ses
+// evenements, que loop() consomme apres coup — donc aucune recursion possible ;
+// le garde-fou ci-dessous n'est la que pour rendre cette propriete explicite.
+void ecranPompe() {
+  static bool dedans = false;
+  if (dedans) return;
+  dedans = true;
+  pitchUpdate();
+  dedans = false;
+}
+
 void updateDisplay() {
+  if (!OLED_UTILISABLE) return;
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
@@ -513,7 +570,12 @@ void updateDisplay() {
     display.setTextSize(1);
     int startIdx = currentDisplayGroup * 4;
     int y = 12, x = 0;
+    // Le rendu des polices coute ~43 ms pour une quarantaine de caracteres :
+    // autant que trois periodes de molette. On rend donc la main a chaque
+    // cellule dessinee, comme entre les tranches du transfert.
+    ecranPompe();
     for (int i = 0; i < 4; i++) {
+      ecranPompe();
       int idx = startIdx + i;
       if (idx < NUM_POTS) {
         display.setCursor(x, y);
@@ -557,10 +619,16 @@ void updateLeds() {
   }
 }
 
-// Allume la LED de la page courante, eteint les quatre autres.
+// Affiche la page courante. Sur une carte au brochage correct, une LED par
+// page ; sur la v1.2, un code binaire sur les trois LED pilotables :
+//   I = *..    II = .*.    III = ..*    IV = **.    V = .**
 void majLedsPages() {
-  for (int i = 0; i < NUM_PAGES; i++) {
-    digitalWrite(PAGE_LED[i], (i == currentPage) ? HIGH : LOW);
+  // PAGE_LED reste defini pour une carte au brochage correct, mais sur la v1.2
+  // il ne pointe que sur des broches libres : c'est le code ci-dessous qui
+  // pilote les LED reelles. Ne pas ecrire les deux, ils se marcheraient dessus.
+  const byte code = PAGE_CODE[currentPage];
+  for (byte b = 0; b < 3; b++) {
+    digitalWrite(PAGE_CODE_LED[b], (code & (1 << b)) ? HIGH : LOW);
   }
 }
 
@@ -620,7 +688,7 @@ void reloadPotsFromBuffer() {
     pots[i].candidate   = pots[i].physValue;
     pots[i].stableCount = 0;
     pots[i].caught      = false;
-    pots[i].catchOffset = pots[i].physValue; // snapshot de la position physique actuelle
+    pots[i].catchOffset = pots[i].filteredRaw; // snapshot de la position physique actuelle
   }
   lastMovedPot        = -1;
   currentDisplayGroup = 0;
@@ -688,7 +756,7 @@ void setPage(int newPage) {
     pots[i].candidate   = pots[i].physValue;
     pots[i].stableCount = 0;
     pots[i].caught      = false;
-    pots[i].catchOffset = pots[i].physValue; // snapshot pour le pickup relatif
+    pots[i].catchOffset = pots[i].filteredRaw; // snapshot pour le pickup relatif
     if (pots[i].maxVal == 255 && pots[i].position == 17) {
       int hi = (16 < sendBufferSize) ? sendBuffer[16] : 0;
       int lo = (17 < sendBufferSize) ? sendBuffer[17] : 0;
@@ -706,8 +774,8 @@ void setPage(int newPage) {
 
 // =================== RÉCEPTION MIDI ===================
 void receiveMidi() {
-  while (Serial.available()) {
-    byte b = Serial.read();
+  while (MIDI_PORT.available()) {
+    byte b = MIDI_PORT.read();
     if (b == 0xF0) {
       rxLen = 0; rxInSysEx = true; rxHeaderPos = 1;
       rxBuffer[rxLen++] = b;
@@ -823,7 +891,11 @@ void deleteCurrentPreset() {
 
 // =================== SETUP ===================
 void setup() {
-  Serial.begin(31250);
+  // Serial0 n'est plus utilise que par le televersement : le MIDI a son propre
+  // port logiciel sur cette carte (voir midi_port.h). Plus aucune trace n'y est
+  // ecrite — une impression periodique bloque quand rien ne vide le tampon USB.
+  Serial.begin(115200);
+  MIDI_PORT.begin(31250);
   delay(500);
 
   // Multiplexeur et molette : muxBegin() doit preceder tout initFilter(),
@@ -846,6 +918,8 @@ void setup() {
     digitalWrite(PAGE_LED[i], LOW);
   }
   pinMode(LED_DUMP_REQ, OUTPUT); digitalWrite(LED_DUMP_REQ, LOW);
+  for (byte b = 0; b < 3; b++) { pinMode(PAGE_CODE_LED[b], OUTPUT); digitalWrite(PAGE_CODE_LED[b], LOW); }
+  pinMode(PAGE_NEXT_BTN, INPUT_PULLUP);
   pinMode(LED_SLOT,     OUTPUT); digitalWrite(LED_SLOT,     LOW);
 
   // Bouton cycle (pin 5)
@@ -858,11 +932,16 @@ void setup() {
   dumpBtnState     = (digitalRead(DUMP_BTN_PIN) == HIGH);
   dumpBtnLastState = dumpBtnState;
 
-  // OLED
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { }
-  display.setRotation(2);
-  display.clearDisplay();
-  display.display();
+  // OLED — voir OLED_UTILISABLE dans board_map.h. Sur la carte v1.2 les lignes
+  // I2C de l'ecran ne tombent pas sur D20/D21, l'ecran ne peut donc pas
+  // repondre. On evite Wire.begin() : le TWI confisquerait D20/D21, qui portent
+  // le bouton et la LED de la page I.
+  if (OLED_UTILISABLE) {
+    bool oledOk = display.begin();
+    display.setRotation(2);
+    display.clearDisplay();
+    display.display();
+  }
 
   // Slots RAM
   for (int i = 0; i < MAX_PRESETS; i++) {
@@ -930,7 +1009,7 @@ void setup() {
     page0[i].candidate   = page0[i].physValue;
     page0[i].stableCount = 0;
     page0[i].caught      = false;
-    page0[i].catchOffset = page0[i].physValue;
+    page0[i].catchOffset = page0[i].filteredRaw;
     if (page0[i].maxVal == 255 && page0[i].position == 17) {
       int hi = (16 < sendBufferSize) ? sendBuffer[16] : 0;
       int lo = (17 < sendBufferSize) ? sendBuffer[17] : 0;
@@ -1000,6 +1079,44 @@ void loop() {
     showMessage("Pas de reponse", "Verif. MIDI IN");
     delay(1000);
     updateDisplay();
+  }
+
+  // --- Bouton PAGE (carte v1.2) : court = page suivante, long = Dump Request ---
+  // C'etait le bouton du Dump Request. Comme la carte v1.2 n'a pas de MIDI IN
+  // par defaut, il sert d'abord a la navigation ; le Dump Request reste
+  // accessible en maintien. Il ne recevra de reponse du Z3 que si le fil
+  // sortie optocoupleur -> broche 53 est pose (voir midi_port.h) ; sans lui la
+  // requete part dans le vide, sans dommage.
+  {
+    static int  navLast = HIGH, navState = HIGH;
+    static unsigned long navDebounce = 0, navPressStart = 0;
+    static bool navPressed = false, navLongDone = false;
+
+    int r = digitalRead(PAGE_NEXT_BTN);
+    if (r != navLast) navDebounce = millis();
+    if ((millis() - navDebounce) > debounceDelay && r != navState) {
+      navState = r;
+      if (navState == LOW) {
+        navPressStart = millis();
+        navPressed    = true;
+        navLongDone   = false;
+      } else if (navPressed) {
+        if (!navLongDone) setPage((currentPage + 1) % NUM_PAGES);
+        navPressed = false;
+      }
+    }
+    navLast = r;
+
+    if (navPressed && !navLongDone &&
+        (millis() - navPressStart) >= DUMP_REQUEST_HOLD_MS) {
+      navLongDone     = true;
+      waitingForDump  = true;
+      dumpRequestTime = millis();
+      rxLen           = 0;
+      rxInSysEx       = false;
+      showMessage("Dump Request...", "En attente Z3");
+      sendDumpRequest();
+    }
   }
 
   // --- 5 boutons de page : acces direct ---
@@ -1139,9 +1256,12 @@ void loop() {
       int steps    = pots[i].maxVal + 1;
       int width    = 1024 / steps;
       int raw_step = constrain(pots[i].filteredRaw / width, 0, pots[i].maxVal);
-      // Nombre de paliers à franchir avant activation (2 = ~2/maxVal de la course)
-      const int CATCH_STEPS = 2;
-      if (abs(raw_step - pots[i].catchOffset) >= CATCH_STEPS) {
+      // Seuil exprime en unites ADC BRUTES, surtout pas en paliers : deux
+      // paliers valent 0,8 % de la course sur un parametre 0-255 mais la MOITIE
+      // de la course sur un 0-3, qui parait alors completement mort. 30 sur
+      // 1024 font 3 % pour tous, quelle que soit la resolution du parametre.
+      const int CATCH_RAW = 30;
+      if (abs(pots[i].filteredRaw - pots[i].catchOffset) >= CATCH_RAW) {
         pots[i].caught    = true;
         pots[i].physValue = raw_step;
         pots[i].candidate = raw_step;
@@ -1154,7 +1274,10 @@ void loop() {
     }
 
     // Validation par stabilité adaptative
-    const int stableNeeded = (pots[i].maxVal >= 127) ? 8 : 6;
+    // Les cellules RC materielles (1 k + 100 nF sur chaque pot) filtrent le
+    // bruit en amont : trois lectures concordantes suffisent la ou il en fallait
+    // six a huit du temps ou l'ADC lisait un signal nu.
+    const int stableNeeded = 3;
 
     if (newPhys != pots[i].candidate) {
       pots[i].candidate   = newPhys;

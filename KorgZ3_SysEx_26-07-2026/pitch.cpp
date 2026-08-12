@@ -1,18 +1,48 @@
 #include "pitch.h"
+#include "midi_port.h"
 #include "mux.h"
 #include "pitch_math.h"
 
 static const byte CH_WHEEL  = 1;
+
+// Sens de la molette. Sur la Stratocaster, le +5 V et la masse aboutissent aux
+// extremites de la piste dans l'ordre inverse du sens de jeu : pousser vers le
+// haut fait DESCENDRE la lecture, donc le pitch. On retablit ici plutot que de
+// rouvrir le pickguard et d'echanger deux fils. Repasser a false le jour ou le
+// cablage serait corrige cote guitare.
+static const bool MOLETTE_INVERSEE = true;
+
+// Lecture de la molette dans le sens de jeu. Le centre etant calibre sur cette
+// meme echelle, zones mortes et seuils restent valables tels quels.
+static int lireMolette() {
+  int v = muxRead(CH_WHEEL);
+  return MOLETTE_INVERSEE ? (1023 - v) : v;
+}
 static const byte CH_SWITCH = 2;
 
 static const byte MIDI_CHANNEL = 0;   // 0 = canal MIDI 1, Basic Channel du Z3
 
-// Reglages repris tels quels du test valide en production.
-static const int DEADZONE_IN  = 40;
-static const int DEADZONE_OUT = 55;
-static const unsigned long CENTER_SETTLE_MS = 80;
-static const unsigned long INTERVAL_MS      = 20;   // ~50 Hz
-static const int MIN_DELTA = 8;
+// Reglages de reactivite (revus le 10/08/2026 : la molette trainait).
+// La cellule RC materielle du canal filtre desormais le bruit en amont, le
+// logiciel n'a plus a le faire, et ces valeurs peuvent etre bien plus vives.
+//
+// Zone morte : exprimee en unites ADC sur 1024. La course utile de la molette
+// vaut environ +/-450 unites, donc 20 font 4 % de la demi-course — assez pour
+// qu'elle se taise au repos, assez peu pour qu'elle reponde immediatement.
+static const int DEADZONE_IN  = 8;
+static const int DEADZONE_OUT = 12;
+// Duree pendant laquelle il faut rester au centre avant de figer la valeur.
+static const unsigned long CENTER_SETTLE_MS = 40;
+// Cadence de lecture et d'emission. 8 ms = 125 Hz : trois octets de pitch bend
+// occupent ~1 ms a 31250 bauds, donc environ 12 % de la bande passante MIDI.
+static const unsigned long INTERVAL_MS      = 12;
+// Seuil d'emission, exprime en UNITES ADC et non en valeurs MIDI. En mode
+// octave une seule unite ADC vaut ~18 valeurs de pitch bend : un seuil de 8
+// valeurs MIDI etait donc franchi par le simple bruit de +/-1 LSB de l'ADC, et
+// la carte emettait en continu meme molette immobile — ce qui saturait le Z3.
+// Trois unites ADC valent 0,7 % de la demi-course : inaudible, mais au-dessus
+// du bruit.
+static const int RAW_MIN_DELTA = 3;
 
 // Un ON-ON-ON ouvre brievement le contact pendant la bascule : la ligne part
 // en l'air et le pull-down la tire vers 0 V, ce qui ressemble a un
@@ -23,6 +53,7 @@ static const unsigned long SWITCH_POLL_MS    = 20;
 static int  centerRaw   = 512;
 static int  filteredRaw = 512;
 static int  lastValue14 = 8192;
+static int  lastSentRaw = -1000;  // position brute du dernier envoi
 static bool atCenter    = true;
 static unsigned long inZoneSince  = 0;
 static unsigned long lastSendTime = 0;
@@ -44,18 +75,34 @@ static bool suspectUnplugged = false;
 static void sendBend(int value14) {
   if (value14 < 0)     value14 = 0;
   if (value14 > 16383) value14 = 16383;
-  Serial.write((byte)(0xE0 | (MIDI_CHANNEL & 0x0F)));
-  Serial.write((byte)(value14 & 0x7F));
-  Serial.write((byte)((value14 >> 7) & 0x7F));
+  MIDI_PORT.write((byte)(0xE0 | (MIDI_CHANNEL & 0x0F)));
+  MIDI_PORT.write((byte)(value14 & 0x7F));
+  MIDI_PORT.write((byte)((value14 >> 7) & 0x7F));
 }
 
 // Mesure la position de repos de la molette. Appelee a chaque branchement,
 // jamais au demarrage : tant que le cable est absent, il n'y a rien a mesurer.
 static void calibrate() {
+  // La molette doit etre RELACHEE pendant cette mesure. Si elle bouge — doigt
+  // encore dessus au branchement — le centre est faux et la carte emet un bend
+  // permanent au repos. On exige donc une serie stable, et on recommence
+  // jusqu'a l'obtenir (une seconde au plus, sinon on prend la derniere serie).
   long sum = 0;
-  for (int i = 0; i < 16; i++) { sum += muxRead(CH_WHEEL); delay(2); }
+  for (int essai = 0; essai < 8; essai++) {
+    int mini = 1023, maxi = 0;
+    sum = 0;
+    for (int i = 0; i < 16; i++) {
+      int v = lireMolette();
+      if (v < mini) mini = v;
+      if (v > maxi) maxi = v;
+      sum += v;
+      delay(2);
+    }
+    if (maxi - mini <= 4) break;   // serie stable : la molette est au repos
+  }
   centerRaw   = (int)(sum / 16);
   filteredRaw = centerRaw;
+  lastSentRaw = centerRaw;
   atCenter    = true;
   inZoneSince = 0;
   lastValue14 = 8192;
@@ -144,8 +191,12 @@ void pitchUpdate() {
   if (millis() - lastSendTime < INTERVAL_MS) return;
   lastSendTime = millis();
 
-  int raw = muxRead(CH_WHEEL);
-  filteredRaw = (filteredRaw * 3 + raw) / 4;
+  int raw = lireMolette();
+  // Moyenne sur deux echantillons seulement : a 125 Hz la constante de temps
+  // tombe a une dizaine de millisecondes, contre pres de 200 ms avec l'ancien
+  // filtre a 3/4 echantillonne a 50 Hz — c'etait la cause principale de la
+  // latence ressentie.
+  filteredRaw = (filteredRaw + raw) / 2;
 
   int distance = abs(filteredRaw - centerRaw);
 
@@ -165,13 +216,38 @@ void pitchUpdate() {
   int value14 = pitchValue14(filteredRaw, centerRaw, DEADZONE_OUT,
                              pitchBendSemitones(), atCenter);
 
-  bool atCenterNow    = (value14 == 8192);
-  bool wasAtCenter    = (lastValue14 == 8192);
-  bool bigEnoughDelta = (abs(value14 - lastValue14) >= MIN_DELTA);
+  bool atCenterNow = (value14 == 8192);
+  bool wasAtCenter = (lastValue14 == 8192);
+  bool aBouge      = (abs(filteredRaw - lastSentRaw) >= RAW_MIN_DELTA)
+                     && (value14 != lastValue14);
 
-  if (forceSend || bigEnoughDelta || (atCenterNow && !wasAtCenter)) {
+  // --- Recentrage automatique ---
+  // Filet de securite contre un centre mal calibre : la molette est a ressort,
+  // donc elle passe l'essentiel de son temps a sa position de repos. Si la
+  // lecture reste immobile assez longtemps a un endroit qui n'est pas le centre
+  // connu, c'est que le centre connu est faux — on l'adopte. Tenir un bend
+  // parfaitement fige plusieurs secondes sur un ressort est assez improbable
+  // pour que ce soit sans danger.
+  {
+    static int  refStable   = -1000;
+    static unsigned long stableSince = 0;
+    if (abs(filteredRaw - refStable) > 3) {
+      refStable   = filteredRaw;
+      stableSince = millis();
+    } else if (millis() - stableSince >= 4000 &&
+               abs(refStable - centerRaw) > DEADZONE_OUT) {
+      centerRaw   = refStable;
+      lastSentRaw = refStable;
+      atCenter    = true;
+      forceSend   = true;          // remet le Z3 d'aplomb immediatement
+      stableSince = millis();
+    }
+  }
+
+  if (forceSend || aBouge || (atCenterNow && !wasAtCenter)) {
     sendBend(value14);
     lastValue14 = value14;
+    lastSentRaw = filteredRaw;
     forceSend   = false;
   }
 }

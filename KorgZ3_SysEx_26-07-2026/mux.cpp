@@ -1,7 +1,11 @@
 #include "mux.h"
+#include "board_map.h"
 
-static const byte MUX_SEL[4] = {2, 3, 4, 13};  // S0, S1, S2, S3
-static const int  MUX_COM    = A15;            // sortie commune du 4067
+// Numeros du schema du shield : S0-S3 = D2/D3/D4/D13, COM = A15. Traduits vers
+// les broches reelles du Mega (5/4/3/12 et A8) — voir board_map.h.
+static const byte MUX_SEL[4] = {megaDigital(2), megaDigital(3),
+                                megaDigital(4), megaDigital(13)};
+static const int  MUX_COM    = megaAnalog(A15);
 
 void muxBegin() {
   for (byte i = 0; i < 4; i++) {
