@@ -240,7 +240,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "v0.7"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -645,13 +645,18 @@
       {
         "filename": "SysEx_Patcher.kicad_sch",
         "name": "SysEx_Patcher",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "ec758d19-08b6-486f-b243-9d81cc8464c3"
       }
     ],
     "used_designators": "",
     "variants": []
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "ec758d19-08b6-486f-b243-9d81cc8464c3",
+      "SysEx_Patcher"
+    ]
+  ],
   "text_variables": {},
   "tuning_profiles": {
     "meta": {
