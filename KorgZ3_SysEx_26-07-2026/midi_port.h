@@ -2,6 +2,26 @@
 #include <SoftwareSerial.h>
 
 // ============================================================================
+//  ⚠️ OPTION DE COMPILATION OBLIGATOIRE : -D_SS_MAX_RX_BUFF=192
+// ============================================================================
+//
+// Le tampon de reception de SoftwareSerial vaut 64 octets par defaut, soit
+// 20 ms de flux a 31250 bauds. Un dump du Korg Z3 fait 95 octets et dure 30 ms :
+// il DEBORDE systematiquement, et la carte n'en recoit que 64 a 66 (mesure du
+// 17/09/2026). Le dump tronque etait alors renvoye au Z3, qui affichait « err. ».
+//
+// Compiler ainsi (le fichier build_opt.h N'EST PAS honore par cette version
+// d'arduino-cli — verifie : la RAM reste a 5432 octets au lieu de 5560) :
+//
+//   arduino-cli compile --fqbn arduino:avr:mega \
+//     --build-property "compiler.cpp.extra_flags=-D_SS_MAX_RX_BUFF=192" \
+//     KorgZ3_SysEx_26-07-2026
+//
+// CONTROLE : la RAM annoncee doit valoir 5560 octets, pas 5432. L'ecart de 128
+// octets est exactement l'agrandissement du tampon. Compile depuis l'IDE sans
+// cette option, le firmware perdra de nouveau des dumps en silence.
+
+// ============================================================================
 //  PORT MIDI — carte v1.2
 // ============================================================================
 //

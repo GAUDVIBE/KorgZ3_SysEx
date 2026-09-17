@@ -44,6 +44,7 @@ Ecran display;   // I2C logiciel sur les broches 8/9 — voir oled.h
 
 // =================== PRESETS ===================
 const int DUMP_MAX_SIZE = 96;
+const int DUMP_SIZE     = 95;   // longueur exacte d'un dump du Z3, en-tete et F7 compris
 const int MAX_PRESETS   = 8;
 
 struct DumpSlot {
@@ -495,9 +496,18 @@ void writeToBuffer(PotConfig &pot, int val) {
   }
 }
 
+void pompeReception();   // definie avec la reception MIDI, plus bas
+
 void sendSysEx() {
   if (sendBufferSize <= 0) return;
-  for (int i = 0; i < sendBufferSize; i++) { MIDI_PORT.write(sendBuffer[i]); delay(2); }
+  // On ecoute pendant les temps d'attente au lieu de rester sourd 223 ms.
+  // ATTENTION : surtout pas pitchUpdate() ici — un message de molette insere au
+  // milieu d'un SysEx le corromprait, et le Z3 afficherait « err. ».
+  for (int i = 0; i < sendBufferSize; i++) {
+    MIDI_PORT.write(sendBuffer[i]);
+    unsigned long t0 = millis();
+    while (millis() - t0 < 2) pompeReception();
+  }
 }
 
 void sendDumpRequest() {
@@ -533,16 +543,25 @@ void showMessage(const char* line1, const char* line2 = nullptr) {
 // oled.h). pitchUpdate() ne touche jamais a l'affichage — elle depose ses
 // evenements, que loop() consomme apres coup — donc aucune recursion possible ;
 // le garde-fou ci-dessous n'est la que pour rendre cette propriete explicite.
+void pompeReception();   // definie plus bas, avec la reception MIDI
+
 void ecranPompe() {
   static bool dedans = false;
   if (dedans) return;
   dedans = true;
   pitchUpdate();
-  dedans = false;
+  pompeReception();   // vide aussi le tampon de 64 octets pendant les 144 ms
+  dedans = false;     // de rafraichissement, sinon un dump arrive tronque
 }
 
 void updateDisplay() {
   if (!OLED_UTILISABLE) return;
+  // Pendant l'arrivee d'un SysEx, tout rafraichissement est un trou de 144 ms
+  // dans la reception, alors que le tampon de SoftwareSerial ne tient que 20 ms
+  // de flux. La pompe seule ne suffit pas : entre deux tranches du transfert il
+  // s'ecoule pres de 18 ms. On ne dessine donc rien tant que le dump arrive ;
+  // receiveMidi() rafraichira l'ecran une fois le message complet.
+  if (rxInSysEx) return;
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
@@ -773,7 +792,22 @@ void setPage(int newPage) {
 }
 
 // =================== RÉCEPTION MIDI ===================
-void receiveMidi() {
+// Deux etages, pour deux raisons.
+//
+// (1) VALIDATION DE LONGUEUR. Un dump du Z3 fait exactement 95 octets. Sans ce
+//     controle, un dump TRONQUE etait adopte tel quel, puis renvoye au Z3 a
+//     chaque mouvement de potentiometre — qui repondait « err. ». Le tampon de
+//     SoftwareSerial ne fait que 64 octets, soit 20 ms de flux, alors qu'un
+//     dump en dure 30 : le moindre blocage plus long fait perdre des octets.
+//
+// (2) SEPARATION COLLECTE / TRAITEMENT. La collecte ne touche ni l'ecran ni les
+//     potentiometres ni le port en emission : elle peut donc etre appelee
+//     depuis la pompe, au milieu des traitements longs, sans recursion ni
+//     octets injectes dans un SysEx en cours d'envoi.
+bool dumpPret    = false;
+bool dumpTronque = false;
+
+void pompeReception() {
   while (MIDI_PORT.available()) {
     byte b = MIDI_PORT.read();
     if (b == 0xF0) {
@@ -788,15 +822,37 @@ void receiveMidi() {
     }
     if (rxLen < DUMP_MAX_SIZE) rxBuffer[rxLen++] = b;
     if (b == 0xF7) {
-      rxInSysEx      = false;
-      sendBufferSize = rxLen;
-      memcpy(sendBuffer, rxBuffer, rxLen);
-      extractName(sendBuffer, sendBufferSize, currentName);
-      waitingForDump = false;
-      stopLedDumpReq();
-      reloadPotsFromBuffer();
-      updateDisplay();
+      rxInSysEx = false;
+      if (rxLen == DUMP_SIZE) dumpPret = true;     // complet et conforme
+      else                    dumpTronque = true;  // octets perdus : on ignore
+      rxLen = 0;
     }
+  }
+}
+
+void receiveMidi() {
+  pompeReception();
+
+  if (dumpPret) {
+    dumpPret       = false;
+    dumpTronque    = false;
+    sendBufferSize = DUMP_SIZE;
+    memcpy(sendBuffer, rxBuffer, DUMP_SIZE);
+    extractName(sendBuffer, sendBufferSize, currentName);
+    waitingForDump = false;
+    stopLedDumpReq();
+    reloadPotsFromBuffer();
+    updateDisplay();
+    return;
+  }
+
+  if (dumpTronque) {
+    dumpTronque    = false;
+    waitingForDump = false;
+    stopLedDumpReq();
+    showMessage("Dump incomplet", "Recommencer");
+    delay(800);
+    updateDisplay();
   }
 }
 
@@ -1231,7 +1287,9 @@ void loop() {
   // --- Défilement automatique OLED ---
   // Suspendu pendant l'invite de suppression : il rafraichit l'ecran toutes
   // les 3 s et l'effacerait en pleine lecture.
-  if (autoScrollEnabled && !delPrompted) {
+  // Pas de defilement tant qu'un dump est attendu : ses 144 ms tomberaient au
+  // milieu de la reponse du Z3, qui ne dure que 30 ms.
+  if (autoScrollEnabled && !delPrompted && !waitingForDump) {
     if (millis() - lastScrollTime >= SCROLL_INTERVAL) {
       lastScrollTime = millis();
       currentDisplayGroup = (currentDisplayGroup + 1) % 4;

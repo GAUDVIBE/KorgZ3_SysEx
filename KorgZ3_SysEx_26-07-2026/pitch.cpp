@@ -224,18 +224,27 @@ void pitchUpdate() {
   // --- Recentrage automatique ---
   // Filet de securite contre un centre mal calibre : la molette est a ressort,
   // donc elle passe l'essentiel de son temps a sa position de repos. Si la
-  // lecture reste immobile assez longtemps a un endroit qui n'est pas le centre
-  // connu, c'est que le centre connu est faux — on l'adopte. Tenir un bend
-  // parfaitement fige plusieurs secondes sur un ressort est assez improbable
-  // pour que ce soit sans danger.
+  // lecture reste immobile assez longtemps PRES du centre connu, c'est que ce
+  // centre a derive — on l'adopte.
+  //
+  // ⚠️ La version precedente jugeait « improbable » de tenir un bend fige
+  // plusieurs secondes sur un ressort. C'est faux, et observe le 17/09/2026 :
+  // molette maintenue tiree, lecture parfaitement immobile, le centre sautait
+  // sur la position tenue et le pitch retombait au milieu tout seul.
+  //
+  // Ce mecanisme ne corrige qu'une DERIVE, c'est-a-dire une petite erreur : il
+  // n'accepte donc plus que de petites corrections. Au-dela, c'est un bend
+  // tenu, jamais une position de repos.
   {
     static int  refStable   = -1000;
     static unsigned long stableSince = 0;
+    const int RECENTRAGE_MAX = 80;   // unites ADC, soit ~18 % de la demi-course
     if (abs(filteredRaw - refStable) > 3) {
       refStable   = filteredRaw;
       stableSince = millis();
-    } else if (millis() - stableSince >= 4000 &&
-               abs(refStable - centerRaw) > DEADZONE_OUT) {
+    } else if (millis() - stableSince >= 6000 &&
+               abs(refStable - centerRaw) > DEADZONE_OUT &&
+               abs(refStable - centerRaw) < RECENTRAGE_MAX) {
       centerRaw   = refStable;
       lastSentRaw = refStable;
       atCenter    = true;
