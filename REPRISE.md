@@ -117,12 +117,15 @@ else if (millis() - stableSince >= 4000 && abs(refStable - centerRaw) > DEADZONE
 }
 ```
 
-Le commentaire du code juge « improbable » de tenir un bend figé plusieurs
-secondes. **En butée mécanique, c'est automatique** : la molette est bloquée, la
-lecture ne bouge plus d'un LSB. Tenir un bend à fond 4 s ferait donc adopter la
-butée comme centre. **Jamais observé en capture**, mais la justification écrite
-est fausse. À vérifier à la main : tenir un bend à fond 5 s et regarder si le
-pitch retombe seul.
+> ✅ **Observé pour de vrai, puis corrigé le 17/09/2026.** Molette maintenue
+> tirée : la lecture ne bouge plus d'un LSB, la condition est donc remplie, le
+> centre saute sur la position tenue et **le pitch retombe au milieu tout seul**.
+> Le commentaire du code jugeait ce cas « improbable » — c'était faux.
+>
+> **Correctif :** ce mécanisme ne corrige qu'une *dérive*, donc il n'accepte plus
+> que de **petites** corrections — `abs(refStable - centerRaw) < 80` unités ADC,
+> soit ~18 % de la demi-course — et le délai passe de 4 à 6 s. Un bend tenu est
+> un grand écart : il n'est plus jamais pris pour un repos.
 
 ---
 
@@ -160,9 +163,19 @@ Validé à l'oreille : « je n'entends plus rien ».
 
 ```bash
 cd ~/Documents/GitHub/KorgZ3_SysEx
-arduino-cli compile --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026
+arduino-cli compile --fqbn arduino:avr:mega \
+  --build-property "compiler.cpp.extra_flags=-D_SS_MAX_RX_BUFF=192" \
+  KorgZ3_SysEx_26-07-2026
 arduino-cli upload -p /dev/cu.usbmodem1201 --fqbn arduino:avr:mega KorgZ3_SysEx_26-07-2026
 ```
+
+> ⚠️ **L'option `-D_SS_MAX_RX_BUFF=192` n'est pas facultative.** Le tampon de
+> réception de `SoftwareSerial` vaut 64 octets par défaut, soit 20 ms de flux à
+> 31250 bauds, alors qu'un dump du Z3 fait 95 octets et dure 30 ms : il déborde
+> à chaque fois et la carte n'en reçoit que 64 à 66. Le fichier `build_opt.h`
+> placé dans le dossier du croquis **n'est pas honoré** par cette version
+> d'`arduino-cli` (vérifié : la RAM reste à 5432 octets au lieu de 5560).
+> **Contrôle après compilation : la RAM annoncée doit valoir 5560 octets.**
 
 Le port varie ; le retrouver avec `arduino-cli board list`.
 
@@ -174,8 +187,12 @@ sleep 18; kill $M
 grep -a "MOTIF" /tmp/cap.log
 ```
 
-1. **Ouvrir `/dev/cu.*` ne redémarre PAS la carte.** Tout ce qui n'est imprimé que
-   dans `setup()` est déjà parti : republier en boucle pour le capturer.
+1. **Ouvrir `/dev/cu.*` REDÉMARRE la carte** (corrigé le 17/09/2026 : un croquis qui
+   imprime `millis()` repart de `0 s` à chaque ouverture du port). Deux conséquences :
+   tout état accumulé en RAM est perdu à chaque capture, donc une mesure « depuis le
+   démarrage » ne peut pas servir de trace différée — il faut tourner le bouton
+   **pendant** que le port est ouvert ; et le début de `setup()` peut être manqué si
+   la capture s'attache trop tard, d'où l'intérêt de republier en boucle.
 2. **`grep` a besoin de `-a`** — le log contient du binaire de démarrage, sinon
    grep le traite comme binaire et n'affiche rien (m'a fait croire trois fois que
    la carte était plantée).

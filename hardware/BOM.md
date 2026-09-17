@@ -17,8 +17,8 @@ empreintes présentes uniquement sur le PCB). Carte **172 × 172 mm**, 4 couches
 | Réf | Valeur | Qté | Rôle |
 |---|---|---|---|
 | R1–R3 | 220 Ω | 3 | limitation MIDI OUT / MIDI IN |
-| R4 | 330 Ω | 1 | MIDI |
-| R5 | 10 kΩ | 1 | tirage du 6N138 (collecteur ouvert) |
+| R4 | **1,2 kΩ** | 1 | broche 7 du 6N138 (commande du transistor de sortie) — ⚠️ **330 Ω à l'origine : trop faible**, il fallait 1,8 mA pour faire basculer la sortie, davantage que ce qu'un signal MIDI fournit. 1 kΩ à 10 kΩ conviennent |
+| R5 | **15 kΩ** | 1 | tirage du 6N138 (collecteur ouvert) — ⚠️ **une 10 Ω avait été montée par erreur** (marron-noir-**noir**) : la sortie de l'opto restait collée au +5 V et le MIDI IN n'a jamais pu fonctionner. 1 kΩ à 15 kΩ conviennent ; **contrôler la valeur montée à l'ohmmètre** |
 | R6–R25, R27–R30, R32 | **1 kΩ** | **25** | filtres RC analogiques (16 pots + jack), limitation des LED, série du canal switch |
 | R31 | **470 kΩ** | 1 | **détection de présence du câble guitare** — ne pas omettre |
 
@@ -37,7 +37,7 @@ empreintes présentes uniquement sur le PCB). Carte **172 × 172 mm**, 4 couches
 |---|---|---|---|
 | U1 | **6N138** optocoupleur | 1 | DIP-8 |
 | U2 | **CD74HC4067** multiplexeur analogique 16:1 | 1 | DIP-24 large (15,24 mm) |
-| D1 | 1N4148 | 1 | DO-35, horizontal, pas 7,62 mm |
+| D1 | 1N4148 | 1 | DO-35, horizontal, pas 7,62 mm — anneau **à l'opposé de l'opto**. ⚠️ Celle montée s'est révélée **en court-circuit** le 17/09/2026 : elle shuntait la LED de l'optocoupleur, qui ne voyait que 0,7 V, et aucun MIDI IN n'était possible. **Contrôler au testeur de diode avant montage** |
 | D2D | 1N4004 | 1 | DO-41, horizontal, pas 10,16 mm |
 | D3–D9 | LED 3 mm | **7** | LED_D3.0mm |
 
