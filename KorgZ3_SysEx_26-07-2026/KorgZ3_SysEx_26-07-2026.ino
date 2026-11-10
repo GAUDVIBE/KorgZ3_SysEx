@@ -497,6 +497,7 @@ void writeToBuffer(PotConfig &pot, int val) {
 }
 
 void pompeReception();   // definie avec la reception MIDI, plus bas
+void queueEcho();        // definie avec le relais USB, plus bas
 
 void sendSysEx() {
   if (sendBufferSize <= 0) return;
@@ -508,6 +509,7 @@ void sendSysEx() {
     unsigned long t0 = millis();
     while (millis() - t0 < 2) pompeReception();
   }
+  queueEcho();
 }
 
 void sendDumpRequest() {
@@ -945,6 +947,87 @@ void deleteCurrentPreset() {
   updateDisplay();
 }
 
+// =================== RELAIS USB -> MIDI ===================
+// Permet de piloter le Z3 depuis l'ordinateur sans interface MIDI : tout SysEx
+// recu sur l'USB (Serial0, 115200) est renvoye sur MIDI OUT.
+// Un dump de son complet (95 octets, en-tete F0 42 30 1D 40) devient le son
+// courant de la carte, comme un slot charge : les pots repartent en mode
+// « rattrapage » et ne l'ecrasent qu'une fois tournes jusqu'a sa valeur.
+// Les autres SysEx passent tels quels.
+// Accuse de reception « K » (dump adopte), « X » (dump tronque, jete) ou « R »
+// (autre SysEx, relaye), ecrit seulement si
+// le tampon USB a de la place : sans ordinateur a l'ecoute, rien ne bloque.
+byte usbBuf[DUMP_MAX_SIZE];
+int  usbLen   = 0;
+bool usbInSysEx = false;
+
+// Echo : chaque son envoye au Z3 (pots, slots, relais) repart aussi vers
+// l'ordinateur, pour qu'il voie ce qu'on a tourne sur le shield. Ecrit par
+// morceaux, sans jamais attendre : si personne n'ecoute, l'echo reste en plan
+// et le prochain l'ecrase. « ? » recu hors SysEx redemande le son courant.
+byte echoBuf[DUMP_MAX_SIZE];
+int  echoLen = 0, echoPos = 0;
+
+void queueEcho() {
+  memcpy(echoBuf, sendBuffer, sendBufferSize);
+  echoLen = sendBufferSize;
+  echoPos = 0;
+}
+
+void pumpEcho() {
+  int n = Serial.availableForWrite();
+  while (n-- > 0 && echoPos < echoLen) Serial.write(echoBuf[echoPos++]);
+}
+
+void usbAck(char c) {
+  if (Serial.availableForWrite() > 0) Serial.write(c);
+}
+
+// « ! » : sauvegarde des presets. Renvoie « EE », puis les 1024 premiers octets
+// de l'EEPROM (meta + 8 slots + compteur usine a 900). Ecriture bloquante, mais
+// seulement sur demande de l'ordinateur, qui lit forcement le port a ce moment.
+void usbDumpEeprom() {
+  Serial.write('E'); Serial.write('E');
+  for (int i = 0; i < 1024; i++) Serial.write(EEPROM.read(i));
+  Serial.flush();
+}
+
+void usbRelay() {
+  while (Serial.available()) {
+    byte b = Serial.read();
+    if (b == 0xF0) { usbInSysEx = true; usbLen = 0; }
+    if (!usbInSysEx) {
+      if (b == '?') queueEcho();
+      if (b == '!') usbDumpEeprom();
+      continue;
+    }
+    if (usbLen >= DUMP_MAX_SIZE) { usbInSysEx = false; continue; }  // trop long : abandon
+    usbBuf[usbLen++] = b;
+    if (b != 0xF7) continue;
+    usbInSysEx = false;
+
+    if (usbLen == 95 && usbBuf[1] == 0x42 && usbBuf[2] == 0x30 &&
+        usbBuf[3] == 0x1D && usbBuf[4] == 0x40) {
+      memcpy(sendBuffer, usbBuf, usbLen);
+      sendBufferSize = usbLen;
+      extractName(sendBuffer, sendBufferSize, currentName);
+      reloadPotsFromBuffer();
+      sendSysEx();
+      lastSendTime = millis();
+      updateDisplay();
+      usbAck('K');
+    } else if (usbLen >= 5 && usbBuf[1] == 0x42 && usbBuf[2] == 0x30 &&
+               usbBuf[3] == 0x1D && usbBuf[4] == 0x40) {
+      // Dump de son tronque (octets perdus en route) : surtout ne pas le
+      // relayer, le Z3 afficherait « Error ». L'ordinateur renverra.
+      usbAck('X');
+    } else {
+      for (int i = 0; i < usbLen; i++) { MIDI_PORT.write(usbBuf[i]); delay(2); }
+      usbAck('R');
+    }
+  }
+}
+
 // =================== SETUP ===================
 void setup() {
   // Serial0 n'est plus utilise que par le televersement : le MIDI a son propre
@@ -1127,6 +1210,10 @@ void loop() {
 
   // --- Réception MIDI ---
   receiveMidi();
+
+  // --- Sons envoyés par l'ordinateur sur l'USB, et leur écho ---
+  usbRelay();
+  pumpEcho();
 
   // --- Timeout Dump Request ---
   if (waitingForDump && (millis() - dumpRequestTime > DUMP_TIMEOUT)) {
