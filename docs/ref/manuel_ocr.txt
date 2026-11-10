@@ -1,0 +1,3189 @@
+=== pg/p-01.png
+KORG
+GUITAR SYNTHESIZER
+Z3
+OWNER'S MANUAL
+=== pg/p-02.png
+INTRODUCTION
+The Z3 Guitar Synthesizer is an remarkably sophisticated device designed to bring the guitar
+player into the advanced world of digital music. With the aid of the ZD3 Guitar Synthesizer
+Driver, any 6-string electric guitar can be used to play, with accurate expression and instant
+response, the synthesized sounds of the Z3.
+The Z3 Guitar Synthesizer features:
+• Extremely responsive, instant operation with accurate pitch-to-digital data conversion —
+even when bending strings.
+Multi-timbral operation (allowing each string to play a different Program).
+•
+Comprehensive editing functions, including control over MIDI channels for playing
+additional synthesizers and recording to sequencers.
+•
+Built-in tuner.
+Built-in reverb.
+Footswitch control of various functions.
+Chromatic/continuous pitch bend selection.
+•
+Patch Play function for increased ease in calling up Programs in live performance.
+PRECAUTIONS
+* The voltage requirement for your 'Z3 has been set specifically for the main supply voltage
+used in your area. If you have any doubts about voltage suitability, please consult your local
+KORG dealer. If you intend to use your Z3 in an area with a different voltage, be sure to use
+the appropriate voltage convertor.
+* Avoid placing your Z3 in direct sunlight or close to a source of heat. Also, avoid locations
+where the instrument is likely to be subjected to vibration, excessive dust, cold or moisture.
+All of these conditions could have a detrimental effect on both the mechanisms and the
+circuitry incorporated into the Z3.
+* Do not use abrasive cleaners, waxes, solvents, or chemical dust cloths to clean the exterior
+Toth and neutz cleanser. Also, never use ordsol sprays hear the 23 as they danger into
+the circuitry and prevent accurate transmission of data.
+* Your Z3 contains no user serviceable parts. Opening it or tampering with it can lead to
+electrical shock as well as damage, and will void the product warranty. Refer all servicing
+to qualified KORG personnel.
+* Avoid applying excessive force to all controls. Also avoid dropping the instrument or other-
+wise subjecting it to impact. While the internal circuitry is of reliable integrated circuit
+design, the Z3 should be treated with care.
+* When unplugging cords or cables (MIDI, audio, power, etc.) from the Z3, never unplug by
+pulling on the cords; this can result in damage to the Z3 or the cords. Always unplug by
+firmly grabbing the connector and pulling.
+* After studying this manual thoroughly, keep it in a safe place for future reference.
+=== pg/p-03.png
+HOW TO USE THIS MANUAL
+We recommend that you read all of this manual carefully in order to get the most out of your 23.
+Its chapters have been designed to serve the needs of both the beginning electronic musician and
+the experienced MIDI expert; regardless of your level of experience with digital music instru-
+ments, read through the chapters, skipping sections that seem familiar to you. The worst that can
+happen is that you'll have to come back and read the sections you skipped.
+The sections have been carefully arranged so as to guide you as you operate your Z3, with
+minimum effort and maximum creativity. If you read nothing else in this manual, however,
+read this section. It will tell you where to look to find what you need to know.
+• Read the PRECAUTIONS first, to familiarize yourself with ways in which the Z3 can be
+damaged or misused. A thorough knowledge of this section will enable you to get the
+optimum performance out of your Z3 for many years to come.
+• The GUIDE TO THE CONTROLS AND ACCESSORIES section gives a clear, easy-to-
+follow introduction to the controls built in to the Z3. Although sophisticated, the Z3's
+controls are laid out in a neat, orderly manner allowing you to make full use of its features
+with a minimum of effort.
+• A separate insert, SETTING UP THE ZD3 GUITAR SYNTHESIZER DRIVER, has been
+included with this manual and is designed to guide you through the preliminary steps of
+installing the optional ZD3 Guitar Synthesizer Driver on your guitar. If you have the ZD3,
+read this insert and install the ZD3 before going on to the following section.
+• SETTING UP AND PLAYING, as the title indicates, describes the simple connection
+procedure of the Z3 and has basic information about its performance features. Once you
+work through this chapter, you'll be able to set up your Z3 and be ready to play in minutes.
+• The MODE A chapter introduces you to the basic play operations of the Z3. More
+advanced features, including the editing functions of the Z3, are described in the MODE B
+chapter. The MODE B chapter provides, in complete detail, all the information you need to
+know to take full advantage of this instrument. It may not be necessary for you to read all
+of this chapter. In fact we recommend you go through it at your own pace, trying out
+whatever features interest you. This section will also come in handy as a reference
+whenever you need to check something or jog your memory.
+A special section on MIDI and Applications is provided as a simplified crash course in
+MIDI technology. This will give you a brief introduction to MIDI, an overview of the MIDI
+features included on the Z3, plus some system examples, to suggest just a few of the
+virtually unlimited number of ways to use the Z3 with a MIDI digital music system. For
+further reference on MIDI, consult the manual of your MIDI device, as well as the variety of
+publications and magazines now available on the subject of this fast-growing technology.
+• A GLOSSARY has been included, which clearly explains the terminology used in this
+manual, particularly for the benefit of the Z3 owner with a limited knowledge of digital
+music and MIDI.
+• Following the technical SPECIFICATIONS, the MIDI IMPLEMENTATION section gives
+full details of the MIDI technology used in the Z3, for users seriously interested in the MIDI
+and computer applications of this advanced instrument.
+=== pg/p-04.png
+TABLE OF CONTENTS
+INTRODUCTION
+PRECAUTIONS
+HOW TO USE THIS MANUAL
+GUIDE TO THE CONTROLS..
+ZD3 GUITAR SYNTHESIZER DRIVER...
+Z3 GUITAR SYNTHESIZER (Front Panel).
+Z3 GUITAR SYNTHESIZER (Rear Panel)
+SETTING UP AND PLAYING
+TUNER.
+MODE A
+7
+7
+SETTING OPERATION OF THE Z3 TO MODE A...
+USING THE FRONT PANEL SWITCHES IN MODE A
+8
+POLY MODE (RESETTING OF THE MIDI CHANNEL)
+SWITCHES THAT DO NOT FUNCTION IN MODE A
+FOOTSWITCH OPERATION...
+MODE B .....
+SWITCHES THAT DO NOT FUNCTION IN MODE A
+EDIT MODE
+ENTERING THE EDIT MODE
+PARAMETERS OF THE EDIT MODE...
+HOW TO EDIT THE PARAMETERS FOR EACH STRING
+COPYING PARAMETERS FROM ONE STRING TO ANOTHER...12
+SAVING PARAMETER EDITS TO A PROGRAM ...
+CANCELING OR ABORTING EDITS BEFORE SAVING
+EDITING THE PARAMETERS - AN EXAMPLE..
+POLY MODE (RESETTING OF THE MIDI CHANNEL)
+PATCH PLAY MODE.....
+ENTERING THE PATCH PLAY
+MODE
+SELECTING PATCHES IN THE PATCH PLAY MODE
+EXITING THE PATCH PLAY MODE
+PATCH EDIT MODE..
+ENTERING THE PATCH EDIT MODE
+ASSIGNING PROGRAMS TO PATCH NUMBERS
+...10
+.. 10
+... 10
+..10
+.. 10
+..11
+12
+13
+..13
+..13
+14
+...14
+...14
+..15
+..15
+..15
+.. 15
+..16
+CANCELING OR ABORTING PROGRAM ASSIGNMENTS
+BEFORE SAVING
+...16
+ASSIGNING PROGRAMS TO PATCH NUMBERS
+-AN EXAMPLE...
+SETTING THE BASIC MIDI CHANNEL
+SOUND GENERATOR MODE
+USING THE FC6 FOOT CONTROLLER
+CONNECTION WITH THE FC6..
+PROGRAM SELECTION...
+MODE 1
+MODE 2
+MIDI AND APPLICATIONS
+WHAT MIDI IS AND WHAT IT CAN DO
+THE BASIC MIDI SETUP
+MIDI TERMINALS
+MIDI CHANNELS...
+MIDI FEATURES OF THE Z3..
+MIDI APPLICATION EXAMPLE
+APPLICATION: ADDITIONAL SYNTHESIZER
+. 16
+17
+17
+...18
+.18
+18
+... 18
+19
+..20
+..20
+.20
+21
+..21
+..21
+22
+AND EFFECTS UNIT..
+MIDI IMPLEMENTATION
+GLOSSARY ...
+SPECIFICATIONS
+MIDI IMPI EMENTATION CHART
+..22
+23
+33
+...35
+26
+=== pg/p-05.png
+GUIDE TO THE CONTROLS
+The controls of the Z3 follow a few basic conventions:
+1) Quickly pressing and releasing any key that increases or decreases numeric data will
+cause the value displayed to change in single steps.
+2) Holding down any key that increases or decreases numeric data will cause the values to
+change continuously, slowly at first, then very rapidly.
+3) Value changes "wrap around" at the minimum and maximum values. For example, in a
+range of values from 1 to 128, the next step up from 128 is 1, and stepping down from 1
+changes to 128.
+ZD3 GUITAR SYNTHESIZER DRIVER
+SNES
+ZD3 KORG
+GUITAR SYNTHESIZER DRIVER
+6
+5
+KORG
+2
+7
+1. Synthesizer master volume control
+2. Program DOWN/UP keys
+The Program DOWN/UP keys of the ZD3
+allow you to select Programs from the Z3
+in single steps only. Holding down either
+key does not cause the values to change
+continuously.
+3. Gain adjust dials for strings 1 though 6
+4. Peak indicator LED
+5. Guitar input jack
+6. 24-pin connector
+7. Face plate and mounting bracket
+8. Divided pickup
+=== pg/p-06.png
+Z3 GUITAR SYNTHESIZER (Front Panel)
+::2
+12)
+GUITAR
+REMOTE
+0-
+VOLUME
+PHONES
+1. Power switch
+2. STRING SELECT keys
+3. FUNCTION key
+4. INCREMENT/DECREMENT keys
+5. TUNER key
+6. REVERB ON/OFF key
+7. SENSITIVITY Hi/Lo key
+8. BEND ON/OFF key
+Z3 GUITAR SYNTHESIZER (Rear Panel)
+::3
+OUT
+1. Synthesizer audio output jacks
+(Left/Mono, Right)
+2. Guitar output jack
+FOOTSWITCH JACKS
+3. SYNTHESIZER OFF
+4. HOLD
+5. PROGRAM UP
+6. PROGRAM DOWN
+=== pg/p-07.png
+HEHT
+KORG Z3
+GUITAR SYNTHESIZER
+POWER
+9. OCTAVE DOWN/UP keys
+10. SYNTHESIZER OFF key
+11. Display
+12. VOLUME control
+13. PHONES jack
+14. REMOTE terminal (for connection of
+FC-6 Foot Controller)
+15. GUITAR INPUT terminal
+MODE
+PEDAL SW
+HOLD
+SYNTH OFF
+GUITAR
+OUTPUT
+— OUTPUT-
+LIMONO
+7. MODE switch
+8. Rear MIDI IN / Front remote
+in switch
+9. MIDI IN terminal
+10. MIDI OUT terminal
+=== pg/p-08.png
+SETTING UP AND PLAYING
+If you've properly followed the steps of installing the ZD3 Guitar Synthesizer Driver, making
+the necessary connections and adjusting the gain levels of the strings, you're only a few steps
+away from playing your Z3 Guitar Synthesizer.
+1. Make sure the volume controls on your Z3 and connected equipment are turned all the way
+down.
+2. Connect the guitar output jack and the synthesizer audio output jacks to a high-quality instru-
+ment amplifier or mixer. If your amplifier can only accommodate one input, connect the L/
+MIX output jack to the amplifier. (This will output the Z3 synthesizer signal only.)
+3. Turn on the power of the Z3.
+4. Turn on the power of all connected audio equipment.
+5. Play the strings of the guitar.
+6. Set all volume controls (including those on the Z3 Drive Unit and the Z3) to comfortable
+levels.
+The Z3 is also equipped with a PHONES jack on the front panel for headphone listening.
+NOTE: You may find that even after performing the above steps, no sound is output from the
+Z3. This can happen when a selected program has separate MIDI channel assign-
+ments for each string. In such a case, press and hold down the FUNCTION key, then
+press STRING SELECT key 2. This resets all MIDI channel assignments of the
+strings to the same value.
+When you are in Mode A, pressing FUNCTION + STRING SELECT key 2 assigns
+all strings to MIDI channel 1. Your Z3 should be already set to operate in Mode A,
+but if for some reason it is not, refer to the section, "Setting Operation of the Z3 to
+Mode A" in the Mode B chapter for instructions on how to switch between modes.
+When you are in Mode B, all strings are given the same MIDI channel assignment as
+string #1. (Refer also to the section, "Parameters of the Edit Mode" in the Mode B
+chapter for information on how to set MIDI channels for each string.)
+=== pg/p-09.png
+TUNER
+The Z3 is equipped with a built-in tuner for matching the tuning of the guitar to the internal
+sound source of the Z3. Whether the Z3's operation is in Mode A or Mode B, the tuner function
+can be used by pressing the TUNER key. The LED of the key will light up and the following
+display will appear.
+--
+Indicates pitch setting (standard pitch)
+Pitch
+438Hz
+439Hz
+440Hz
+441Hz
+442Hz
+443Hz
+444Hz
+445Hz
+Display Indication
+8 (final digit of frequency)
+9 ("
+0("
+66 66
+)
+)
+1("
+2(
+3 ("
+4(
+5 ("
+Set the standard pitch by using the INCREMENT/DECREMENT keys.
+The STRING SELECT LED corresponding to the string which was last played will be lit up.
+MODE A
+All operations and functions of the Z3 Guitar Synthesizer can be grouped into one of two
+conditions: PLAY or EDIT. In PLAY, of course, the sounds, functions and settings of the Z3
+can be used "as is"; in EDIT, they can be changed.
+Mode A is the basic playing mode of the Z3 Guitar Synthesizer, and in it only the PLAY
+condition is possible. It is the simpler of the two modes included on this instrument, and
+initially, until you become more familiar with the capabilities of the Z3, you probably won't
+need to stray from Mode A.
+NOTE: When you turn the power on, the currently selected mode, A or B, will be shown on
+the display for a couple of seconds.
+SETTING OPERATION OF THE Z3 TO MODE A
+As delivered from the factory, your Z3 Guitar Synthesizer has been set to operate in Mode A.
+If or when the Z3 is not set to Mode A, here's what to do:
+1. Turn off the power of the Z3.
+A
+•B
+2. Using a sharp, pointed object (such as
+a ball-point pen or a small screwdriver),
+move the MODE switch on the rear panel
+to A
+3. Turn the power back on.
+Changing the setting of the MODE switch when the power is on has no effect on the operation
+=== pg/p-10.png
+USING THE FRONT PANEL SWITCHES IN MODE A
+The front panel controls listed provide the following functions when playing the Z3 in Mode A:
+The INCREMENT/DECREMENT keys — Selection of Program numbers.
+Holding down either of these keys causes values to change continuously. Change of
+values speeds up the longer the key is held.
+The SYNTHESIZER OFF key - Turning off and on the synthesizer sound.
+The LED of this key lights to indicate that the synthesizer sound is off. Only the sound
+from the guitar's conventional pickups is output in this condition.
+The OCTAVE DOWN key - Lowering the pitch of the synthesizer by one octave.
+The LED of this key lights to indicate that the range has been lowered one octave. Both
+the internal program and the MIDI output are affected. (The range of connected
+synthesizers will also be lowered one octave.) To return to the original octave setting
+(and turn the LED off), press this key again.
+The OCTAVE UP key - Raising the pitch of the synthesizer by one octave.
+The LED of this key lights to indicate that the range has been raised one octave. Both
+internal programs and the MIDI output are affected. (The range of connected
+synthesizers will also be raised one octave.) To return to the original octave setting (and
+turn the LED off), press this key again.
+NOTE: The OCTAVE DOWN/UP keys are interactive; both cannot be lit at the
+same time. Pressing one overrides the effect of the other. When neither
+key is lit, pitch of the Z3 is normal. To return to the original octave setting,
+press the OCTAVE DOWN or UP key beneath the lit LED.
+The BEND ON/OFF key - Turning on and off the continuous pitch bend function.
+The Z3 is capable of duplicating pitch bends executed on the guitar, both by whammy
+bar and manual bending of the strings. This key selects in what fashion the pitch will be
+bent: continuously (smoothly) or chromatically (in half-tone steps). Both internal
+programs and the MIDI output are affected. The LED of this key lights to indicate that
+pitch bend is continuous.
+The SENSITIVITY Hi/Lo key — Selection of the degree to which the synthesizer re-
+sponds to guitar playing.
+The LED of this key lights to indicate that the sensitivity is set to HIGH. When off, the
+synthesizer does not respond to a soft playing technique. (Note on messages are not
+generated unless you play strongly.) Both internal programs and the MIDI output are
+affected.
+The REVERB ON/OFF key
+- Turning on and off the reverb eftec
+'he LED of this kev lights to indicate that the reverb effect is o
+The TUNER key — Selection of the built-in tuner function.
+The LED of this key lights to indicate that the tuner function is active.
+The display will change as shown
+when this function has been selected:
+NUMBER
+OF STRING
+TUNING
+STATUS
+- 8-
+=== pg/p-11.png
+The leftmost character in the display indicates the number of the string. It will change
+FLAT
+IN TUNE
+0
+SHARP
+POLY MODE (RESETTING OF THE MIDI CHANNEL)
+electing the Poly Mode of Mode A resets the MIDI channels of all strings to channel number 1
+o select the Poly Mode, hold down the FUNCTION key and press STRING SELECT key 2
+NOTE: The pitch berd function of the Z3 cannot be used in Poly Mode and all notes will be
+played chromatically. This affects both the internal sound source of the Z3 and the
+output MIDI data (the sound sources of connected instruments).
+SWITCHES THAT DO NOT FUNCTION IN MODE A
+No editing functions are available in Mode A. As a result, the following switches are inactive:
+• The FUNCTION key
+• The STRING SELECT keys
+- INACTIVE IN MODE A
+ING
+DEC
+SYNTH
+BEND
+DOWN
+Hi/Lo
+REVERB
+ON OFF
+TUNER
+All other switches and functions are active.
+NOTE: The one exception to the above is the combined use of the FUNCTION key and
+STRING SELECT key 2 to select the Poly Mode (see the section POLY MODE
+above). Pressing STRING SELECT key 2 while holding down the FUNCTION key
+resets the MIDI channels of all strings to 1.
+- 9 -
+=== pg/p-12.png
+FOOTSWITCH OPERATION
+Four footswitch jacks on the rear panel provide convenient foot control over certain Z3 func-
+tions: Program selection, Note Hold and Synthesizer Off. (Use the optional PS-1 or PS-2 Pedal
+Switches.)
+Program Selection — This duplicates the function of the INCREMENT/DECREMENT
+keys on the front panel. Connecting footswitches to the two jacks, PROGRAM UP and
+PROGRAM DOWN, allows you to change Program numbers without taking your hands
+from the guitar.
+Note Hold — When connected to this jack, the footswitch functions like a sostenuto pedal:
+playing a string, then pressing the Hold switch causes that string to sustain. Other
+strings played after the Hold switch is pressed are articulated normally. This function
+allows you create special effects, such as the playing of rapid staccato notes over a
+drone, for instance.
+Synthesizer Off - This function is the same as that of the front panel key of the same
+name. Connecting a footswitch to this jack allows you to turn the synthesizer sound off
+and on without having to use the front panel SYNTHESIZER OFF key.
+NOTE: The programs of the Z3 can also be switched by using a special remote foot control-
+ler, the KORG FC6 Foot Controller. (Refer to the section "Using the FC6 Foot Con-
+troller.")
+MODE B
+Mode B lets you access the various editing and patch creation features of the Z3.
+SWITCHES THAT DO NOT FUNCTION IN MODE B
+Performance functions of the Z3 are set for each string in Mode B as part of the programs; as a
+result, no real time on/off switching of these individual functions can be done and the following
+switches are inactive:
+• The OCTAVE DOWN key
+The OCTAVE UP key
+• The BEND ON/OFF key
+• The SENSITIVITY Hi/Lo kev
+NC
+FUNC
+SYNTH
+OFF
+OCTAVE
+DOWN
+OCTAVE
+E BEND
+SENS
+REVERB
+- INACTIVE IN MODE B
+The OCTAVE DOWN and UP keys are used in this mode for parameter selection. All other
+switches and functions are active as normal.
+EDIT MODE
+ENTERING THE EDIT MODE
+The Edit Mode is a sub-mode of Mode B. In other words, to use the Edit Mode, the Z3's
+operation must be switched (after turning the power off) to Mode B.
+- 10-
+=== pg/p-13.png
+To enter the Edit Mode:
+1. Select a Program number. All edits that you make and save will be stored to this Program
+number. (If a Program number is not selected, the one last chosen in PLAY is automatically
+selected.)
+2. Hold down the FUNCTION key
+- (FLASHES)
+and press STRING SELECT key 6.
+1-
+The resulting display will be the same or similar to that shown above.
+The leftmost character in the display (flashing) indicates the number or type of the parameter.
+When first selected,
+, "1" will appear as the leftmost character, indicating that the first
+parameter has been automatically selected.
+The other two characters in the display
+LED indicates
+the selected string
+represent the current parameter value.
+The parameter and parameter values of
+only one string can be displayed at one time.
+3
+The LED of the STRING SELECT key
+corresponding to the currently selected string
+SENS
+REVERB
+will be lit up.
+TUNER
+PARAMETERS OF THE EDIT MODE
+These are the parameters available for editing in the Edit Mode. One Program is made up of six
+separate groups of parameter settings, one for each string of the guitar. All strings can
+easily be assigned the same parameter values or be given different settings for unconventional or
+specific applications.
+Parameter
+Parameter Name
+Range
+Number
+1
+2
+3
+4
+Program Change Request
+Bend Range
+Note On Sensitivity
+Velocity Curve
+1 - 128
+-0 - 12
+1 - 8
+5
+6
+7
+Transpose
+Hold (Sostenuto)
+MIDI Channel
+1-8
+0 - +/-12
+ON/OFF
+0-16
+8
+Sound Number
+1 - 128
+9
+Timbre Output Level
+0-15
+0
+Reverb (Global)
+• ON/OFF
+- 11-
+=== pg/p-14.png
+PROGRAM CHANGE REQUEST — Sets the program number (1 - 128) for connected
+MIDI instruments that are played by each string in the Program.
+BEND RANGE — Sets the range over which pitch bend can be executed for each string in
+the Program. A setting of 0 makes the pitch bend chromatic, a setting of 1 makes the
+pitch bend coincide exactly with the string bend, and higher values extend the pitch
+bend range proportionally.
+NOTE ON SENSITIVITY — Adjusts the degree to which the synthesizer responds to
+playing of each string in the Program. A low value allows even softly picked notes to
+VELOCITY CURVE - Determines the relationship between playing strength and output
+level.
+TRANSPOSE — Adjusts the pitch of the sound for each string in the Program in half-tone
+steps up to +/- one octave.
+HOLD (SOSTENUTO) - Turns on and off the Note Hold function. A connected
+footswitch can thus function like a sostenuto pedal: pressing the footswitch atter playing
+a string causes that string to sustain, while all subsequently played strings are articulated
+MIDI CHANNEL — Sets the MIDI transmit channel for each string in the Program. A
+setting of 0 disables MIDI transmission.
+SOUND NUMBER — Sets the internal program number (1 - 128) for each string in the
+Program.
+TIMBRE OUTPUT LEVEL — Sets the volume of the internal program for each string in
+the Program.
+REVERB — Sets the reverb effect for all strings. This parameter cannot be set individually
+for each string. It is a global parameter and affects all strings simultaneously.
+HOW TO EDIT THE PARAMETERS FOR EACH STRING
+1. Select the string for which you want to change parameter values. Press the appropriate
+STRING SELECT key.
+2. Use the OCTAVE DOWN and OCTAVE UP keys to change the parameter number.
+3. Use the INCREMENT/DECREMENT keys to change the parameter value.
+COPYING PARAMETERS FROM ONE STRING TO ANOTHER
+For convenience in editing, the Z3 allows you to quickly and easily copy the parameter values of
+one string to another.
+To copy the value of one parameter of a string to that of another string:
+1. Select the parameter you wish to copy. Use the OCTAVE DOWN and OCTAVE UP keys.
+2. Press and hold down the STRING SELECT key of the source string (the one FROM which
+you wish to copy).
+3. While holding down the source STRING SELECT key, press the STRING SELECT key of
+the destination string (the one TO which you wish to copy). You can save the selected
+parameter to other strings by continuing to hold down the source STRING SELECT key and
+pressing other STRING SELECT keys.
+The LEDs above each selected destination STRING SELECT key will light to indicate that
+the parameter has been copied. When the source switch is released, those destination LEDs
+will go out.
+4. Repeat steps 1 through 3 above for other parameters you want to copy.
+- 12 -
+=== pg/p-15.png
+SAVING PARAMETER EDITS TO A PROGRAM
+Once you have edited parameters of one or more strings to your liking, you can save the new
+parameter values to a Program. In this way, your settings can be recalled instantly for use at any
+time simply by selecting the appropriate Program number.
+To save newly edited parameters to a Program:
+1. Press and hold down the FUNCTION key.
+2. Press STRING SELECT key 3.
+The number of the Program selected before you began editing will appear in the display, and all
+edits you made will be saved to this Program.
+CANCELING OR ABORTING EDITS BEFORE SAVING
+You can abort the editing process at any time (before you save edits) and restore all parameters
+to their original values.
+To cancel any edits you've made without saving them to a Program number:
+1. Press and hold down the FUNCTION key.
+2. Press STRING SELECT key 6.
+The number of the Program selected before you began editing will appear in the display, and all
+edits made before saving will be cancelled. Parameters will be restored to their original
+Note that the FUNCTION key and STRING SELECT key 6, when used together, are a toggle
+for entering and exiting the Edit Mode.
+EDITING THE PARAMETERS - AN EXAMPLE
+Let's try changing the parameter values in a specific example.
+In our example, we'll make a new Program and set the first parameter so that string number 1
+plays internal program number 120. Then we'll copy the new parameter value to the other
+strings and save the newly created Program to Program number 1.
+1. While in the normal PLAY condition (in other words, before entering the Edit Mode), select
+Program number 1. Use the Program DOWN/UP keys on the Z3 Drive Unit attached to your
+guitar, or use the INCREMENT/DECREMENT keys on the Z3.
+2. Hold down the FUNCTION key and
+press STRING SELECT key 6 (to enter
+ING
+FUNC
+6
+-
+5
+the Edit Mode).
+DEC
+OC
+OCTAVE
+3. Press STRING SELECT key 1
+(to select the 1st string).
+BEND
+ON/OFF
+SENS
+REVERB
+ON/OFF
+ER
+- 13-
+=== pg/p-16.png
+4. Use the OCTAVE DOWN and OCTAVE
+UP keys to select parameter number l.
+Make certain that the leftmost number
+in the display is "1."
+7 (FLASHES)
+1-
+PARAMETER T
+NUMBER
+5. Use the INCREMENT/DECREMENT
+keys to select internal program number
+120. Holding down either key causes
+the value to increase or decrease rapidly.
+L20R
+HUNDRED
+LAST TWO DIGITS
+INDICATOR
+OF INTERNAL
+PROGRAM NUMBER
+The dot in the display indicates selection of a hundreds-value internal program number. The
+display above shows selection of internal program number 120.
+6. Copy this parameter value to the other
+strings. While holding down STRING
+FUNC
+SELECT key 1, press and release STRING
+SELECT keys 2 through 6.
+SYNTH
+LIVE
+VN
+OCTAVE
+BEND
+SENS
+REVERB
+ON/OFF
+-
+TU
+7. Now that you're finished editing, save the parameter and return to PLAY. Hold down the
+FUNCTION key and press STRING SELECT key 3. Program number 1 will be indicated in
+the display and all edits made in the above steps will be saved to Program number 1.
+POLY MODE (RESETTING OF THE MIDI CHANNEL)
+Selecting the Poly Mode of Mode A resets the MIDI channels of all strings to the same MIDI
+channel as is assigned to string 1. To select the Poly Mode, hold down the FUNCTION key and
+press STRING SELECT key 2.
+NOTE: The pitch bend function of the Z3 cannot be used in Poly Mode and all notes will be
+played chromatically. This affects both the internal sound source of the Z3 and the
+output MIDI data (the sound sources of connected instruments).
+PATCH PLAY MODE
+Since the Z3 allows you to select from 128 Programs, getting from one Program to another by
+using the Program DOWN/UP keys may not be quick enough for live performance situations.
+Moreover, re-editing all Programs so that they would be in the proper order for live performance
+is also impractical.
+The Patch Play Mode, along with the Patch Edit Mode, remedies this by allowing you to select
+Programs from eight individual Banks. Each Bank can hold up to eight Programs or Patches.
+The distribution and order of the Patches in the Banks can be set in the Patch Edit Mode.
+ENTERING THE PATCH PLAY MODE
+The Patch Play Mode is a sub-mode of Mode B. In other words, to use the Patch Play Mode, the
+Z3's operation must be switched (after turning the power off) to Mode B.
+- 14 -
+=== pg/p-17.png
+To enter the Patch Play Mode:
+1. Make certain that the Z3 is in the PLAY
+condition (not in the Edit Mode).
+2. Press and hold down the FUNCTION key.
+3. Press STRING SELECT key 1. The resulting
+display will have the following information:
+5-7
+BANK
+NUMBER
+- PATCH
+NUMBER
+The leftmost number indicates the Bank number and the rightmost indicates the Patch number.
+SELECTING PATCHES IN THE PATCH PLAY MODE
+To select Patches in the Patch Play Mode:
+1. Use the INCREMENT/DECREMENT keys to switch among the eight Banks.
+2. Use the OCTAVE DOWN and OCTAVE UP keys to call up one of the eight available
+Patches in the selected Bank.
+EXITING THE PATCH PLAY MODE
+Exiting the Patch Play Mode and returning to the PLAY condition is done in the same way as
+entering the Patch Play Mode:
+1. Press and hold down the FUNCTION key.
+2. Press STRING SELECT key 1.
+PATCH EDIT MODE
+In the Patch Edit Mode you can change the order of the Z3's Programs. By assigning them to
+Patch numbers, eight to a Bank, selection of Programs is much easier and quicker - a
+convenience particularly when performing live.
+ENTERING THE PATCH EDIT MODE
+The Patch Edit Mode can only be selected from within the Patch Play Mode. (See the PATCH
+PLAY MODE section above for more information.)
+To enter the Patch Edit Mode:
+1. While in the Patch Play Mode, select the Bank to which you want to assign the Program
+number or numbers. Use the INCREMENT/DECREMENT keys to select the Bank. (If a
+Bank number is not selected, the one last chosen in the Patch Play Mode is automatically
+selected.)
+2. Press and hold down the FUNCTION key.
+3. Press STRING SELECT key 6. The
+resulting display will have the following
+information:
+- (FLASHES)
+L2
+The leftmost number indicates the Patch number,
+while the dot (hundred indicator) and the next two
+numbers indicate the Program number.
+PATCH
+NUMBER
+HUNDRED
+INDICATOR
+- PROGRAM
+NUMBER
+- 15-
+=== pg/p-18.png
+ASSIGNING PROGRAMS TO PATCH NUMBERS
+In the Patch Edit Mode you can assign any one of the 128 Programs to a Patch number. Newly
+assigned Patch numbers and Program numbers exist in memory simultaneously; you can still call
+up a Program with its original number in the PLAY condition even after assigning it to a Patch
+number.
+Edits can be made only to the Bank that was selected before entering the Patch Edit Mode. To
+assign Programs to Patch numbers of other Banks, you must save the most recent edits (or cancel
+editing without saving) and return to the Patch Play Mode
+To assign Programs to Patch numbers:
+1. Make certain that the current Bank number is the one you want to assign Programs to.
+NOTE: Since the Bank number is not shown on the display you must return to the Patch Play
+Mode to check it and change it if necessary. To do so:
+a. Press and hold down the FUNCTION key.
+b. Press STRING SELECT key 3 or 6. (Pressing 3 saves all previous edits before
+returning to the Patch Play Mode; pressing 6 cancels all edits before returning.)
+c. Change the Bank if necessary by using the INCREMENT/DECREMENT keys.
+d. Enter the Patch Edit Mode again by holding down the FUNCTION key and press-
+ing STRING SELECT key 6.
+- (FLASHES)
+2. Use the OCTAVE DOWN and OCTAVE UP keys
+to select the desired Patch number.
+3. Use the INCREMENT/DECREMENT keys to
+select the desired Program number.
+4. Repeat steps 2 and 3 above for other Patch numbers
+in the same Bank.
+PATCH
+NUMBER
+5. Save the edited assignments by holding down the
+HUNDRED
+INDICATOR
+PROGRAM
+NUMBER
+FUNCTION key and pressing STRING SELECT key 3.
+CANCELING OR ABORTING PROGRAM ASSIGNMENTS BEFORE SAVING
+You can abort the Program assignment process at any time (before you save any assignments)
+and restore all previously made Patch number assignments.
+To cancel any assignments you've made without saving them to a Patch number:
+1. Press and hold down the FUNCTION key.
+2. Press STRING SELECT key 6.
+All Program-to-Patch-number assignments made before saving will be cancelled. Previously
+made Program assignments will be restored.
+ASSIGNING PROGRAMS TO PATCH NUMBERS AN EXAMPLE
+Let's go step-by-step through a specific example of assigning a Program to a Patch number.
+In our example, we'll assign Program number 120 to Patch number 1 of Bank 2.
+1. Make certain that the Z3 is in the PLAY
+condition (not in the Edit Mode).
+2. Hold down the FUNCTION key and
+press STRING SELECT key 1 (to enter
+the Patch Play Mode).
+1-
+BANK -
+NUMBER
+-PATCH
+NUMBER
+- 16-
+=== pg/p-19.png
+3. Switch to Bank 2 (indicated by the leftmost
+character in the display) to by using the
+INCREMENT/DECREMENT keys.
+4. Hold down the FUNCTION key and press
+STRING SELECT key 1 (to enter the Patch
+Edit Mode).
+5. Solet an ouAv2 With the OCTAVE
+2-
+100
+PATCH
+NUMBER
+1200
+PROGRAM
+NUMBER
+6. Select Program number 120 with the
+INCREMENT/DECREMENT keys.
+7. SEC a your new setting by holding down the FUNCTION kay and pressing STRING
+The last step returns you to the Patch Play Mode, where you can select your newly assigne
+Program for play
+SETTING THE MIDI BASIC CHANNEL
+In order to set the MIDI basic receive channel of the Z3, first press the SYNTHESIZER OFF
+key. Then, while holding down the the FUNCTION key, press STRING SELECT key 6. The
+display shown below will appear.
+. -
+The last two figures indicate the MIDI basic channel. Use the INCREMENT/DECREMENT
+keys to change it. The newly selected channel will be stored to memory and will return as the
+default setting even after the power has been turned off and on.
+OMNI ON/OFF settings can also be made in this condition. Use the OCTAVE UP key to switch
+to OMNI ON, and the OCTAVE DOWN key to switch to OMNI OFF. OMNI ON is indicated
+by a dot on the right side of the display; no dot indicates OMNI OFF. This is also stored as a
+default setting, like the basic MIDI channel above.
+SOUND GENERATOR MODE
+The Z3 can also be used as a separate sound generator module controlled by other MIDI devices,
+such as keyboards, rhythm machines and sequencers.
+To enter the Sound Generator Mode, hold down the FUNCTION key and press the
+SYNTHESIZER OFF key.
+- 17-
+=== pg/p-20.png
+USING THE FC6 FOOT CONTROLLER
+CONNECTION WITH THE FC6
+The following notes and instructions apply to connection of the Z3 to the optional FC6 Foot
+Controller.
+1. The special connecting cable has a lock on one of its plugs and no lock on the other.
+Connect the plug with the lock to the FC6 and the other side to the Z3.
+2. Set the power switch of the rear panel of FC6 to OFF/EXT. Electricity is supplied from Z3.
+3. The FC6's operation differs depending on the instrument to which it is connected. The
+operation mode for control by the Z3 is automatically set when the FC6 is connected to the
+Z3.
+PROGRAM SELECTION
+The method of switching programs from the the FC6 differs depending on the mode selected, as
+described below.
+described below. Select the made you find most connie fore to a r
+mode before operating; refer to the owner's manual of the FC6 for details.)
+NOTE: Patch Play program numbers (selected from the FC6) displayed on the Z3 are not the
+same as the numbers shown on the display of the FC6. The numbers selectable on
+the FC6 range from 1 to 128, whereas the Z3's 64 Patch Play programs are arranged
+in banks, ranging from 1 - 1 to 8 - 8.
+MODE 1
+In this mode, programs are grouped for selection into banks, with five consecutive pro-
+grams making up one bank. Keep in mind that the banks of the FC6 are different than the
+banks of the Z3; the FC6 has five programs per bank while the Z3 has eight programs per
+bank. Refer to the chart below for matching up the two different bank assignments.
+Corresponding FC6 program numbers are given in the chart.
+Patch Number
+Bank Number
+Bank 1
+Bank 2
+Bank 3
+Bank 4
+Bank 5
+Bank 6
+Bank 7
+Bank 8
+1
+1
+9
+25
+33
+41
+49
+57
+2
+2
+10
+18
+26
+34
+42
+50
+58
+3
+3
+4
+5
+4
+5
+19
+27
+35
+12
+20
+13
+21
+29
+51
+59
+36
+44
+52
+60
+37
+45
+53
+61
+6
+6
+14
+22
+30
+38
+46
+54
+62
+7
+15
+8
+8
+16
+31
+39
+47
+55
+63
+32
+40
+48
+56
+64
+- 18-
+=== pg/p-21.png
+T6 - 20,21-25, an assignments (for the FC6) are: programs No. 1 - 5, 6 - 10, 11 - 15,
+Switch [A] : Selection of first program in the bank.
+Switch [B] : Selection of second program in the bank.
+Switch [Cj : Selection of third program in the bank.
+Switch [D] : Selection of fourth program in the bank.
+Switch [E] : Selection of fifth program in the bank.
+Switch [F] :
+Selection of bank. (Bank advances upon each press of the switch: [1],
+[6], [11], [16], [21)..)
+For example, when the last selected program number is 18:
+pressing switch [A] calls up program number 16;
+pressing [B] calls up #17;
+pressing [C] calls up #18;
+pressing ID| calls up #19;
+pressing [E] calls up #20;
+and pressing [F] calls up the next bank, starting with program #21.
+Each press of switch [F] changes the program number display and advances the bank
+selection as follows: #21, #26, #31, #36, and so on.
+To decrease the bank number, press switch [F] while holding down switch [E].
+NOTE: When decreasing the bank number in the above way, pressing switch [E] calls
+up the corresponding program number before the bank is changed.
+MODE 2
+In this mode, program number selection can be increased or decreased in steps of ten or in
+individual steps.
+SWA : Program number decreases by 10
+SWB : Program number increases by 10
+SWC : Program number decreases by 1
+SWD : Program number increases by 1
+SWE : Hold
+SWF: Synth Off
+For example, when the first program number is 23:
+pressing switch [A] calls up program number 13;
+ressing [C] calls up #2
+ressing IDi calls up #24
+and pressing [E] or [F] have no change in the program selection.
+Refer to the chart above (in Mode 1) for matching up the two different bank assignments of
+the FC6 and the Z3.
+- 19 -
+=== pg/p-22.png
+MIDI AND APPLICATIONS
+WHAT MIDI IS AND WHAT IT CAN DO
+The Musical Instrument Digital Interface (MIDI), first brought out in 1982, has proved to be one
+of the most important developments in electronic music. By applying the power of MIDI to your
+23, you can carry out an unlimited number of previously impossible performance operations,
+including the following:
+• Play one or several synthesizers at the same time from your Z3.
+• Control the pitch bend performance functions on other synthesizers simply by bending the
+strings of your guitar.
+• Change voices on other synthesizers and modules from your ZD3 Driver, a connected
+footswitch, or from the front panel of the Z3, for impressive and effortless sound changes in
+real time.
+• Control digital drum machines or rhythm modules for the playing of percussion sounds from
+your Z3.
+• Using your Z3 to record to a sequencer, for accurately capturing your guitar performances
+even string bends and program changes — as MIDI data, that can later be edited, played back
+and layered with overdubs.
+• Use a sequencer to play back sounds on the Z3 Guitar Synthesizer while you play guitar parts
+over the recorded sequence.
+• Control different synthesizers or modules from separate strings.
+• Set effects devices such as digital delay and digital reverberation units to change their effects
+programs along with voice program changes, to complement and add to the overall sound of
+• Use a tape sync signal recorded onto one channel of a multitrack tape deck, to perfectly syn-
+chronize rhythm machines and sequencer-driven sounds from your Z3 with a vocal or acous-
+tic performance recorded on tape. In this way, the seemingly opposed worlds of traditional
+acoustic music and state-of-the-art digital music can be blended and merged, providing
+enormous creative potential.
+As you can see, MIDI is a very powerful and sophisticated musical tool. However, you won't
+need a course in computer science to use your Z3 effectively with other MIDI instruments.
+All you need to know is what MIDI devices can do, and how you can control them with your Z3.
+After that, MIDI does all the work for you.
+THE BASIC MIDI SETUP
+In essence, MIDI is extremely simple: it simply reduces all musical data to numbers, which can
+easily be sent from one instrument to another (hence the term "Digital Interface").
+In every MIDI setup there is a master and a slave. The master can be a keyboard or sequencer —
+or now, with the Z3, a guitar — and the slave (a sound-generating instrument) is played by it.
+- 20-
+=== pg/p-23.png
+MIDI TERMINALS
+The master and slave must be connected in a certain way; otherwise "communication" between
+the two is impossible. For a master (such as the Z3) to control a slave (such as the MIR
+Music Work Station Module), a MIDI cable must be connected to the MIDI OUT terminal of the
+master (Z3) at one end and the MIDI IN terminal of the slave (M1R) at the other.
+→
+MIDI
+OUT
+MIDI IN
+Z3
+SYNTHESIZER
+OR MODULE
+Most MIDI devices are equipped with three MIDI terminals: MIDI IN, MIDI OUT, and MIDI
+THRU. The names of these terminals appropriately indicate their function. Data is sent from
+one device's MIDI OUT over the cable to the other device's MIDI IN.
+MIDI THRU is used for setting up a second slave, connected to the first. Data is received at the
+MIDI IN terminal of the first module and is simultaneously sent to the second module via the
+MIDI THRU terminal.
+MIDI
+OUT
+Z3
+MIDI IN
+MIDI
+THRU
+mhim
+MIDI IN
+FIRST
+MODULE
+SECOND
+MODULE
+MIDI CHANNELS
+Data is sent from master to slave over a MIDI channel. If the slave is not set to the same channel
+as the master, the master will not be able to control the slave. To be specific, the transmit
+channel of the master must be the same as the receive channel of the slave. The exception to this
+rule is when the slave is set to OMNI; in that case, it can receive data over all MIDI channels.
+MIDI FEATURES OF THE Z3
+The Z3 is equipped with two MIDI terminals: MIDI IN and MIDI OUT. When using a
+sequencer or another MIDI device for control of the Z3, the rear panel MIDI IN / Front remote in
+switch should be switched to IN. When playing the guitar controller normally, make sure the
+switch is set to REMOTE.
+When using a sequencer to control the Z3, the guitar input from the Z3 Drive Unit can be shut
+off by holding down the FUNCTION key and pressing the SYNTHESIZER OFF key. This
+allows you to play your guitar normally, with just the audio output, while the sequencer plays the
+sounds of the Z3.
+Playing the guitar and sequencer simultaneously with this function off may cause the guitar to
+"steal"
+notes from the sequencer input, leaving the sequence-recorded tracks incomplete.
+The Z3 allows you to assign a different MIDI channel setting to each string of the guitar. With
+this exceptionally versatile function, not only can cach string play a different internal program on
+the Z3, it can also control a different MIDI instrument.
+- 21 -
+=== pg/p-24.png
+When such a multi-channel setup is not necessary, you can instantly reset or initialize the MIDI
+channels of all strings. While holding down the FUNCTION key, press STRING SELECT key 2.
+This resets all MIDI channel assignments of the strings to the same value. (Doing this, however,
+temporarily disables the pitch bend function, both for internal programs and MIDI OUT data.
+Pitch bending is chromatic as a result.)
+When you are in Mode A, pressing FUNCTION + STRING SELECT key 2 assigns all strings to
+MIDI channel 1. Your Z3 should be already set to operate in Mode A, but if for some reason it
+is not, refer to the section, "Setting Operation of the Z3 to Mode A" in the Mode B chapter for
+instructions on how to switch between modes.
+When you are in Mode B, the above operation gives all strings the same MIDI channel
+assignment as string #1. (Refer also to the section, "Parameters of the Edit Mode" in the Mode
+B chapter for information on how to set MIDI channels for each string.)
+MIDI APPLICATION EXAMPLE
+To illustrate some of the possibilities of MIDI and perhaps to trigger some ideas of your own,
+here is a MIDI application of the Z3.
+As we pointed out above, the basic procedure is to match the MIDI channel Transmit and
+Receive channels on the respective master and slave instruments. For more information and
+further application ideas, please refer to the owner's manuals of the particular MIDI instruments
+you are using.
+APPLICATION: ADDITIONAL SYNTHESIZER AND EFFECTS UNIT
+In this easy-to-use setup the Z3 can select and play the sound programs of the Symphony Or-
+chestra Module. By connecting the MIDI THRU terminal of the Symphony to the MIDI IN
+terminal of the DRY-2000 Digital Reverb, the Z3 can simultaneously change effects programs
+along with its own Programs and the programs of the Symphony for perfect matching of sounds
+with effects. The audio signals of the Z3 and the Symphony are input to the KMX-122 Line
+Mixer, and fed through the effects send and return to the DR V-2000 for processing.
+MIDI
+Z3
+OUT
+AUDIO
+OUTPUT
+MIDI
+IN
+SYMPHONY
+MIDI
+THRU
+MIDI
+IN
+DRV-2000
+INPUTS
+EFFECTS
+SEND / RETURN
+KMX-122
+- 22-
+=== pg/p-25.png
+MIDT
+IMPIIMENIATION
+=
+TRANSHITTED DATA
+1-1 CHANNEL MESSAGES
+Status
+Second
+1000 man
+Okkk kkkk
+1001 nan
+Okkk kkkk
+1011 man
+0000 0001
+0000 0010
+0000 0111
+0100 0000
+1100 nnnn
+Oppp pppp
+1101 nann
+1110 anan
+Third
+0100 0000
+Ovvy vvv
+0000 0000
+0111 uti
+Description
+Mote off
+kkk kkkk = 0~127 (+Transpose)
+Note on
+kkk kkkk = 0~127 (+Transpose)
+YVV VVVV = 1~127
+Control Change 1 (*L)
+Control Change 2 (#l)
+Volume
+VVV VVVY = 0~127
+Daaper off (*1)
+on (*|)
+Program Change (*2)
+PPP PPPp: 0~127
+After Touch (*|)
+Pitch Bend
+- 4000h
+: center
+= 7F7Fh : + wax
+Note: nann = WIDI Channel Number (0~15)
+(*I) Received data is output through each channel, as set by the transmitting device's
+MIDI OUT CHANNEL
+(2) hales nud tered es are is to the sane MIl OUT CANNEL, the date of the
+1-2 SYSTEM REAL TIME KESSAGES
+Status
+Description
+1111 1110
+Active Sensing
+1-3 SYSTEN EXCLUSIVE MESSAGES 1
+DEVICE 1D
+1111 0000
+Description
+Exclusive Status
+Channel
+KORG ID
+23 ID
+ROH No.
+7Eh
+06h
+02h
+IDI
+00%
+00h
+00h
+001
+Program Version
+Hi
+1111 0111
+Law
+Note:
+Channel
+ROM No.
+= Channel 0~15. 7Ph-a11
+= 0~127
+Program Version - OVV VV. Or vow
+* System Exclusive nessages are sent over the set basic channel.
+1-4 SYSTEM EXCLUSIVE NESSAGES I
+23 SYSTEN EXCLUSIVE HEADER
+1111 0000
+(FO) : Exclusive Status
+0100 0010
+(42) : KORG ID
+0011 nonn
+(3n) : Formot ID
+n= IDI Channel Number (0~15)
+0001 1101 (1D) :23 ID
+* System Exclusive messages are sent over the set basic channel.
+FUNCTION CODE LIST)
+=
+Description
+10
+Sound Parameter Dump (fron Sound Edit Buffer)
+Sound Paraneter All Dump (from Sound Memory)
+19
+Program Paracter Dump (from Program Edit Buffer)
+Program Paraneter All Dump (from Program Meaory>
+50
+5D
+21
+22
+Patch Parameter Dump (frow Patch Edit Buffer)
+Patch Parameter Al1 Dump (from Patch Mewory)
+Write Completed
+Write ERROR
+24
+Lara Lond Eagle te
+Exclusive Forsat ERROR
+(I Sound Parameter Duap
+Вуте
+Description
+FO. 42. 3n. ID
+01000000
+EXCLUSIVE HEADER
+Sound Parameter Dump
+Ocild dadd
+40h
+data
+(Refer to
+1111 0111
+EOX
+Sound Porameter Dump Data Format)
+=== pg/p-26.png
+(2 )Sound Paraneter All Dump
+By te
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+0100 1100
+Sound Parageter All Dump
+Ocidd dadd
+data
+(Refer to
+..
+Sound Parameter All Dump Data Format)
+EOX
+(3 )Program Paraneter Dump
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+0100 1001
+Program Parameter Dump
+49h
+Oddd dadd
+dato
+(Refer to Program Parameter Dump Format)
+1'II'.I.
+EOX
+(Program Paraneter All Dump
+Byte
+Description
+F0. 42. 3n. ID
+EXCLUSIVE HEADER
+0100 1101
+Dudd dadd
+Program Parameter All Duap
+40h
+data
+(Refer to
+Program Paranter AlL Duap Forsat)
+IHI 0111
+EOX
+(5)Patch Paraneter Dump
+Byte
+Description
+FO. 42. 3n. 1D
+EXCLUSIVE HEADER
+0101 1100
+Oddd dddd
+Patch Parameter Dump
+data
+5Ch
+(Refer to Patch Parameter Dump Format)
+111 m
+(6)Patch Parameter A11 Dump
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+01011101
+Patch Parameter All Dump
+Oddd dddd
+5Dh
+(Refer to Patch Parameter All Dump Format)
+1111 0111
+EOX
+(7) Write Completed
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+0010 0001
+Vrite Completed
+m out
+EOX
+(8 Write ERROR
+Fo. 42. 0n. 1D
+0010 0010
+111 0111
+Description
+EXCLUSIVE HEADER
+Write ERROR
+EOK
+21h
+22h
+(9)Data Load Coppleted
+Byte
+F0. 42. 3n. ID
+Description
+EXCLUSIVE HEADER
+0010 0011
+Data Load Completed
+I ou1
+BOX
+(10)Data Load ERROR
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+0010 0100
+1111 0111
+Data Load ERROR
+BOX
+(I Exclusive Format ERROR
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+0010 0101
+Exclusive Fornat ERROR
+1 ou
+EOX
+1-5 Exclusive Ansver Message Table
+Received Message
+ID
+Description
+10
+Sound Parameter
+Dump rea
+All dump req
+19
+Program Parameter Dump req
+ID
+All Dump reg
+Patch Parameter
+Dump req
+OD
+All Dump req
+40
+41
+Sound Parameter
+Dump
++C
+Change
+All Dump
+Progran Parameter Dump
+59
+Change
+4D
+All Dump
+5C
+Patch Parameter
+Dump
+5D
+OA
+Sound
+All Dump
+11
+Write Reg
+Progran
+frite Req
+OF
+Patch
+Write Reg
+ID : 21 - Write Completed
+23 = Data Load Coapleted
+26 = Exclusive Format ERROR
+23h
+24h
+26h
+Answer Kessage (Transmit Kessnge )
+=
+211
+00
+• 0
+00
+000
+22 = Write ERROR
+24 = Data Load ERROR
+=== pg/p-27.png
+HELONIZED DATA
+2 I CIANNEL MESSAGES
+Status
+1000 nnnn
+Second
+Okkk kkkk
+1001 nann
+0kkk kkkk
+1001 ann
+Okkk: kkkk
+Third
+0*******
+00000000
+Description
+Note off
+Note off
+Note on
+kkk kkik = 0~127
+e
+1011 annn
+1100 nan
+1101 nann
+1110 nnan
+0000 0001
+0000 0001
+00000111
+0100 0000
+0100 0010
+01111011
+0111 1100
+0111 1101
+0111 1110
+O11 1111
+Oppp PPPP
+Oddd dadd
+Oddd dddd
+Oddd dadd
+Oddd dddd
+05******
+0s******
+0000 0000
+00000000
+0000 0000
+0*******
+0000 0000
+Ovvy vyyy
+kkk kkki: • 0~127
+VV vyv= 1~|27
+Control Change 1
+ddd dddd = 0~127
+Control Change 2
+ddd dddd = 0~127
+Volume
+ddd dadd = 0~127
+Damper
+s = off/on
+Sostenu to
+s = off/an
+All Notes off
+Omni off (MIDI Reset )
+Omni on (MID! Reset )
+(MIDt Reset)
+(MIDI Reset)
+Progrum Change
+(See Note 1)
+After Touch
+dad dadd = 0~127
+Pitch Bend
+= 4000h :center
+• 7F7Fi : t max
+Note
+:Guitar Synth mode
+s :Sound Generator mode
+nan = HID! Channel Number (0~l5)
+* *
+• Not specified
+Note 1:When Normal Play aode.
+PPP pPpp: 0~127 = Program
+1~128
+When Patch Play mode.
+ppp pppp 0B8 BPPP0~63(64~127-invalid no.)
+B : 0~7 = Bank 1~8
+P: 0~7 = Patch 1~8
+When Sound Generator mode.
+PPp PPpp: 0~127 - Sound no. 1~128
+• The MIDI OUT CHANNEL determines the HIDI channel over which data is received.
+The channel set for string | is receives data in Poly Kode.) Therefore. it
+functions only in the OWNI OFF condition. !
+2 The MIDI OUT CHANNEL determines the MIDI channel over which data is received.
+(The channel set for string 1 is receives data in Poly Kode.) Therefore. it
+functions only in the OMNI OFF condition. (It serves as MIDI Reset function.)
+3 Basic Channel(ch. no.. OMNI on/off) determines the MIDl chonnel over which data is
+received. The received data is sent over the MIDI channel set in MIDI OUT CHANNEL.
+(It does not affect internal operations or functions)
+@ Basic Channel(ch. no.. OMNI on/off) determines the MIDI channel over which data is
+received. The received data is sent over the MIDI channel set in MIDI OUT CHANNEL.
+(The received data is handled the same as the Volume of 2D3. )
+5) Basic Channel(ch. no., OMNI on/off) determines the MIDI channel over which data is
+received. (The received data is handled the same as the lold SE.)
+6 Basic Channe!(ch. no.. OMNI on/off) determines the MIDI channel over which data is
+* Basic Channel(ch. no.. OMNI on/off) determines the MIDI chunnel over which data is
+received. (The received data is added to the data of each channel of the instrument.
+and includes all the strings.)
+8 Basic Channel(ch. no.. OMNI on/off) determines tle KIDI channel over which data is
+received. (It serves as MIDI Reset function.)
+2 2
+SYSTEY
+KEAL TIME MESSAGES
+Description
+I11I 1110
+Active Sensing
+2-3 SYSTEN EXCLUSIVE MESSAGES |
+(I DEVICE 1D Reg
+Byte
+1111 0000
+Description
+Exclusive Status
+O111 1110
+7EN
+OCCC CeCC
+0000
+Channel
+0110
+0000 0001
+11 0111
+EOX
+O6b
+O1h
+Note:
+Channel
+- Channel 0~15. 7Fh-a11
+* Systen Exclusivenessages are sent over the set basic channel.
+2-4 SYSTEN EXCLUSIVE MESSAGES I
+ECG SYSTEM EXCLUSIVE HEADER
+1111 0000 (FO) : Exclusive Status
+0100 0010 (42) : KORG ID
+0011 nana (3n) :Foraat ID
+0010 0001
+(21) : FCG ID
+0100 1101
+(4D) :SH Message
+(lold sy control
+Byte
+Description
+FO. 42. 3n. 21. 4D
+EXCLUSIVE HEADER
+D010 0100
+hold sw ID
+Os** ****
+data
+1111 0111
+EOX
+Note: ** • Not specified
+s = off/on
+(2 )Synth off sw control
+By te
+Description
+F0. 42. 3n. 21. 4b
+0010 0101
+EXCLUSIVE HEADER
+Synth off sw ID
+05******
+data
+80X
+Note: * * - Not specified
+s = off/on
+n = MIDI Channel Nuaber (0~|5)
+24h
+2511
+=== pg/p-28.png
+97-
+2-5 SYSTEM EXCLUSIVE MESSAGES I
+23 SYSTEM EXCLUSIVE HEADER
+1111 0000
+(FO) : Exclusive Status
+0.00 0010(42) :KURG ID
+0011 nan
+(3n) :Format 1D
+n = MIDI Channel Number (0~15)
+0001 1101 (1D) :23 ID
+* System Exclusive messages are sent over the set basic channel.
+KFUNCTION CODE LIST>
+=
+Description
+40
+Sound Parameter Dump (to Sound Edit Buffer)
+10
+Sound Parameter Dump Ree.
+Sound Parameter Change (to Sound Edit Buffer)
+Sound Parometer All Dump (to Sound Nemory)
+Sound Parameter All Dump Req.
+11
+19
+19
+59
+4D
+ID
+0A
+Sound Vrite Req
+Program Parameter Dump (to Progrom Edit Buffer)
+Program Parameter Dump Req.
+Progrew Parameter Change (to Program Edit Buffer)
+Program Parometer All Dump (to Progran Nemory)
+Program Parameter A11 Duap Req.
+Program Write Req
+Patch Parameter Dump (to Patch Edit Buffer)
+Patch Parameter Dump Req.
+5D
+OD
+OF
+Patch Parameter All Dump (to Patch Memory)
+Patcli Parameter All Dump Req.
+Patch Write Reg
+(1 Sound Paraseter Dump
+Byte
+Description
+F0. 12. 3n. ID
+EXCLUSIVE HEADER
+0100 0000
+Sound Parameter Dump
+Oddd dadd
+data
+40h
+(Refer to Sound Parameter Dump Format)
+11110111
+BOX
+(2)Sound Parameter Duap Req
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSIVE HEADER
+00010000
+Sound Parameter Duup Req.
+1110111
+10l
+(31Sound Parameter Change
+Byte
+Description
+FO. 12. 3n. ID
+EXCLUSIVE HEADER
+0100 0001
+Sound Paraneter Change
+41h
+Onan nann
+Parameter no. (Refer to
+Ohhh hhhh
+duta hi byte
+Sound Parameter List
+0111 1111
+data low bytel
+1111 o111
+EOX
+(4 Sound Parameter All Dunp
+Byte
+Description
+F0. 42. 3n. 1D
+0100 1100
+EXCLUSIVE HEADER
+Sound Purameter All Dusp
+4Ch
+Oddd dddd
+dato
+(Refer to
+'''' O111
+Sound Parumeter All Daup Formal)
+EUX
+(5 Sound Parumeter All Dump Reg.
+Byle
+Description
+F0. 12. 3n. I
+EXCLUSIVE HEADER
+000: 1100
+Sound Parameter All Dump Req
+1111011
+I Ch
+(BiSound frite Reg
+Byte
+Description
+FO. 12. 3n. ID
+0001 0001
+EXCLUSIVE HEADER
+Sound Write
+I1h
+Usss ssss
+Write Sound no.
+1111 0111
+EOX
+(7)Progrne Parameter Dump
+Byte
+Description
+FO. 12. 3n. ID
+EXCLUSIVE HEADER
+0100 1001
+Oddd dadd
+Program Parueter Dump
+49h
+(Refer to Progran Parameter Dump Format)
+1111 0111
+(8)Prograu Parameter Dump Req.
+Byte
+Description
+FO. 42. 3n. ID
+0001 1001
+19h
+1111 0111
+(9)Progran Parameter Change
+Byte
+FO. 42. 3n. ID
+Description
+EXCLUSIVE HEADER
+0101 1001
+Progrum Paraster Change
+591
+Onmn nam
+Dadd codid
+Paracter no Rufprogra
+11110111
+Program Parameter LIST)
+(10/Progrum Paraneter All Dump
+Fo. 12. 3n. ID
+Description
+0100 1101
+EXCLUSIVE HEADER
+Program Parameter Al1 Dump
+4Dh
+Oded dida
+(Refer to
+Program Parameter All Dump Format)
+EOX
+=== pg/p-29.png
+- 27
+•Dingan l'atuwuict All Dump Keu
+Byte
+Descript ion
+FO. 42. 8n. ID
+EXCLUSI VE HEADER
+0001 1101
+Prograa Parasotor All Dump Keg. IDh
+EDX
+( 12 )Program Krite Reg
+Byte
+F0, 42. 3n. LD
+0000 1010
+Ossa s688
+I 0111
+Description
+EXCLUSI VE HEADER
+Program Frite
+Vrite Program no.
+ROX
+( 13 )Patch Prageter Dump
+Byte
+Description
+FO. 42.3n. ID
+EXCLUSI VE HEADER
+0101 1100
+Oddd dddd
+Patch Parameter Dump
+da ta
+OAh
+I1E 0111
+BOX
+( 14 )Patch Parameter Dump Reg.
+Byte
+FO. 42. 3n. ID
+Description
+0000 1100
+EXCLUSI VE HEADER
+Patch Paraueter Dump Reg.
+111 0F11
+Och
+( 15 )Parch Paraneter A11 Dump
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSI VE HEADER
+0101 1101
+Oddd dadd
+Patch Parameter All Duap
+da ta
+(Refer to
+5Dh
+1111 0011
+EOX
+16)PAKch Parameter A21. Dump Reg.
+Byte
+Description
+FO. 42. 3n. ID
+EXCLUSI VE HEADER
+0000 1101
+L1 Ou
+Patch Parameter A11 Dump Req. ODh
+(17 Patch Write Reg
+Description
+FD. 42. 3n. ID
+EXCLUSI VE HEADER
+0000 1111
+Patch Vrite Req.
+0000565
+Write Bank no.
+111 0111
+E0X
+=== pg/p-30.png
+[Progrom Parameter Change Data Formall
+Ist data
+00mn nona: Parameter no. (0~54)
+2nd data
+Oddd dddd : Data
+See «Program Parameter List"
+(Progran Parameter List»
+name
+Reverb
+no. +0:str 1
+Histr 2
++3: str 4
+Histr 5
++2: str 3
+t5:str 6
+паве
+1~0
+Hold
+coff
+ion
+7~12
+MIDI Channel
+WIDI out off
+1~~16:WID1 ch. 1~16
+13~18
+Program Change req
+0~127
+ino. ~128
+19~24
+Sound No.
+0~127
+ino. ~128
+25~30
+Velocity Curve
+0~7: mode 1~8
+31~36
+Bend Range
+:Chroaatic
+1~12: Bend Range
+37~42
+Transpose
+:-12 note (-oct)
+22 002 hote free
+43~18
+Sensitivity
+0~7: 1~8
+49~54
+Out Level
+data
+0000 000R
+data
+0000 000H
+OOVC CCCC
+OPPP PPPP
+OSSS SSSS
+0000 O7V
+0000 BBBB
+OOOT TITT
+0000 OLLI
+0000 0000
+[Progran Paramcter Dump Data Format]
+Ist data
+Parameter no.
+2nd data
+3rd data
+4tlı data
+5th data
+6th data
+7th data
+8th data
+9tlı data
+10th dalu
+Ith data
+12th data
+13th data
+14th data
+15th data
+16th data
+10
+11
+12
+13
+14
+15
+55th data.
+Parameter no. 54
+[Program Parameter All Duep Data Format]
+2nd
+da ta
+data
+Memory no.
+3rd data
+dala
+11007th data
+11008th data
+Memory no.
+5503
+5503
+See (Program Menory Data Format]
+data
+data
+data
+data
+da ta
+data
+data
+data
+data
+data
+data
+data
+data
+data
+data
+data
+data
+(Reverb
+(Hold
+(WIDI Ch.
+(Prog. C. R
+(S. Level
+str 1)
+str 2)
+str 3 )
+str 4)
+str 5)
+str 6)
+str 1 )
+str 2)
+str 3 )
+str 4)
+str 5)
+str 6)
+str 1 )
+str 2)
+str 3)
+str 6 )
+(**** dddd) → (0000 dddd)
+(dddd ****) - (0000 dded)
+(**** dddd) - (0000 dddd)
+(**** dadd) → (0000 ddde)
+=== pg/p-31.png
+Program fifit Huffer Date forest
+=
+=
+=
+ORTH 0H0D
+CCCC CCCC
+CCCC CCCC
+CCCC CCCC
+=
+COCC ECCC
+OPPP PPPP
+OPPP
+PPPP
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP.
+OSSS SSSS
+OSSS SSSS
+OSSS SSSS
+OSSS SSSS
+OSSS. SSSS
+OSSS SSSS
+OVY BBAB
+OVVY BBBB
+OVY BBBB
+OVVY BBBB
+OVVY BBBB
+OVVY BBBB
+000=
+- 0-
+-
+FE
+E
+0000 OLLL
+0000 OLEL
+0000 OLLL
+0000 OLLL
+0000 OLLL
+0000 OLLL
+0000 0000
+0000 0000
+0000 0000
+0000 0000
+0600 0000
+0000 G000
+0f1 0 on: l
+Hold
+ur 0 on 1
+bit 03
+• string l~6
+C: MIDI channel
+ПІНІВ = disable
+0r~15
+P :Program change reg.
+0~127
+= 0~127
+S: Sound No.
+0~127
+= 0~127
+V: Velocity curve
+0= curve 1
+1 = curve 2
+2 = curve 3
+3 = curve 4
+1 - curve 5
+5 = curve B
+8 - curve 7
+7 = curve 8
+B: Bend Range
+O Chromatic mode
+1=t/-1200cent bend max/min
+1100
+8 =
+1000
+4 =
+900
+5 -
+6 =
+800
+7 =
+700
+600
+8 =
+9 .
+500
+10 =
+400
+11=
+300
+200
+12 =
+100
+T: Transpose
+-12~+12
+L: Sensitivity
+0~7
+= 1~8
+D :Out level
+0~15
+(riogrue Meaory bata Formul]
+BIL
+String
+alL
+=
+16
+17
+18
+19
+20
+23
+29
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+CCCC CCCC
+CCCC CCCC
+cecC cccc
+CCCC CCCC
+CCCC CCCC
+cCC cCC
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP
+OPPP PPPP
+OSSS SSSS
+OSSS SSSS
+OSSS SSSS
+OSSS SSSS
+OSSS SSSS
+OSSS
+SSSS
+3BBB
+OVVV BBBB
+OVYV BBBB
+OVVV BBBB
+OVV BBBB
+OVYV BBBB
+TTIT TITT
+TT TIM
+TTIT TTTT
+TTIT TITI
+TTT TTT
+TIT TITT
+0000 OLLL
+0000 OLLL
+0000 OLLL
+0000 DLIL
+0000 OLLL
+0000 OLLL
+0000 DOOD
+0000 0000
+00000000
+0000 0000
+0000 0000
+0000 0000
+54BL
+5503
+127
+128
+R : Reverb
+aff: 0 on:1
+Hold
+bit 0~g string string ~ 6
+C:N.DI Channel
+HIIB = disable
+0~15 = ch. 1~16
+P: Prograu change reg.
+0~127-0~127
+S: Sound No.
+0~127=0~127
+V: Velocity curve
+0 =curve 1
+1-curve 2
+2 -curve 3
+3 •curve 4
+1 -curve 5
+5 -curve 6
+6 -curve 7
+7 -curve 8
+B: Bend Range
+O -Chromntic mode
+1-+/-1200cent: bend wax/ain
+2 -
+1100
+3 =
+1000
+4=
+900
+5 =
+6 -
+800
+700
+7 =
+600
+8 =
+500
+9 =
+400
+10 =
+300
+11 =
+200
+12 =
+100
+T: Transpose
+-12 ~ 412
+L Sensitivity
+=1~8
+o :Out level 0~15
+=== pg/p-32.png
+[Patch Parameter Dump Data Format]
+Data Number
+Data
+Patch
+Ist
+data
+Oddd dddd
+2nd
+dala
+Oddd dadd
+3rd
+da la
+Oddd
+dddd
+1 th
+data
+Oddd dddd
+5th
+da la
+oddd dddd
+6th
+data
+Oddd dddd
+7th
+data
+Oddd dddd
+8th
+data
+Oddd dddd
+00
+See
+[Patch Edit Buffer Data Format]
+(Patch Parameter All Dump Data Format
+Data Nunber
+Ist
+data
+2nd
+data
+3rd
+da la
+4th
+data
+Data
+Oddd dddd
+Oddd dudd
+Oddd dddd
+Oddd
+dddd
+Bank
+5th
+data
+6th
+dala
+7th
+da la
+8th
+data
+9th
+dalu
+10ch
+data
+Patch
+-40-
+63rd data
+Oddd dadd
+G4ll data
+Oddd didd
+See (Patch Neacry Data Format]
+(Patch Edit Buffer Data Formatl
+Bit
+Patch
+0*******
+0*******
+0*******
+0*******
+0*******
+D*******
+0*******
+D*******
+Note: 0*******: 0~127 = Program no. 1~|28
+[Patch Memory Data Forwat)
+Bit
+Patch
+0*******
+0*******
+0*******
+0*******
+0*******
+0*******
+0*******
+0*******
+Bank
+-
+=
+=
+...
+32
+39
+40
+55
+50
+OR******
+0*******
+0*******
+0***
+0***
+****
+0*******
+0*******
+0*******
+Note: 0*a* ****: 0~127 • Program no.
+1~|28
+=== pg/p-33.png
+Ist data
+2nd data
+Odad adid
+3rd data
+See (Sound Parageter List»
+Paracter in.
+low byte
+(Sound Parumeter 1ist)
+name
+Voice Nume Ist
+2nd
+3rd
+4th
+5th
+6th
+7th
+8th
+Algori thu
+Feed Back
+10
+=
+LFO Rave Foru
+Rate
+PMD
+13
+PHS
+AMD
+AMS
+0:011
+name
+15~19
+20~23
+OSC Wave Forw
+Hull
+24~27
+28~31
+Mu12
+Detunel
+32~35
+36~39
+Detune2
+40~43
+Total Level
+44~17
+Attack Rate
+Decay! Rate
+18~51
+Sustain Level
+52~55
+Decay2 Rate
+56~59
+Releas Rate
+60~63
+Key Scale
+61~67
+68~71
+AMS Enable
+EG. Shift
+72~75
+76~79
+Reverb Level
+Rate
+80~83
+Velocity Int
+81~87
+Keyboard Track
+data
+Onan nann
+Onna nann
+Onan nann
+Onon nann
+Onan nann
+Onnn nona
+Onna nann
+Onon nann
+0000 Occc
+0000 Offr
+000000N
+HLLL. LLLL
+Oppp pppp
+DODO OPPP
+Onaa naaa
+0000 00AA
+(C-1)
+data
+0000 OSSS
+0000 влав
+0000 MMM
+0000 Oddd
+0000 0ODD
+Ottt ttit
+000a азаа
+OCOd dodd i
+0000 sSSS
+OOOD DDDD
+0000 RRRR
+0000 00KK
+0000 000E
+0000 00Ss
+0000 000L.
+0000 ORRR
+0000 V
+0000 KKKK
+range
+ASCI!
+0~7
+0~3
+0~255
+0~127
+0~7
+0~127
+0~3
+12 : (M-2)
+range
+0~7
+0~15
+0~15
+0~7
+0~3
+0~127
+0~31
+0~31
+0~15
+0~31
+0~15
+0~3
+0.1
+0~3
+0.1
+0~15
+0~15
+<0-87)
+(Only LFO Kate)
+hi -byte
+Onna nan i
+Onna annn
+Onnn nnnn
+Onhn nean
+Onan nann
+Onna nonn
+Onnn nnnn
+Onna nan
+0000 Occc
+0000 OffF
+0000 00ww
+0000 000Н
+Oppp pppp
+0000 OPPP
+Oaaa aaaa
+0U00 QUAA
++3: (C-2)
+hi -byte
+0000 OSSS
+0000 шиша
+0000 MHMM
+0000 Oddd
+0000 OODD
+Ottt titt
+low-byte
+OILL LLI.L
+lov-byte
+O00d dadd
+0000 ssss
+OOOD DDDD
+0000 RRKR
+0000 00kk
+0000 000E
+000 003G
+000 VIS
+000О KKKK
+Ist
+da ta
+Zud
+Jala
+3rd
+da ta
+4th
+5th
+da la
+data
+6th
+da ta
+7th
+data
+81h
+da ta
+91h
+da ta
+10th data
+Ilth data
+12th data
+13th data
+Parameter no
+data
+datu
+data
+dato
+data
+data
+data
+data
+data
+10
+data
+data
+Il hi -data
+11 Low-data
+89th data
+Parameter no. 87
+See [Sound Edit Buffer Data Foruat]
+data
+[Sound Parameter All Dump Data Format]
+data
+Memory no.
+2nd
+3rd
+4 th
+da ta
+data
+du ta
+-
+-
+12799th data
+Memory no.
+12800th data
+See [Sound Memory Data format]
+6399
+6399
+(voice Nase Ist)
+2nd)
+-
+-
+3rd)
+4th)
+5th)
+6th)
+7th)
+8th)
+(Algoritha
+(Feed Back
+(LFO Wavefore )
+(LFO Rate hi )
+-
+lox)
+(Keyboard Track C-2_1
+(dddd ****)
+→ (0000 dddd)
+(dddd ****) → (0000 dddd)
+**** dadd - (0000 dddd
+(dddd****) → (0000 dddd)
+=== pg/p-34.png
+[Sound Edit Buffer Data Format]
+Uper
+Notes
+0~-7
+Onan nnon
+FFPF FPFF
+n: Voice Name
+F :LFO Rate
+10
+IPPP PPPP
+P : PMD
+VARA AAAA
+A : AMD
+11
+12
+0000 00WN
+vort secc
+* : LFO Have Fora
+f :Feed Back 0~7
+=
+Uppp 00aa
+P : PHS
+=
+0~7
+15
+ODDD MAMM
+#- I
+D : Detunel
+16
+#-2
+N: BULL
+=
+ODDD MUMM
+C-I
+ODDD MYMM
+C-2
+10
+ISSS mum
+K-I
+M-2
+S: OSC Have Fora
+20
+21
+ISSS emum
+a : MUL2
+c-1
+22
+SSS mau
+23
+ƠTIT TITT
+C-2
+K-1
+T :Total Leve!
+24
+OTT TTTT
+M-2
+25
+OTTT TITT
+C-1
+26
+OTT TITT
+KOA AAAA
+6-2
+27
+K: Key Scale
+A : Attack Rate
+28
+29
+30
+31
+32
+33
+35
+36
+37
+38
+40
+ККОЛ МАЛЛ
+KKOA AMAN
+EOOD DDDD
+EOOD DDDD
+EOOD DDDD
+BOOD DDDD
+DDod dudd
+DDod dadd
+DDod didd
+EEI0 Lrrr
+EE10 Lrer
+·-2
+C-1
+C-2
+M-1
+C-1
+c-2
+M- I
+#-2
+C-1
+C-2
+M-2
+C-1
+c-2
+H-I
+E :AMS Enable
+D: Decay I Rate
+D : Detune2
+d: Decay 2 late
+E : EG. Shift
+L. :Reverb Level
+r: Reverb Rate
+L. :Sustain Level
+R: Releas Rate
+43
+44
+45
+C-1
+c-2
+M- I
+H-2
+C-1
+C-2
+V: Velocity Intensity
+K : Keyboard Track
+48
+49
+EE10 Lerr
+LLLL RARR
+LLLL RRRR
+LLLI. RHAR
+LLLL RRRR
+VVYV KKKK
+VVYV KKKK
+VVYV KKKK
+VVYV KKKK
+ASCIL
+0~255
+0~127
+0~127
+0~3
+C : Algoritha 0~7
+.a CANS
+0~3
+0~T
+0~15
+0~7
+0~15
+0~127
+0~3
+0~31
+0.1
+0~31
+0~3
+D-31
+0~3
+0.1
+0~7
+0~15
+0~15
+2-15
+[Sound Menory Data Format]
+0~7
+=
+=
+=
+18
+19
+20
+21
+23
+24
+28
+30
+32
+33
+34
+35
+36
+37
+38
+39
+410
+13
+44
+15
+46
+47
+18
+50
+100
+1i9
+150
+199
+200
+63-19
+6350
+639g
+Unnn nann
+FFFFFFFF
+IPPP PPPP
+DAAA AAAA
+0000 OWN
+DofF fCCC
+Oppp 00aa
+ODDD NANN
+ODDD MUNN
+ODDD MUMM
+ISSS 1ammn
+OTTT TTTT
+OTTT TTIT
+UTTI TITT
+UTTT TTE
+KKOA AAAA
+KKOA AMAA
+ККОЛ АЛАЛ
+KOA AMAA
+EOOD DDDD
+EOOD DDDD
+EOOD DDDD
+EOOD DDDD
+DDOd dddd
+DOOd dddd
+DDOd dddd
+DDOd dddd
+EE10 Lrrr
+EE10 Lrer
+EE10 Lrrr
+EE10 Lrrr
+LILL RERR
+LILI, RRRR
+LILL RERR
+LILL RERK
+VIVV KKKK
+VVVY KKKK
+VVVY KKKK
+YVVY KRKK
+Oper
+n: Voice Name
+F :LFO Rate
+P : PAD
+AAMD
+Notes
+ASCI
+0-255
+0~127
+0-~127
+f :Feed Back 0~7
+P :PKS
+0~7
+1-2
+D: Detunel
+C-1
+с-2
+1-2
+C-I
+S: OSC Wave Form
+.: 012
+(-2
+H-I
+T: Total Level
+N-2
+C Algoritha O~7
+0-03
+0~7
+0~15
+C-2
+H-I
+H-2
+C-1
+с-2
+N-1
+N-2
+C-1
+C-2
+H-I
+N -2
+C-1
+C-2
+N-2
+C-1
+C-2
+4-1
+C-1
+C-2
+N-I
+N -2
+C-1
+C-2
+K: Key Scale
+A : Attack Rate
+E :AMS Enable
+D: Decay 1 Rate
+D :Detune2
+d: Decay 2 Rate
+E :EG Shift
+L : Reverb Level
+r :Reverb Rate
+L :Sustain Level
+R : Release Rate
+V :Velocity Intensity
+K : Keyboard Track
+0~7
+0~15
+0~127
+0~3
+0~31
+0. 1
+0~~31
+0~3
+0~31
+0~3
+0.1
+0~7
+0~15
+0~15
+0~15
+0~15
+Sound
+128
+=== pg/p-35.png
+GLOSSARY
+channel: In MIDI, 16 channels are available
+for data transmission/reception.
+As on a TV
+set, a MIDI device can be set to receive (or
+send) only messages of the selected channel.
+In this way, one MIDI controller such as a Q1
+MIDI Workstation (on which stored MIDI
+data can be assigned to a number of different
+MIDI channels) can be used to independently
+control up to sixteen MIDI devices.
+global: Affecting all operations. A global
+parameter on the Z3, such as reverb in the Edit
+Mode, has one setting that controls or affects
+all of the strings.
+initialize: To reset the parameters of a device
+to zero or to a predetermined basic setting.
+master: Any device (such as a keyboard,
+sequencer, or the Z3) that controls another
+device (the slave). The Z3, therefore, always
+functions as a master, by sending MIDI
+signals to a connected MIDI synthesizer or
+module (except when in the SOUND GEN-
+ERATOR MODE, in which case the Z3
+becomes the slave).
+message: Any group of MIDI data that is sent
+or received within a MIDI system to initiate a
+selected function or to achieve a particular
+effect (e.g., pitch bend, program change, etc.).
+MIDI: Musical Instrument Digital Interface.
+A worldwide standard digital "language"
+permitting digital information to be
+transmitted from one synthesizer to another,
+or between synthesizers, sequencers, drum
+machines, computers, etc.
+MIDI IN: A MIDI terminal on a MIDI de-
+vice, that receives MIDI data transmitted from
+an external MIDI device. For example, the
+MIR Music Work Station Module has a MIDI
+IN terminal to which you can connect the Z3,
+allowing you to use the Z3 to play the pro-
+grams of the MIR.
+MIDI OUT: A MIDI terminal on a MIDI
+device that transmits MIDI data. The Z3 is ca-
+pable of sending MIDI data over its MIDI
+OUT terminal for control of additional MIDI
+sound sources and other devices.
+MIDI THRU: A MIDI terminal on a MIDI
+device that relays, unchanged, the data
+received at its MIDI IN terminal. This enables
+you to connect several MIDI devices together
+in a "daisy chain" configuration, permitting a
+number of MIDI devices to be controlled by
+one master MIDI device such as the Z3.
+mode: The manner in which a device is
+currently operating. In MIDI operation there
+are four modes, which describe how devices
+respond to data, are omni on/poly, omni on/
+mono, omni off/poly, and omni off/mono.
+When omni is on, the device responds to MIDI
+data arriving on any channel. When omni is
+off, it only responds to data arriving on the set
+channel. When poly is on, the device will play
+the maximum number of simultaneous notes
+(usually 16). When mono is on, it will play
+only one note at a time.
+Mode can also be used to describe a general
+category of synthesizer operation, such as the
+Patch Play Mode of the Z3.
+module: A sound-generating device, usually a
+synthesizer or a sampler, without a keyboard.
+The sounds of a module cannot be played
+except through control from a connected MIDI
+device.
+monophonic: Also called mono. Capable of
+producing only one note at a time.
+note off: A MIDI message indicating the end
+of a note. This message is sent whenever a key
+is released on a MIDI keyboard. On the Z3, a
+Note Off message is sent when a played note
+or string is released. If the MIDI sound source
+has been programmed with a long "release"
+time, the note will continue and fade out, after
+the note off message is received.
+note on: A MIDI message indicating the start
+of a note. This message is sent whenever a key
+is pressed on a MIDI keyboard. On the Z3, a
+Note On message is sent when the Pickup
+detects sound from a string.
+note on sensitivity: The degree to which the
+synthesizer responds to playing of the strings.
+- 33 -
+=== pg/p-36.png
+parameter: An aspect of a synthesizer's
+sound that can be changed. Some parameters
+(called function parameters) can be changed
+while playing, whereas others can only be
+programmed to be a permanent part of the
+sound. Some examples of the parameters of
+the Z3 include "Bend Range," "Transpose,"
+and "MIDI Channel."
+patch: Regarding the Z3, Patch refers to a
+preset memory location (one of eight in a
+Bank) to which one of the 128 Programs can
+be stored for easy recall. In conventional
+synthesizer terminology, patch is synonymous
+with the noun "program" (as in a "violin
+patch," for example).
+polyphonic: Also called poly. Capable of
+producing more than one note at a time. The
+Z3 is a typical MIDI polyphonic instrument in
+that it can produce up to 16 notes simultane-
+ously. Although, for obvious reasons, only 6
+notes can be played at any one time on the Z3,
+other notes may be required to sustain at the
+same time (for example, when playing strings
+again while holding a strummed chord), hence
+the need for more than 6 simultaneous notes.
+Also, when using a sequencer such as the Q1
+MIDI Workstation to play the Z3, up to 16
+independent melody lines could be transmit-
+ted, enabling performance of 16-part orchestral
+arrangements.
+program: (verb) A general term meaning to
+set parameter values in a MIDI instrument, in
+order to create a voice, select MIDI receive/
+transmit settings, etc.
+program: (noun) A synthesizer sound or
+preset. Used often in referring to general
+instrument categories: a "strings" program, an
+"organ" program, etc.
+setting: The number or value to which a
+parameter has been programmed.
+sequencer: A device that records MIDI
+events, much the way a tape recorder records
+sounds. Unlike tape recording, however,
+sequencers record MIDI data, not sound.
+slave: Any device (synthesizer, drum machine,
+etc.) that is being controlled by another device
+called a master. The MIR Music Work Station
+Module is a typical example of a slave — it
+has no keyboard or other controller, and is ba-
+sically a sound-generating device which can be
+played by an external master controller such as
+the Z3.
+timbre: Regarding the Z3, timbre is synony-
+mous with internal program.
+velocity: The speed with which a key, drum
+pad, or string is hit. Velocity data is sent with
+all MIDI Note On messages.
+velocity curve: Determines the relationship
+between playing strength and output level. If
+playing strength and output level have a 1:1
+relationship, the velocity curve is a straight
+line; the output level rises in direct proportion
+to how strongly the strings are played. Other
+curves are possible, however. For example, a
+velocity curve could be set in which the output
+level would be high for most playing strengths
+and would decrease only when playing at the
+absolute minimum strength.
+- 34 -
+=== pg/p-37.png
+SPECIFICATIONS
+ZD3 GUITAR SYNTHESIZER DRIVER
+Controls
+Synthesizer master volume control
+Program DOWN/UP keys
+Gain adjust dials for strings 1 though
+Indicator
+Connectors
+Peak LED
+Guitar input jack
+24-pin connector
+Z3 GUITAR SYNTHESIZER
+Method:
+Divided Pickup
+Sound Source:
+6 voice Digital
+Number of Program:
+128
+Number of Set Program: 128 (Mode B)
+Effector:
+Digital Reverb 16-bit
+Tuner:
+Digital Chromatic Tuner
+Calibration 438~445 Hz
+Front Panel:
+GUITAR INPUT
+REMOTE INPUT
+PHONES
+VOLUME
+Rear Panel:
+OUTPUT L/MONO
+OUTPUT R
+GUITAR OUTPUT
+PEDAL SW JACK
+MIDI IN
+MIDI OUT
+Power Requirements:
+Weight:
+Dimensions:
+24W
+4.5 Kg
+9 Ibs 14 oz
+482(W) x 332.5(D) x 44(H) mm
+19(W) x 13.3(D) x 1.7(H) inch
+Options:
+ZD3 (divided pickup)
+FC-6, PS-1, PS-2
+- 35-
+=== pg/p-38.png
+[Guitar Synthesizer
+Date: Jan. 1. '89
+Model
+MID! Implementation Chart Version: 1.1
+FUNCTION
+Recognized
+Basic
+Channel
+Mode
+Note
+Number:
+Velocity
+After
+Touch
+Pitch Bender
+Control
+Change
+Default
+Changed
+Default
+Messages
+Altered
+True Voice
+Note on
+Note off
+Key's
+Ch's
+Transmitted
+1~16
+1~16
+3
+********
+0~127
+********
+• 9n. V= 1~127
+1~1t
+1~16
+Remarks
+Memorized
+1
+OMNI ON/OFF
+Only MODE 1,3
+0~127
+13~108
+• 9n. V= 1~127
+*1. 2
+*1.2
+* 3
+64
+66
+Modulation 1
+Modulation 2
+Main Volume
+Damper
+Sostenuto
+* 3
+* 3
+* 2
+* 3
+* 4
+Program
+Change:
+System Exclusive
+True#
+• 0~127
+*******
+00~127
+1~128
+:Song Pos
+System Common
+:Song Sel
+: Tune
+System
+Real Time
+:Clock
+X
+: Commands
+: Local ON/OFF
+x
+Aux Messages
+: All Notes Off
+*1
+: Active Sense
+:Reset
+Notes: * 1
+When in the Sound Generator Mode, receive is possible.
+When in the Synth Mode. transmit is possible.
+When in the Synth Mode. data is transmitted according to the individual setting
+of each string.
+When in the Synth Mode, receive is possible.
+Mode 1: OMNI ON. POLY
+Mode 2: OMNI ON, MONO
+Mode 3: OMNI OFF, POLY
+Mode 4: OMNI OFF. MONO
+O: Yes
+x: No
+- 36-
+=== pg/p-39.png
+NOTICE
+Korg products are manufactured under strict specifications and voltages required
+by each country. These products are warranted by the Korg distributor only in
+each country. Any Korg product not sold with a warranty card or carrying a serial
+number disqualifies the product sold from the manufacturers's/distributor's
+warranty and liability. This requirement is for your own protection and safety.
+KORG KORG INC.
+15-12, Shimotakaido 1-chome, Suginami-ku, Tokyo, Japan.
+1989 © KORG INC.
+0101 CBH Printed in Japan
